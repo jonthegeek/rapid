@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 # rapid
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/rapid)](https://CRAN.R-project.org/package=rapid)
+[![Codecov test coverage](https://codecov.io/gh/jonthegeek/rapid/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jonthegeek/rapid?branch=main)
+[![R-CMD-check](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Convert an 'API' document ('APID'), such as one that follows the 'OpenAPI Specification', to an R object.
