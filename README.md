@@ -14,8 +14,10 @@ coverage](https://codecov.io/gh/jonthegeek/rapid/branch/main/graph/badge.svg)](h
 [![R-CMD-check](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Convert an ‘API’ document (‘APID’), such as one that follows the
-‘OpenAPI Specification’, to an R object.
+Convert an API document (APID), such as one that follows the [OpenAPI
+Specification](https://spec.openapis.org/oas/v3.0.0), to an R object.
+The R object enforces is a new S3 class, “apid”, which enforces a
+strict, opinionated schema.
 
 ## Installation
 
@@ -29,7 +31,9 @@ remotes::install_github("jonthegeek/rapid")
 
 ## Usage
 
-Add usage information and examples here.
+This package will be used by
+[{beekeeper}](https://jonthegeek.github.io/beekeeper/) and
+[{mockplumber}](https://jonthegeek.github.io/mockplumber/).
 
 ## Code of Conduct
 
