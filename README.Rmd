@@ -1,0 +1,38 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rapid
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Convert an 'API' document ('APID'), such as one that follows the 'OpenAPI Specification', to an R object.
+
+## Installation
+
+You can install the development version of rapid from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("jonthegeek/rapid")
+```
+
+## Usage
+
+Add usage information and examples here.
+
+## Code of Conduct
+
+Please note that the rapid project is released with a [Contributor Code of Conduct](https://jonthegeek.github.io/rapid/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
