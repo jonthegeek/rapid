@@ -1,5 +1,5 @@
 Package: rapid
-Title: R 'API' documents
+Title: R 'API' Documents
 Version: 0.0.0.9000
 Authors@R: 
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
@@ -7,8 +7,8 @@ Authors@R:
 Description: Convert an 'API' document ('APID'), such as one that follows
     the 'OpenAPI Specification', to an R object.
 License: MIT + file LICENSE
-URL: https://github.com/jonthegeek/rapid,
-    https://jonthegeek.github.io/rapid/
+URL: https://jonthegeek.github.io/rapid/,
+    https://github.com/jonthegeek/rapid
 BugReports: https://github.com/jonthegeek/rapid/issues
 Suggests: 
     testthat (>= 3.0.0)
