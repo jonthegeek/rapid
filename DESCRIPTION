@@ -1,5 +1,5 @@
 Package: rapid
-Title: R 'API' documents
+Title: R 'API' Documents
 Version: 0.0.0.9000
 Authors@R: 
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
