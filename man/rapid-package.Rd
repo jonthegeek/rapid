@@ -4,15 +4,15 @@
 \name{rapid-package}
 \alias{rapid}
 \alias{rapid-package}
-\title{rapid: R 'API' documents}
+\title{rapid: R 'API' Definitions}
 \description{
-Convert an 'API' document ('APID'), such as one that follows the 'OpenAPI Specification', to an R object.
+Convert an 'API' document ('APID'), such as one that follows the 'OpenAPI Specification', to an R 'API' definition object.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/jonthegeek/rapid}
   \item \url{https://jonthegeek.github.io/rapid/}
+  \item \url{https://github.com/jonthegeek/rapid}
   \item Report bugs at \url{https://github.com/jonthegeek/rapid/issues}
 }
 
