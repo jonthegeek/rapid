@@ -69,7 +69,7 @@
       x Some values do not match.
       * Locations: 1
 
-# api_contact returns a rapid_contact when everything is ok
+# api_contact() returns a rapid_contact when everything is ok
 
     Code
       test_result <- api_contact(name = "A", url = "https://example.com", email = "real.email@address.place")

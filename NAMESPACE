@@ -3,6 +3,8 @@
 S3method(.add_class,default)
 S3method(.add_class,list)
 export(api_contact)
+export(api_license)
+importFrom(rlang,check_dots_empty)
 importFrom(rlang,check_dots_used)
 importFrom(stbl,stabilize_chr_scalar)
 importFrom(stbl,to_chr_scalar)

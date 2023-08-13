@@ -51,7 +51,7 @@ test_that("api_contact() errors informatively for bad email", {
   )
 })
 
-test_that("api_contact returns a rapid_contact when everything is ok", {
+test_that("api_contact() returns a rapid_contact when everything is ok", {
   expect_snapshot(
     {
       test_result <- api_contact(
