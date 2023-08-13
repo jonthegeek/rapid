@@ -12,10 +12,8 @@ URL: https://jonthegeek.github.io/rapid/,
 BugReports: https://github.com/jonthegeek/rapid/issues
 Imports: 
     cli,
-    methods,
     rlang (>= 1.1.0),
-    stbl,
-    vctrs
+    stbl
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
