@@ -4,7 +4,7 @@
 \alias{api_contact}
 \title{Contact information for the API}
 \usage{
-api_contact(name = NULL, url = NULL, email = NULL)
+api_contact(name = character(), url = character(), email = character())
 }
 \arguments{
 \item{name}{The identifying name of the contact person/organization.}

@@ -11,5 +11,5 @@
 
 #' @export
 .add_class.default <- function(x, ...) {
-  stop("I haven't implemented this for anything but list.")
+  stop("I haven't implemented this for anything but list.") # nocov
 }

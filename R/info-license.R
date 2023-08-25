@@ -11,7 +11,8 @@
 #' @param url A URL to the license used for the API. This *must* be in the form
 #'   of a URL. The `url` field is mutually exclusive of the `identifier` field.
 #'
-#' @return A `rapid_license` object: a list with fields `name`, identifier, and `url`.
+#' @return A `rapid_license` object: a list with fields `name`, identifier, and
+#'   `url`.
 #' @export
 #'
 #' @examples

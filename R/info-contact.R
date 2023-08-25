@@ -18,7 +18,9 @@
 #'   "https://www.example.com/support",
 #'   "support@example.com"
 #' )
-api_contact <- function(name = character(), url = character(), email = character()) {
+api_contact <- function(name = character(),
+                        url = character(),
+                        email = character()) {
   name <- to_chr_scalar(name)
   url <- stabilize_chr_scalar(
     url,

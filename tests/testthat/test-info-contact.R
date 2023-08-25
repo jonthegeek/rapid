@@ -52,15 +52,13 @@ test_that("api_contact() errors informatively for bad email", {
 })
 
 test_that("api_contact() returns a rapid_contact when everything is ok", {
-  expect_snapshot(
-    {
-      test_result <- api_contact(
-        name = "A",
-        url = "https://example.com",
-        email = "real.email@address.place"
-      )
-    }
-  )
+  expect_snapshot({
+    test_result <- api_contact(
+      name = "A",
+      url = "https://example.com",
+      email = "real.email@address.place"
+    )
+  })
   expect_s3_class(test_result, class = c("rapid_contact", "list"), exact = TRUE)
 })
 
