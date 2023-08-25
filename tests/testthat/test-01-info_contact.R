@@ -51,21 +51,38 @@ test_that("api_contact() errors informatively for bad email", {
   )
 })
 
-test_that("api_contact() returns a rapid_contact when everything is ok", {
+test_that("api_contact() returns an api_contact when everything is ok", {
   expect_snapshot({
     test_result <- api_contact(
       name = "A",
       url = "https://example.com",
       email = "real.email@address.place"
     )
+    test_result
   })
-  expect_s3_class(test_result, class = c("rapid_contact", "list"), exact = TRUE)
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_contact", "S7_object"),
+    exact = TRUE
+  )
+  expect_identical(
+    S7::prop_names(test_result),
+    c("name", "email", "url")
+  )
 })
 
-test_that("api_contact() without args returns an empty rapid_contact.", {
+test_that("api_contact() without args returns an empty api_contact.", {
   expect_snapshot({
     test_result <- api_contact()
     test_result
   })
-  expect_s3_class(test_result, class = c("rapid_contact", "list"), exact = TRUE)
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_contact", "S7_object"),
+    exact = TRUE
+  )
+  expect_identical(
+    S7::prop_names(test_result),
+    c("name", "email", "url")
+  )
 })

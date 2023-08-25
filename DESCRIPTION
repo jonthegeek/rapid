@@ -17,6 +17,7 @@ URL: https://jonthegeek.github.io/rapid/,
 BugReports: https://github.com/jonthegeek/rapid/issues
 Imports: 
     rlang (>= 1.1.0),
+    S7,
     stbl
 Suggests: 
     testthat (>= 3.0.0)

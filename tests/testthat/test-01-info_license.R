@@ -28,8 +28,7 @@ test_that("api_license() errors informatively for bad url", {
     cnd_class = TRUE
   )
 })
-
-test_that("api_license() errors informatively for bad email", {
+test_that("api_license() errors informatively for bad identifier", {
   expect_snapshot(
     api_license(name = "A", identifier = mean),
     error = TRUE,
@@ -58,20 +57,38 @@ test_that("api_license() doesn't match identifier by position", {
   )
 })
 
-test_that("api_license() returns a rapid_license when everything is ok", {
-  expect_no_error({
+test_that("api_license() returns an api_license when everything is ok", {
+  expect_snapshot({
     test_result <- api_license(
       name = "A",
       url = "https://example.com"
     )
+    test_result
   })
-  expect_s3_class(test_result, class = c("rapid_license", "list"), exact = TRUE)
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_license", "S7_object"),
+    exact = TRUE
+  )
+  expect_identical(
+    S7::prop_names(test_result),
+    c("name", "identifier", "url")
+  )
 
-  expect_no_error({
+  expect_snapshot({
     test_result <- api_license(
       name = "A",
       identifier = "technically these have a fancy required format"
     )
+    test_result
   })
-  expect_s3_class(test_result, class = c("rapid_license", "list"), exact = TRUE)
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_license", "S7_object"),
+    exact = TRUE
+  )
+  expect_identical(
+    S7::prop_names(test_result),
+    c("name", "identifier", "url")
+  )
 })

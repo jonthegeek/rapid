@@ -15,7 +15,7 @@ coverage](https://codecov.io/gh/jonthegeek/rapid/branch/main/graph/badge.svg)](h
 <!-- badges: end -->
 
 Convert an API document (APID), such as one that follows the [OpenAPI
-Specification](https://spec.openapis.org/oas/v3.0.0), to an R API
+Specification](https://spec.openapis.org/oas/v3.1.0), to an R API
 definition object. The R object belongs to a new S3 class, “apid”, which
 enforces a strict, opinionated schema.
 
@@ -25,8 +25,8 @@ You can install the development version of rapid from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("jonthegeek/rapid")
+# install.packages("pak")
+pak::pkg_install("jonthegeek/rapid")
 ```
 
 ## Usage

@@ -69,26 +69,25 @@
       x Some values do not match.
       * Locations: 1
 
-# api_contact() returns a rapid_contact when everything is ok
+# api_contact() returns an api_contact when everything is ok
 
     Code
       test_result <- api_contact(name = "A", url = "https://example.com", email = "real.email@address.place")
+      test_result
+    Output
+      <rapid::api_contact>
+       @ name : chr "A"
+       @ email: chr "real.email@address.place"
+       @ url  : chr "https://example.com"
 
-# api_contact() without args returns an empty rapid_contact.
+# api_contact() without args returns an empty api_contact.
 
     Code
       test_result <- api_contact()
       test_result
     Output
-      $name
-      character(0)
-      
-      $url
-      character(0)
-      
-      $email
-      character(0)
-      
-      attr(,"class")
-      [1] "rapid_contact" "list"         
+      <rapid::api_contact>
+       @ name : chr(0) 
+       @ email: chr(0) 
+       @ url  : chr(0) 
 
