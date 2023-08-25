@@ -63,3 +63,11 @@ test_that("api_contact() returns a rapid_contact when everything is ok", {
   )
   expect_s3_class(test_result, class = c("rapid_contact", "list"), exact = TRUE)
 })
+
+test_that("api_contact() without args returns an empty rapid_contact.", {
+  expect_snapshot({
+    test_result <- api_contact()
+    test_result
+  })
+  expect_s3_class(test_result, class = c("rapid_contact", "list"), exact = TRUE)
+})

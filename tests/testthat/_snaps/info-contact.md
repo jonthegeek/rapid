@@ -74,3 +74,21 @@
     Code
       test_result <- api_contact(name = "A", url = "https://example.com", email = "real.email@address.place")
 
+# api_contact() without args returns an empty rapid_contact.
+
+    Code
+      test_result <- api_contact()
+      test_result
+    Output
+      $name
+      character(0)
+      
+      $url
+      character(0)
+      
+      $email
+      character(0)
+      
+      attr(,"class")
+      [1] "rapid_contact" "list"         
+
