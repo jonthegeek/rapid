@@ -42,7 +42,7 @@
       x Some values do not match.
       * Locations: 1
 
-# api_license() errors informatively for bad email
+# api_license() errors informatively for bad identifier
 
     Code
       api_license(name = "A", identifier = mean)
@@ -63,9 +63,10 @@
 
     Code
       api_license(name = "A", identifier = "A", url = "https://example.com")
-    Condition <rlang_error>
-      Error in `api_license()`:
-      ! Exactly one of `identifier` or `url` must be supplied.
+    Condition <simpleError>
+      Error:
+      ! <rapid::api_license> object is invalid:
+      - At most one of @identifier and @url must be supplied.
 
 # api_license() doesn't match identifier by position
 
@@ -77,4 +78,26 @@
       x Problematic argument:
       * ..1 = "https://example.com"
       i Did you forget to name an argument?
+
+# api_license() returns an api_license when everything is ok
+
+    Code
+      test_result <- api_license(name = "A", url = "https://example.com")
+      test_result
+    Output
+      <rapid::api_license>
+       @ name      : chr "A"
+       @ identifier: chr(0) 
+       @ url       : chr "https://example.com"
+
+---
+
+    Code
+      test_result <- api_license(name = "A", identifier = "technically these have a fancy required format")
+      test_result
+    Output
+      <rapid::api_license>
+       @ name      : chr "A"
+       @ identifier: chr "technically these have a fancy required format"
+       @ url       : chr(0) 
 
