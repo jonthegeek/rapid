@@ -3,6 +3,7 @@
 export(api_contact)
 export(api_info)
 export(api_license)
+if (getRversion() < "4.3.0") importFrom("S7", "@")
 importFrom(rlang,check_dots_empty)
 importFrom(rlang,check_dots_used)
 importFrom(stbl,stabilize_chr_scalar)
