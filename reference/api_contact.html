@@ -38,7 +38,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Contact information for the API</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info-contact.R" class="external-link"><code>R/info-contact.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/01-info_contact.R" class="external-link"><code>R/01-info_contact.R</code></a></small>
       <div class="d-none name"><code>api_contact.Rd</code></div>
     </div>
 
@@ -48,7 +48,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">api_contact</span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>, url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>, email <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">api_contact</span><span class="op">(</span>name <span class="op">=</span> <span class="va">class_missing</span>, email <span class="op">=</span> <span class="va">class_missing</span>, url <span class="op">=</span> <span class="va">class_missing</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -57,42 +57,35 @@
 <dd><p>The identifying name of the contact person/organization.</p></dd>
 
 
-<dt>url</dt>
-<dd><p>The URL pointing to the contact information. This <em>must</em> be in the
-form of a URL.</p></dd>
-
-
 <dt>email</dt>
 <dd><p>The email address of the contact person/organization. This
 <em>must</em> be in the form of an email address.</p></dd>
+
+
+<dt>url</dt>
+<dd><p>The URL pointing to the contact information. This <em>must</em> be in the
+form of a URL.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>rapid_contact</code> object: a list with fields <code>name</code>, <code>url</code>, and
-<code>email</code>.</p>
+<p>An <code>api_contact</code> S7 object, with fields <code>name</code>, <code>email</code>, and
+<code>url</code>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">api_contact</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="st">"API Support"</span>,</span></span>
-<span class="r-in"><span>  <span class="st">"https://www.example.com/support"</span>,</span></span>
-<span class="r-in"><span>  <span class="st">"support@example.com"</span></span></span>
+<span class="r-in"><span>  <span class="st">"support@example.com"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"https://www.example.com/support"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "API Support"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $url</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://www.example.com/support"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $email</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "support@example.com"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "rapid_contact" "list"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;rapid::api_contact&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ name : chr "API Support"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ email: chr "support@example.com"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ url  : chr "https://www.example.com/support"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
