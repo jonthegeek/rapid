@@ -21,7 +21,7 @@ test_that("api_info() requires URLs for TOS", {
   )
 })
 
-test_that("api_info() returns an empty api_info.", {
+test_that("api_info() returns an empty api_info", {
   expect_snapshot({
     test_result <- api_info()
     test_result

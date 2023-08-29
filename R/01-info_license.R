@@ -38,7 +38,7 @@ api_license <- S7::new_class(
                          ...,
                          identifier = character(),
                          url = character()) {
-    rlang::check_dots_empty()
+    check_dots_empty()
     S7::new_object(NULL, name = name, identifier = identifier, url = url)
   },
   validator = function(self) {

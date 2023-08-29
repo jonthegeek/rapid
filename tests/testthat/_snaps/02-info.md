@@ -25,7 +25,7 @@
       x Some values do not match.
       * Locations: 1
 
-# api_info() returns an empty api_info.
+# api_info() returns an empty api_info
 
     Code
       test_result <- api_info()

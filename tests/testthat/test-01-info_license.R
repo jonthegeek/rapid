@@ -57,7 +57,7 @@ test_that("api_license() doesn't match identifier by position", {
   )
 })
 
-test_that("api_license() returns an api_license when everything is ok", {
+test_that("api_license() returns a license when everything is ok", {
   expect_snapshot({
     test_result <- api_license(
       name = "A",

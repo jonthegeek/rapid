@@ -79,7 +79,7 @@
       * ..1 = "https://example.com"
       i Did you forget to name an argument?
 
-# api_license() returns an api_license when everything is ok
+# api_license() returns a license when everything is ok
 
     Code
       test_result <- api_license(name = "A", url = "https://example.com")

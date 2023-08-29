@@ -69,7 +69,7 @@
       x Some values do not match.
       * Locations: 1
 
-# api_contact() returns an api_contact when everything is ok
+# api_contact() returns a contact when everything is ok
 
     Code
       test_result <- api_contact(name = "A", url = "https://example.com", email = "real.email@address.place")
@@ -80,7 +80,7 @@
        @ email: chr "real.email@address.place"
        @ url  : chr "https://example.com"
 
-# api_contact() without args returns an empty api_contact.
+# api_contact() without args returns an empty api_contact
 
     Code
       test_result <- api_contact()

@@ -16,8 +16,7 @@ api_contact(name = class_missing, email = class_missing, url = class_missing)
 form of a URL.}
 }
 \value{
-An \code{api_contact} S7 object, with fields \code{name}, \code{email}, and
-\code{url}.
+An \code{api_contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.
 }
 \description{
 Validate the contact information for an API.
