@@ -7,7 +7,8 @@
 server_variable_list(...)
 }
 \arguments{
-\item{.data}{A list of \code{\link[=server_variable]{server_variable()}} objects.}
+\item{...}{One or more \code{\link[=server_variable]{server_variable()}} objects, or a list of
+\code{\link[=server_variable]{server_variable()}} objects.}
 }
 \value{
 A \code{server_variable_list} S7 object, which is a validated list of

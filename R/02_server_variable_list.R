@@ -3,7 +3,8 @@
 #' A list of server variable objects, each of which is constructed with
 #' [server_variable()].
 #'
-#' @param .data A list of [server_variable()] objects.
+#' @param ... One or more [server_variable()] objects, or a list of
+#'   [server_variable()] objects.
 #'
 #' @return A `server_variable_list` S7 object, which is a validated list of
 #'   [server_variable()] objects.

@@ -72,7 +72,7 @@ test_that("server_variable() works for a full object", {
       name = c("username", "port", "basePath"),
       default = c("demo", "8443", "v2"),
       description = c(
-        "this value is assigned by the service provider, in this example `gigantic-server.com`",
+        "The active user's folder.",
         NA, NA
       ),
       enum = list(

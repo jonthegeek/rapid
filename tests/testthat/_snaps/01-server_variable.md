@@ -111,8 +111,7 @@
 
     Code
       test_result <- server_variable(name = c("username", "port", "basePath"),
-      default = c("demo", "8443", "v2"), description = c(
-        "this value is assigned by the service provider, in this example `gigantic-server.com`",
+      default = c("demo", "8443", "v2"), description = c("The active user's folder.",
         NA, NA), enum = list(NULL, c("8443", "443"), NULL))
       test_result
     Output
@@ -123,5 +122,5 @@
        .. $ : NULL
        .. $ : chr [1:2] "8443" "443"
        .. $ : NULL
-       @ description: chr [1:3] "this value is assigned by the service provider, in this example `gigantic-server.com`" ...
+       @ description: chr [1:3] "The active user's folder." NA NA
 

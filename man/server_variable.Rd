@@ -45,6 +45,6 @@ server_variable(
   "username",
   "demo",
   enum = c("demo", "other"),
-  description = "this value is assigned by the service provider, in this example `gigantic-server.com`"
+  description = "The active user's folder."
 )
 }
