@@ -8,8 +8,7 @@
 #' @param email The email address of the contact person/organization. This
 #'   *must* be in the form of an email address.
 #'
-#' @return An `api_contact` S7 object, with fields `name`, `email`, and
-#'   `url`.
+#' @return An `api_contact` S7 object, with fields `name`, `email`, and `url`.
 #' @export
 #'
 #' @examples

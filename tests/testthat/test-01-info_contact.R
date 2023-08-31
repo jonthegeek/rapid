@@ -51,7 +51,7 @@ test_that("api_contact() errors informatively for bad email", {
   )
 })
 
-test_that("api_contact() returns an api_contact when everything is ok", {
+test_that("api_contact() returns a contact when everything is ok", {
   expect_snapshot({
     test_result <- api_contact(
       name = "A",
@@ -71,7 +71,7 @@ test_that("api_contact() returns an api_contact when everything is ok", {
   )
 })
 
-test_that("api_contact() without args returns an empty api_contact.", {
+test_that("api_contact() without args returns an empty api_contact", {
   expect_snapshot({
     test_result <- api_contact()
     test_result

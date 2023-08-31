@@ -16,6 +16,9 @@ URL: https://jonthegeek.github.io/rapid/,
     https://github.com/jonthegeek/rapid
 BugReports: https://github.com/jonthegeek/rapid/issues
 Imports: 
+    cli,
+    glue,
+    purrr,
     rlang (>= 1.1.0),
     S7,
     stbl
