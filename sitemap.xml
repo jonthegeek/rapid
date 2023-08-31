@@ -25,6 +25,9 @@
     <loc>https://jonthegeek.github.io/rapid/index.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/principles.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/api_contact.html</loc>
   </url>
   <url>
@@ -38,5 +41,14 @@
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/rapid-package.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/server.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/server_variable.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/server_variable_list.html</loc>
   </url>
 </urlset>
