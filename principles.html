@@ -46,8 +46,7 @@
 <p><em>This is an experiment in making key package design principles explicit, versus only implicit in the code. The goal is to make maintenance easier, when spread out over time and across people. This idea was copied from <a href="https://github.com/r-lib/usethis/blob/main/principles.md" class="external-link">usethis</a>.</em></p>
 <div class="section level2">
 <h2 id="class-names">Class names<a class="anchor" aria-label="anchor" href="#class-names"></a></h2>
-<p>I’ve gone back and forth between “api_{class}” and “{class}” for the class names. The rule that seems to be emerging is to add “api_” when necessary, but try not to do so.</p>
-<p>This rule still might change.</p>
+<p>I’ve gone back and forth between “api_{class}” and “{class}” for the class names. The rule that seems to be emerging is to add “api_” when necessary, but try not to do so. This rule still might change. I also belatedly noticed that I had <code>server()</code> (singular) where the OAS specification has <code><a href="reference/servers.html">servers()</a></code>. I have belatedly updated that. Be careful to match the class names to the pluralization in the specification.</p>
 </div>
 </div>
 
