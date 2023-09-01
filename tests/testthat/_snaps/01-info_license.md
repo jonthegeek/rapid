@@ -68,6 +68,26 @@
       ! <rapid::api_license> object is invalid:
       - At most one of @identifier and @url must be supplied.
 
+# api_license() fails when name is missing
+
+    Code
+      api_license(identifier = "A")
+    Condition <simpleError>
+      Error:
+      ! <rapid::api_license> object is invalid:
+      - When `name` is not defined, `identifier` must be empty.
+      - `identifier` has 1 value.
+
+---
+
+    Code
+      api_license(url = "https://example.com")
+    Condition <simpleError>
+      Error:
+      ! <rapid::api_license> object is invalid:
+      - When `name` is not defined, `url` must be empty.
+      - `url` has 1 value.
+
 # api_license() doesn't match identifier by position
 
     Code

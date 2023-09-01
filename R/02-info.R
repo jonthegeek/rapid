@@ -45,3 +45,8 @@ api_info <- S7::new_class(
     version = character_scalar_property("version")
   )
 )
+
+#' @export
+`length.rapid::api_info` <- function(x) {
+  .prop_length_max(x)
+}

@@ -49,6 +49,19 @@ test_that("api_license() errors informatively when both url and identifier are s
   )
 })
 
+test_that("api_license() fails when name is missing", {
+  expect_snapshot(
+    api_license(identifier = "A"),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    api_license(url = "https://example.com"),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
 test_that("api_license() doesn't match identifier by position", {
   expect_snapshot(
     api_license(name = "A", "https://example.com"),
@@ -91,4 +104,9 @@ test_that("api_license() returns a license when everything is ok", {
     S7::prop_names(test_result),
     c("name", "identifier", "url")
   )
+})
+
+test_that("length() of an api_license reports the overall length", {
+  expect_equal(length(api_license()), 0)
+  expect_equal(length(api_license(name = "A")), 1)
 })

@@ -29,3 +29,8 @@ api_contact <- S7::new_class(
     url = url_scalar_property("url")
   )
 )
+
+#' @export
+`length.rapid::api_contact` <- function(x) {
+  .prop_length_max(x)
+}

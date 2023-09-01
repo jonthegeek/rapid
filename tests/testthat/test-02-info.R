@@ -44,3 +44,19 @@ test_that("api_info() returns an empty api_info", {
     )
   )
 })
+
+test_that("length() of an api_info reports the overall length", {
+  expect_equal(length(api_info()), 0)
+  expect_equal(
+    length(
+      api_info(
+        title = "My Cool API",
+        license = api_license(
+          name = "Apache 2.0",
+          url = "https://opensource.org/license/apache-2-0/"
+        )
+      )
+    ),
+    1
+  )
+})

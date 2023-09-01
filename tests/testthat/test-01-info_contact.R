@@ -86,3 +86,8 @@ test_that("api_contact() without args returns an empty api_contact", {
     c("name", "email", "url")
   )
 })
+
+test_that("length() of an api_contact reports the overall length", {
+  expect_equal(length(api_contact()), 0)
+  expect_equal(length(api_contact(name = "A")), 1)
+})
