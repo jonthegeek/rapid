@@ -1,29 +1,29 @@
-test_that("server() requires URLs for url", {
+test_that("servers() requires URLs for urls", {
   expect_snapshot(
-    server(url = mean),
+    servers(url = mean),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    server(url = c("A", "B")),
+    servers(url = c("A", "B")),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    server(url = "not a real url"),
+    servers(url = "not a real url"),
     error = TRUE,
     cnd_class = TRUE
   )
 })
 
-test_that("server() returns an empty server", {
+test_that("servers() returns an empty server", {
   expect_snapshot({
-    test_result <- server()
+    test_result <- servers()
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::server", "S7_object"),
+    class = c("rapid::servers", "S7_object"),
     exact = TRUE
   )
   expect_identical(

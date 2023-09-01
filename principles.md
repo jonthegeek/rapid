@@ -6,5 +6,7 @@
 
 I've gone back and forth between "api_{class}" and "{class}" for the class names.
 The rule that seems to be emerging is to add "api_" when necessary, but try not to do so.
-
 This rule still might change.
+I also belatedly noticed that I had `server()` (singular) where the OAS specification has `servers()`. 
+I have belatedly updated that. 
+Be careful to match the class names to the pluralization in the specification.

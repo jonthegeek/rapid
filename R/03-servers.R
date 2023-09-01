@@ -6,12 +6,12 @@
 #' @param description A list of [server_variable()] objects.
 #' @param variables [server_variable_list()] object.
 #'
-#' @return A `server` S7 object, with properties `url`, `description`, and
+#' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
 #' @export
 #'
 #' @examples
-#' server(
+#' servers(
 #'   url = c(
 #'     "https://development.gigantic-server.com/v1",
 #'     "https://staging.gigantic-server.com/v1",
@@ -23,7 +23,7 @@
 #'     "Production server"
 #'   )
 #' )
-#' server(
+#' servers(
 #'   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
 #'   description = "The production API server",
 #'   variables = server_variable_list(server_variable(
@@ -40,8 +40,8 @@
 #'     )
 #'   ))
 #' )
-server <- S7::new_class(
-  "server",
+servers <- S7::new_class(
+  "servers",
   package = "rapid",
   properties = list(
     url = url_property("url"),
