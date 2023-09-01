@@ -16,8 +16,9 @@ coverage](https://codecov.io/gh/jonthegeek/rapid/branch/main/graph/badge.svg)](h
 
 Convert an API document (APID), such as one that follows the [OpenAPI
 Specification](https://spec.openapis.org/oas/v3.1.0), to an R API
-definition object. The R object belongs to a new S3 class, “apid”, which
-enforces a strict, opinionated schema.
+definition object. The R object belongs to a new
+[S7](https://rconsortium.github.io/S7) class, `rapid`, which enforces a
+strict, opinionated schema.
 
 ## Installation
 
