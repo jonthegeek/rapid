@@ -93,3 +93,8 @@ test_that("server_variable() works for a full object", {
     c("name", "default", "enum", "description")
   )
 })
+
+test_that("length() of a server_variable reports the overall length", {
+  expect_equal(length(server_variable()), 0)
+  expect_equal(length(server_variable(name = "A", default = "A")), 1)
+})

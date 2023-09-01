@@ -56,3 +56,8 @@ servers <- S7::new_class(
     )
   }
 )
+
+#' @export
+`length.rapid::servers` <- function(x) {
+  length(x@url)
+}

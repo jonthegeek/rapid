@@ -43,7 +43,13 @@ api_license <- S7::new_class(
   },
   validator = function(self) {
     if (length(self@identifier) && length(self@url)) {
-      "At most one of @identifier and @url must be supplied."
+      return("At most one of @identifier and @url must be supplied.")
     }
+    validate_parallel(self, key = "name", optional = c("identifier", "url"))
   }
 )
+
+#' @export
+`length.rapid::api_license` <- function(x) {
+  length(x@name)
+}

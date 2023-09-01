@@ -49,8 +49,7 @@
     Condition
       Error:
       ! <rapid::server_variable> object is invalid:
-      - `default` must have the same length as `name`
-      - `name` has no values.
+      - When `name` is not defined, `default` must be empty.
       - `default` has 1 value.
 
 # server_variable() works with equal-length name/default

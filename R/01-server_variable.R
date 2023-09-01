@@ -65,3 +65,8 @@ server_variable <- S7::new_class(
     )
   }
 )
+
+#' @export
+`length.rapid::server_variable` <- function(x) {
+  length(x@name)
+}
