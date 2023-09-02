@@ -60,3 +60,31 @@ test_that("length() of an api_info reports the overall length", {
     1
   )
 })
+
+test_that("Can construct an api_contact from an api spec", {
+  # apid_list_guru <- yaml::read_yaml("https://api.apis.guru/v2/openapi.yaml")
+  # saveRDS(apid_list_guru, test_path("fixtures", "apid_list_guru.rds"))
+  apid_list_guru <- readRDS(test_path("fixtures", "apid_list_guru.rds"))
+  expect_snapshot({
+    test_result <- api_info(apid_list = apid_list_guru)
+    test_result
+  })
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_info", "S7_object"),
+    exact = TRUE
+  )
+
+  # apid_list_awsmh <- yaml::read_yaml("https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml")
+  # saveRDS(apid_list_awsmh, test_path("fixtures", "apid_list_awsmh.rds"))
+  apid_list_awsmh <- readRDS(test_path("fixtures", "apid_list_awsmh.rds"))
+  expect_snapshot({
+    test_result <- api_info(apid_list = apid_list_awsmh)
+    test_result
+  })
+  expect_s3_class(
+    test_result,
+    class = c("rapid::api_info", "S7_object"),
+    exact = TRUE
+  )
+})

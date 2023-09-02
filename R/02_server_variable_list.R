@@ -3,6 +3,7 @@
 #' A list of server variable objects, each of which is constructed with
 #' [server_variable()].
 #'
+#' @inheritParams .shared-parameters
 #' @param ... One or more [server_variable()] objects, or a list of
 #'   [server_variable()] objects.
 #'
@@ -18,7 +19,23 @@ server_variable_list <- S7::new_class(
   "server_variable_list",
   package = "rapid",
   parent = S7::class_list,
-  constructor = function(...) {
+  constructor = function(..., apid_list = NULL) {
+    if (!is.null(apid_list)) {
+      return(S7::new_object(
+        purrr::map(
+          apid_list$servers,
+          \(this_server) {
+            these_names <- names(this_server$variables)
+            vars <- unname(this_server$variables)
+            server_variable(
+              name = these_names,
+              default = purrr::map_chr(vars, "default"),
+              enum = purrr::map(vars, "enum")
+            )
+          }
+        )
+      ))
+    }
     if (...length() == 1 && is.list(..1)) {
       return(S7::new_object(..1))
     }

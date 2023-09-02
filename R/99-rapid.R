@@ -2,6 +2,7 @@
 #'
 #' An object that represents an API.
 #'
+#' @inheritParams .shared-parameters
 #' @param info An `api_info` object defined by [api_info()].
 #' @param servers A `servers` object defined by [servers()].
 #'
@@ -38,6 +39,24 @@ rapid <- S7::new_class(
     info = api_info,
     servers = servers
   ),
+  constructor = function(info = S7::class_missing,
+                         servers = S7::class_missing,
+                         ...,
+                         apid_url = NULL,
+                         apid_list = NULL) {
+    if (!is.null(apid_url)) {
+      apid_url <- stbl::stabilize_chr_scalar(
+        apid_url,
+        regex = .url_regex
+      )
+      apid_list <- yaml::read_yaml(apid_url)
+    }
+    if (!is.null(apid_list)) {
+      info <- api_info(apid_list = apid_list)
+      servers <- servers(apid_list = apid_list)
+    }
+    S7::new_object(NULL, info = info, servers = servers)
+  },
   validator = function(self) {
     validate_lengths(
       self,

@@ -2,6 +2,7 @@
 #'
 #' Validate the contact information for an API.
 #'
+#' @inheritParams .shared-parameters
 #' @param name The identifying name of the contact person/organization.
 #' @param url The URL pointing to the contact information. This *must* be in the
 #'   form of a URL.
@@ -27,7 +28,13 @@ api_contact <- S7::new_class(
       regex = "^[^@]+@[^@]+$"
     ),
     url = url_scalar_property("url")
-  )
+  ),
+  constructor = function(name = S7::class_missing,
+                         email = S7::class_missing,
+                         url = S7::class_missing,
+                         ...) {
+    S7::new_object(NULL, name = name, email = email, url = url)
+  }
 )
 
 #' @export

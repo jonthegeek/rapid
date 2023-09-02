@@ -2,6 +2,7 @@
 #'
 #' Connectivity information for an API.
 #'
+#' @inheritParams .shared-parameters
 #' @param url A list of [server_variable()] objects.
 #' @param description A list of [server_variable()] objects.
 #' @param variables [server_variable_list()] object.
@@ -48,6 +49,23 @@ servers <- S7::new_class(
     description = character_property("description"),
     variables = server_variable_list
   ),
+  constructor = function(url = S7::class_missing,
+                         description = S7::class_missing,
+                         variables = S7::class_missing,
+                         ...,
+                         apid_list = NULL) {
+    if (!is.null(apid_list) && !is.null(apid_list$servers)) {
+      url <- .extract_along_chr(apid_list$servers, "url")
+      description <- .extract_along_chr(apid_list$servers, "description")
+      variables <- server_variable_list(apid_list = apid_list)
+    }
+    S7::new_object(
+      NULL,
+      url = url,
+      description = description,
+      variables = variables
+    )
+  },
   validator = function(self) {
     validate_parallel(
       self,
@@ -56,6 +74,23 @@ servers <- S7::new_class(
     )
   }
 )
+
+.extract_along_chr <- function(x, el) {
+  y <- purrr::map(x, el)
+  if (purrr::every(y, is.null)) {
+    return(NULL)
+  }
+  purrr::map_chr(
+    y,
+    \(this) {
+      this %||% NA
+    }
+  )
+}
+
+.extract <- function(x, el) {
+  x$el %||% NA
+}
 
 #' @export
 `length.rapid::servers` <- function(x) {
