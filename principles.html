@@ -48,9 +48,14 @@
 <h2 id="class-names">Class names<a class="anchor" aria-label="anchor" href="#class-names"></a></h2>
 <p>I’ve gone back and forth between “api_{class}” and “{class}” for the class names. The rule that seems to be emerging is to add “api_” when necessary, but try not to do so. This rule still might change. I also belatedly noticed that I had <code>server()</code> (singular) where the OAS specification has <code><a href="reference/servers.html">servers()</a></code>. I have belatedly updated that. Be careful to match the class names to the pluralization in the specification.</p>
 </div>
+<div class="section level2">
+<h2 id="specification-extensions">Specification extensions<a class="anchor" aria-label="anchor" href="#specification-extensions"></a></h2>
+<p>OAS allows for <a href="https://spec.openapis.org/oas/v3.1.0#specificationExtensions" class="external-link">Specification Extensions</a>, which are extra fields that begin with “x-”. I do not yet support these anywhere, and capture them in <code>...</code> in order to throw them away without errors. Later I should at least check these, and ideally deal with them.</p>
+</div>
 </div>
 
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

@@ -51,7 +51,7 @@ server_variable()."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aj
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">server_variable_list</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">server_variable_list</span><span class="op">(</span><span class="va">...</span>, apid_list <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -59,6 +59,11 @@ server_variable()."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aj
     <dl><dt>...</dt>
 <dd><p>One or more <code><a href="server_variable.html">server_variable()</a></code> objects, or a list of
 <code><a href="server_variable.html">server_variable()</a></code> objects.</p></dd>
+
+
+<dt>apid_list</dt>
+<dd><p>An API document as a list, such as that obtained by reading
+an OAS document with <code><a href="https://rdrr.io/pkg/yaml/man/read_yaml.html" class="external-link">yaml::read_yaml()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

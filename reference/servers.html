@@ -49,9 +49,11 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">servers</span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  description <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  variables <span class="op">=</span> <span class="va">class_missing</span></span>
+<span>  url <span class="op">=</span> <span class="fu">S7</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/S7/man/class_missing.html" class="external-link">class_missing</a></span>,</span>
+<span>  description <span class="op">=</span> <span class="fu">S7</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/S7/man/class_missing.html" class="external-link">class_missing</a></span>,</span>
+<span>  variables <span class="op">=</span> <span class="fu">S7</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/S7/man/class_missing.html" class="external-link">class_missing</a></span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  apid_list <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -67,6 +69,15 @@
 
 <dt>variables</dt>
 <dd><p><code><a href="server_variable_list.html">server_variable_list()</a></code> object.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Catch-all for unimplemented properties.</p></dd>
+
+
+<dt>apid_list</dt>
+<dd><p>An API document as a list, such as that obtained by reading
+an OAS document with <code><a href="https://rdrr.io/pkg/yaml/man/read_yaml.html" class="external-link">yaml::read_yaml()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
