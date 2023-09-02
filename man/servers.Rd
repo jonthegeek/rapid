@@ -5,9 +5,9 @@
 \title{A collection of server variables for multiple servers}
 \usage{
 servers(
-  url = S7::class_missing,
-  description = S7::class_missing,
-  variables = S7::class_missing,
+  url = class_missing,
+  description = class_missing,
+  variables = class_missing,
   ...,
   apid_list = NULL
 )

@@ -5,8 +5,8 @@
 \title{R API definition object}
 \usage{
 rapid(
-  info = S7::class_missing,
-  servers = S7::class_missing,
+  info = class_missing,
+  servers = class_missing,
   ...,
   apid_url = NULL,
   apid_list = NULL

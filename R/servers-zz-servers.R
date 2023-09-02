@@ -49,9 +49,9 @@ servers <- S7::new_class(
     description = character_property("description"),
     variables = server_variable_list
   ),
-  constructor = function(url = S7::class_missing,
-                         description = S7::class_missing,
-                         variables = S7::class_missing,
+  constructor = function(url = class_missing,
+                         description = class_missing,
+                         variables = class_missing,
                          ...,
                          apid_list = NULL) {
     if (!is.null(apid_list) && !is.null(apid_list$servers)) {

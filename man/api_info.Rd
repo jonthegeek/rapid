@@ -5,13 +5,13 @@
 \title{Information about the API}
 \usage{
 api_info(
-  contact = S7::class_missing,
-  description = S7::class_missing,
-  license = S7::class_missing,
-  summary = S7::class_missing,
-  terms_of_service = S7::class_missing,
-  title = S7::class_missing,
-  version = S7::class_missing,
+  contact = class_missing,
+  description = class_missing,
+  license = class_missing,
+  summary = class_missing,
+  terms_of_service = class_missing,
+  title = class_missing,
+  version = class_missing,
   ...,
   apid_list = NULL
 )

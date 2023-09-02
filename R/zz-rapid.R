@@ -39,8 +39,8 @@ rapid <- S7::new_class(
     info = api_info,
     servers = servers
   ),
-  constructor = function(info = S7::class_missing,
-                         servers = S7::class_missing,
+  constructor = function(info = class_missing,
+                         servers = class_missing,
                          ...,
                          apid_url = NULL,
                          apid_list = NULL) {

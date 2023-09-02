@@ -18,7 +18,7 @@
 server_variable_list <- S7::new_class(
   "server_variable_list",
   package = "rapid",
-  parent = S7::class_list,
+  parent = class_list,
   constructor = function(..., apid_list = NULL) {
     if (!is.null(apid_list)) {
       return(S7::new_object(

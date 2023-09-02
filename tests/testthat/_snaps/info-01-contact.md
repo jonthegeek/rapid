@@ -91,3 +91,54 @@
        @ email: chr(0) 
        @ url  : chr(0) 
 
+# as_api_contact() errors informatively for unnamed or misnamed input
+
+    Code
+      as_api_contact(letters)
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "email", and/or "url".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_api_contact(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "email", and/or "url".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_api_contact(c(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "email", and/or "url".
+      * Any other names are ignored.
+
+# as_api_contact() errors informatively for bad classes
+
+    Code
+      as_api_contact(1:2)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <integer> to <api_contact>.
+
+---
+
+    Code
+      as_api_contact(mean)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <function> to <api_contact>.
+
+---
+
+    Code
+      as_api_contact(TRUE)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <logical> to <api_contact>.
+

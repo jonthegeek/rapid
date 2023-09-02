@@ -91,3 +91,99 @@ test_that("length() of an api_contact reports the overall length", {
   expect_equal(length(api_contact()), 0)
   expect_equal(length(api_contact(name = "A")), 1)
 })
+
+test_that("as_api_contact() errors informatively for unnamed or misnamed input", {
+  expect_snapshot(
+    as_api_contact(letters),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_api_contact(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_api_contact(c(a = "Jon", b = "jonthegeek@gmail.com")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_api_contact() errors informatively for bad classes", {
+  expect_snapshot(
+    as_api_contact(1:2),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_api_contact(mean),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_api_contact(TRUE),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_api_contact() returns expected objects", {
+  expect_identical(
+    as_api_contact(
+      c(
+        name = "Jon",
+        email = "jonthegeek@gmail.com",
+        url = "https://jonthegeek.com"
+      )
+    ),
+    api_contact(
+      name = "Jon",
+      email = "jonthegeek@gmail.com",
+      url = "https://jonthegeek.com"
+    )
+  )
+  expect_identical(
+    as_api_contact(
+      c(
+        name = "Jon",
+        email = "jonthegeek@gmail.com",
+        x = "https://jonthegeek.com"
+      )
+    ),
+    api_contact(
+      name = "Jon",
+      email = "jonthegeek@gmail.com"
+    )
+  )
+  expect_identical(
+    as_api_contact(
+      c(
+        email = "jonthegeek@gmail.com",
+        name = "Jon",
+        x = "https://jonthegeek.com"
+      )
+    ),
+    api_contact(
+      name = "Jon",
+      email = "jonthegeek@gmail.com"
+    )
+  )
+  expect_identical(
+    as_api_contact(
+      list(
+        name = "Jon",
+        email = "jonthegeek@gmail.com",
+        x = "https://jonthegeek.com"
+      )
+    ),
+    api_contact(
+      name = "Jon",
+      email = "jonthegeek@gmail.com"
+    )
+  )
+  expect_identical(
+    as_api_contact(list()),
+    api_contact()
+  )
+})

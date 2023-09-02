@@ -5,9 +5,9 @@
 \title{Contact information for the API}
 \usage{
 api_contact(
-  name = S7::class_missing,
-  email = S7::class_missing,
-  url = S7::class_missing,
+  name = class_missing,
+  email = class_missing,
+  url = class_missing,
   ...
 )
 }
