@@ -6,6 +6,7 @@ character_scalar_property <- function(x_arg, ...) {
     setter = function(self, value) {
       # TODO: Watch S7 dev to see if this can be less hacky.
       call <- rlang::caller_env(3)
+      value <- value %||% character()
       value <- stbl::stabilize_chr_scalar(
         value,
         allow_null = FALSE,
@@ -25,6 +26,7 @@ character_property <- function(x_arg, ...) {
     setter = function(self, value) {
       # TODO: Watch S7 dev to see if this can be less hacky.
       call <- rlang::caller_env(3)
+      value <- value %||% character()
       value <- stbl::stabilize_chr(
         value,
         allow_null = FALSE,

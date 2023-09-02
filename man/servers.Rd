@@ -5,9 +5,11 @@
 \title{A collection of server variables for multiple servers}
 \usage{
 servers(
-  url = class_missing,
-  description = class_missing,
-  variables = class_missing
+  url = S7::class_missing,
+  description = S7::class_missing,
+  variables = S7::class_missing,
+  ...,
+  apid_list = NULL
 )
 }
 \arguments{
@@ -16,6 +18,11 @@ servers(
 \item{description}{A list of \code{\link[=server_variable]{server_variable()}} objects.}
 
 \item{variables}{\code{\link[=server_variable_list]{server_variable_list()}} object.}
+
+\item{...}{Catch-all for unimplemented properties.}
+
+\item{apid_list}{An API document as a list, such as that obtained by reading
+an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 A \code{servers} S7 object, with properties \code{url}, \code{description}, and

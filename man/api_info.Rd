@@ -5,13 +5,15 @@
 \title{Information about the API}
 \usage{
 api_info(
-  contact = class_missing,
-  description = class_missing,
-  license = class_missing,
-  summary = class_missing,
-  terms_of_service = class_missing,
-  title = class_missing,
-  version = class_missing
+  contact = S7::class_missing,
+  description = S7::class_missing,
+  license = S7::class_missing,
+  summary = S7::class_missing,
+  terms_of_service = S7::class_missing,
+  title = S7::class_missing,
+  version = S7::class_missing,
+  ...,
+  apid_list = NULL
 )
 }
 \arguments{
@@ -33,6 +35,11 @@ representation.}
 
 \item{version}{The version of the API document (which is distinct from the
 OpenAPI Specification version or the API implementation version).}
+
+\item{...}{Catch-all for unimplemented properties.}
+
+\item{apid_list}{An API document as a list, such as that obtained by reading
+an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 An \code{api_info} S7 object.

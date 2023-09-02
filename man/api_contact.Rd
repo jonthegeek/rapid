@@ -4,7 +4,12 @@
 \alias{api_contact}
 \title{Contact information for the API}
 \usage{
-api_contact(name = class_missing, email = class_missing, url = class_missing)
+api_contact(
+  name = S7::class_missing,
+  email = S7::class_missing,
+  url = S7::class_missing,
+  ...
+)
 }
 \arguments{
 \item{name}{The identifying name of the contact person/organization.}
@@ -14,6 +19,8 @@ api_contact(name = class_missing, email = class_missing, url = class_missing)
 
 \item{url}{The URL pointing to the contact information. This \emph{must} be in the
 form of a URL.}
+
+\item{...}{Catch-all for unimplemented properties.}
 }
 \value{
 An \code{api_contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.

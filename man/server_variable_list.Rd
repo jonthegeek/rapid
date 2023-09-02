@@ -4,11 +4,14 @@
 \alias{server_variable_list}
 \title{A collection of server variables for multiple servers}
 \usage{
-server_variable_list(...)
+server_variable_list(..., apid_list = NULL)
 }
 \arguments{
 \item{...}{One or more \code{\link[=server_variable]{server_variable()}} objects, or a list of
 \code{\link[=server_variable]{server_variable()}} objects.}
+
+\item{apid_list}{An API document as a list, such as that obtained by reading
+an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 A \code{server_variable_list} S7 object, which is a validated list of

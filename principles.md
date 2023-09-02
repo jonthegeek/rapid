@@ -10,3 +10,9 @@ This rule still might change.
 I also belatedly noticed that I had `server()` (singular) where the OAS specification has `servers()`. 
 I have belatedly updated that. 
 Be careful to match the class names to the pluralization in the specification.
+
+## Specification extensions
+
+OAS allows for [Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specificationExtensions), which are extra fields that begin with "x-".
+I do not yet support these anywhere, and capture them in `...` in order to throw them away without errors.
+Later I should at least check these, and ideally deal with them.
