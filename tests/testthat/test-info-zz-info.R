@@ -3,32 +3,32 @@
 # object should allow issues, and then we can check what's missing that should
 # be there and report on it, likely via a subclass.
 
-test_that("api_info() requires URLs for TOS", {
+test_that("info() requires URLs for TOS", {
   expect_snapshot(
-    api_info(terms_of_service = mean),
+    info(terms_of_service = mean),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    api_info(terms_of_service = c("A", "B")),
+    info(terms_of_service = c("A", "B")),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    api_info(terms_of_service = "not a real url"),
+    info(terms_of_service = "not a real url"),
     error = TRUE,
     cnd_class = TRUE
   )
 })
 
-test_that("api_info() returns an empty api_info", {
+test_that("info() returns an empty info", {
   expect_snapshot({
-    test_result <- api_info()
+    test_result <- info()
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::api_info", "S7_object"),
+    class = c("rapid::info", "S7_object"),
     exact = TRUE
   )
   expect_identical(
@@ -45,13 +45,13 @@ test_that("api_info() returns an empty api_info", {
   )
 })
 
-test_that("length() of an api_info reports the overall length", {
-  expect_equal(length(api_info()), 0)
+test_that("length() of an info reports the overall length", {
+  expect_equal(length(info()), 0)
   expect_equal(
     length(
-      api_info(
+      info(
         title = "My Cool API",
-        license = api_license(
+        license = license(
           name = "Apache 2.0",
           url = "https://opensource.org/license/apache-2-0/"
         )
@@ -61,17 +61,17 @@ test_that("length() of an api_info reports the overall length", {
   )
 })
 
-test_that("Can construct an api_contact from an api spec", {
+test_that("Can construct an contact from an api spec", {
   # apid_list_guru <- yaml::read_yaml("https://api.apis.guru/v2/openapi.yaml")
   # saveRDS(apid_list_guru, test_path("fixtures", "apid_list_guru.rds"))
   apid_list_guru <- readRDS(test_path("fixtures", "apid_list_guru.rds"))
   expect_snapshot({
-    test_result <- api_info(apid_list = apid_list_guru)
+    test_result <- info(apid_list = apid_list_guru)
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::api_info", "S7_object"),
+    class = c("rapid::info", "S7_object"),
     exact = TRUE
   )
 
@@ -79,12 +79,12 @@ test_that("Can construct an api_contact from an api spec", {
   # saveRDS(apid_list_awsmh, test_path("fixtures", "apid_list_awsmh.rds"))
   apid_list_awsmh <- readRDS(test_path("fixtures", "apid_list_awsmh.rds"))
   expect_snapshot({
-    test_result <- api_info(apid_list = apid_list_awsmh)
+    test_result <- info(apid_list = apid_list_awsmh)
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::api_info", "S7_object"),
+    class = c("rapid::info", "S7_object"),
     exact = TRUE
   )
 })

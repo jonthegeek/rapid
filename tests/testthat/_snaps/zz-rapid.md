@@ -1,11 +1,11 @@
-# rapid() requires api_info objects for info
+# rapid() requires info objects for info
 
     Code
       rapid(info = mean)
     Condition <simpleError>
       Error:
       ! <rapid::rapid> object properties are invalid:
-      - @info must be <rapid::api_info>, not <closure>
+      - @info must be <rapid::info>, not <closure>
 
 # rapid() requires info when anything is defined
 
@@ -27,13 +27,13 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::api_info>
-       .. @ contact         : <rapid::api_contact>
+       @ info   : <rapid::info>
+       .. @ contact         : <rapid::contact>
        .. .. @ name : chr(0) 
        .. .. @ email: chr(0) 
        .. .. @ url  : chr(0) 
        .. @ description     : chr(0) 
-       .. @ license         : <rapid::api_license>
+       .. @ license         : <rapid::license>
        .. .. @ name      : chr(0) 
        .. .. @ identifier: chr(0) 
        .. .. @ url       : chr(0) 
@@ -53,13 +53,13 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::api_info>
-       .. @ contact         : <rapid::api_contact>
+       @ info   : <rapid::info>
+       .. @ contact         : <rapid::contact>
        .. .. @ name : chr "APIs.guru"
        .. .. @ email: chr "mike.ralphson@gmail.com"
        .. .. @ url  : chr "https://APIs.guru"
        .. @ description     : chr "Wikipedia for Web APIs. Repository of API definitions in OpenAPI format.\n**Warning**: If you want to be notifi"| __truncated__
-       .. @ license         : <rapid::api_license>
+       .. @ license         : <rapid::license>
        .. .. @ name      : chr "CC0 1.0"
        .. .. @ identifier: chr(0) 
        .. .. @ url       : chr "https://github.com/APIs-guru/openapi-directory#licenses"
@@ -84,13 +84,13 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::api_info>
-       .. @ contact         : <rapid::api_contact>
+       @ info   : <rapid::info>
+       .. @ contact         : <rapid::contact>
        .. .. @ name : chr "Mike Ralphson"
        .. .. @ email: chr "mike.ralphson@gmail.com"
        .. .. @ url  : chr "https://github.com/mermade/aws2openapi"
        .. @ description     : chr "<p>The AWS Migration Hub API methods help to obtain server and application migration status and integrate your "| __truncated__
-       .. @ license         : <rapid::api_license>
+       .. @ license         : <rapid::license>
        .. .. @ name      : chr "Apache 2.0 License"
        .. .. @ identifier: chr(0) 
        .. .. @ url       : chr "http://www.apache.org/licenses/"
@@ -134,13 +134,13 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::api_info>
-       .. @ contact         : <rapid::api_contact>
+       @ info   : <rapid::info>
+       .. @ contact         : <rapid::contact>
        .. .. @ name : chr "APIs.guru"
        .. .. @ email: chr "mike.ralphson@gmail.com"
        .. .. @ url  : chr "https://APIs.guru"
        .. @ description     : chr "Wikipedia for Web APIs. Repository of API definitions in OpenAPI format.\n**Warning**: If you want to be notifi"| __truncated__
-       .. @ license         : <rapid::api_license>
+       .. @ license         : <rapid::license>
        .. .. @ name      : chr "CC0 1.0"
        .. .. @ identifier: chr(0) 
        .. .. @ url       : chr "https://github.com/APIs-guru/openapi-directory#licenses"
@@ -165,13 +165,13 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::api_info>
-       .. @ contact         : <rapid::api_contact>
+       @ info   : <rapid::info>
+       .. @ contact         : <rapid::contact>
        .. .. @ name : chr "Mike Ralphson"
        .. .. @ email: chr "mike.ralphson@gmail.com"
        .. .. @ url  : chr "https://github.com/mermade/aws2openapi"
        .. @ description     : chr "<p>The AWS Migration Hub API methods help to obtain server and application migration status and integrate your "| __truncated__
-       .. @ license         : <rapid::api_license>
+       .. @ license         : <rapid::license>
        .. .. @ name      : chr "Apache 2.0 License"
        .. .. @ identifier: chr(0) 
        .. .. @ url       : chr "http://www.apache.org/licenses/"

@@ -13,7 +13,7 @@ rapid(
 )
 }
 \arguments{
-\item{info}{An \code{api_info} object defined by \code{\link[=api_info]{api_info()}}.}
+\item{info}{An \code{info} object defined by \code{\link[=info]{info()}}.}
 
 \item{servers}{A \code{servers} object defined by \code{\link[=servers]{servers()}}.}
 
@@ -33,13 +33,13 @@ An object that represents an API.
 \examples{
 rapid()
 rapid(
-  info = api_info(title = "A", version = "1"),
+  info = info(title = "A", version = "1"),
   servers(
     url = "https://development.gigantic-server.com/v1"
   )
 )
 rapid(
-  info = api_info(title = "A", version = "1"),
+  info = info(title = "A", version = "1"),
   servers(
     url = c(
       "https://development.gigantic-server.com/v1",

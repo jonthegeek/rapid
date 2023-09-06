@@ -9,17 +9,17 @@
 #' @param email The email address of the contact person/organization. This
 #'   *must* be in the form of an email address.
 #'
-#' @return An `api_contact` S7 object, with fields `name`, `email`, and `url`.
+#' @return An `contact` S7 object, with fields `name`, `email`, and `url`.
 #' @export
 #'
 #' @examples
-#' api_contact(
+#' contact(
 #'   "API Support",
 #'   "support@example.com",
 #'   "https://www.example.com/support"
 #' )
-api_contact <- S7::new_class(
-  "api_contact",
+contact <- S7::new_class(
+  "contact",
   package = "rapid",
   properties = list(
     name = character_scalar_property("name"),
@@ -38,28 +38,28 @@ api_contact <- S7::new_class(
 )
 
 #' @export
-`length.rapid::api_contact` <- function(x) {
+`length.rapid::contact` <- function(x) {
   .prop_length_max(x)
 }
 
-#' Coerce lists and character vectors to api_contacts
+#' Coerce lists and character vectors to contacts
 #'
-#' `as_api_contact()` turns an existing object into an `api_contact`. This is in
-#' contrast with [api_contact()], which builds an `api_contact` from individual
+#' `as_contact()` turns an existing object into an `contact`. This is in
+#' contrast with [contact()], which builds an `contact` from individual
 #' properties.
 #'
 #' @param x The object to coerce. Must be empty or have names "name", "email",
 #'   and/or "url". Extra names are ignored.
 #'
-#' @return An `api_contact` as returned by [api_contact()].
+#' @return An `contact` as returned by [contact()].
 #' @export
 #'
 #' @examples
-#' as_api_contact()
-#' as_api_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
-as_api_contact <- S7::new_generic("as_api_contact", dispatch_args = "x")
+#' as_contact()
+#' as_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
+as_contact <- S7::new_generic("as_contact", dispatch_args = "x")
 
-S7::method(as_api_contact, class_list | class_character) <- function(x) {
+S7::method(as_contact, class_list | class_character) <- function(x) {
   if (
     length(x) &&
     (!rlang::is_named(x) || !any(names(x) %in% c("name", "email", "url")))
@@ -70,15 +70,15 @@ S7::method(as_api_contact, class_list | class_character) <- function(x) {
     ))
   }
   x <- as.list(x)
-  api_contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
+  contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 
-S7::method(as_api_contact, class_missing) <- function(x) {
-  api_contact()
+S7::method(as_contact, class_missing) <- function(x) {
+  contact()
 }
 
-S7::method(as_api_contact, class_any) <- function(x) {
+S7::method(as_contact, class_any) <- function(x) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls api_contact}."
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls contact}."
   )
 }

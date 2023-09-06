@@ -1,7 +1,7 @@
 # I'm building this as I have pieces ready, so the tests will change as I add
 # more sub-objects.
 
-test_that("rapid() requires api_info objects for info", {
+test_that("rapid() requires info objects for info", {
   expect_snapshot(
     rapid(info = mean),
     error = TRUE,
@@ -53,7 +53,7 @@ test_that("length() of a rapid reports the overall length", {
   expect_equal(
     length(
       rapid(
-        info = api_info(title = "A", version = "1"),
+        info = info(title = "A", version = "1"),
         servers(
           url = "https://development.gigantic-server.com/v1"
         )
@@ -64,7 +64,7 @@ test_that("length() of a rapid reports the overall length", {
   expect_equal(
     length(
       rapid(
-        info = api_info(title = "A", version = "1"),
+        info = info(title = "A", version = "1"),
         servers(
           url = c(
             "https://development.gigantic-server.com/v1",

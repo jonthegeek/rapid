@@ -13,21 +13,21 @@
 #' @param url A URL to the license used for the API. This *must* be in the form
 #'   of a URL. The `url` field is mutually exclusive of the `identifier` field.
 #'
-#' @return An `api_license` S7 object, with fields `name`, `identifier`, and
+#' @return An `license` S7 object, with fields `name`, `identifier`, and
 #'   `url`.
 #' @export
 #'
 #' @examples
-#' api_license(
+#' license(
 #'   "Apache 2.0",
 #'   identifier = "Apache-2.0"
 #' )
-#' api_license(
+#' license(
 #'   "Apache 2.0",
 #'   url = "https://opensource.org/license/apache-2-0/"
 #' )
-api_license <- S7::new_class(
-  "api_license",
+license <- S7::new_class(
+  "license",
   package = "rapid",
   properties = list(
     name = character_scalar_property("name"),
@@ -50,6 +50,6 @@ api_license <- S7::new_class(
 )
 
 #' @export
-`length.rapid::api_license` <- function(x) {
+`length.rapid::license` <- function(x) {
   length(x@name)
 }

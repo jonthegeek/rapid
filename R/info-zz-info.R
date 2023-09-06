@@ -6,12 +6,12 @@
 #'
 #' @inheritParams .shared-parameters
 #' @param contact The contact information for the exposed API, generated via
-#'   [api_contact()].
+#'   [contact()].
 #' @param description A description of the API. [CommonMark
 #'   syntax](https://spec.commonmark.org/) *may* be used for rich text
 #'   representation.
 #' @param license The license information for the exposed API, generated via
-#'   [api_license()].
+#'   [license()].
 #' @param summary A short summary of the API.
 #' @param terms_of_service A URL to the Terms of Service for the API. This
 #'   *must* be in the form of a URL when provided.
@@ -19,27 +19,27 @@
 #' @param version The version of the API document (which is distinct from the
 #'   OpenAPI Specification version or the API implementation version).
 #'
-#' @return An `api_info` S7 object.
+#' @return An `info` S7 object.
 #' @export
 #' @examples
-#' api_info()
-#' api_info(
+#' info()
+#' info(
 #'   title = "My Cool API",
-#'   license = api_license(
+#'   license = license(
 #'     name = "Apache 2.0",
 #'     url = "https://opensource.org/license/apache-2-0/"
 #'   )
 #' )
-api_info <- S7::new_class(
-  "api_info",
+info <- S7::new_class(
+  "info",
   package = "rapid",
   # Design choice: These are strictly alphabetized, since we allow any to be
   # empty. May later want to order them to match the validated version, where
   # required parameters will come first (before ... during construction).
   properties = list(
-    contact = api_contact,
+    contact = contact,
     description = character_scalar_property("description"),
-    license = api_license,
+    license = license,
     summary = character_scalar_property("summary"),
     terms_of_service = url_scalar_property("terms_of_service"),
     title = character_scalar_property("title"),
@@ -55,9 +55,9 @@ api_info <- S7::new_class(
                          ...,
                          apid_list = NULL) {
     if (!is.null(apid_list)) {
-      contact <- rlang::inject(api_contact(!!!apid_list$info$contact))
+      contact <- rlang::inject(contact(!!!apid_list$info$contact))
       description <- apid_list$info$description
-      license <- rlang::inject(api_license(!!!apid_list$info$license))
+      license <- rlang::inject(license(!!!apid_list$info$license))
       summary <- apid_list$info$summary
       terms_of_service <- apid_list$info$terms_of_service
       title <- apid_list$info$title
@@ -77,6 +77,6 @@ api_info <- S7::new_class(
 )
 
 #' @export
-`length.rapid::api_info` <- function(x) {
+`length.rapid::info` <- function(x) {
   .prop_length_max(x)
 }
