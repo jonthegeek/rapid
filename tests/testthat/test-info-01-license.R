@@ -117,11 +117,6 @@ test_that("as_license() errors informatively for unnamed or misnamed input", {
     error = TRUE,
     cnd_class = TRUE
   )
-  expect_snapshot(
-    as_license(c(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")),
-    error = TRUE,
-    cnd_class = TRUE
-  )
 })
 
 test_that("as_license() errors informatively for bad classes", {

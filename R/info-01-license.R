@@ -68,7 +68,7 @@ license <- S7::new_class(
 as_license <- S7::new_generic("as_license", dispatch_args = "x")
 
 S7::method(as_license, class_list | class_character) <- function(x) {
-  x <- .validate_named_list(x, c("name", "identifier", "url"))
+  x <- .validate_for_as_class(x, license)
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
 }
 
@@ -77,6 +77,9 @@ S7::method(as_license, class_missing) <- function(x) {
 }
 
 S7::method(as_license, class_any) <- function(x) {
+  if (is.null(x)) {
+    return(license())
+  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls license}."
   )

@@ -52,7 +52,7 @@ contact <- S7::new_class(
 as_contact <- S7::new_generic("as_contact", dispatch_args = "x")
 
 S7::method(as_contact, class_list | class_character) <- function(x) {
-  x <- .validate_named_list(x, c("name", "email", "url"))
+  x <- .validate_for_as_class(x, contact)
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 
@@ -61,6 +61,9 @@ S7::method(as_contact, class_missing) <- function(x) {
 }
 
 S7::method(as_contact, class_any) <- function(x) {
+  if (is.null(x)) {
+    return(contact())
+  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls contact}."
   )

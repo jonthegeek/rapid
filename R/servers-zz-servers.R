@@ -47,8 +47,8 @@ servers <- S7::new_class(
   "servers",
   package = "rapid",
   properties = list(
-    url = S7::class_character,
-    description = S7::class_character,
+    url = class_character,
+    description = class_character,
     variables = server_variable_list
   ),
   validator = function(self) {

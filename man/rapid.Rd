@@ -4,20 +4,12 @@
 \alias{rapid}
 \title{R API definition object}
 \usage{
-rapid(
-  info = class_missing,
-  servers = class_missing,
-  ...,
-  apid_url = NULL,
-  apid_list = NULL
-)
+rapid(info = class_missing, servers = class_missing)
 }
 \arguments{
 \item{info}{An \code{info} object defined by \code{\link[=info]{info()}}.}
 
 \item{servers}{A \code{servers} object defined by \code{\link[=servers]{servers()}}.}
-
-\item{...}{Catch-all for unimplemented properties.}
 }
 \value{
 A \code{rapid} S7 object, with properties \code{info} and \code{servers}.

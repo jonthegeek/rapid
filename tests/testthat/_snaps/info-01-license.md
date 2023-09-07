@@ -129,15 +129,6 @@
       ! `x` must have names "name", "identifier", or "url".
       * Any other names are ignored.
 
----
-
-    Code
-      as_license(c(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/"))
-    Condition <rlang_error>
-      Error:
-      ! `x` must have names "name", "identifier", or "url".
-      * Any other names are ignored.
-
 # as_license() errors informatively for bad classes
 
     Code

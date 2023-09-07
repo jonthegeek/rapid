@@ -1,7 +1,8 @@
-.validate_named_list <- function(x,
-                                 valid_names,
-                                 x_arg = rlang::caller_arg(x),
-                                 call = rlang::caller_env()) {
+.validate_for_as_class <- function(x,
+                                   target_S7_class,
+                                   x_arg = rlang::caller_arg(x),
+                                   call = rlang::caller_env()) {
+  valid_names <- S7::prop_names(target_S7_class())
   if (
     length(x) &&
     (!rlang::is_named(x) || !any(names(x) %in% valid_names))
@@ -14,5 +15,5 @@
       call = call
     )
   }
-  return(as.list(x))
+  return(as.list(x)[names(x) %in% valid_names])
 }

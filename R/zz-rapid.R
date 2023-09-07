@@ -4,7 +4,6 @@
 #'
 #' An object that represents an API.
 #'
-#' @inheritParams .shared-parameters
 #' @param info An `info` object defined by [info()].
 #' @param servers A `servers` object defined by [servers()].
 #'

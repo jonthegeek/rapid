@@ -5,16 +5,22 @@
 \title{Information about the API}
 \usage{
 info(
+  title = class_missing,
+  version = class_missing,
   contact = class_missing,
   description = class_missing,
   license = class_missing,
   summary = class_missing,
-  terms_of_service = class_missing,
-  title = class_missing,
-  version = class_missing
+  terms_of_service = class_missing
 )
 }
 \arguments{
+\item{title}{The title of the API. Required when the object is not empty.}
+
+\item{version}{The version of the API document (which is distinct from the
+OpenAPI Specification version or the API implementation version).  Required
+when the object is not empty.}
+
 \item{contact}{The contact information for the exposed API, generated via
 \code{\link[=contact]{contact()}}.}
 
@@ -27,11 +33,6 @@ representation.}
 \item{summary}{A short summary of the API.}
 
 \item{terms_of_service}{A URL to the Terms of Service for the API.}
-
-\item{title}{The title of the API.}
-
-\item{version}{The version of the API document (which is distinct from the
-OpenAPI Specification version or the API implementation version).}
 }
 \value{
 An \code{info} S7 object.
@@ -45,6 +46,7 @@ generation tools for convenience.
 info()
 info(
   title = "My Cool API",
+  version = "1.0.2",
   license = license(
     name = "Apache 2.0",
     url = "https://opensource.org/license/apache-2-0/"

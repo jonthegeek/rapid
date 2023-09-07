@@ -7,9 +7,7 @@
 servers(
   url = class_missing,
   description = class_missing,
-  variables = class_missing,
-  ...,
-  apid_list = NULL
+  variables = class_missing
 )
 }
 \arguments{
@@ -19,8 +17,6 @@ servers(
 those urls.}
 
 \item{variables}{A \code{\link[=server_variable_list]{server_variable_list()}} object.}
-
-\item{...}{Catch-all for unimplemented properties.}
 }
 \value{
 A \code{servers} S7 object, with properties \code{url}, \code{description}, and
