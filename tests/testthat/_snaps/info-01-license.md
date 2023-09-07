@@ -121,3 +121,54 @@
        @ identifier: chr "technically these have a fancy required format"
        @ url       : chr(0) 
 
+# as_license() errors informatively for unnamed or misnamed input
+
+    Code
+      as_license(letters)
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "identifier", or "url".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_license(list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "identifier", or "url".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_license(c(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "identifier", or "url".
+      * Any other names are ignored.
+
+# as_license() errors informatively for bad classes
+
+    Code
+      as_license(1:2)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <integer> to <license>.
+
+---
+
+    Code
+      as_license(mean)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <function> to <license>.
+
+---
+
+    Code
+      as_license(TRUE)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <logical> to <license>.
+

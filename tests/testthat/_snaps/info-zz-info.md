@@ -46,7 +46,7 @@
        @ title           : chr(0) 
        @ version         : chr(0) 
 
-# Can construct an contact from an api spec
+# Can construct a contact from an api spec
 
     Code
       test_result <- info(apid_list = apid_list_guru)

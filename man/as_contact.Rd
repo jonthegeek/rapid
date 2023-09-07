@@ -11,11 +11,11 @@ as_contact(x, ...)
 and/or "url". Extra names are ignored.}
 }
 \value{
-An \code{contact} as returned by \code{\link[=contact]{contact()}}.
+A \code{contact} as returned by \code{\link[=contact]{contact()}}.
 }
 \description{
-\code{as_contact()} turns an existing object into an \code{contact}. This is in
-contrast with \code{\link[=contact]{contact()}}, which builds an \code{contact} from individual
+\code{as_contact()} turns an existing object into a \code{contact}. This is in
+contrast with \code{\link[=contact]{contact()}}, which builds a \code{contact} from individual
 properties.
 }
 \examples{

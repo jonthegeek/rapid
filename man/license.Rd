@@ -20,8 +20,7 @@ exclusive of the \code{url} field.}
 of a URL. The \code{url} field is mutually exclusive of the \code{identifier} field.}
 }
 \value{
-An \code{license} S7 object, with fields \code{name}, \code{identifier}, and
-\code{url}.
+A \code{license} S7 object, with fields \code{name}, \code{identifier}, and \code{url}.
 }
 \description{
 Validate the license information for an API.

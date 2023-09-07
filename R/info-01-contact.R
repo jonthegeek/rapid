@@ -9,7 +9,7 @@
 #' @param email The email address of the contact person/organization. This
 #'   *must* be in the form of an email address.
 #'
-#' @return An `contact` S7 object, with fields `name`, `email`, and `url`.
+#' @return A `contact` S7 object, with fields `name`, `email`, and `url`.
 #' @export
 #'
 #' @examples
@@ -44,14 +44,14 @@ contact <- S7::new_class(
 
 #' Coerce lists and character vectors to contacts
 #'
-#' `as_contact()` turns an existing object into an `contact`. This is in
-#' contrast with [contact()], which builds an `contact` from individual
+#' `as_contact()` turns an existing object into a `contact`. This is in
+#' contrast with [contact()], which builds a `contact` from individual
 #' properties.
 #'
 #' @param x The object to coerce. Must be empty or have names "name", "email",
 #'   and/or "url". Extra names are ignored.
 #'
-#' @return An `contact` as returned by [contact()].
+#' @return A `contact` as returned by [contact()].
 #' @export
 #'
 #' @examples
@@ -60,16 +60,7 @@ contact <- S7::new_class(
 as_contact <- S7::new_generic("as_contact", dispatch_args = "x")
 
 S7::method(as_contact, class_list | class_character) <- function(x) {
-  if (
-    length(x) &&
-    (!rlang::is_named(x) || !any(names(x) %in% c("name", "email", "url")))
-  ) {
-    cli::cli_abort(c(
-      "{.arg x} must have names {.val name}, {.val email}, and/or {.val url}.",
-      "*" = "Any other names are ignored."
-    ))
-  }
-  x <- as.list(x)
+  x <- .validate_named_list(x, c("name", "email", "url"))
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 

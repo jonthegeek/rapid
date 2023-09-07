@@ -87,7 +87,7 @@ test_that("contact() without args returns an empty contact", {
   )
 })
 
-test_that("length() of an contact reports the overall length", {
+test_that("length() of a contact reports the overall length", {
   expect_equal(length(contact()), 0)
   expect_equal(length(contact(name = "A")), 1)
 })

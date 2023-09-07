@@ -106,13 +106,103 @@ test_that("license() returns a license when everything is ok", {
   )
 })
 
-test_that("length() of an license reports the overall length", {
+test_that("length() of a license reports the overall length", {
   expect_equal(length(license()), 0)
   expect_equal(length(license(name = "A")), 1)
 })
 
-# TODO: Copy/adapt tests from test-info-01-contact.R for as_license (and
-# as_* throughout these).
+test_that("as_license() errors informatively for unnamed or misnamed input", {
+  expect_snapshot(
+    as_license(letters),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_license(list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_license(c(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_license() errors informatively for bad classes", {
+  expect_snapshot(
+    as_license(1:2),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_license(mean),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_license(TRUE),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_license() returns expected objects", {
+  expect_identical(
+    as_license(c(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0"
+    )),
+    license(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0"
+    )
+  )
+  expect_identical(
+    as_license(c(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0",
+      x = "https://jonthegeek.com"
+    )),
+    license(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0"
+    )
+  )
+  expect_identical(
+    as_license(
+      c(
+        identifier = "Apache-2.0",
+        name = "Apache 2.0",
+        x = "https://jonthegeek.com"
+      )
+    ),
+    license(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0"
+    )
+  )
+  expect_identical(
+    as_license(
+      list(
+        name = "Apache 2.0",
+        identifier = "Apache-2.0",
+        x = "https://jonthegeek.com"
+      )
+    ),
+    license(
+      name = "Apache 2.0",
+      identifier = "Apache-2.0"
+    )
+  )
+  expect_identical(
+    as_license(list()),
+    license()
+  )
+})
+
+# TODO: Reconsider server format. Closer mirroring of OAS seems appropriate. Or
+# maybe a tribble equivalent.
 
 # TODO: Implement as_*.
 #

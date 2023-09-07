@@ -61,7 +61,7 @@ test_that("length() of an info reports the overall length", {
   )
 })
 
-test_that("Can construct an contact from an api spec", {
+test_that("Can construct a contact from an api spec", {
   # apid_list_guru <- yaml::read_yaml("https://api.apis.guru/v2/openapi.yaml")
   # saveRDS(apid_list_guru, test_path("fixtures", "apid_list_guru.rds"))
   apid_list_guru <- readRDS(test_path("fixtures", "apid_list_guru.rds"))

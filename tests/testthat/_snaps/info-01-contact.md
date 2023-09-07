@@ -97,7 +97,7 @@
       as_contact(letters)
     Condition <rlang_error>
       Error:
-      ! `x` must have names "name", "email", and/or "url".
+      ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 ---
@@ -106,7 +106,7 @@
       as_contact(list(a = "Jon", b = "jonthegeek@gmail.com"))
     Condition <rlang_error>
       Error:
-      ! `x` must have names "name", "email", and/or "url".
+      ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 ---
@@ -115,7 +115,7 @@
       as_contact(c(a = "Jon", b = "jonthegeek@gmail.com"))
     Condition <rlang_error>
       Error:
-      ! `x` must have names "name", "email", and/or "url".
+      ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 # as_contact() errors informatively for bad classes

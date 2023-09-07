@@ -18,7 +18,7 @@ form of a URL.}
 \item{...}{Catch-all for unimplemented properties.}
 }
 \value{
-An \code{contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.
+A \code{contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.
 }
 \description{
 Validate the contact information for an API.

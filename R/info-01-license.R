@@ -13,8 +13,7 @@
 #' @param url A URL to the license used for the API. This *must* be in the form
 #'   of a URL. The `url` field is mutually exclusive of the `identifier` field.
 #'
-#' @return An `license` S7 object, with fields `name`, `identifier`, and
-#'   `url`.
+#' @return A `license` S7 object, with fields `name`, `identifier`, and `url`.
 #' @export
 #'
 #' @examples
@@ -52,4 +51,35 @@ license <- S7::new_class(
 #' @export
 `length.rapid::license` <- function(x) {
   length(x@name)
+}
+
+#' Coerce lists and character vectors to licenses
+#'
+#' `as_license()` turns an existing object into a `license`. This is in contrast
+#' with [license()], which builds a `license` from individual properties.
+#'
+#' @param x The object to coerce. Must be empty or have names "name",
+#'   "identifier", and/or "url". Extra names are ignored.
+#'
+#' @return A `license` as returned by [license()].
+#' @export
+#'
+#' @examples
+#' as_license()
+#' as_license(list(name = "Apache 2.0", identifier = "Apache-2.0"))
+as_license <- S7::new_generic("as_license", dispatch_args = "x")
+
+S7::method(as_license, class_list | class_character) <- function(x) {
+  x <- .validate_named_list(x, c("name", "identifier", "url"))
+  license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
+}
+
+S7::method(as_license, class_missing) <- function(x) {
+  license()
+}
+
+S7::method(as_license, class_any) <- function(x) {
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls license}."
+  )
 }
