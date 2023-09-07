@@ -13,16 +13,14 @@ servers(
 )
 }
 \arguments{
-\item{url}{A list of \code{\link[=server_variable]{server_variable()}} objects.}
+\item{url}{A character vector of urls.}
 
-\item{description}{A list of \code{\link[=server_variable]{server_variable()}} objects.}
+\item{description}{A character vector of (usually brief) descriptions of
+those urls.}
 
-\item{variables}{\code{\link[=server_variable_list]{server_variable_list()}} object.}
+\item{variables}{A \code{\link[=server_variable_list]{server_variable_list()}} object.}
 
 \item{...}{Catch-all for unimplemented properties.}
-
-\item{apid_list}{An API document as a list, such as that obtained by reading
-an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 A \code{servers} S7 object, with properties \code{url}, \code{description}, and

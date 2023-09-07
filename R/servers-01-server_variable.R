@@ -33,10 +33,10 @@ server_variable <- S7::new_class(
   "server_variable",
   package = "rapid",
   properties = list(
-    name = character_property("name"),
-    default = character_property("default"),
+    name = S7::class_character,
+    default = S7::class_character,
     enum = enum_property("enum"),
-    description = character_property("description")
+    description = S7::class_character
   ),
   constructor = function(name = character(),
                          default = character(),

@@ -83,12 +83,12 @@ test_that("length() of a rapid reports the overall length", {
   )
 })
 
-test_that("Can construct a rapid from an apid_list", {
+test_that("Can construct a rapid from an apid list", {
   # apid_list_guru <- yaml::read_yaml("https://api.apis.guru/v2/openapi.yaml")
   # saveRDS(apid_list_guru, test_path("fixtures", "apid_list_guru.rds"))
   apid_list_guru <- readRDS(test_path("fixtures", "apid_list_guru.rds"))
   expect_snapshot({
-    test_result <- rapid(apid_list = apid_list_guru)
+    test_result <- as_rapid(apid_list_guru)
     test_result
   })
   expect_s3_class(
@@ -101,7 +101,7 @@ test_that("Can construct a rapid from an apid_list", {
   # saveRDS(apid_list_awsmh, test_path("fixtures", "apid_list_awsmh.rds"))
   apid_list_awsmh <- readRDS(test_path("fixtures", "apid_list_awsmh.rds"))
   expect_snapshot({
-    test_result <- rapid(apid_list = apid_list_awsmh)
+    test_result <- as_rapid(apid_list_awsmh)
     test_result
   })
   expect_s3_class(
@@ -111,10 +111,10 @@ test_that("Can construct a rapid from an apid_list", {
   )
 })
 
-test_that("Can construct a rapid from an apid_url", {
+test_that("Can construct a rapid from an apid url", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
   expect_snapshot({
-    test_result <- rapid(apid_url = "https://api.apis.guru/v2/openapi.yaml")
+    test_result <- as_rapid("https://api.apis.guru/v2/openapi.yaml")
     test_result
   })
   expect_s3_class(
@@ -123,7 +123,7 @@ test_that("Can construct a rapid from an apid_url", {
     exact = TRUE
   )
   expect_snapshot({
-    test_result <- rapid(apid_url = "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml")
+    test_result <- as_rapid("https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml")
     test_result
   })
   expect_s3_class(

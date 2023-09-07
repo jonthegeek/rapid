@@ -32,16 +32,6 @@
       ! `url` must be a single <character>.
       x `url` has 2 values.
 
----
-
-    Code
-      license(name = "A", url = "not a real url")
-    Condition <rlang_error>
-      Error in `license()`:
-      ! `url` must match the provided regex pattern.
-      x Some values do not match.
-      * Locations: 1
-
 # license() errors informatively for bad identifier
 
     Code

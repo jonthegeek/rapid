@@ -11,9 +11,7 @@ info(
   summary = class_missing,
   terms_of_service = class_missing,
   title = class_missing,
-  version = class_missing,
-  ...,
-  apid_list = NULL
+  version = class_missing
 )
 }
 \arguments{
@@ -28,18 +26,12 @@ representation.}
 
 \item{summary}{A short summary of the API.}
 
-\item{terms_of_service}{A URL to the Terms of Service for the API. This
-\emph{must} be in the form of a URL when provided.}
+\item{terms_of_service}{A URL to the Terms of Service for the API.}
 
 \item{title}{The title of the API.}
 
 \item{version}{The version of the API document (which is distinct from the
 OpenAPI Specification version or the API implementation version).}
-
-\item{...}{Catch-all for unimplemented properties.}
-
-\item{apid_list}{An API document as a list, such as that obtained by reading
-an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 An \code{info} S7 object.

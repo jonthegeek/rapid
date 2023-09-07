@@ -15,33 +15,6 @@
       ! `name` must be a single <character>.
       x `name` has 2 values.
 
-# contact() errors informatively for bad url
-
-    Code
-      contact(name = "A", url = mean)
-    Condition <rlang_error>
-      Error in `contact()`:
-      ! Can't coerce `url` <function> to <character>.
-
----
-
-    Code
-      contact(name = "A", url = c("A", "B"))
-    Condition <rlang_error>
-      Error in `contact()`:
-      ! `url` must be a single <character>.
-      x `url` has 2 values.
-
----
-
-    Code
-      contact(name = "A", url = "not a real url")
-    Condition <rlang_error>
-      Error in `contact()`:
-      ! `url` must match the provided regex pattern.
-      x Some values do not match.
-      * Locations: 1
-
 # contact() errors informatively for bad email
 
     Code

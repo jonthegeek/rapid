@@ -1,21 +1,3 @@
-test_that("servers() requires URLs for urls", {
-  expect_snapshot(
-    servers(url = mean),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-  expect_snapshot(
-    servers(url = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-  expect_snapshot(
-    servers(url = "not a real url"),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-})
-
 test_that("servers() returns an empty server", {
   expect_snapshot({
     test_result <- servers()

@@ -31,7 +31,7 @@ license <- S7::new_class(
   properties = list(
     name = character_scalar_property("name"),
     identifier = character_scalar_property("identifier"),
-    url = url_scalar_property("url")
+    url = character_scalar_property("url")
   ),
   constructor = function(name = character(),
                          ...,

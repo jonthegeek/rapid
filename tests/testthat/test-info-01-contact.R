@@ -11,24 +11,6 @@ test_that("contact() errors informatively for bad name", {
   )
 })
 
-test_that("contact() errors informatively for bad url", {
-  expect_snapshot(
-    contact(name = "A", url = mean),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-  expect_snapshot(
-    contact(name = "A", url = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-  expect_snapshot(
-    contact(name = "A", url = "not a real url"),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-})
-
 test_that("contact() errors informatively for bad email", {
   expect_snapshot(
     contact(name = "A", url = "https://example.com", email = mean),

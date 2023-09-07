@@ -4,7 +4,7 @@
 \alias{contact}
 \title{Contact information for the API}
 \usage{
-contact(name = class_missing, email = class_missing, url = class_missing, ...)
+contact(name = class_missing, email = class_missing, url = class_missing)
 }
 \arguments{
 \item{name}{The identifying name of the contact person/organization.}
@@ -12,10 +12,7 @@ contact(name = class_missing, email = class_missing, url = class_missing, ...)
 \item{email}{The email address of the contact person/organization. This
 \emph{must} be in the form of an email address.}
 
-\item{url}{The URL pointing to the contact information. This \emph{must} be in the
-form of a URL.}
-
-\item{...}{Catch-all for unimplemented properties.}
+\item{url}{The URL pointing to the contact information.}
 }
 \value{
 A \code{contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.

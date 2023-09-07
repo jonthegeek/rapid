@@ -3,9 +3,10 @@
 #' Connectivity information for an API.
 #'
 #' @inheritParams .shared-parameters
-#' @param url A list of [server_variable()] objects.
-#' @param description A list of [server_variable()] objects.
-#' @param variables [server_variable_list()] object.
+#' @param url A character vector of urls.
+#' @param description A character vector of (usually brief) descriptions of
+#'   those urls.
+#' @param variables A [server_variable_list()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
@@ -45,8 +46,8 @@ servers <- S7::new_class(
   "servers",
   package = "rapid",
   properties = list(
-    url = url_property("url"),
-    description = character_property("description"),
+    url = S7::class_character,
+    description = S7::class_character,
     variables = server_variable_list
   ),
   constructor = function(url = class_missing,

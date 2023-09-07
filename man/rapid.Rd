@@ -18,11 +18,6 @@ rapid(
 \item{servers}{A \code{servers} object defined by \code{\link[=servers]{servers()}}.}
 
 \item{...}{Catch-all for unimplemented properties.}
-
-\item{apid_url}{The url for an API document.}
-
-\item{apid_list}{An API document as a list, such as that obtained by reading
-an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
 }
 \value{
 A \code{rapid} S7 object, with properties \code{info} and \code{servers}.

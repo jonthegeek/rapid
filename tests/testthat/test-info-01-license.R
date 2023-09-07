@@ -22,11 +22,6 @@ test_that("license() errors informatively for bad url", {
     error = TRUE,
     cnd_class = TRUE
   )
-  expect_snapshot(
-    license(name = "A", url = "not a real url"),
-    error = TRUE,
-    cnd_class = TRUE
-  )
 })
 test_that("license() errors informatively for bad identifier", {
   expect_snapshot(
