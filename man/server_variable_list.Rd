@@ -4,7 +4,7 @@
 \alias{server_variable_list}
 \title{A collection of server variables for multiple servers}
 \usage{
-server_variable_list(..., apid_list = NULL)
+server_variable_list(...)
 }
 \arguments{
 \item{...}{One or more \code{\link[=server_variable]{server_variable()}} objects, or a list of

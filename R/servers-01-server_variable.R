@@ -1,3 +1,5 @@
+# TODO: Implement as_*.
+
 #' A server variable for server URL template substitution
 #'
 #' Server variable properties used for substitution in the server’s URL

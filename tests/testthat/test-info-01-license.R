@@ -196,14 +196,6 @@ test_that("as_license() returns expected objects", {
   )
 })
 
-# TODO: Reconsider server format. Closer mirroring of OAS seems appropriate. Or
-# maybe a tribble equivalent.
-
-# TODO: Implement as_*.
-#
-# TODO: Get rid of apid_list args (and maybe apid_url). Maybe as_* should figure
-# out if it's a url?
-#
 # TODO: Prettier printing.
 #
 # TODO: After all that, I think I want to implement components$securitySchemas

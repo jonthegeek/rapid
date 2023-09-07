@@ -1,3 +1,5 @@
+# TODO: Implement as_*.
+
 #' R API definition object
 #'
 #' An object that represents an API.
@@ -39,24 +41,6 @@ rapid <- S7::new_class(
     info = info,
     servers = servers
   ),
-  constructor = function(info = class_missing,
-                         servers = class_missing,
-                         ...,
-                         apid_url = NULL,
-                         apid_list = NULL) {
-    if (!is.null(apid_url)) {
-      apid_url <- stbl::stabilize_chr_scalar(
-        apid_url,
-        regex = .url_regex
-      )
-      apid_list <- yaml::read_yaml(apid_url)
-    }
-    if (!is.null(apid_list)) {
-      info <- info(apid_list = apid_list)
-      servers <- servers(apid_list = apid_list)
-    }
-    S7::new_object(NULL, info = info, servers = servers)
-  },
   validator = function(self) {
     validate_lengths(
       self,

@@ -1,5 +1,3 @@
-# Anything at 01 can only have dependencies at 00.
-
 #' License information for the API
 #'
 #' Validate the license information for an API.

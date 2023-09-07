@@ -1,3 +1,6 @@
+# TODO: Reconsider server format. Closer mirroring of OAS seems appropriate. Or
+# maybe a tribble equivalent.
+
 test_that("servers() returns an empty server", {
   expect_snapshot({
     test_result <- servers()

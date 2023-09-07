@@ -1,7 +1,4 @@
-# It was tempting to try to check requirements in this (and presumably both
-# above and below here), but many APIDs fail to properly follow specs. This
-# object should allow issues, and then we can check what's missing that should
-# be there and report on it, likely via a subclass.
+# TODO: Implement as_*.
 
 test_that("info() returns an empty info", {
   expect_snapshot({

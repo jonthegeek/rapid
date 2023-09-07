@@ -1,8 +1,9 @@
+# TODO: Implement as_*.
+
 #' A collection of server variables for multiple servers
 #'
 #' Connectivity information for an API.
 #'
-#' @inheritParams .shared-parameters
 #' @param url A character vector of urls.
 #' @param description A character vector of (usually brief) descriptions of
 #'   those urls.
@@ -50,23 +51,6 @@ servers <- S7::new_class(
     description = S7::class_character,
     variables = server_variable_list
   ),
-  constructor = function(url = class_missing,
-                         description = class_missing,
-                         variables = class_missing,
-                         ...,
-                         apid_list = NULL) {
-    if (!is.null(apid_list) && !is.null(apid_list$servers)) {
-      url <- .extract_along_chr(apid_list$servers, "url")
-      description <- .extract_along_chr(apid_list$servers, "description")
-      variables <- server_variable_list(apid_list = apid_list)
-    }
-    S7::new_object(
-      NULL,
-      url = url,
-      description = description,
-      variables = variables
-    )
-  },
   validator = function(self) {
     validate_parallel(
       self,
