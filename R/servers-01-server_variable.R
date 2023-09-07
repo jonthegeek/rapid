@@ -55,7 +55,7 @@ server_variable <- S7::new_class(
   validator = function(self) {
     validate_parallel(
       self,
-      key = "name",
+      "name",
       required = "default",
       optional = c("enum", "description")
     ) %||% validate_in_enum(

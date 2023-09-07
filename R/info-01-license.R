@@ -45,7 +45,7 @@ license <- S7::new_class(
     if (length(self@identifier) && length(self@url)) {
       return("At most one of @identifier and @url must be supplied.")
     }
-    validate_parallel(self, key = "name", optional = c("identifier", "url"))
+    validate_parallel(self, "name", optional = c("identifier", "url"))
   }
 )
 

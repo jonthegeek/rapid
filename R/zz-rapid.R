@@ -60,10 +60,7 @@ rapid <- S7::new_class(
   validator = function(self) {
     validate_lengths(
       self,
-      key = "info",
-      # In this case the max length is redundant, since info can only have
-      # length 0 or 1.
-      key_max_length = 1,
+      key_name = "info",
       optional_any = "servers"
     )
   }
