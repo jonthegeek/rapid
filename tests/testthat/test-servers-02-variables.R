@@ -9,9 +9,9 @@ test_that("variables() errors informatively for bad contents", {
   )
   expect_snapshot(
     variables(
-      server_variable(),
+      string_replacements(),
       letters,
-      server_variable(),
+      string_replacements(),
       letters
     ),
     error = TRUE
@@ -22,15 +22,15 @@ test_that("variables() returns an empty variables", {
   expect_snapshot(variables())
 })
 
-test_that("variables() accepts bare server_variables", {
-  expect_snapshot(variables(server_variable()))
-  expect_snapshot(variables(server_variable(), server_variable()))
+test_that("variables() accepts bare string_replacements", {
+  expect_snapshot(variables(string_replacements()))
+  expect_snapshot(variables(string_replacements(), string_replacements()))
 })
 
-test_that("variables() accepts lists of server_variables", {
-  expect_snapshot(variables(list(server_variable())))
+test_that("variables() accepts lists of string_replacements", {
+  expect_snapshot(variables(list(string_replacements())))
   expect_snapshot(
-    variables(list(server_variable(), server_variable()))
+    variables(list(string_replacements(), string_replacements()))
   )
 })
 
@@ -62,7 +62,7 @@ test_that("as_variables() returns expected objects", {
       )
     ),
     variables(
-      server_variable(
+      string_replacements(
         name = "username",
         default = "demo",
         description = "Name of the user."
@@ -89,12 +89,12 @@ test_that("as_variables() returns expected objects", {
       )
     ),
     variables(
-      server_variable(
+      string_replacements(
         name = "username",
         default = "demo",
         description = "Name of the user."
       ),
-      server_variable(
+      string_replacements(
         name = c("username", "port"),
         default = c("demo", 8443),
         description = c("Name of the user.", NA),

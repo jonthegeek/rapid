@@ -3,18 +3,18 @@
 #' A collection of server variables for multiple servers
 #'
 #' A list of server variable objects, each of which is constructed with
-#' [server_variable()].
+#' [string_replacements()].
 #'
-#' @param ... One or more [server_variable()] objects, or a list of
-#'   [server_variable()] objects.
+#' @param ... One or more [string_replacements()] objects, or a list of
+#'   [string_replacements()] objects.
 #'
 #' @return A `variables` S7 object, which is a validated list of
-#'   [server_variable()] objects.
+#'   [string_replacements()] objects.
 #' @export
 #'
 #' @examples
 #' variables(
-#'   list(server_variable(), server_variable())
+#'   list(string_replacements(), string_replacements())
 #' )
 variables <- S7::new_class(
   "variables",
@@ -29,13 +29,13 @@ variables <- S7::new_class(
   validator = function(self) {
     bad_server_vars <- !purrr::map_lgl(
       S7::S7_data(self),
-      ~ S7::S7_inherits(.x, server_variable)
+      ~ S7::S7_inherits(.x, string_replacements)
     )
     if (any(bad_server_vars)) {
       bad_locations <- which(bad_server_vars)
       c(
         cli::format_inline(
-          "All values must be {.cls server_variable} objects."
+          "All values must be {.cls string_replacements} objects."
         ),
         cli::format_inline("Bad values at {bad_locations}.")
       )
@@ -66,7 +66,7 @@ S7::method(as_variables, variables) <- function(x) {
 
 S7::method(as_variables, class_list) <- function(x) {
   variables(
-    purrr::map(x, as_server_variable)
+    purrr::map(x, as_string_replacements)
   )
 }
 

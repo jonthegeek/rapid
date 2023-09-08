@@ -1,6 +1,4 @@
-# TODO: Implement as_*.
-
-#' A server variable for server URL template substitution
+#' A set of variables for server URL template substitution
 #'
 #' Server variable properties used for substitution in the server’s URL
 #' template.
@@ -20,19 +18,19 @@
 #'   each server variable. [CommonMark syntax](https://spec.commonmark.org/)
 #'   *may* be used for rich text representation.
 #'
-#' @return A `server_variable` S7 object, with fields `name`, `default`, `enum`,
-#'   and `description`.
+#' @return A `string_replacements` S7 object, with fields `name`, `default`,
+#'   `enum`, and `description`.
 #' @export
 #'
 #' @examples
-#' server_variable(
+#' string_replacements(
 #'   "username",
 #'   "demo",
 #'   enum = c("demo", "other"),
 #'   description = "The active user's folder."
 #' )
-server_variable <- S7::new_class(
-  "server_variable",
+string_replacements <- S7::new_class(
+  "string_replacements",
   package = "rapid",
   properties = list(
     name = class_character,
@@ -72,34 +70,46 @@ server_variable <- S7::new_class(
 )
 
 #' @export
-`length.rapid::server_variable` <- function(x) {
+`length.rapid::string_replacements` <- function(x) {
   length(x@name)
 }
 
-#' Coerce lists and character vectors to server_variables
+#' Coerce lists vectors to string_replacements
 #'
-#' `as_server_variable()` turns an existing object into a `server_variable`.
-#' This is in contrast with [server_variable()], which builds a
-#' `server_variable` from individual properties.
+#' `as_string_replacements()` turns an existing object into a
+#' `string_replacements`. This is in contrast with [string_replacements()],
+#' which builds a `string_replacements` from individual properties.
 #'
-#' @param x The object to coerce. Must be empty or have names "name", "email",
-#'   and/or "url". Extra names are ignored.
+#' @param x The object to coerce. Must be empty or be a list of named lists,
+#'   each with names "enum", "default", or "description". Additional names are
+#'   ignored.
 #'
-#' @return A `server_variable` as returned by [server_variable()].
+#' @return A `string_replacements` as returned by [string_replacements()].
 #' @export
 #'
 #' @examples
-#' as_server_variable()
-#' as_server_variable(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
-as_server_variable <- S7::new_generic("as_server_variable", dispatch_args = "x")
+#' as_string_replacements()
+#' as_string_replacements(
+#'   list(
+#'     username = c(
+#'       default = "demo",
+#'       description = "Name of the user."
+#'     ),
+#'     port = list(
+#'       default = "8443",
+#'       enum = c("8443", "443")
+#'     )
+#'   )
+#' )
+as_string_replacements <- S7::new_generic("as_string_replacements", dispatch_args = "x")
 
-S7::method(as_server_variable, server_variable) <- function(x) {
+S7::method(as_string_replacements, string_replacements) <- function(x) {
   x
 }
 
-S7::method(as_server_variable, class_list) <- function(x) {
+S7::method(as_string_replacements, class_list) <- function(x) {
   nameless <- unname(x)
-  server_variable(
+  string_replacements(
     name = names(x),
     default = purrr::map_chr(nameless, "default"),
     enum = purrr::map(nameless, "enum"),
@@ -107,15 +117,15 @@ S7::method(as_server_variable, class_list) <- function(x) {
   )
 }
 
-S7::method(as_server_variable, class_missing) <- function(x) {
-  server_variable()
+S7::method(as_string_replacements, class_missing) <- function(x) {
+  string_replacements()
 }
 
-S7::method(as_server_variable, class_any) <- function(x) {
+S7::method(as_string_replacements, class_any) <- function(x) {
   if (is.null(x)) {
-    return(server_variable())
+    return(string_replacements())
   }
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls server_variable}."
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls string_replacements}."
   )
 }

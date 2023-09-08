@@ -45,7 +45,7 @@ test_that("length() of a servers reports the overall length", {
       servers(
         url = "https://{username}.gigantic-server.com:{port}/{basePath}",
         description = "The production API server",
-        variables = variables(server_variable(
+        variables = variables(string_replacements(
           name = c("username", "port", "basePath"),
           default = c("demo", "8443", "v2"),
           description = c(
