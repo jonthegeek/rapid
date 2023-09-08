@@ -2,7 +2,6 @@
 #' @importFrom glue glue
 #' @importFrom rlang %||%
 #' @importFrom rlang check_dots_empty
-#' @importFrom rlang check_dots_used
 #' @importFrom S7 class_any
 #' @importFrom S7 class_character
 #' @importFrom S7 class_list
