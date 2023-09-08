@@ -63,3 +63,21 @@ test_that("length() of a servers reports the overall length", {
     1
   )
 })
+
+test_that("as_servers() errors informatively for unnamed or misnamed input", {
+  expect_snapshot(
+    as_servers(letters),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_servers(list(a = "https://example.com", b = "A cool server.")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_servers(c(a = "https://example.com", b = "A cool server.")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})

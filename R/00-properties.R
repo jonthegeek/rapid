@@ -39,6 +39,9 @@ enum_property <- function(x_arg) {
           enumerations
         }
       )
+      if (!any(lengths(value))) {
+        value <- NULL
+      }
       S7::prop(self, x_arg, check = FALSE) <- value
       self
     }

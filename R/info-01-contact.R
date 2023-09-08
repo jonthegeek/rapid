@@ -51,6 +51,10 @@ contact <- S7::new_class(
 #' as_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
 as_contact <- S7::new_generic("as_contact", dispatch_args = "x")
 
+S7::method(as_contact, contact) <- function(x) {
+  x
+}
+
 S7::method(as_contact, class_list | class_character) <- function(x) {
   x <- .validate_for_as_class(x, contact)
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])

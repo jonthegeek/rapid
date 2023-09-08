@@ -2,11 +2,12 @@
                                    target_S7_class,
                                    x_arg = rlang::caller_arg(x),
                                    call = rlang::caller_env()) {
+  if (!length(x)) {
+    return(NULL)
+  }
+
   valid_names <- S7::prop_names(target_S7_class())
-  if (
-    length(x) &&
-    (!rlang::is_named(x) || !any(names(x) %in% valid_names))
-  ) {
+  if (!rlang::is_named(x) || !any(names(x) %in% valid_names)) {
     cli::cli_abort(
       c(
         "{.arg {x_arg}} must have names {.or {.val {valid_names}}}.",

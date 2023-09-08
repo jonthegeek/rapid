@@ -6,3 +6,27 @@
     }
   )
 }
+
+# I was about to write this when I discovered it unexported in rlang. I used
+# their name in case it ever becomes standard.
+`%|0|%` <- function(x, y) {
+  if (!length(x)) y
+  else x
+}
+
+.extract_along_chr <- function(x, el) {
+  y <- purrr::map(x, el)
+  if (purrr::every(y, is.null)) {
+    return(NULL)
+  }
+  purrr::map_chr(
+    y,
+    \(this) {
+      this %||% NA
+    }
+  )
+}
+
+.extract <- function(x, el) {
+  x$el %||% NA
+}

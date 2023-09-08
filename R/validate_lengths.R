@@ -28,9 +28,6 @@ validate_lengths <- function(obj,
     )
   }
 
-  if (!length(issues)) {
-    return(NULL)
-  }
   return(unique(issues))
 }
 

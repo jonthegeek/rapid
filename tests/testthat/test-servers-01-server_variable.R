@@ -98,3 +98,106 @@ test_that("length() of a server_variable reports the overall length", {
   expect_equal(length(server_variable()), 0)
   expect_equal(length(server_variable(name = "A", default = "A")), 1)
 })
+
+test_that("as_server_variable() errors informatively for unnamed or misnamed input", {
+  expect_snapshot(
+    as_server_variable(letters),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_server_variable(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_server_variable(c(a = "Jon", b = "jonthegeek@gmail.com")),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_server_variable() errors informatively for bad classes", {
+  expect_snapshot(
+    as_server_variable(1:2),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_server_variable(mean),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_server_variable(TRUE),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_server_variable() returns expected objects", {
+  expect_identical(
+    as_server_variable(
+      list(
+        username = c(
+          default = "demo",
+          description = "Name of the user."
+        )
+      )
+    ),
+    server_variable(
+      name = "username",
+      default = "demo",
+      description = "Name of the user."
+    )
+  )
+  expect_identical(
+    as_server_variable(
+      list(
+        username = c(
+          default = "demo",
+          description = "Name of the user.",
+          x = "https://jonthegeek.com"
+        )
+      )
+    ),
+    server_variable(
+      name = "username",
+      default = "demo",
+      description = "Name of the user."
+    )
+  )
+  expect_identical(
+    as_server_variable(
+      list(
+        username = c(
+          default = "demo",
+          description = "Name of the user.",
+          x = "https://jonthegeek.com"
+        ),
+        port = list(
+          default = "8443",
+          enum = c("8443", "443")
+        )
+      )
+    ),
+    server_variable(
+      name = c("username", "port"),
+      default = c("demo", 8443),
+      enum = list(NULL, c(8443, 443)),
+      description = c("Name of the user.", NA)
+    )
+  )
+
+  expect_identical(
+    as_server_variable(list()),
+    server_variable()
+  )
+})
+
+test_that("as_server_variable() works for server_variables", {
+  expect_identical(
+    as_server_variable(server_variable()),
+    server_variable()
+  )
+})

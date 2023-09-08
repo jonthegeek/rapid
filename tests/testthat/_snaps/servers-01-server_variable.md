@@ -123,3 +123,54 @@
        .. $ : NULL
        @ description: chr [1:3] "The active user's folder." NA NA
 
+# as_server_variable() errors informatively for unnamed or misnamed input
+
+    Code
+      as_server_variable(letters)
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "default", "enum", or "description".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_server_variable(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "default", "enum", or "description".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_server_variable(c(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition <rlang_error>
+      Error:
+      ! `x` must have names "name", "default", "enum", or "description".
+      * Any other names are ignored.
+
+# as_server_variable() errors informatively for bad classes
+
+    Code
+      as_server_variable(1:2)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <integer> to <server_variable>.
+
+---
+
+    Code
+      as_server_variable(mean)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <function> to <server_variable>.
+
+---
+
+    Code
+      as_server_variable(TRUE)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <logical> to <server_variable>.
+

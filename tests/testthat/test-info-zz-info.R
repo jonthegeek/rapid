@@ -127,3 +127,10 @@ test_that("as_info() returns expected objects", {
     info()
   )
 })
+
+test_that("as_info() works for infos", {
+  expect_identical(
+    as_info(info()),
+    info()
+  )
+})

@@ -67,6 +67,10 @@ license <- S7::new_class(
 #' as_license(list(name = "Apache 2.0", identifier = "Apache-2.0"))
 as_license <- S7::new_generic("as_license", dispatch_args = "x")
 
+S7::method(as_license, license) <- function(x) {
+  x
+}
+
 S7::method(as_license, class_list | class_character) <- function(x) {
   x <- .validate_for_as_class(x, license)
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])

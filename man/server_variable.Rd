@@ -5,11 +5,11 @@
 \title{A server variable for server URL template substitution}
 \usage{
 server_variable(
-  name = character(),
-  default = character(),
+  name = S7::class_missing,
+  default = S7::class_missing,
   ...,
   enum = NULL,
-  description = character()
+  description = S7::class_missing
 )
 }
 \arguments{

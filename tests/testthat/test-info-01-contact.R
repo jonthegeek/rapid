@@ -169,3 +169,10 @@ test_that("as_contact() returns expected objects", {
     contact()
   )
 })
+
+test_that("as_contact() works for contacts", {
+  expect_identical(
+    as_contact(contact()),
+    contact()
+  )
+})

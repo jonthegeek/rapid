@@ -1,5 +1,3 @@
-# TODO: Implement as_*.
-
 #' A collection of server variables for multiple servers
 #'
 #' Connectivity information for an API.
@@ -60,24 +58,49 @@ servers <- S7::new_class(
   }
 )
 
-.extract_along_chr <- function(x, el) {
-  y <- purrr::map(x, el)
-  if (purrr::every(y, is.null)) {
-    return(NULL)
-  }
-  purrr::map_chr(
-    y,
-    \(this) {
-      this %||% NA
-    }
-  )
-}
-
-.extract <- function(x, el) {
-  x$el %||% NA
-}
-
 #' @export
 `length.rapid::servers` <- function(x) {
   length(x@url)
+}
+
+#' Coerce lists and character vectors to servers
+#'
+#' `as_servers()` turns an existing object into a `servers`. This is in
+#' contrast with [servers()], which builds a `servers` from individual
+#' properties.
+#'
+#' @param x The object to coerce. Must be empty or have names "name", "email",
+#'   and/or "url". Extra names are ignored.
+#'
+#' @return A `servers` as returned by [servers()].
+#' @export
+#'
+#' @examples
+#' as_servers()
+#' as_servers(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
+as_servers <- S7::new_generic("as_servers", dispatch_args = "x")
+
+S7::method(as_servers, servers) <- function(x) {
+  x
+}
+
+S7::method(as_servers, class_list | class_character) <- function(x) {
+  servers(
+    url = purrr::map_chr(x, "url"),
+    description = purrr::map_chr(x, "description"),
+    variables = as_variables(purrr::map(x, "variables"))
+  )
+}
+
+S7::method(as_servers, class_missing) <- function(x) {
+  servers()
+}
+
+S7::method(as_servers, class_any) <- function(x) {
+  if (is.null(x)) {
+    return(servers())
+  }
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls servers}."
+  )
 }

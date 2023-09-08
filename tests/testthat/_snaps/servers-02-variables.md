@@ -93,3 +93,27 @@
         ..@ enum       : list()
         ..@ description: chr(0) 
 
+# as_variables() errors informatively for bad classes
+
+    Code
+      as_variables(1:2)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <integer> to <variables>.
+
+---
+
+    Code
+      as_variables(mean)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <function> to <variables>.
+
+---
+
+    Code
+      as_variables(TRUE)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <logical> to <variables>.
+

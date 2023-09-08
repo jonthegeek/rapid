@@ -191,6 +191,13 @@ test_that("as_license() returns expected objects", {
   )
 })
 
+test_that("as_license() works for licenses", {
+  expect_identical(
+    as_license(license()),
+    license()
+  )
+})
+
 # TODO: Prettier printing.
 #
 # TODO: After all that, I think I want to implement components$securitySchemas

@@ -80,6 +80,10 @@ info <- S7::new_class(
 #' as_info(list(title = "My Cool API", version = "1.0.0"))
 as_info <- S7::new_generic("as_info", dispatch_args = "x")
 
+S7::method(as_info, info) <- function(x) {
+  x
+}
+
 S7::method(as_info, class_list | class_character) <- function(x) {
   x <- .validate_for_as_class(x, info)
 
