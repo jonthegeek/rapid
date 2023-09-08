@@ -28,13 +28,28 @@
     <loc>https://jonthegeek.github.io/rapid/principles.html</loc>
   </url>
   <url>
-    <loc>https://jonthegeek.github.io/rapid/reference/api_contact.html</loc>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_contact.html</loc>
   </url>
   <url>
-    <loc>https://jonthegeek.github.io/rapid/reference/api_info.html</loc>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_info.html</loc>
   </url>
   <url>
-    <loc>https://jonthegeek.github.io/rapid/reference/api_license.html</loc>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_license.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_rapid.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_server_variables.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_servers.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_string_replacements.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/contact.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/dot-shared-parameters.html</loc>
@@ -43,15 +58,21 @@
     <loc>https://jonthegeek.github.io/rapid/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/info.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/license.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/rapid.html</loc>
   </url>
   <url>
-    <loc>https://jonthegeek.github.io/rapid/reference/server_variable.html</loc>
-  </url>
-  <url>
-    <loc>https://jonthegeek.github.io/rapid/reference/server_variable_list.html</loc>
+    <loc>https://jonthegeek.github.io/rapid/reference/server_variables.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/servers.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/string_replacements.html</loc>
   </url>
 </urlset>
