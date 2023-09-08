@@ -1,11 +1,11 @@
-#' A collection of server variables for multiple servers
+#' An object representing a collection of servers
 #'
 #' Connectivity information for an API.
 #'
 #' @param url A character vector of urls.
 #' @param description A character vector of (usually brief) descriptions of
 #'   those urls.
-#' @param variables A [variables()] object.
+#' @param variables A [server_variables()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
@@ -27,7 +27,7 @@
 #' servers(
 #'   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
 #'   description = "The production API server",
-#'   variables = variables(string_replacements(
+#'   variables = server_variables(string_replacements(
 #'     name = c("username", "port", "basePath"),
 #'     default = c("demo", "8443", "v2"),
 #'     description = c(
@@ -47,7 +47,7 @@ servers <- S7::new_class(
   properties = list(
     url = class_character,
     description = class_character,
-    variables = variables
+    variables = server_variables
   ),
   validator = function(self) {
     validate_parallel(
@@ -88,7 +88,7 @@ S7::method(as_servers, class_list | class_character) <- function(x) {
   servers(
     url = purrr::map_chr(x, "url"),
     description = purrr::map_chr(x, "description"),
-    variables = as_variables(purrr::map(x, "variables"))
+    variables = as_server_variables(purrr::map(x, "variables"))
   )
 }
 

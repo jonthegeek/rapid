@@ -1,14 +1,14 @@
-test_that("variables() errors informatively for bad contents", {
+test_that("server_variables() errors informatively for bad contents", {
   expect_snapshot(
-    variables(letters),
+    server_variables(letters),
     error = TRUE
   )
   expect_snapshot(
-    variables(list(letters, letters)),
+    server_variables(list(letters, letters)),
     error = TRUE
   )
   expect_snapshot(
-    variables(
+    server_variables(
       string_replacements(),
       letters,
       string_replacements(),
@@ -18,50 +18,50 @@ test_that("variables() errors informatively for bad contents", {
   )
 })
 
-test_that("variables() returns an empty variables", {
-  expect_snapshot(variables())
+test_that("server_variables() returns an empty server_variables", {
+  expect_snapshot(server_variables())
 })
 
-test_that("variables() accepts bare string_replacements", {
-  expect_snapshot(variables(string_replacements()))
-  expect_snapshot(variables(string_replacements(), string_replacements()))
+test_that("server_variables() accepts bare string_replacements", {
+  expect_snapshot(server_variables(string_replacements()))
+  expect_snapshot(server_variables(string_replacements(), string_replacements()))
 })
 
-test_that("variables() accepts lists of string_replacements", {
-  expect_snapshot(variables(list(string_replacements())))
+test_that("server_variables() accepts lists of string_replacements", {
+  expect_snapshot(server_variables(list(string_replacements())))
   expect_snapshot(
-    variables(list(string_replacements(), string_replacements()))
+    server_variables(list(string_replacements(), string_replacements()))
   )
 })
 
-test_that("as_variables() errors informatively for bad classes", {
+test_that("as_server_variables() errors informatively for bad classes", {
   expect_snapshot(
-    as_variables(1:2),
+    as_server_variables(1:2),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    as_variables(mean),
+    as_server_variables(mean),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    as_variables(TRUE),
+    as_server_variables(TRUE),
     error = TRUE,
     cnd_class = TRUE
   )
 })
 
-test_that("as_variables() returns expected objects", {
+test_that("as_server_variables() returns expected objects", {
   expect_identical(
-    as_variables(
+    as_server_variables(
       list(
         list(
           username = c(default = "demo", description = "Name of the user.")
         )
       )
     ),
-    variables(
+    server_variables(
       string_replacements(
         name = "username",
         default = "demo",
@@ -70,7 +70,7 @@ test_that("as_variables() returns expected objects", {
     )
   )
   expect_identical(
-    as_variables(
+    as_server_variables(
       list(
         list(
           username = c(default = "demo", description = "Name of the user.")
@@ -88,7 +88,7 @@ test_that("as_variables() returns expected objects", {
         )
       )
     ),
-    variables(
+    server_variables(
       string_replacements(
         name = "username",
         default = "demo",
@@ -103,14 +103,14 @@ test_that("as_variables() returns expected objects", {
     )
   )
   expect_identical(
-    as_variables(list()),
-    variables()
+    as_server_variables(list()),
+    server_variables()
   )
 })
 
-test_that("as_variables() works for variables", {
+test_that("as_server_variables() works for server_variables", {
   expect_identical(
-    as_variables(variables()),
-    variables()
+    as_server_variables(server_variables()),
+    server_variables()
   )
 })

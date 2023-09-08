@@ -1,21 +1,21 @@
-# server_variable() requires names for optional args
+# string_replacements() requires names for optional args
 
     Code
-      server_variable("a", "b", "c")
+      string_replacements("a", "b", "c")
     Condition
-      Error in `server_variable()`:
+      Error in `string_replacements()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = "c"
       i Did you forget to name an argument?
 
-# server_variable() requires that default matches name
+# string_replacements() requires that default matches name
 
     Code
-      server_variable("a")
+      string_replacements("a")
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
       - `name` has 1 value.
       - `default` has no values.
@@ -23,10 +23,10 @@
 ---
 
     Code
-      server_variable("a", letters)
+      string_replacements("a", letters)
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
       - `name` has 1 value.
       - `default` has 26 values.
@@ -34,10 +34,10 @@
 ---
 
     Code
-      server_variable(letters, "a")
+      string_replacements(letters, "a")
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
       - `name` has 26 values.
       - `default` has 1 value.
@@ -45,32 +45,32 @@
 ---
 
     Code
-      server_variable(character(), "a")
+      string_replacements(character(), "a")
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - When `name` is not defined, `default` must be empty.
       - `default` has 1 value.
 
-# server_variable() works with equal-length name/default
+# string_replacements() works with equal-length name/default
 
     Code
-      test_result <- server_variable("a", "b")
+      test_result <- string_replacements("a", "b")
       test_result
     Output
-      <rapid::server_variable>
+      <rapid::string_replacements>
        @ name       : chr "a"
        @ default    : chr "b"
-       @ enum       : list()
+       @ enum       : NULL
        @ description: chr(0) 
 
-# server_variable() requires that optional args are empty or match
+# string_replacements() requires that optional args are empty or match
 
     Code
-      server_variable("a", "b", enum = list("a", "b"))
+      string_replacements("a", "b", enum = list("a", "b"))
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `enum` must be empty or have the same length as `name`
       - `name` has 1 value.
       - `enum` has 2 values.
@@ -78,43 +78,44 @@
 ---
 
     Code
-      server_variable("a", "b", description = c("a", "b"))
+      string_replacements("a", "b", description = c("a", "b"))
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `description` must be empty or have the same length as `name`
       - `name` has 1 value.
       - `description` has 2 values.
 
-# server_variable() requires that the default is in enum when given
+# string_replacements() requires that the default is in enum when given
 
     Code
-      server_variable(name = "a", default = "b", enum = "a")
+      string_replacements(name = "a", default = "b", enum = "a")
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
       - "b" is not in "a".
 
 ---
 
     Code
-      server_variable(name = c("a", "b"), default = c("b", "a"), enum = list("a", "a"))
+      string_replacements(name = c("a", "b"), default = c("b", "a"), enum = list("a",
+        "a"))
     Condition
       Error:
-      ! <rapid::server_variable> object is invalid:
+      ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
       - "b" is not in "a".
 
-# server_variable() works for a full object
+# string_replacements() works for a full object
 
     Code
-      test_result <- server_variable(name = c("username", "port", "basePath"),
+      test_result <- string_replacements(name = c("username", "port", "basePath"),
       default = c("demo", "8443", "v2"), description = c("The active user's folder.",
         NA, NA), enum = list(NULL, c("8443", "443"), NULL))
       test_result
     Output
-      <rapid::server_variable>
+      <rapid::string_replacements>
        @ name       : chr [1:3] "username" "port" "basePath"
        @ default    : chr [1:3] "demo" "8443" "v2"
        @ enum       :List of 3
@@ -123,54 +124,53 @@
        .. $ : NULL
        @ description: chr [1:3] "The active user's folder." NA NA
 
-# as_server_variable() errors informatively for unnamed or misnamed input
+# as_string_replacements() errors informatively for unnamed or misnamed input
 
     Code
-      as_server_variable(letters)
+      as_string_replacements(letters)
     Condition <rlang_error>
       Error:
-      ! `x` must have names "name", "default", "enum", or "description".
-      * Any other names are ignored.
+      ! Can't coerce `x` <character> to <string_replacements>.
 
 ---
 
     Code
-      as_server_variable(list(a = "Jon", b = "jonthegeek@gmail.com"))
-    Condition <rlang_error>
-      Error:
-      ! `x` must have names "name", "default", "enum", or "description".
-      * Any other names are ignored.
+      as_string_replacements(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition <purrr_error_indexed>
+      Error in `purrr::map_chr()`:
+      i In index: 1.
+      Caused by error:
+      ! Result must be length 1, not 0.
 
 ---
 
     Code
-      as_server_variable(c(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_string_replacements(c(a = "Jon", b = "jonthegeek@gmail.com"))
     Condition <rlang_error>
       Error:
-      ! `x` must have names "name", "default", "enum", or "description".
-      * Any other names are ignored.
+      ! Can't coerce `x` <character> to <string_replacements>.
 
-# as_server_variable() errors informatively for bad classes
+# as_string_replacements() errors informatively for bad classes
 
     Code
-      as_server_variable(1:2)
+      as_string_replacements(1:2)
     Condition <rlang_error>
       Error:
-      ! Can't coerce `x` <integer> to <server_variable>.
+      ! Can't coerce `x` <integer> to <string_replacements>.
 
 ---
 
     Code
-      as_server_variable(mean)
+      as_string_replacements(mean)
     Condition <rlang_error>
       Error:
-      ! Can't coerce `x` <function> to <server_variable>.
+      ! Can't coerce `x` <function> to <string_replacements>.
 
 ---
 
     Code
-      as_server_variable(TRUE)
+      as_string_replacements(TRUE)
     Condition <rlang_error>
       Error:
-      ! Can't coerce `x` <logical> to <server_variable>.
+      ! Can't coerce `x` <logical> to <string_replacements>.
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/servers-zz-servers.R
 \name{servers}
 \alias{servers}
-\title{A collection of server variables for multiple servers}
+\title{An object representing a collection of servers}
 \usage{
 servers(
   url = class_missing,
@@ -16,7 +16,7 @@ servers(
 \item{description}{A character vector of (usually brief) descriptions of
 those urls.}
 
-\item{variables}{A \code{\link[=variables]{variables()}} object.}
+\item{variables}{A \code{\link[=server_variables]{server_variables()}} object.}
 }
 \value{
 A \code{servers} S7 object, with properties \code{url}, \code{description}, and
@@ -41,7 +41,7 @@ servers(
 servers(
   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
   description = "The production API server",
-  variables = variables(server_variable(
+  variables = server_variables(string_replacements(
     name = c("username", "port", "basePath"),
     default = c("demo", "8443", "v2"),
     description = c(
