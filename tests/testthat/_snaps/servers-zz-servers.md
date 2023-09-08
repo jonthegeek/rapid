@@ -14,30 +14,57 @@
     Code
       as_servers(letters)
     Condition <purrr_error_indexed>
-      Error in `purrr::map_chr()`:
+      Error in `purrr::map()`:
       i In index: 1.
-      Caused by error:
-      ! Result must be length 1, not 0.
+      Caused by error in `as_servers()`:
+      ! `x[[i]]` must have names "url", "description", or "variables".
+      * Any other names are ignored.
 
 ---
 
     Code
       as_servers(list(a = "https://example.com", b = "A cool server."))
     Condition <purrr_error_indexed>
-      Error in `purrr::map_chr()`:
+      Error in `purrr::map()`:
       i In index: 1.
       i With name: a.
-      Caused by error:
-      ! Result must be length 1, not 0.
+      Caused by error in `as_servers()`:
+      ! `x[[i]]` must have names "url", "description", or "variables".
+      * Any other names are ignored.
 
 ---
 
     Code
       as_servers(c(a = "https://example.com", b = "A cool server."))
     Condition <purrr_error_indexed>
-      Error in `purrr::map_chr()`:
+      Error in `purrr::map()`:
       i In index: 1.
       i With name: a.
-      Caused by error:
-      ! Result must be length 1, not 0.
+      Caused by error in `as_servers()`:
+      ! `x[[i]]` must have names "url", "description", or "variables".
+      * Any other names are ignored.
+
+# as_servers() errors informatively for bad classes
+
+    Code
+      as_servers(1:2)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <integer> to <servers>.
+
+---
+
+    Code
+      as_servers(mean)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <function> to <servers>.
+
+---
+
+    Code
+      as_servers(TRUE)
+    Condition <rlang_error>
+      Error:
+      ! Can't coerce `x` <logical> to <servers>.
 

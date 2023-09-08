@@ -1,5 +1,3 @@
-# TODO: Implement as_*.
-
 #' A collection of string replacements for multiple servers
 #'
 #' A list of string replacements objects, each of which is constructed with
@@ -64,6 +62,9 @@ S7::method(as_server_variables, server_variables) <- function(x) {
 }
 
 S7::method(as_server_variables, class_list) <- function(x) {
+  if (!length(x) || !any(lengths(x))) {
+    return(server_variables())
+  }
   server_variables(
     purrr::map(x, as_string_replacements)
   )

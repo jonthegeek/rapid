@@ -44,5 +44,5 @@
        @ servers: <rapid::servers>
        .. @ url        : chr(0) 
        .. @ description: chr(0) 
-       .. @ variables  : <rapid::variables>  list()
+       .. @ variables  : <rapid::server_variables>  list()
 

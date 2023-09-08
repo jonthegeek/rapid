@@ -85,6 +85,19 @@ S7::method(as_servers, servers) <- function(x) {
 }
 
 S7::method(as_servers, class_list | class_character) <- function(x) {
+  call <- rlang::caller_env()
+  x <- purrr::map(
+    x,
+    \(x) {
+      .validate_for_as_class(
+        x,
+        servers,
+        x_arg = "x[[i]]",
+        call = call
+      )
+    }
+  )
+
   servers(
     url = purrr::map_chr(x, "url"),
     description = purrr::map_chr(x, "description"),

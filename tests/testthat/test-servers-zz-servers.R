@@ -1,6 +1,3 @@
-# TODO: Reconsider server format. Closer mirroring of OAS seems appropriate. Or
-# maybe a tribble equivalent.
-
 test_that("servers() returns an empty server", {
   expect_snapshot({
     test_result <- servers()
@@ -45,7 +42,7 @@ test_that("length() of a servers reports the overall length", {
       servers(
         url = "https://{username}.gigantic-server.com:{port}/{basePath}",
         description = "The production API server",
-        variables = variables(string_replacements(
+        variables = server_variables(string_replacements(
           name = c("username", "port", "basePath"),
           default = c("demo", "8443", "v2"),
           description = c(
@@ -79,5 +76,84 @@ test_that("as_servers() errors informatively for unnamed or misnamed input", {
     as_servers(c(a = "https://example.com", b = "A cool server.")),
     error = TRUE,
     cnd_class = TRUE
+  )
+})
+
+test_that("as_servers() errors informatively for bad classes", {
+  expect_snapshot(
+    as_servers(1:2),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_servers(mean),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+  expect_snapshot(
+    as_servers(TRUE),
+    error = TRUE,
+    cnd_class = TRUE
+  )
+})
+
+test_that("as_servers() returns expected objects", {
+  expect_identical(
+    as_servers(
+      list(
+        list(
+          url = "https://example.com",
+          description = "The only server."
+        )
+      )
+    ),
+    servers(
+      url = "https://example.com",
+      description = "The only server."
+    )
+  )
+  expect_identical(
+    as_server_variables(
+      list(
+        list(
+          username = c(default = "demo", description = "Name of the user.")
+        ),
+        list(
+          username = c(
+            default = "demo",
+            description = "Name of the user.",
+            x = "https://jonthegeek.com"
+          ),
+          port = list(
+            default = "8443",
+            enum = c("8443", "443")
+          )
+        )
+      )
+    ),
+    server_variables(
+      string_replacements(
+        name = "username",
+        default = "demo",
+        description = "Name of the user."
+      ),
+      string_replacements(
+        name = c("username", "port"),
+        default = c("demo", 8443),
+        description = c("Name of the user.", NA),
+        enum = list(NULL, c(8443, 443))
+      )
+    )
+  )
+  expect_identical(
+    as_server_variables(list()),
+    server_variables()
+  )
+})
+
+test_that("as_servers() works for servers", {
+  expect_identical(
+    as_servers(servers()),
+    servers()
   )
 })
