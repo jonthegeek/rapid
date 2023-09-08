@@ -68,14 +68,14 @@ servers <- S7::new_class(
 
 #' Coerce lists and character vectors to servers
 #'
-#' `as_servers()` turns an existing object into a `servers`. This is in
-#' contrast with [servers()], which builds a `servers` from individual
+#' `as_servers()` turns an existing object into a `servers` object. This is in
+#' contrast with [servers()], which builds a `servers` object from individual
 #' properties.
 #'
 #' @param x The object to coerce. Must be empty or have names "name", "email",
 #'   and/or "url". Extra names are ignored.
 #'
-#' @return A `servers` as returned by [servers()].
+#' @return A `servers` object as returned by [servers()].
 #' @export
 #'
 #' @examples
@@ -118,19 +118,16 @@ S7::method(as_servers, class_list) <- function(x) {
 
   servers(
     url = purrr::map_chr(x, "url"),
-    description = purrr::map_chr(x, "description"),
+    description = .extract_along_chr(x, "description"),
     variables = as_server_variables(purrr::map(x, "variables"))
   )
 }
 
-S7::method(as_servers, class_missing) <- function(x) {
+S7::method(as_servers, class_missing | class_null) <- function(x) {
   servers()
 }
 
 S7::method(as_servers, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(servers())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls servers}."
   )

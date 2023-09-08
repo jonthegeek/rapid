@@ -119,14 +119,11 @@ S7::method(as_info, class_list | class_character) <- function(x) {
   )
 }
 
-S7::method(as_info, class_missing) <- function(x) {
+S7::method(as_info, class_missing | class_null) <- function(x) {
   info()
 }
 
 S7::method(as_info, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(info())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls info}."
   )

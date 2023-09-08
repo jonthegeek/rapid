@@ -117,14 +117,11 @@ S7::method(as_string_replacements, class_list) <- function(x) {
   )
 }
 
-S7::method(as_string_replacements, class_missing) <- function(x) {
+S7::method(as_string_replacements, class_missing | class_null) <- function(x) {
   string_replacements()
 }
 
 S7::method(as_string_replacements, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(string_replacements())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls string_replacements}."
   )

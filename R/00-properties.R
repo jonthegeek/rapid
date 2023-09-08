@@ -47,3 +47,5 @@ enum_property <- function(x_arg) {
     }
   )
 }
+
+class_null <- S7::new_S3_class("NULL")

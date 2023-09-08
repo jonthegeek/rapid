@@ -21,6 +21,7 @@ Imports:
     purrr,
     rlang (>= 1.1.0),
     S7,
+    snakecase,
     stbl,
     yaml
 Suggests: 

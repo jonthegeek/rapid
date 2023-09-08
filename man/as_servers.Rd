@@ -11,11 +11,11 @@ as_servers(x, ...)
 and/or "url". Extra names are ignored.}
 }
 \value{
-A \code{servers} as returned by \code{\link[=servers]{servers()}}.
+A \code{servers} object as returned by \code{\link[=servers]{servers()}}.
 }
 \description{
-\code{as_servers()} turns an existing object into a \code{servers}. This is in
-contrast with \code{\link[=servers]{servers()}}, which builds a \code{servers} from individual
+\code{as_servers()} turns an existing object into a \code{servers} object. This is in
+contrast with \code{\link[=servers]{servers()}}, which builds a \code{servers} object from individual
 properties.
 }
 \examples{

@@ -77,14 +77,11 @@ S7::method(as_license, class_list | class_character) <- function(x) {
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
 }
 
-S7::method(as_license, class_missing) <- function(x) {
+S7::method(as_license, class_missing | class_null) <- function(x) {
   license()
 }
 
 S7::method(as_license, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(license())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls license}."
   )

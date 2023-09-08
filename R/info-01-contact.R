@@ -63,14 +63,11 @@ S7::method(as_contact, class_list | class_character) <- function(x) {
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 
-S7::method(as_contact, class_missing) <- function(x) {
+S7::method(as_contact, class_missing | class_null) <- function(x) {
   contact()
 }
 
 S7::method(as_contact, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(contact())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls contact}."
   )

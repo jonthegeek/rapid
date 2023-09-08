@@ -17,7 +17,7 @@
 .extract_along_chr <- function(x, el) {
   y <- purrr::map(x, el)
   if (purrr::every(y, is.null)) {
-    return(NULL)
+    return(character())
   }
   purrr::map_chr(
     y,

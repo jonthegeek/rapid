@@ -87,14 +87,11 @@ S7::method(as_server_variables, class_list) <- function(x) {
   )
 }
 
-S7::method(as_server_variables, class_missing) <- function(x) {
+S7::method(as_server_variables, class_missing | class_null) <- function(x) {
   server_variables()
 }
 
 S7::method(as_server_variables, class_any) <- function(x) {
-  if (is.null(x)) {
-    return(server_variables())
-  }
   cli::cli_abort(
     "Can't coerce {.arg x} {.cls {class(x)}} to {.cls server_variables}."
   )
