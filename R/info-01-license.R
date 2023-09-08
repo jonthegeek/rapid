@@ -78,7 +78,11 @@ S7::method(as_license, class_list | class_character) <- function(x) {
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
 }
 
-S7::method(as_license, class_missing | class_null) <- function(x) {
+S7::method(as_license, class_missing) <- function(x) {
+  license()
+}
+
+S7::method(as_license, NULL) <- function(x) {
   license()
 }
 

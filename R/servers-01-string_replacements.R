@@ -121,7 +121,11 @@ S7::method(as_string_replacements, class_list) <- function(x) {
   )
 }
 
-S7::method(as_string_replacements, class_missing | class_null) <- function(x) {
+S7::method(as_string_replacements, class_missing) <- function(x) {
+  string_replacements()
+}
+
+S7::method(as_string_replacements, NULL) <- function(x) {
   string_replacements()
 }
 

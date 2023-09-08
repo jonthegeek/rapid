@@ -120,7 +120,11 @@ S7::method(as_info, class_list | class_character) <- function(x) {
   )
 }
 
-S7::method(as_info, class_missing | class_null) <- function(x) {
+S7::method(as_info, class_missing) <- function(x) {
+  info()
+}
+
+S7::method(as_info, NULL) <- function(x) {
   info()
 }
 

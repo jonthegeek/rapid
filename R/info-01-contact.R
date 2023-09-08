@@ -64,7 +64,11 @@ S7::method(as_contact, class_list | class_character) <- function(x) {
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 
-S7::method(as_contact, class_missing | class_null) <- function(x) {
+S7::method(as_contact, class_missing) <- function(x) {
+  contact()
+}
+
+S7::method(as_contact, NULL) <- function(x) {
   contact()
 }
 
