@@ -10,6 +10,8 @@ as_info(x, ...)
 \item{x}{The object to coerce. Must be empty or have names "title",
 "version", "contact", "description", "license", "summary", and/or
 "terms_of_service". Extra names are ignored.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
 An \code{info} object as returned by \code{\link[=info]{info()}}.

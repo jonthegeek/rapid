@@ -9,5 +9,6 @@
 #' @importFrom S7 class_missing
 #' @importFrom stbl stabilize_chr_scalar
 #' @importFrom stbl to_chr_scalar
+#' @importFrom yaml read_yaml
 ## usethis namespace: end
 NULL

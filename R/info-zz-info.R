@@ -89,6 +89,7 @@ info <- S7::new_class(
 #' `as_info()` turns an existing object into an `info` object. This is in
 #' contrast with [info()], which builds an `info` from individual properties.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "title",
 #'   "version", "contact", "description", "license", "summary", and/or
 #'   "terms_of_service". Extra names are ignored.

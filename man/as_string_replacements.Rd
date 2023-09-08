@@ -10,6 +10,8 @@ as_string_replacements(x, ...)
 \item{x}{The object to coerce. Must be empty or be a list of named lists,
 each with names "enum", "default", or "description". Additional names are
 ignored.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
 A \code{string_replacements} as returned by \code{\link[=string_replacements]{string_replacements()}}.

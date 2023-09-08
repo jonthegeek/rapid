@@ -9,6 +9,8 @@ as_license(x, ...)
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "name",
 "identifier", and/or "url". Extra names are ignored.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
 A \code{license} as returned by \code{\link[=license]{license()}}.

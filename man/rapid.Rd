@@ -23,13 +23,13 @@ An object that represents an API.
 rapid()
 rapid(
   info = info(title = "A", version = "1"),
-  servers(
+  servers = servers(
     url = "https://development.gigantic-server.com/v1"
   )
 )
 rapid(
   info = info(title = "A", version = "1"),
-  servers(
+  servers = servers(
     url = c(
       "https://development.gigantic-server.com/v1",
       "https://staging.gigantic-server.com/v1",

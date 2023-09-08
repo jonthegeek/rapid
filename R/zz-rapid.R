@@ -13,13 +13,13 @@
 #' rapid()
 #' rapid(
 #'   info = info(title = "A", version = "1"),
-#'   servers(
+#'   servers = servers(
 #'     url = "https://development.gigantic-server.com/v1"
 #'   )
 #' )
 #' rapid(
 #'   info = info(title = "A", version = "1"),
-#'   servers(
+#'   servers = servers(
 #'     url = c(
 #'       "https://development.gigantic-server.com/v1",
 #'       "https://staging.gigantic-server.com/v1",
@@ -63,6 +63,7 @@ rapid <- S7::new_class(
 #' contrast with [rapid()], which builds a `rapid` object from individual
 #' properties.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "info" and/or
 #'   "servers". Extra names are ignored.
 #'

@@ -43,6 +43,7 @@ contact <- S7::new_class(
 #' contrast with [contact()], which builds a `contact` from individual
 #' properties.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "name", "email",
 #'   and/or "url". Extra names are ignored.
 #'

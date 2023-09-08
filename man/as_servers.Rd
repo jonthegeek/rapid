@@ -9,6 +9,8 @@ as_servers(x, ...)
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "name", "email",
 and/or "url". Extra names are ignored.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
 A \code{servers} object as returned by \code{\link[=servers]{servers()}}.

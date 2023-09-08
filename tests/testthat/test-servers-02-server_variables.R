@@ -24,7 +24,9 @@ test_that("server_variables() returns an empty server_variables", {
 
 test_that("server_variables() accepts bare string_replacements", {
   expect_snapshot(server_variables(string_replacements()))
-  expect_snapshot(server_variables(string_replacements(), string_replacements()))
+  expect_snapshot(
+    server_variables(string_replacements(), string_replacements())
+  )
 })
 
 test_that("server_variables() accepts lists of string_replacements", {

@@ -9,6 +9,8 @@ as_server_variables(x, ...)
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list of objects that can
 be coerced to \code{string_replacements} objects via \code{\link[=as_string_replacements]{as_string_replacements()}}.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
 A \code{server_variables} object as returned by \code{\link[=server_variables]{server_variables()}}.

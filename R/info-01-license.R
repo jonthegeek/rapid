@@ -57,6 +57,7 @@ license <- S7::new_class(
 #' `as_license()` turns an existing object into a `license`. This is in contrast
 #' with [license()], which builds a `license` from individual properties.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "name",
 #'   "identifier", and/or "url". Extra names are ignored.
 #'

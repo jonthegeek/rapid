@@ -80,6 +80,7 @@ string_replacements <- S7::new_class(
 #' `string_replacements`. This is in contrast with [string_replacements()],
 #' which builds a `string_replacements` from individual properties.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or be a list of named lists,
 #'   each with names "enum", "default", or "description". Additional names are
 #'   ignored.
@@ -101,7 +102,10 @@ string_replacements <- S7::new_class(
 #'     )
 #'   )
 #' )
-as_string_replacements <- S7::new_generic("as_string_replacements", dispatch_args = "x")
+as_string_replacements <- S7::new_generic(
+  "as_string_replacements",
+  dispatch_args = "x"
+)
 
 S7::method(as_string_replacements, string_replacements) <- function(x) {
   x
