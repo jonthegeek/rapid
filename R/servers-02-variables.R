@@ -8,16 +8,16 @@
 #' @param ... One or more [server_variable()] objects, or a list of
 #'   [server_variable()] objects.
 #'
-#' @return A `server_variable_list` S7 object, which is a validated list of
+#' @return A `variables` S7 object, which is a validated list of
 #'   [server_variable()] objects.
 #' @export
 #'
 #' @examples
-#' server_variable_list(
+#' variables(
 #'   list(server_variable(), server_variable())
 #' )
-server_variable_list <- S7::new_class(
-  "server_variable_list",
+variables <- S7::new_class(
+  "variables",
   package = "rapid",
   parent = class_list,
   constructor = function(...) {

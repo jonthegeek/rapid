@@ -16,7 +16,7 @@ servers(
 \item{description}{A character vector of (usually brief) descriptions of
 those urls.}
 
-\item{variables}{A \code{\link[=server_variable_list]{server_variable_list()}} object.}
+\item{variables}{A \code{\link[=variables]{variables()}} object.}
 }
 \value{
 A \code{servers} S7 object, with properties \code{url}, \code{description}, and
@@ -41,7 +41,7 @@ servers(
 servers(
   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
   description = "The production API server",
-  variables = server_variable_list(server_variable(
+  variables = variables(server_variable(
     name = c("username", "port", "basePath"),
     default = c("demo", "8443", "v2"),
     description = c(

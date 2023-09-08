@@ -7,5 +7,5 @@
       <rapid::servers>
        @ url        : chr(0) 
        @ description: chr(0) 
-       @ variables  : <rapid::server_variable_list>  list()
+       @ variables  : <rapid::variables>  list()
 

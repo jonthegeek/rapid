@@ -7,7 +7,7 @@
 #' @param url A character vector of urls.
 #' @param description A character vector of (usually brief) descriptions of
 #'   those urls.
-#' @param variables A [server_variable_list()] object.
+#' @param variables A [variables()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
@@ -29,7 +29,7 @@
 #' servers(
 #'   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
 #'   description = "The production API server",
-#'   variables = server_variable_list(server_variable(
+#'   variables = variables(server_variable(
 #'     name = c("username", "port", "basePath"),
 #'     default = c("demo", "8443", "v2"),
 #'     description = c(
@@ -49,7 +49,7 @@ servers <- S7::new_class(
   properties = list(
     url = class_character,
     description = class_character,
-    variables = server_variable_list
+    variables = variables
   ),
   validator = function(self) {
     validate_parallel(

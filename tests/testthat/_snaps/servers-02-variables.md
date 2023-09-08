@@ -1,46 +1,46 @@
-# server_variable_list() errors informatively for bad contents
+# variables() errors informatively for bad contents
 
     Code
-      server_variable_list(letters)
+      variables(letters)
     Condition
       Error:
-      ! <rapid::server_variable_list> object is invalid:
+      ! <rapid::variables> object is invalid:
       - All values must be <server_variable> objects.
       - Bad values at 1.
 
 ---
 
     Code
-      server_variable_list(list(letters, letters))
+      variables(list(letters, letters))
     Condition
       Error:
-      ! <rapid::server_variable_list> object is invalid:
+      ! <rapid::variables> object is invalid:
       - All values must be <server_variable> objects.
       - Bad values at 1 and 2.
 
 ---
 
     Code
-      server_variable_list(server_variable(), letters, server_variable(), letters)
+      variables(server_variable(), letters, server_variable(), letters)
     Condition
       Error:
-      ! <rapid::server_variable_list> object is invalid:
+      ! <rapid::variables> object is invalid:
       - All values must be <server_variable> objects.
       - Bad values at 2 and 4.
 
-# server_variable_list() returns an empty server_variable_list
+# variables() returns an empty variables
 
     Code
-      server_variable_list()
+      variables()
     Output
-      <rapid::server_variable_list>  list()
+      <rapid::variables>  list()
 
-# server_variable_list() accepts bare server_variables
+# variables() accepts bare server_variables
 
     Code
-      server_variable_list(server_variable())
+      variables(server_variable())
     Output
-      <rapid::server_variable_list> List of 1
+      <rapid::variables> List of 1
        $ : <rapid::server_variable>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
@@ -50,9 +50,9 @@
 ---
 
     Code
-      server_variable_list(server_variable(), server_variable())
+      variables(server_variable(), server_variable())
     Output
-      <rapid::server_variable_list> List of 2
+      <rapid::variables> List of 2
        $ : <rapid::server_variable>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
@@ -64,12 +64,12 @@
         ..@ enum       : list()
         ..@ description: chr(0) 
 
-# server_variable_list() accepts lists of server_variables
+# variables() accepts lists of server_variables
 
     Code
-      server_variable_list(list(server_variable()))
+      variables(list(server_variable()))
     Output
-      <rapid::server_variable_list> List of 1
+      <rapid::variables> List of 1
        $ : <rapid::server_variable>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
@@ -79,9 +79,9 @@
 ---
 
     Code
-      server_variable_list(list(server_variable(), server_variable()))
+      variables(list(server_variable(), server_variable()))
     Output
-      <rapid::server_variable_list> List of 2
+      <rapid::variables> List of 2
        $ : <rapid::server_variable>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
