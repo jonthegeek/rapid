@@ -3,13 +3,14 @@
 #' Validate the license information for an API.
 #'
 #' @inheritParams rlang::args_dots_empty
-#' @param name The license name used for the API.
-#' @param identifier An
+#' @param name Character scalar (optional). The license name used for the API.
+#' @param identifier Character scalar (optional). An
 #'   [SPDX](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60)
 #'   license expression for the API. The `identifier` field is mutually
 #'   exclusive of the `url` field.
-#' @param url A URL to the license used for the API. This *must* be in the form
-#'   of a URL. The `url` field is mutually exclusive of the `identifier` field.
+#' @param url Character scalar (optional). A URL to the license used for the
+#'   API. This *must* be in the form of a URL. The `url` field is mutually
+#'   exclusive of the `identifier` field.
 #'
 #' @return A `license` S7 object, with fields `name`, `identifier`, and `url`.
 #' @export

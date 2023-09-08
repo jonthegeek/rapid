@@ -20,5 +20,20 @@ properties.
 }
 \examples{
 as_servers()
-as_servers(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
+as_servers(
+  list(
+    list(
+      url = "https://development.gigantic-server.com/v1",
+      description = "Development server"
+    ),
+    list(
+      url = "https://staging.gigantic-server.com/v1",
+      description = "Staging server"
+    ),
+    list(
+      url = "https://api.gigantic-server.com/v1",
+      description = "Production server"
+    )
+  )
+)
 }

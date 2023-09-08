@@ -2,9 +2,12 @@
 #'
 #' Connectivity information for an API.
 #'
-#' @param url A character vector of urls.
-#' @param description A character vector of (usually brief) descriptions of
-#'   those urls.
+#' @param url Character vector (required). The urls of the target hosts. These
+#'   urls support [string_replacements()]. Variable substitutions will be made
+#'   when a variable is named in \{brackets\}.
+#' @param description Character vector (optional). Strings describing the hosts
+#'   designated by `url`. [CommonMark syntax](https://spec.commonmark.org/)
+#'   *may* be used for rich text representation.
 #' @param variables A [server_variables()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and
@@ -77,14 +80,29 @@ servers <- S7::new_class(
 #'
 #' @examples
 #' as_servers()
-#' as_servers(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
+#' as_servers(
+#'   list(
+#'     list(
+#'       url = "https://development.gigantic-server.com/v1",
+#'       description = "Development server"
+#'     ),
+#'     list(
+#'       url = "https://staging.gigantic-server.com/v1",
+#'       description = "Staging server"
+#'     ),
+#'     list(
+#'       url = "https://api.gigantic-server.com/v1",
+#'       description = "Production server"
+#'     )
+#'   )
+#' )
 as_servers <- S7::new_generic("as_servers", dispatch_args = "x")
 
 S7::method(as_servers, servers) <- function(x) {
   x
 }
 
-S7::method(as_servers, class_list | class_character) <- function(x) {
+S7::method(as_servers, class_list) <- function(x) {
   call <- rlang::caller_env()
   x <- purrr::map(
     x,

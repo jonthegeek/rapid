@@ -7,12 +7,15 @@
 contact(name = class_missing, email = class_missing, url = class_missing)
 }
 \arguments{
-\item{name}{The identifying name of the contact person/organization.}
+\item{name}{Character scalar (optional). The identifying name of the contact
+person/organization.}
 
-\item{email}{The email address of the contact person/organization. This
+\item{email}{Character scalar (optional). The email address of the contact
+person/organization. This
 \emph{must} be in the form of an email address.}
 
-\item{url}{The URL pointing to the contact information.}
+\item{url}{Character scalar (optional). The URL pointing to the contact
+information.}
 }
 \value{
 A \code{contact} S7 object, with fields \code{name}, \code{email}, and \code{url}.

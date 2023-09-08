@@ -7,6 +7,7 @@
 info(
   title = class_missing,
   version = class_missing,
+  ...,
   contact = class_missing,
   description = class_missing,
   license = class_missing,
@@ -20,6 +21,8 @@ info(
 \item{version}{The version of the API document (which is distinct from the
 OpenAPI Specification version or the API implementation version).  Required
 when the object is not empty.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 
 \item{contact}{The contact information for the exposed API, generated via
 \code{\link[=contact]{contact()}}.}

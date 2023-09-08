@@ -20,4 +20,21 @@ object. This is in contrast with \code{\link[=server_variables]{server_variables
 }
 \examples{
 as_server_variables()
+as_server_variables(
+  list(
+    list(
+      username = c(default = "demo", description = "Name of the user.")
+    ),
+    list(
+      username = c(
+        default = "demo",
+        description = "Name of the user."
+      ),
+      port = list(
+        default = "8443",
+        enum = c("8443", "443")
+      )
+    )
+  )
+)
 }

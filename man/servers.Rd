@@ -11,10 +11,13 @@ servers(
 )
 }
 \arguments{
-\item{url}{A character vector of urls.}
+\item{url}{Character vector (required). The urls of the target hosts. These
+urls support \code{\link[=string_replacements]{string_replacements()}}. Variable substitutions will be made
+when a variable is named in \{brackets\}.}
 
-\item{description}{A character vector of (usually brief) descriptions of
-those urls.}
+\item{description}{Character vector (optional). Strings describing the hosts
+designated by \code{url}. \href{https://spec.commonmark.org/}{CommonMark syntax}
+\emph{may} be used for rich text representation.}
 
 \item{variables}{A \code{\link[=server_variables]{server_variables()}} object.}
 }

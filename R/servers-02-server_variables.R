@@ -55,6 +55,23 @@ server_variables <- S7::new_class(
 #'
 #' @examples
 #' as_server_variables()
+#' as_server_variables(
+#'   list(
+#'     list(
+#'       username = c(default = "demo", description = "Name of the user.")
+#'     ),
+#'     list(
+#'       username = c(
+#'         default = "demo",
+#'         description = "Name of the user."
+#'       ),
+#'       port = list(
+#'         default = "8443",
+#'         enum = c("8443", "443")
+#'       )
+#'     )
+#'   )
+#' )
 as_server_variables <- S7::new_generic("as_server_variables", dispatch_args = "x")
 
 S7::method(as_server_variables, server_variables) <- function(x) {

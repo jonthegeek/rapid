@@ -4,6 +4,7 @@
 #' clients if needed, and *may* be presented in editing or documentation
 #' generation tools for convenience.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param title The title of the API. Required when the object is not empty.
 #' @param version The version of the API document (which is distinct from the
 #'   OpenAPI Specification version or the API implementation version).  Required
@@ -42,6 +43,26 @@ info <- S7::new_class(
     summary = character_scalar_property("summary"),
     terms_of_service = character_scalar_property("terms_of_service")
   ),
+  constructor = function(title = class_missing,
+                         version = class_missing,
+                         ...,
+                         contact = class_missing,
+                         description = class_missing,
+                         license = class_missing,
+                         summary = class_missing,
+                         terms_of_service = class_missing) {
+    check_dots_empty()
+    S7::new_object(
+      NULL,
+      title = title,
+      version = version,
+      contact = contact,
+      description = description,
+      license = license,
+      summary = summary,
+      terms_of_service = terms_of_service
+    )
+  },
   validator = function(self) {
     validate_lengths(
       self,
@@ -65,14 +86,14 @@ info <- S7::new_class(
 
 #' Coerce lists and character vectors to info objects
 #'
-#' `as_info()` turns an existing object into an `info`. This is in contrast with
-#' [info()], which builds an `info` from individual properties.
+#' `as_info()` turns an existing object into an `info` object. This is in
+#' contrast with [info()], which builds an `info` from individual properties.
 #'
 #' @param x The object to coerce. Must be empty or have names "title",
 #'   "version", "contact", "description", "license", "summary", and/or
 #'   "terms_of_service". Extra names are ignored.
 #'
-#' @return An `info` as returned by [info()].
+#' @return An `info` object as returned by [info()].
 #' @export
 #'
 #' @examples

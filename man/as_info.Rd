@@ -12,11 +12,11 @@ as_info(x, ...)
 "terms_of_service". Extra names are ignored.}
 }
 \value{
-An \code{info} as returned by \code{\link[=info]{info()}}.
+An \code{info} object as returned by \code{\link[=info]{info()}}.
 }
 \description{
-\code{as_info()} turns an existing object into an \code{info}. This is in contrast with
-\code{\link[=info]{info()}}, which builds an \code{info} from individual properties.
+\code{as_info()} turns an existing object into an \code{info} object. This is in
+contrast with \code{\link[=info]{info()}}, which builds an \code{info} from individual properties.
 }
 \examples{
 as_info()

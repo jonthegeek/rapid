@@ -63,17 +63,12 @@ test_that("length() of a servers reports the overall length", {
 
 test_that("as_servers() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
-    as_servers(letters),
+    as_servers(list(letters)),
     error = TRUE,
     cnd_class = TRUE
   )
   expect_snapshot(
-    as_servers(list(a = "https://example.com", b = "A cool server.")),
-    error = TRUE,
-    cnd_class = TRUE
-  )
-  expect_snapshot(
-    as_servers(c(a = "https://example.com", b = "A cool server.")),
+    as_servers(list(list(a = "https://example.com", b = "A cool server."))),
     error = TRUE,
     cnd_class = TRUE
   )
@@ -113,41 +108,41 @@ test_that("as_servers() returns expected objects", {
     )
   )
   expect_identical(
-    as_server_variables(
+    as_servers(
       list(
         list(
-          username = c(default = "demo", description = "Name of the user.")
-        ),
-        list(
-          username = c(
-            default = "demo",
-            description = "Name of the user.",
-            x = "https://jonthegeek.com"
-          ),
-          port = list(
-            default = "8443",
-            enum = c("8443", "443")
+          url = "https://{username}.gigantic-server.com:{port}/{basePath}",
+          description = "The production API server",
+          variables = list(
+            username = list(
+              default = "demo",
+              description = "this value is assigned by the service provider, in this example `gigantic-server.com`"
+            ),
+            port = list(enum = c("8443", "443"), default = "8443"),
+            basePath = list(default = "v2")
           )
         )
       )
     ),
-    server_variables(
-      string_replacements(
-        name = "username",
-        default = "demo",
-        description = "Name of the user."
-      ),
-      string_replacements(
-        name = c("username", "port"),
-        default = c("demo", 8443),
-        description = c("Name of the user.", NA),
-        enum = list(NULL, c(8443, 443))
+    servers(
+      url = "https://{username}.gigantic-server.com:{port}/{basePath}",
+      description = "The production API server",
+      variables = server_variables(
+        string_replacements(
+          name = c("username", "port", "basePath"),
+          description = c(
+            "this value is assigned by the service provider, in this example `gigantic-server.com`",
+            NA, NA
+          ),
+          default = c("demo", "8443", "v2"),
+          enum = list(NULL, c("8443", "443"), NULL)
+        )
       )
     )
   )
   expect_identical(
-    as_server_variables(list()),
-    server_variables()
+    as_servers(list()),
+    servers()
   )
 })
 

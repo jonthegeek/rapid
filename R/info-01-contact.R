@@ -2,9 +2,12 @@
 #'
 #' Validate the contact information for an API.
 #'
-#' @param name The identifying name of the contact person/organization.
-#' @param url The URL pointing to the contact information.
-#' @param email The email address of the contact person/organization. This
+#' @param name Character scalar (optional). The identifying name of the contact
+#'   person/organization.
+#' @param url Character scalar (optional). The URL pointing to the contact
+#'   information.
+#' @param email Character scalar (optional). The email address of the contact
+#'   person/organization. This
 #'   *must* be in the form of an email address.
 #'
 #' @return A `contact` S7 object, with fields `name`, `email`, and `url`.

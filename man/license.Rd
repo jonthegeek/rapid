@@ -7,17 +7,18 @@
 license(name = character(), ..., identifier = character(), url = character())
 }
 \arguments{
-\item{name}{The license name used for the API.}
+\item{name}{Character scalar (optional). The license name used for the API.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{identifier}{An
+\item{identifier}{Character scalar (optional). An
 \href{https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60}{SPDX}
 license expression for the API. The \code{identifier} field is mutually
 exclusive of the \code{url} field.}
 
-\item{url}{A URL to the license used for the API. This \emph{must} be in the form
-of a URL. The \code{url} field is mutually exclusive of the \code{identifier} field.}
+\item{url}{Character scalar (optional). A URL to the license used for the
+API. This \emph{must} be in the form of a URL. The \code{url} field is mutually
+exclusive of the \code{identifier} field.}
 }
 \value{
 A \code{license} S7 object, with fields \code{name}, \code{identifier}, and \code{url}.

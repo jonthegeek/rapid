@@ -4,10 +4,12 @@
 \alias{rapid}
 \title{R API definition object}
 \usage{
-rapid(info = class_missing, servers = class_missing)
+rapid(info = class_missing, ..., servers = class_missing)
 }
 \arguments{
 \item{info}{An \code{info} object defined by \code{\link[=info]{info()}}.}
+
+\item{...}{These dots are for future extensions and must be empty.}
 
 \item{servers}{A \code{servers} object defined by \code{\link[=servers]{servers()}}.}
 }

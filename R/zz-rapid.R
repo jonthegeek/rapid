@@ -1,9 +1,8 @@
-# TODO: Implement as_*.
-
 #' R API definition object
 #'
 #' An object that represents an API.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param info An `info` object defined by [info()].
 #' @param servers A `servers` object defined by [servers()].
 #'
@@ -40,6 +39,10 @@ rapid <- S7::new_class(
     info = info,
     servers = servers
   ),
+  constructor = function(info = class_missing, ..., servers = class_missing) {
+    check_dots_empty()
+    S7::new_object(NULL, info = info, servers = servers)
+  },
   validator = function(self) {
     validate_lengths(
       self,

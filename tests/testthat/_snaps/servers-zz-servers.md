@@ -12,7 +12,7 @@
 # as_servers() errors informatively for unnamed or misnamed input
 
     Code
-      as_servers(letters)
+      as_servers(list(letters))
     Condition <purrr_error_indexed>
       Error in `purrr::map()`:
       i In index: 1.
@@ -23,23 +23,10 @@
 ---
 
     Code
-      as_servers(list(a = "https://example.com", b = "A cool server."))
+      as_servers(list(list(a = "https://example.com", b = "A cool server.")))
     Condition <purrr_error_indexed>
       Error in `purrr::map()`:
       i In index: 1.
-      i With name: a.
-      Caused by error in `as_servers()`:
-      ! `x[[i]]` must have names "url", "description", or "variables".
-      * Any other names are ignored.
-
----
-
-    Code
-      as_servers(c(a = "https://example.com", b = "A cool server."))
-    Condition <purrr_error_indexed>
-      Error in `purrr::map()`:
-      i In index: 1.
-      i With name: a.
       Caused by error in `as_servers()`:
       ! `x[[i]]` must have names "url", "description", or "variables".
       * Any other names are ignored.
