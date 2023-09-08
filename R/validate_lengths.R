@@ -1,96 +1,94 @@
 validate_lengths <- function(obj,
-                             key,
-                             key_max_length = NULL,
+                             key_name,
                              required_same = NULL,
                              required_any = NULL,
                              optional_same = NULL,
                              optional_any = NULL) {
-  key_len <- .prop_lengths(obj, key)
+  key_length <- .prop_lengths(obj, key_name)
 
-  if (!is.null(key_max_length) && key_len > key_max_length) {
-    return(
-      c(
-        cli::format_inline(
-          "{.arg {key}} must have at most {key_max_length) value{?s}."
-        ),
-        .msg_sizes(key, key_len)
-      )
-    )
+  if (!key_length) {
+    all_others <- c(required_same, required_any, optional_same, optional_any)
+    return(.msg_empty(key_name, all_others, .prop_lengths(obj, all_others)))
   }
 
-  if (!key_len) {
-    return(.msg_empty(
-      key,
-      c(required_same, required_any, optional_same, optional_any),
-      .prop_lengths(
-        obj,
-        c(required_same, required_any, optional_same, optional_any)
-      )
-    ))
-  }
+  issues <- character()
 
   if (!is.null(required_same)) {
-    required_same_lens <- .prop_lengths(obj, required_same)
-    if (!all(required_same_lens == key_len)) {
-      return(.msg_same(key, key_len, required_same, required_same_lens))
-    }
+    issues <- c(issues, .check_same(obj, key_name, key_length, required_same))
   }
 
   if (!is.null(required_any)) {
-    required_any_lens <- .prop_lengths(obj, required_any)
-    if (!all(required_any_lens)) {
-      return(.msg_non_empty(key, required_any, required_any_lens))
-    }
+    issues <- c(issues, .check_non_empty(obj, key_name, required_any))
   }
 
   if (!is.null(optional_same)) {
-    optional_same_lens <- .prop_lengths(obj, optional_same)
-    if (any(optional_same_lens & optional_same_lens != key_len)) {
-      return(
-        .msg_same_or_empty(key, key_len, optional_same, optional_same_lens)
-      )
-    }
+    issues <- c(
+      issues,
+      .check_same_or_empty(obj, key_name, key_length, optional_same)
+    )
   }
+
+  return(unique(issues))
 }
 
-.msg_same <- function(key_name, key_length, prop_names, prop_lengths) {
-  bad_lengths <- prop_lengths != key_length
-  not_same <- prop_names[bad_lengths]
-  return(
-    c(
-      cli::format_inline(
-        "{.arg {not_same}} must have the same length as {.arg {key_name}}"
-      ),
-      .msg_sizes(key_name, key_length),
-      .msg_sizes(not_same, prop_lengths[bad_lengths])
-    )
+.check_same <- function(obj, key_name, key_length, prop_names) {
+  prop_lengths <- .prop_lengths(obj, prop_names)
+  have_bad_lengths <- prop_lengths != key_length
+  if (any(have_bad_lengths)) {
+    not_same <- prop_names[have_bad_lengths]
+    bad_lengths <- prop_lengths[have_bad_lengths]
+    return(.msg_must_have_same(key_name, key_length, not_same, bad_lengths))
+  }
+  return(character())
+}
+.msg_must_have_same <- function(key_name, key_length, not_same, bad_lengths) {
+  c(
+    cli::format_inline(
+      "{.arg {not_same}} must have the same length as {.arg {key_name}}"
+    ),
+    .msg_sizes(key_name, key_length),
+    .msg_sizes(not_same, bad_lengths)
   )
 }
 
-.msg_non_empty <- function(key_name, prop_names, prop_lengths) {
-  bad_lengths <- !prop_lengths
-  if (any(bad_lengths)) {
-    empty <- prop_names[bad_lengths]
-    return(cli::format_inline(
-      "When {.arg {key_name}} is defined, {.arg {empty}} must not be empty."
-    ))
+.check_non_empty <- function(obj, key_name, prop_names) {
+  prop_lengths <- .prop_lengths(obj, prop_names)
+  empty <- prop_names[prop_lengths == 0]
+  if (any(empty)) {
+    return(.msg_non_empty(key_name, empty))
   }
 }
+.msg_non_empty <- function(key_name, empty) {
+  cli::format_inline(
+    "When {.arg {key_name}} is defined, {.arg {empty}} must not be empty."
+  )
+}
 
-.msg_same_or_empty <- function(key_name, key_length, prop_names, prop_lengths) {
-  bad_lengths <- prop_lengths & prop_lengths != key_length
-  if (any(bad_lengths)) {
-    bad_size <- prop_names[bad_lengths]
+.check_same_or_empty <- function(obj, key_name, key_length, prop_names) {
+  prop_lengths <- .prop_lengths(obj, prop_names)
+  have_bad_lengths <- prop_lengths & prop_lengths != key_length
+  if (any(have_bad_lengths)) {
     return(
-      c(
-        cli::format_inline(
-          "{.arg {bad_size}} must be empty or have the same length as {.arg {key_name}}"
-        ),
-        .msg_sizes(key_name, key_length),
-        .msg_sizes(bad_size, prop_lengths[bad_lengths])
+      .msg_not_same_or_empty(
+        key_name,
+        key_length,
+        prop_names[have_bad_lengths],
+        prop_lengths[have_bad_lengths]
       )
     )
   }
+}
+.msg_not_same_or_empty <- function(key_name,
+                                   key_length,
+                                   bad_props,
+                                   bad_lengths) {
+  c(
+    cli::format_inline(
+      "{.arg {bad_props}} must be empty or have the same length as {.arg {key_name}}"
+    ),
+    .msg_sizes(key_name, key_length),
+    .msg_sizes(bad_props, bad_lengths)
+  )
 }
 
 .msg_empty <- function(key_name, prop_names, prop_lengths = NULL) {

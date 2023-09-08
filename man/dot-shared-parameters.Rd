@@ -4,11 +4,6 @@
 \alias{.shared-parameters}
 \title{Parameters used in multiple functions}
 \arguments{
-\item{apid_list}{An API document as a list, such as that obtained by reading
-an OAS document with \code{\link[yaml:read_yaml]{yaml::read_yaml()}}.}
-
-\item{apid_url}{The url for an API document.}
-
 \item{...}{Catch-all for unimplemented properties.}
 }
 \description{
