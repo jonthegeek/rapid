@@ -61,7 +61,7 @@ string_replacements <- S7::new_class(
       "name",
       required = "default",
       optional = c("enum", "description")
-    ) %|0|% validate_in_enum(
+    ) %|0|% validate_in_enums(
       self,
       value_name = "default",
       enum_name = "enum"
