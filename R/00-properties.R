@@ -29,7 +29,7 @@ enum_property <- function(x_arg) {
       }
       value <- purrr::map(
         value,
-        \(enumerations) {
+        function(enumerations) {
           enumerations <- stbl::stabilize_chr(
             enumerations,
             allow_na = FALSE,

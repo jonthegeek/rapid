@@ -1,7 +1,7 @@
 .prop_lengths <- function(obj, prop_names) {
   purrr::map_int(
     prop_names,
-    \(prop_name) {
+    function(prop_name) {
       length(S7::prop(obj, prop_name))
     }
   )
@@ -19,13 +19,15 @@
 
 .extract_along_chr <- function(x, el) {
   y <- purrr::map(x, el)
-  if (purrr::every(y, is.null)) {
+  if (all(lengths(y) == 0)) {
     return(character())
   }
   purrr::map_chr(
     y,
-    \(this) {
-      this %||% NA
-    }
+    .empty_to_na
   )
+}
+
+.empty_to_na <- function(x) {
+  x %|0|% NA
 }

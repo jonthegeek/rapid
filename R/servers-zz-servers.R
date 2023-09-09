@@ -107,7 +107,7 @@ S7::method(as_servers, class_list) <- function(x) {
   call <- rlang::caller_env()
   x <- purrr::map(
     x,
-    \(x) {
+    function(x) {
       .validate_for_as_class(
         x,
         servers,

@@ -7,7 +7,7 @@ validate_in_enum <- function(obj,
   if (length(enums)) {
     missing_msgs <- purrr::map2(
       values, enums,
-      \(value, enum) {
+      function(value, enum) {
         if (length(enum) && !(value %in% enum)) {
           cli::format_inline("{.val {value}} is not in {.val {enum}}.")
         }
