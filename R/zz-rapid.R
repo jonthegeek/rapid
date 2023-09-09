@@ -9,6 +9,8 @@
 #' @return A `rapid` S7 object, with properties `info` and `servers`.
 #' @export
 #'
+#' @seealso [as_rapid()] for coercing objects to `rapid`.
+#'
 #' @examples
 #' rapid()
 #' rapid(

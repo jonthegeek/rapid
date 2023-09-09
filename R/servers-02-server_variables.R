@@ -10,6 +10,8 @@
 #'   [string_replacements()] objects.
 #' @export
 #'
+#' @seealso [as_server_variables()] for coercing objects to `server_variables`.
+#'
 #' @examples
 #' server_variables(
 #'   list(string_replacements(), string_replacements())

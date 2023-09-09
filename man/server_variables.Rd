@@ -23,3 +23,6 @@ server_variables(
   list(string_replacements(), string_replacements())
 )
 }
+\seealso{
+\code{\link[=as_server_variables]{as_server_variables()}} for coercing objects to \code{server_variables}.
+}

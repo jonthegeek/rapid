@@ -110,7 +110,7 @@ validate_lengths <- function(obj,
   purrr::map2_chr(
     prop_names,
     prop_lengths,
-    \(prop_name, prop_length) {
+    function(prop_name, prop_length) {
       cli::format_inline(
         "{.arg {prop_name}} has {cli::no(prop_length)} value{?s}."
       )

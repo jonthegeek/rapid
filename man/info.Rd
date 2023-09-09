@@ -56,3 +56,6 @@ info(
   )
 )
 }
+\seealso{
+\code{\link[=as_info]{as_info()}} for coercing objects to \code{info}.
+}

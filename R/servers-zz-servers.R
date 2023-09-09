@@ -14,6 +14,8 @@
 #'   `variables`.
 #' @export
 #'
+#' @seealso [as_servers()] for coercing objects to `servers`.
+#'
 #' @examples
 #' servers(
 #'   url = c(
@@ -107,7 +109,7 @@ S7::method(as_servers, class_list) <- function(x) {
   call <- rlang::caller_env()
   x <- purrr::map(
     x,
-    \(x) {
+    function(x) {
       .validate_for_as_class(
         x,
         servers,

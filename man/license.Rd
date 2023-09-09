@@ -36,3 +36,6 @@ license(
   url = "https://opensource.org/license/apache-2-0/"
 )
 }
+\seealso{
+\code{\link[=as_license]{as_license()}} for coercing objects to \code{license}.
+}
