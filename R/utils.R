@@ -29,7 +29,3 @@
     }
   )
 }
-
-.extract <- function(x, el) {
-  x$el %||% NA
-}
