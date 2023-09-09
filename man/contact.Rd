@@ -30,3 +30,6 @@ contact(
   "https://www.example.com/support"
 )
 }
+\seealso{
+\code{\link[=as_contact]{as_contact()}} for coercing objects to \code{contact}.
+}

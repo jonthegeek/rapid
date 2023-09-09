@@ -14,6 +14,8 @@
 #'   `variables`.
 #' @export
 #'
+#' @seealso [as_servers()] for coercing objects to `servers`.
+#'
 #' @examples
 #' servers(
 #'   url = c(

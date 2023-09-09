@@ -22,6 +22,10 @@
 #'   `enum`, and `description`.
 #' @export
 #'
+#' @seealso [as_string_replacements()] for coercing objects to
+#'   `string_replacements`, and [server_variables()] for creating collections
+#'   of `string_replacements`.
+#'
 #' @examples
 #' string_replacements(
 #'   "username",

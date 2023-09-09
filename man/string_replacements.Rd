@@ -48,3 +48,8 @@ string_replacements(
   description = "The active user's folder."
 )
 }
+\seealso{
+\code{\link[=as_string_replacements]{as_string_replacements()}} for coercing objects to
+\code{string_replacements}, and \code{\link[=server_variables]{server_variables()}} for creating collections
+of \code{string_replacements}.
+}

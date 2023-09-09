@@ -43,3 +43,6 @@ rapid(
   )
 )
 }
+\seealso{
+\code{\link[=as_rapid]{as_rapid()}} for coercing objects to \code{rapid}.
+}

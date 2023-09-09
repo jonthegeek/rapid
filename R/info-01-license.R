@@ -15,6 +15,8 @@
 #' @return A `license` S7 object, with fields `name`, `identifier`, and `url`.
 #' @export
 #'
+#' @seealso [as_license()] for coercing objects to `license`.
+#'
 #' @examples
 #' license(
 #'   "Apache 2.0",

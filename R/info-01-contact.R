@@ -13,6 +13,8 @@
 #' @return A `contact` S7 object, with fields `name`, `email`, and `url`.
 #' @export
 #'
+#' @seealso [as_contact()] for coercing objects to `contact`.
+#'
 #' @examples
 #' contact(
 #'   "API Support",

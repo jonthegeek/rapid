@@ -1,4 +1,23 @@
 url: https://jonthegeek.github.io/rapid/
 template:
   bootstrap: 5
-
+reference:
+- title: rapid class
+- contents:
+  - rapid
+  - as_rapid
+- title: info class
+- contents:
+  - info
+  - as_info
+  - contact
+  - as_contact
+  - license
+  - as_license
+- title: servers class
+  - servers
+  - as_servers
+  - string_replacements
+  - as_string_replacements
+  - server_variables
+  - as_server_variables

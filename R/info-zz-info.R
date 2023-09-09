@@ -21,6 +21,9 @@
 #'
 #' @return An `info` S7 object.
 #' @export
+#'
+#' @seealso [as_info()] for coercing objects to `info`.
+#'
 #' @examples
 #' info()
 #' info(

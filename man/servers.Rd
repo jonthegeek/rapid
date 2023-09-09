@@ -59,3 +59,6 @@ servers(
   ))
 )
 }
+\seealso{
+\code{\link[=as_servers]{as_servers()}} for coercing objects to \code{servers}.
+}
