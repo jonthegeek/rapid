@@ -82,7 +82,8 @@ info <- S7::new_class(
   }
 )
 
-S7::method(length, info) <- function(x) {
+#' @export
+`length.rapid::info` <- function(x) {
   max(lengths(S7::props(x)))
 }
 

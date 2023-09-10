@@ -49,7 +49,8 @@ license <- S7::new_class(
   }
 )
 
-S7::method(length, license) <- function(x) {
+#' @export
+`length.rapid::license` <- function(x) {
   max(lengths(S7::props(x)))
 }
 

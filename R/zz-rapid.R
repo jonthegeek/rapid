@@ -54,7 +54,8 @@ rapid <- S7::new_class(
   }
 )
 
-S7::method(length, rapid) <- function(x) {
+#' @export
+`length.rapid::rapid` <- function(x) {
   length(x@info)
 }
 
