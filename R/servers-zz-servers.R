@@ -126,11 +126,7 @@ S7::method(as_servers, class_list) <- function(x) {
   )
 }
 
-S7::method(as_servers, class_missing) <- function(x) {
-  servers()
-}
-
-S7::method(as_servers, NULL) <- function(x) {
+S7::method(as_servers, class_missing | NULL) <- function(x) {
   servers()
 }
 

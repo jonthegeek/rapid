@@ -40,7 +40,7 @@ enum_property <- function(x_arg) {
         }
       )
       if (!any(lengths(value))) {
-        value <- NULL
+        value <- list()
       }
       S7::prop(self, x_arg, check = FALSE) <- value
       self

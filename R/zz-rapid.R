@@ -94,11 +94,7 @@ S7::method(as_rapid, S7::new_S3_class("url")) <- function(x) {
   as_rapid(x)
 }
 
-S7::method(as_rapid, class_missing) <- function(x) {
-  rapid()
-}
-
-S7::method(as_rapid, NULL) <- function(x) {
+S7::method(as_rapid, class_missing | NULL) <- function(x) {
   rapid()
 }
 

@@ -84,7 +84,7 @@ info <- S7::new_class(
 
 #' @export
 `length.rapid::info` <- function(x) {
-  .prop_length_max(x)
+  max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to info objects
@@ -123,11 +123,7 @@ S7::method(as_info, class_list | class_character) <- function(x) {
   )
 }
 
-S7::method(as_info, class_missing) <- function(x) {
-  info()
-}
-
-S7::method(as_info, NULL) <- function(x) {
+S7::method(as_info, class_missing | NULL) <- function(x) {
   info()
 }
 

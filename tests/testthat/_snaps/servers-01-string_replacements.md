@@ -61,7 +61,7 @@
       <rapid::string_replacements>
        @ name       : chr "a"
        @ default    : chr "b"
-       @ enum       : NULL
+       @ enum       : list()
        @ description: chr(0) 
 
 # string_replacements() requires that optional args are empty or match
