@@ -73,8 +73,7 @@ string_replacements <- S7::new_class(
   }
 )
 
-#' @export
-`length.rapid::string_replacements` <- function(x) {
+S7::method(length, string_replacements) <- function(x) {
   length(x@name)
 }
 
@@ -125,11 +124,7 @@ S7::method(as_string_replacements, class_list) <- function(x) {
   )
 }
 
-S7::method(as_string_replacements, class_missing) <- function(x) {
-  string_replacements()
-}
-
-S7::method(as_string_replacements, NULL) <- function(x) {
+S7::method(as_string_replacements, class_missing | NULL) <- function(x) {
   string_replacements()
 }
 

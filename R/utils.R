@@ -1,10 +1,5 @@
-.prop_lengths <- function(obj, prop_names) {
-  purrr::map_int(
-    prop_names,
-    function(prop_name) {
-      length(S7::prop(obj, prop_name))
-    }
-  )
+.prop_lengths <- function(obj, prop_names = S7::prop_names(obj)) {
+  lengths(S7::props(obj)[prop_names])
 }
 
 # I was about to write this when I discovered it unexported in rlang. I used

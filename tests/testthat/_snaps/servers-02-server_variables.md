@@ -44,7 +44,7 @@
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
 
 ---
@@ -56,12 +56,12 @@
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
 
 # server_variables() accepts lists of string_replacements
@@ -73,7 +73,7 @@
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
 
 ---
@@ -85,12 +85,12 @@
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
        $ : <rapid::string_replacements>
         ..@ name       : chr(0) 
         ..@ default    : chr(0) 
-        ..@ enum       : NULL
+        ..@ enum       : list()
         ..@ description: chr(0) 
 
 # as_server_variables() errors informatively for bad classes

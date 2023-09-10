@@ -49,9 +49,8 @@ license <- S7::new_class(
   }
 )
 
-#' @export
-`length.rapid::license` <- function(x) {
-  length(x@name)
+S7::method(length, license) <- function(x) {
+  max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to licenses
@@ -80,11 +79,7 @@ S7::method(as_license, class_list | class_character) <- function(x) {
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
 }
 
-S7::method(as_license, class_missing) <- function(x) {
-  license()
-}
-
-S7::method(as_license, NULL) <- function(x) {
+S7::method(as_license, class_missing | NULL) <- function(x) {
   license()
 }
 

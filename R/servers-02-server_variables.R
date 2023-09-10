@@ -93,11 +93,7 @@ S7::method(as_server_variables, class_list) <- function(x) {
   )
 }
 
-S7::method(as_server_variables, class_missing) <- function(x) {
-  server_variables()
-}
-
-S7::method(as_server_variables, NULL) <- function(x) {
+S7::method(as_server_variables, class_missing | NULL) <- function(x) {
   server_variables()
 }
 

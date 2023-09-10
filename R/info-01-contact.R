@@ -34,9 +34,8 @@ contact <- S7::new_class(
   )
 )
 
-#' @export
-`length.rapid::contact` <- function(x) {
-  .prop_length_max(x)
+S7::method(length, contact) <- function(x) {
+  max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to contacts
@@ -66,11 +65,7 @@ S7::method(as_contact, class_list | class_character) <- function(x) {
   contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
 }
 
-S7::method(as_contact, class_missing) <- function(x) {
-  contact()
-}
-
-S7::method(as_contact, NULL) <- function(x) {
+S7::method(as_contact, class_missing | NULL) <- function(x) {
   contact()
 }
 
