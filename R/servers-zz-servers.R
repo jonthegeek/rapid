@@ -63,8 +63,7 @@ servers <- S7::new_class(
   }
 )
 
-#' @export
-`length.rapid::servers` <- function(x) {
+S7::method(length, servers) <- function(x) {
   length(x@url)
 }
 
