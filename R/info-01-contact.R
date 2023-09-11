@@ -34,8 +34,7 @@ contact <- S7::new_class(
   )
 )
 
-#' @export
-`length.rapid::contact` <- function(x) {
+S7::method(length, contact) <- function(x) {
   max(lengths(S7::props(x)))
 }
 
