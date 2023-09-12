@@ -28,7 +28,7 @@ Suggests:
     testthat (>= 3.0.0)
 Remotes:
     jonthegeek/stbl,
-    rconsortium/S7#343
+    RConsortium/S7
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8

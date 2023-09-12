@@ -43,7 +43,7 @@ rapid <- S7::new_class(
   ),
   constructor = function(info = class_missing, ..., servers = class_missing) {
     check_dots_empty()
-    S7::new_object(NULL, info = info, servers = servers)
+    S7::new_object(S7::S7_object(), info = info, servers = servers)
   },
   validator = function(self) {
     validate_lengths(

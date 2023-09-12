@@ -56,7 +56,7 @@ info <- S7::new_class(
                          terms_of_service = class_missing) {
     check_dots_empty()
     S7::new_object(
-      NULL,
+      S7::S7_object(),
       title = title,
       version = version,
       contact = contact,
