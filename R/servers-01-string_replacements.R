@@ -42,17 +42,17 @@ string_replacements <- S7::new_class(
     enum = enum_property("enum"),
     description = class_character
   ),
-  constructor = function(name = S7::class_missing,
-                         default = S7::class_missing,
+  constructor = function(name = class_missing,
+                         default = class_missing,
                          ...,
-                         enum = NULL,
+                         enum = class_missing,
                          description = S7::class_missing) {
     check_dots_empty()
     name <- name %||% character()
     default <- default %||% character()
     description <- description %||% character()
     S7::new_object(
-      NULL,
+      S7::S7_object(),
       name = name,
       default = default,
       enum = enum,

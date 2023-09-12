@@ -39,7 +39,12 @@ license <- S7::new_class(
                          identifier = character(),
                          url = character()) {
     check_dots_empty()
-    S7::new_object(NULL, name = name, identifier = identifier, url = url)
+    S7::new_object(
+      S7::S7_object(),
+      name = name,
+      identifier = identifier,
+      url = url
+    )
   },
   validator = function(self) {
     if (length(self@identifier) && length(self@url)) {

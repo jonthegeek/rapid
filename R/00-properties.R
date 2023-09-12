@@ -13,7 +13,7 @@ character_scalar_property <- function(x_arg, ...) {
         call = call,
         ...
       )
-      S7::prop(self, x_arg, check = FALSE) <- value
+      S7::prop(self, x_arg) <- value
       self
     }
   )

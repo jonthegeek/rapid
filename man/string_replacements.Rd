@@ -5,10 +5,10 @@
 \title{A set of variables for server URL template substitution}
 \usage{
 string_replacements(
-  name = S7::class_missing,
-  default = S7::class_missing,
+  name = class_missing,
+  default = class_missing,
   ...,
-  enum = NULL,
+  enum = class_missing,
   description = S7::class_missing
 )
 }
