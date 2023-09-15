@@ -32,3 +32,20 @@ validate_in_enums <- function(obj,
     missing_msgs
   )
 }
+
+validate_in_fixed <- function(obj,
+                              value_name,
+                              enums) {
+  values <- S7::prop(obj, value_name)
+  missing_msgs <- .check_all_in_enums(values, rep(list(enums), length(values)))
+  if (length(missing_msgs)) {
+    return(.msg_some_not_in_fixed(value_name, enums, missing_msgs))
+  }
+}
+
+.msg_some_not_in_fixed <- function(value_name, enums, missing_msgs) {
+  c(
+    cli::format_inline("{.arg {value_name}} must be one of {.or {.val {enums}}}."),
+    missing_msgs
+  )
+}

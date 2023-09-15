@@ -2,7 +2,7 @@
 
     Code
       string_replacements("a", "b", "c")
-    Condition
+    Condition <rlib_error_dots_nonempty>
       Error in `string_replacements()`:
       ! `...` must be empty.
       x Problematic argument:
@@ -13,7 +13,7 @@
 
     Code
       string_replacements("a")
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -24,7 +24,7 @@
 
     Code
       string_replacements("a", letters)
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -35,7 +35,7 @@
 
     Code
       string_replacements(letters, "a")
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -46,7 +46,7 @@
 
     Code
       string_replacements(character(), "a")
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - When `name` is not defined, `default` must be empty.
@@ -68,7 +68,7 @@
 
     Code
       string_replacements("a", "b", enum = list("a", "b"))
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `enum` must be empty or have the same length as `name`
@@ -79,7 +79,7 @@
 
     Code
       string_replacements("a", "b", description = c("a", "b"))
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `description` must be empty or have the same length as `name`
@@ -90,7 +90,7 @@
 
     Code
       string_replacements(name = "a", default = "b", enum = "a")
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
@@ -101,7 +101,7 @@
     Code
       string_replacements(name = c("a", "b"), default = c("b", "a"), enum = list("a",
         "a"))
-    Condition
+    Condition <simpleError>
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.

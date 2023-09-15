@@ -46,7 +46,7 @@ string_replacements <- S7::new_class(
                          default = class_missing,
                          ...,
                          enum = class_missing,
-                         description = S7::class_missing) {
+                         description = class_missing) {
     check_dots_empty()
     name <- name %||% character()
     default <- default %||% character()

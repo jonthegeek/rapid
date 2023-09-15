@@ -1,26 +1,31 @@
 test_that("string_replacements() requires names for optional args", {
   expect_snapshot(
     string_replacements("a", "b", "c"),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
 })
 
 test_that("string_replacements() requires that default matches name", {
   expect_snapshot(
     string_replacements("a"),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
   expect_snapshot(
     string_replacements("a", letters),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
   expect_snapshot(
     string_replacements(letters, "a"),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
   expect_snapshot(
     string_replacements(character(), "a"),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
 })
 
@@ -43,18 +48,21 @@ test_that("string_replacements() works with equal-length name/default", {
 test_that("string_replacements() requires that optional args are empty or match", {
   expect_snapshot(
     string_replacements("a", "b", enum = list("a", "b")),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
   expect_snapshot(
     string_replacements("a", "b", description = c("a", "b")),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
 })
 
 test_that("string_replacements() requires that the default is in enum when given", {
   expect_snapshot(
     string_replacements(name = "a", default = "b", enum = "a"),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
   expect_snapshot(
     string_replacements(
@@ -62,7 +70,8 @@ test_that("string_replacements() requires that the default is in enum when given
       default = c("b", "a"),
       enum = list("a", "a")
     ),
-    error = TRUE
+    error = TRUE,
+    cnd_class = TRUE
   )
 })
 
