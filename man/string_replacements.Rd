@@ -9,7 +9,7 @@ string_replacements(
   default = class_missing,
   ...,
   enum = class_missing,
-  description = S7::class_missing
+  description = class_missing
 )
 }
 \arguments{

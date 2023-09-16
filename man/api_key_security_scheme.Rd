@@ -6,21 +6,22 @@
 \usage{
 api_key_security_scheme(
   name = class_missing,
-  description = class_missing,
   parameter_name = class_missing,
-  `in` = class_missing
+  `in` = class_missing,
+  ...,
+  description = class_missing
 )
 }
 \arguments{
 \item{name}{Character (required). The name of this scheme, used to identify
 valid schemes for a given operation.}
 
+\item{parameter_name}{Character (required). The names of the header, query or
+cookie parameters to be used.}
+
 \item{description}{Character (optional). A description for the security
 scheme. \href{https://spec.commonmark.org/}{CommonMark syntax} \emph{may} be used for
 rich text representation.}
-
-\item{parameter_name}{Character (required). The names of the header, query or
-cookie parameters to be used.}
 
 \item{`in`}{Character (required). The location of the API key. Valid values
 are "query", "header" or "cookie".}

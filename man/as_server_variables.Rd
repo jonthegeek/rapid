@@ -2,7 +2,7 @@
 % Please edit documentation in R/servers-02-server_variables.R
 \name{as_server_variables}
 \alias{as_server_variables}
-\title{Coerce lists and character vectors to server_variables}
+\title{Coerce lists to server_variables}
 \usage{
 as_server_variables(x, ...)
 }

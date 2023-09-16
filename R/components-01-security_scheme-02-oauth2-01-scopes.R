@@ -1,0 +1,104 @@
+#' OAuth2 flow scopes objects
+#'
+#' The available scopes for an OAuth2 flow.
+#'
+#' @param name Character (required). The name of the scope.
+#' @param description Character (required). A short description of the scope.
+#'
+#' @return A `scopes` S7 object, with fields `name` and `description`.
+#' @seealso [as_scopes()] for coercing objects to `scopes`.
+#' @export
+#' @examples
+#' scopes(
+#'   name = c(
+#'     "https://www.googleapis.com/auth/youtube",
+#'     "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
+#'     "https://www.googleapis.com/auth/youtube.force-ssl",
+#'     "https://www.googleapis.com/auth/youtube.readonly",
+#'     "https://www.googleapis.com/auth/youtube.upload",
+#'     "https://www.googleapis.com/auth/youtubepartner",
+#'     "https://www.googleapis.com/auth/youtubepartner-channel-audit"
+#'   ),
+#'   description = c(
+#'     "Manage your YouTube account",
+#'     "See a list of your current active channel members, their current level, and when they became a member",
+#'     "See, edit, and permanently delete your YouTube videos, ratings, comments and captions",
+#'     "View your YouTube account",
+#'     "Manage your YouTube videos",
+#'     "View and manage your assets and associated content on YouTube",
+#'     "View private information of your YouTube channel relevant during the audit process with a YouTube partner"
+#'   )
+#' )
+scopes <- S7::new_class(
+  name = "scopes",
+  package = "rapid",
+  properties = list(
+    name = class_character,
+    description = class_character
+  ),
+  constructor = function(name = class_missing,
+                         description = class_missing) {
+    name <- name %|0|% character()
+    description <- description %|0|% character()
+    S7::new_object(
+      S7::S7_object(),
+      name = name,
+      description = description
+    )
+  },
+  validator = function(self) {
+    validate_parallel(
+      self,
+      "name",
+      required = "description"
+    )
+  }
+)
+
+S7::method(length, scopes) <- function(x) {
+  length(x@name)
+}
+
+#' Coerce lists and character vectors to scopes
+#'
+#' `as_scopes()` turns an existing object into a
+#' `scopes`. This is in contrast with [scopes()],
+#' which builds a `scopes` from individual properties.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @param x The object to coerce. Must be coercible to a named character vector.
+#'
+#' @return A `scopes` as returned by [scopes()].
+#' @export
+as_scopes <- S7::new_generic(
+  "as_scopes",
+  dispatch_args = "x"
+)
+
+S7::method(as_scopes, scopes) <- function(x) {
+  x
+}
+
+S7::method(as_scopes, class_list | class_character) <- function(x) {
+  x <- unlist(x)
+  x <- stbl::stabilize_chr(x)
+  if (!rlang::is_named2(x)) {
+    cli::cli_abort(
+      "{.arg x} must be a named character vector."
+    )
+  }
+  scopes(
+    name = names(x),
+    description = unname(x)
+  )
+}
+
+S7::method(as_scopes, class_missing | NULL) <- function(x) {
+  scopes()
+}
+
+S7::method(as_scopes, class_any) <- function(x) {
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls scopes}."
+  )
+}

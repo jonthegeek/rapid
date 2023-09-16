@@ -43,7 +43,7 @@ server_variables <- S7::new_class(
   }
 )
 
-#' Coerce lists and character vectors to server_variables
+#' Coerce lists to server_variables
 #'
 #' `as_server_variables()` turns an existing object into a `server_variables`
 #' object. This is in contrast with [server_variables()], which builds a

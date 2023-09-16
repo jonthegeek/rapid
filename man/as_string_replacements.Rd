@@ -2,7 +2,7 @@
 % Please edit documentation in R/servers-01-string_replacements.R
 \name{as_string_replacements}
 \alias{as_string_replacements}
-\title{Coerce lists vectors to string_replacements}
+\title{Coerce lists to string_replacements}
 \usage{
 as_string_replacements(x, ...)
 }

@@ -77,7 +77,7 @@ S7::method(length, string_replacements) <- function(x) {
   length(x@name)
 }
 
-#' Coerce lists vectors to string_replacements
+#' Coerce lists to string_replacements
 #'
 #' `as_string_replacements()` turns an existing object into a
 #' `string_replacements`. This is in contrast with [string_replacements()],
