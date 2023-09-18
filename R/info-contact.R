@@ -1,16 +1,20 @@
+#' @include properties.R
+NULL
+
 #' Contact information for the API
 #'
-#' Validate the contact information for an API.
+#' This object provides contact information for the API.
 #'
 #' @param name Character scalar (optional). The identifying name of the contact
-#'   person/organization.
+#'   person or organization.
 #' @param url Character scalar (optional). The URL pointing to the contact
 #'   information.
 #' @param email Character scalar (optional). The email address of the contact
 #'   person/organization. This
 #'   *must* be in the form of an email address.
 #'
-#' @return A `contact` S7 object, with fields `name`, `email`, and `url`.
+#' @return A `contact` S7 object describing who to contact for information about
+#'   the API, with fields `name`, `email`, and `url`.
 #' @export
 #'
 #' @seealso [as_contact()] for coercing objects to `contact`.
@@ -40,13 +44,13 @@ S7::method(length, contact) <- function(x) {
 
 #' Coerce lists and character vectors to contacts
 #'
-#' `as_contact()` turns an existing object into a `contact`. This is in
-#' contrast with [contact()], which builds a `contact` from individual
-#' properties.
+#' `as_contact()` turns an existing object into a `contact`. This is in contrast
+#' with [contact()], which builds a `contact` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "name", "email",
-#'   and/or "url". Extra names are ignored.
+#'   and/or "url". Extra names are ignored. This object should describe a single
+#'   point of contact.
 #'
 #' @return A `contact` as returned by [contact()].
 #' @export

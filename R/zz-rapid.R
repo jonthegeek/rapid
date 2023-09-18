@@ -1,3 +1,7 @@
+#' @include info.R
+#' @include servers.R
+NULL
+
 #' R API definition object
 #'
 #' An object that represents an API.

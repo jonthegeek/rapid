@@ -1,30 +1,34 @@
+#' @include properties.R
+NULL
+
 #' A set of variables for server URL template substitution
 #'
-#' Server variable properties used for substitution in the server’s URL
-#' template.
+#' This object describes server variable properties used for substitution in a
+#' single server’s URL template.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param name Character vector (required). The names of the variables.
 #' @param default Character vector (required). The default value to use for
-#'   substitution of each variable, which *shall* be sent if an alternate value
-#'   is not supplied. Note this behavior is different than the Schema Object’s
+#'   substitution of each variable, which shall be sent if an alternate value is
+#'   not supplied. Note this behavior is different than the Schema Object’s
 #'   treatment of default values, because in those cases parameter values are
-#'   optional. If the `enum` is defined, the value *must* exist in the enum’s
+#'   optional. If the `enum` is defined, the value must exist in the enum’s
 #'   values.
 #' @param enum List of (potentially empty) character vectors (optional). An
-#'   enumeration of string values to be used if the substitution options are
-#'   from a limited set.
+#'   enumeration of valid string values to be used if the substitution options
+#'   are from a limited set.
 #' @param description Character vector (optional). An optional description for
-#'   each server variable. [CommonMark syntax](https://spec.commonmark.org/)
-#'   *may* be used for rich text representation.
+#'   each server variable. [CommonMark syntax](https://spec.commonmark.org/) may
+#'   be used for rich text representation.
 #'
-#' @return A `string_replacements` S7 object, with fields `name`, `default`,
-#'   `enum`, and `description`.
+#' @return A `string_replacements` S7 object describing a collection of string
+#'   variables for a single server, with fields `name`, `default`, `enum`, and
+#'   `description`.
 #' @export
 #'
 #' @seealso [as_string_replacements()] for coercing objects to
-#'   `string_replacements`, and [server_variables()] for creating collections
-#'   of `string_replacements`.
+#'   `string_replacements`, and [server_variables()] for creating collections of
+#'   `string_replacements`.
 #'
 #' @examples
 #' string_replacements(

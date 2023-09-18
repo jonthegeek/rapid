@@ -1,13 +1,18 @@
+#' @include servers-string_replacements.R
+#' @include servers-server_variables.R
+NULL
+
 #' An object representing a collection of servers
 #'
-#' Connectivity information for an API.
+#' The object provides connectivity information for the API. The described
+#' servers are intended to be used as the base urls for calls to the API.
 #'
 #' @param url Character vector (required). The urls of the target hosts. These
 #'   urls support [string_replacements()]. Variable substitutions will be made
 #'   when a variable is named in \{brackets\}.
 #' @param description Character vector (optional). Strings describing the hosts
-#'   designated by `url`. [CommonMark syntax](https://spec.commonmark.org/)
-#'   *may* be used for rich text representation.
+#'   designated by `url`. [CommonMark syntax](https://spec.commonmark.org/) may
+#'   be used for rich text representation.
 #' @param variables A [server_variables()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and

@@ -32,7 +32,9 @@ test_that("api_key_security_scheme() works with valid objects", {
   expect_s3_class(
     test_result,
     class = c(
-      "rapid::api_key_security_scheme", "rapid::security_scheme", "S7_object"
+      "rapid::api_key_security_scheme",
+      "rapid::security_scheme_type",
+      "S7_object"
     ),
     exact = TRUE
   )

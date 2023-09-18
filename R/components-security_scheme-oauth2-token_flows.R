@@ -1,3 +1,6 @@
+#' @include components-security_scheme-oauth2-flows.R
+NULL
+
 ouath2_token_flows <- S7::new_class(
   name = "ouath2_token_flows",
   package = "rapid",

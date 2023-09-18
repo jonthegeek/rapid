@@ -34,3 +34,28 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Collate: 
+    'as.R'
+    'components-security_scheme_type.R'
+    'components-security_scheme-api_key.R'
+    'components-security_scheme-oauth2-scopes_list.R'
+    'components-security_scheme-oauth2-flows.R'
+    'components-security_scheme-oauth2-authorization_code_flows.R'
+    'components-security_scheme-oauth2-implicit_flows.R'
+    'components-security_scheme-oauth2-scopes.R'
+    'components-security_scheme-oauth2-token_flows.R'
+    'components-security_scheme-oauth2.R'
+    'properties.R'
+    'info-contact.R'
+    'info-license.R'
+    'info.R'
+    'rapid-package.R'
+    'servers-server_variables.R'
+    'servers-string_replacements.R'
+    'servers.R'
+    'utils.R'
+    'validate_in.R'
+    'validate_lengths.R'
+    'validate_parallel.R'
+    'zz-rapid.R'
+    'zzz.R'

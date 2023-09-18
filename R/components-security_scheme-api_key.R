@@ -1,9 +1,12 @@
+#' @include components-security_scheme_type.R
+NULL
+
 #' API key security schemes
 #'
 #' Defines one or more API key security schemes that can be used by the
 #' operations.
 #'
-#' @inheritParams security_scheme
+#' @inheritParams security_scheme_type
 #' @param parameter_name Character (required). The names of the header, query or
 #'   cookie parameters to be used.
 #' @param `in` Character (required). The location of the API key. Valid values
@@ -26,7 +29,7 @@
 api_key_security_scheme <- S7::new_class(
   name = "api_key_security_scheme",
   package = "rapid",
-  parent = security_scheme,
+  parent = security_scheme_type,
   properties = list(
     parameter_name = class_character,
     `in` = class_character

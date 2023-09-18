@@ -1,7 +1,11 @@
+#' @include components-security_scheme_type.R
+#' @include components-security_scheme-oauth2-implicit_flows.R
+NULL
+
 oauth2_security_scheme <- S7::new_class(
   name = "oauth2_security_scheme",
   package = "rapid",
-  parent = security_scheme,
+  parent = security_scheme_type,
   properties = list(
     implicit_flow = ouath2_implicit_flows,
     password_flow = ouath2_token_flows,

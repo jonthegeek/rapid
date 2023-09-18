@@ -1,25 +1,32 @@
+#' @include info-contact.R
+#' @include info-license.R
+#' @include properties.R
+NULL
+
 #' Information about the API
 #'
-#' The object provides metadata about the API. The metadata *may* be used by the
-#' clients if needed, and *may* be presented in editing or documentation
+#' The object provides metadata about the API. The metadata may be used by the
+#' clients if needed, and may be presented in editing or documentation
 #' generation tools for convenience.
 #'
 #' @inheritParams rlang::args_dots_empty
-#' @param title The title of the API. Required when the object is not empty.
-#' @param version The version of the API document (which is distinct from the
-#'   OpenAPI Specification version or the API implementation version).  Required
-#'   when the object is not empty.
+#' @param title Character scalar. The title of the API. Required when the object
+#'   is not empty.
+#' @param version Character scalar. The version of the API document (which is
+#'   distinct from the OpenAPI Specification version or the API implementation
+#'   version).  Required when the object is not empty.
 #' @param contact The contact information for the exposed API, generated via
 #'   [contact()].
-#' @param description A description of the API. [CommonMark
-#'   syntax](https://spec.commonmark.org/) *may* be used for rich text
+#' @param description Character scalar (optional). A description of the API.
+#'   [CommonMark syntax](https://spec.commonmark.org/) may be used for rich text
 #'   representation.
 #' @param license The license information for the exposed API, generated via
 #'   [license()].
-#' @param summary A short summary of the API.
-#' @param terms_of_service A URL to the Terms of Service for the API.
+#' @param summary Character scalar (optional). A short summary of the API.
+#' @param terms_of_service Character scalar (optional). A URL to the Terms of
+#'   Service for the API.
 #'
-#' @return An `info` S7 object.
+#' @return An `info` S7 object with metadata describing a single API.
 #' @export
 #'
 #' @seealso [as_info()] for coercing objects to `info`.
@@ -94,7 +101,8 @@ S7::method(length, info) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "title",
 #'   "version", "contact", "description", "license", "summary", and/or
-#'   "terms_of_service". Extra names are ignored.
+#'   "terms_of_service". Extra names are ignored. This object should describe a
+#'   single API.
 #'
 #' @return An `info` object as returned by [info()].
 #' @export

@@ -1,6 +1,10 @@
+#' @include properties.R
+NULL
+
 #' License information for the API
 #'
-#' Validate the license information for an API.
+#' This object provides license information for the API to describe how the API
+#' can be used.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param name Character scalar (optional). The license name used for the API.
@@ -12,7 +16,8 @@
 #'   API. This *must* be in the form of a URL. The `url` field is mutually
 #'   exclusive of the `identifier` field.
 #'
-#' @return A `license` S7 object, with fields `name`, `identifier`, and `url`.
+#' @return A `license` S7 object describing allowed usage of the API, with
+#'   fields `name`, `identifier`, and `url`.
 #' @export
 #'
 #' @seealso [as_license()] for coercing objects to `license`.
@@ -65,7 +70,8 @@ S7::method(length, license) <- function(x) {
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or have names "name",
-#'   "identifier", and/or "url". Extra names are ignored.
+#'   "identifier", and/or "url". Extra names are ignored. This object should
+#'   describe a single license.
 #'
 #' @return A `license` as returned by [license()].
 #' @export

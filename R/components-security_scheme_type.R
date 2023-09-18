@@ -1,18 +1,19 @@
-#' Security schemes
+#' Security scheme objects
 #'
-#' This is an abstract class that is only used to define specific types of
-#' security schemes.
+#' This is an abstract class that is used to define specific types of security
+#' schemes. Note: each security scheme object can hold multiple schemes of that
+#' type.
 #'
-#' @param name Character (required). The name of this scheme, used to identify
-#'   valid schemes for a given operation.
-#' @param description Character (optional). A description for the security
+#' @param name Character (required). The names of the members of this scheme,
+#'   used to identify valid schemes for a given operation.
+#' @param description Character (optional). A description for each security
 #'   scheme. [CommonMark syntax](https://spec.commonmark.org/) *may* be used for
 #'   rich text representation.
 #'
 #' @export
 #' @seealso [api_key_security_scheme()]
-security_scheme <- S7::new_class(
-  name = "security_scheme",
+security_scheme_type <- S7::new_class(
+  name = "security_scheme_type",
   package = "rapid",
   properties = list(
     name = class_character,

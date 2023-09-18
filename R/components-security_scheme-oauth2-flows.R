@@ -1,3 +1,6 @@
+#' @include components-security_scheme-oauth2-scopes_list.R
+NULL
+
 oauth2_flows <- S7::new_class(
   name = "oauth2_flows",
   package = "rapid",
