@@ -3,7 +3,7 @@ NULL
 
 #' Contact information for the API
 #'
-#' This object provides contact information for the API.
+#' A `contact` object provides contact information for the API.
 #'
 #' @param name Character scalar (optional). The identifying name of the contact
 #'   person or organization.

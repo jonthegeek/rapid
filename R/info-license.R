@@ -3,8 +3,8 @@ NULL
 
 #' License information for the API
 #'
-#' This object provides license information for the API to describe how the API
-#' can be used.
+#' A `license` object provides license information for the API to
+#' describe how the API can be used.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param name Character scalar (optional). The license name used for the API.

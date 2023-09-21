@@ -38,8 +38,8 @@ variables for a single server, with fields \code{name}, \code{default}, \code{en
 \code{description}.
 }
 \description{
-This object describes server variable properties used for substitution in a
-single server’s URL template.
+A \code{string_replacements} object describes server variable properties used for
+substitution in a single server’s URL template.
 }
 \examples{
 string_replacements(

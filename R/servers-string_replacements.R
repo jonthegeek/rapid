@@ -3,8 +3,8 @@ NULL
 
 #' A set of variables for server URL template substitution
 #'
-#' This object describes server variable properties used for substitution in a
-#' single server’s URL template.
+#' A `string_replacements` object describes server variable properties used for
+#' substitution in a single server’s URL template.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param name Character vector (required). The names of the variables.

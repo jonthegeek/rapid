@@ -21,7 +21,7 @@ A \code{contact} S7 object describing who to contact for information about
 the API, with fields \code{name}, \code{email}, and \code{url}.
 }
 \description{
-This object provides contact information for the API.
+A \code{contact} object provides contact information for the API.
 }
 \examples{
 contact(

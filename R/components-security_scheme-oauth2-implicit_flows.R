@@ -1,6 +1,23 @@
 #' @include components-security_scheme-oauth2-flows.R
 NULL
 
+#' OAuth2 implicit flows object
+#'
+#' An `ouath2_implicit_flows` object describes the configuration for the OAuth
+#' Implicit flow.
+#'
+#' @inheritParams oauth2_flows
+#' @inheritParams rlang::args_dots_empty
+#' @param authorization_url Character vector (required). The authorization URL
+#'   to be used for this flow. This must be in the form of a URL. The OAuth2
+#'   standard requires the use of TLS.
+#'
+#' @export
+#' @examples
+#' ouath2_implicit_flows(
+#'   authorization_url = "https://example.com/authorize",
+#'   refresh_url = "https://example.com/refresh"
+#' )
 ouath2_implicit_flows <- S7::new_class(
   name = "ouath2_implicit_flows",
   package = "rapid",
