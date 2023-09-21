@@ -20,6 +20,6 @@ flows objects. Note: each OAuth2 flows object can hold multiple flows of that
 type.
 }
 \seealso{
-\code{\link[=ouath2_token_flows]{ouath2_token_flows()}}, \code{\link[=ouath2_implicit_flows]{ouath2_implicit_flows()}}, and
-\code{\link[=ouath2_authorization_code_flows]{ouath2_authorization_code_flows()}}
+\code{\link[=oauth2_token_flows]{oauth2_token_flows()}}, \code{\link[=oauth2_implicit_flows]{oauth2_implicit_flows()}}, and
+\code{\link[=oauth2_authorization_code_flows]{oauth2_authorization_code_flows()}}
 }

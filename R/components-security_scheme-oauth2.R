@@ -7,10 +7,10 @@ oauth2_security_scheme <- S7::new_class(
   package = "rapid",
   parent = security_scheme_type,
   properties = list(
-    implicit_flow = ouath2_implicit_flows,
-    password_flow = ouath2_token_flows,
-    client_credentials_flow = ouath2_token_flows,
-    authorization_code_flow = ouath2_authorization_code_flows
+    implicit_flow = oauth2_implicit_flows,
+    password_flow = oauth2_token_flows,
+    client_credentials_flow = oauth2_token_flows,
+    authorization_code_flow = oauth2_authorization_code_flows
   ),
   constructor = function(name = class_missing,
                          ...,
@@ -21,11 +21,11 @@ oauth2_security_scheme <- S7::new_class(
                          description = class_missing) {
     check_dots_empty()
     name <- name %||% character()
-    implicit_flow <- implicit_flow %||% ouath2_implicit_flows()
-    password_flow <- password_flow %||% ouath2_token_flows()
-    client_credentials_flow <- client_credentials_flow %||% ouath2_token_flows()
+    implicit_flow <- implicit_flow %||% oauth2_implicit_flows()
+    password_flow <- password_flow %||% oauth2_token_flows()
+    client_credentials_flow <- client_credentials_flow %||% oauth2_token_flows()
     authorization_code_flow <- authorization_code_flow %||%
-      ouath2_authorization_code_flows()
+      oauth2_authorization_code_flows()
     description <- description %||% character()
     S7::new_object(
       S7::S7_object(),

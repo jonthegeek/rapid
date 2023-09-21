@@ -14,8 +14,8 @@ NULL
 #'   for the OAuth2 security scheme.
 #'
 #' @export
-#' @seealso [ouath2_token_flows()], [ouath2_implicit_flows()], and
-#'   [ouath2_authorization_code_flows()]
+#' @seealso [oauth2_token_flows()], [oauth2_implicit_flows()], and
+#'   [oauth2_authorization_code_flows()]
 oauth2_flows <- S7::new_class(
   name = "oauth2_flows",
   package = "rapid",
@@ -24,7 +24,6 @@ oauth2_flows <- S7::new_class(
     scopes = scopes_list
   ),
   abstract = TRUE
-  # TODO: Validate here, or only in subclasses?
 )
 
 # TODO: as_oauth2_flows? Yes, the name of the object says what type it is.

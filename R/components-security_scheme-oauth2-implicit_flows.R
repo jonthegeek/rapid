@@ -3,7 +3,7 @@ NULL
 
 #' OAuth2 implicit flows object
 #'
-#' An `ouath2_implicit_flows` object describes the configuration for the OAuth
+#' An `oauth2_implicit_flows` object describes the configuration for the OAuth
 #' Implicit flow.
 #'
 #' @inheritParams oauth2_flows
@@ -14,12 +14,12 @@ NULL
 #'
 #' @export
 #' @examples
-#' ouath2_implicit_flows(
+#' oauth2_implicit_flows(
 #'   authorization_url = "https://example.com/authorize",
 #'   refresh_url = "https://example.com/refresh"
 #' )
-ouath2_implicit_flows <- S7::new_class(
-  name = "ouath2_implicit_flows",
+oauth2_implicit_flows <- S7::new_class(
+  name = "oauth2_implicit_flows",
   package = "rapid",
   parent = oauth2_flows,
   properties = list(
