@@ -17,7 +17,7 @@ license expression for the API. The \code{identifier} field is mutually
 exclusive of the \code{url} field.}
 
 \item{url}{Character scalar (optional). A URL to the license used for the
-API. This \emph{must} be in the form of a URL. The \code{url} field is mutually
+API. This must be in the form of a URL. The \code{url} field is mutually
 exclusive of the \code{identifier} field.}
 }
 \value{

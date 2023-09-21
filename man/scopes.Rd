@@ -7,9 +7,10 @@
 scopes(name = class_missing, description = class_missing)
 }
 \arguments{
-\item{name}{Character (required). The name of the scope.}
+\item{name}{Character vector (required). The name of the scope.}
 
-\item{description}{Character (required). A short description of the scope.}
+\item{description}{Character vector (required). A short description of the
+scope.}
 }
 \value{
 A \code{scopes} S7 object, with fields \code{name} and \code{description}.
@@ -30,12 +31,12 @@ scopes(
   ),
   description = c(
     "Manage your YouTube account",
-    "See a list of your current active channel members, their current level, and when they became a member",
-    "See, edit, and permanently delete your YouTube videos, ratings, comments and captions",
+    "See a list of your current active channel members",
+    "See, edit, and permanently delete your YouTube videos",
     "View your YouTube account",
     "Manage your YouTube videos",
     "View and manage your assets and associated content on YouTube",
-    "View private information of your YouTube channel relevant during the audit process with a YouTube partner"
+    "View private information of your YouTube channel"
   )
 )
 }

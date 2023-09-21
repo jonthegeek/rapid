@@ -7,28 +7,30 @@
 api_key_security_scheme(
   name = class_missing,
   parameter_name = class_missing,
-  `in` = class_missing,
+  location = class_missing,
   ...,
   description = class_missing
 )
 }
 \arguments{
-\item{name}{Character (required). The names of the members of this scheme,
-used to identify valid schemes for a given operation.}
+\item{name}{Character vector (required). The names of the members of this
+scheme, used to identify valid schemes for a given operation.}
 
-\item{parameter_name}{Character (required). The names of the header, query or
-cookie parameters to be used.}
+\item{parameter_name}{Character vector (required). The names of the header,
+query or cookie parameters to be used.}
 
-\item{description}{Character (optional). A description for each security
-scheme. \href{https://spec.commonmark.org/}{CommonMark syntax} \emph{may} be used for
-rich text representation.}
+\item{location}{Character vector (required). The location of the API key.
+Valid values are "query", "header" or "cookie".}
 
-\item{`in`}{Character (required). The location of the API key. Valid values
-are "query", "header" or "cookie".}
+\item{...}{These dots are for future extensions and must be empty.}
+
+\item{description}{Character vector (optional). A description for each
+security scheme. \href{https://spec.commonmark.org/}{CommonMark syntax} may be
+used for rich text representation.}
 }
 \value{
 An \code{api_key_security_scheme} S7 object, with fields \code{name},
-\code{description}, \code{parameter_name}, and \verb{in}.
+\code{description}, \code{parameter_name}, and location.
 }
 \description{
 Defines one or more API key security schemes that can be used by the
@@ -39,7 +41,7 @@ api_key_security_scheme(
   "api_key_example",
   description = "API key security scheme example",
   parameter_name = "Authorization",
-  `in` = "header"
+  location = "header"
 )
 }
 \seealso{

@@ -1,17 +1,17 @@
 test_that("api_key_security_scheme requires names for optional arguments", {
   expect_snapshot(
-    api_key_security_scheme("a", "b", "c", `in` = "header"),
+    api_key_security_scheme("a", "b", "c", location = "header"),
     error = TRUE,
     cnd_class = TRUE
   )
 })
 
-test_that("api_key_security_scheme() requires that `in` is valid", {
+test_that("api_key_security_scheme() requires that location is valid", {
   expect_snapshot(
     api_key_security_scheme(
       name = c("my_key", "other"),
       description = c("desc", "desc2"),
-      'in' = c("query", "invalid place"),
+      location = c("query", "invalid place"),
       parameter_name = c("parm1", "parm2")
     ),
     error = TRUE,
@@ -24,7 +24,7 @@ test_that("api_key_security_scheme() works with valid objects", {
     test_result <- api_key_security_scheme(
       name = c("my_key", "other"),
       description = c("desc", "desc2"),
-      'in' = c("query", "header"),
+      location = c("query", "header"),
       parameter_name = c("parm1", "parm2")
     )
     test_result
@@ -40,7 +40,7 @@ test_that("api_key_security_scheme() works with valid objects", {
   )
   expect_identical(
     S7::prop_names(test_result),
-    c("name", "description", "parameter_name", "in")
+    c("name", "description", "parameter_name", "location")
   )
 })
 
@@ -51,7 +51,7 @@ test_that("length() of a api_key_security_scheme reports the proper length", {
       api_key_security_scheme(
         name = c("my_key", "other"),
         description = c("desc", "desc2"),
-        'in' = c("query", "header"),
+        location = c("query", "header"),
         parameter_name = c("parm1", "parm2")
       )
     ),
@@ -127,7 +127,7 @@ test_that("as_api_key_security_scheme() returns expected objects", {
         "X-APISETU-CLIENTID",
         "X-APISETU-APIKEY"
       ),
-      `in` = c("header", "cookie", "query")
+      location = c("header", "cookie", "query")
     )
   )
 

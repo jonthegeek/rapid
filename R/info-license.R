@@ -13,7 +13,7 @@ NULL
 #'   license expression for the API. The `identifier` field is mutually
 #'   exclusive of the `url` field.
 #' @param url Character scalar (optional). A URL to the license used for the
-#'   API. This *must* be in the form of a URL. The `url` field is mutually
+#'   API. This must be in the form of a URL. The `url` field is mutually
 #'   exclusive of the `identifier` field.
 #'
 #' @return A `license` S7 object describing allowed usage of the API, with

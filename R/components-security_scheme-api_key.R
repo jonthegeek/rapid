@@ -7,13 +7,14 @@ NULL
 #' operations.
 #'
 #' @inheritParams security_scheme_type
-#' @param parameter_name Character (required). The names of the header, query or
-#'   cookie parameters to be used.
-#' @param `in` Character (required). The location of the API key. Valid values
-#'   are "query", "header" or "cookie".
+#' @inheritParams rlang::args_dots_empty
+#' @param parameter_name Character vector (required). The names of the header,
+#'   query or cookie parameters to be used.
+#' @param location Character vector (required). The location of the API key.
+#'   Valid values are "query", "header" or "cookie".
 #'
 #' @return An `api_key_security_scheme` S7 object, with fields `name`,
-#'   `description`, `parameter_name`, and `in`.
+#'   `description`, `parameter_name`, and location.
 #' @export
 #'
 #' @seealso [as_api_key_security_scheme()] for coercing objects to
@@ -24,7 +25,7 @@ NULL
 #'   "api_key_example",
 #'   description = "API key security scheme example",
 #'   parameter_name = "Authorization",
-#'   `in` = "header"
+#'   location = "header"
 #' )
 api_key_security_scheme <- S7::new_class(
   name = "api_key_security_scheme",
@@ -32,23 +33,23 @@ api_key_security_scheme <- S7::new_class(
   parent = security_scheme_type,
   properties = list(
     parameter_name = class_character,
-    `in` = class_character
+    location = class_character
   ),
   constructor = function(name = class_missing,
                          parameter_name = class_missing,
-                         `in` = class_missing,
+                         location = class_missing,
                          ...,
                          description = class_missing) {
     check_dots_empty()
     name <- name %||% character()
     parameter_name <- parameter_name %||% character()
-    `in` <- `in` %||% character()
+    location <- location %||% character()
     description <- description %||% character()
     S7::new_object(
       S7::S7_object(),
       name = name,
       parameter_name = parameter_name,
-      `in` = `in`,
+      location = location,
       description = description
     )
   },
@@ -56,10 +57,10 @@ api_key_security_scheme <- S7::new_class(
     validate_parallel(
       self,
       "name",
-      required = c("parameter_name", "in")
+      required = c("parameter_name", "location")
     ) %|0|% validate_in_fixed(
       self,
-      "in",
+      "location",
       c("query", "header", "cookie")
     )
   }
@@ -101,6 +102,7 @@ S7::method(as_api_key_security_scheme, class_list) <- function(x) {
       .validate_for_as_class(
         x,
         api_key_security_scheme,
+        extra_names = "in",
         x_arg = "x[[i]]",
         call = call
       )
@@ -112,7 +114,7 @@ S7::method(as_api_key_security_scheme, class_list) <- function(x) {
     name = names(x),
     description = .extract_along_chr(nameless, "description"),
     parameter_name = purrr::map_chr(nameless, "name"),
-    `in` = purrr::map_chr(nameless, "in")
+    location = purrr::map_chr(nameless, "in")
   )
 }
 

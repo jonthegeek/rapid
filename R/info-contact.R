@@ -10,8 +10,7 @@ NULL
 #' @param url Character scalar (optional). The URL pointing to the contact
 #'   information.
 #' @param email Character scalar (optional). The email address of the contact
-#'   person/organization. This
-#'   *must* be in the form of an email address.
+#'   person/organization. This must be in the form of an email address.
 #'
 #' @return A `contact` S7 object describing who to contact for information about
 #'   the API, with fields `name`, `email`, and `url`.

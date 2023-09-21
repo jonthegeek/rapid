@@ -4,11 +4,11 @@
 #' schemes. Note: each security scheme object can hold multiple schemes of that
 #' type.
 #'
-#' @param name Character (required). The names of the members of this scheme,
-#'   used to identify valid schemes for a given operation.
-#' @param description Character (optional). A description for each security
-#'   scheme. [CommonMark syntax](https://spec.commonmark.org/) *may* be used for
-#'   rich text representation.
+#' @param name Character vector (required). The names of the members of this
+#'   scheme, used to identify valid schemes for a given operation.
+#' @param description Character vector (optional). A description for each
+#'   security scheme. [CommonMark syntax](https://spec.commonmark.org/) may be
+#'   used for rich text representation.
 #'
 #' @export
 #' @seealso [api_key_security_scheme()]

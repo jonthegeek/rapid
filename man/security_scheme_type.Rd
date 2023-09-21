@@ -7,12 +7,12 @@
 security_scheme_type(name = class_missing, description = class_missing)
 }
 \arguments{
-\item{name}{Character (required). The names of the members of this scheme,
-used to identify valid schemes for a given operation.}
+\item{name}{Character vector (required). The names of the members of this
+scheme, used to identify valid schemes for a given operation.}
 
-\item{description}{Character (optional). A description for each security
-scheme. \href{https://spec.commonmark.org/}{CommonMark syntax} \emph{may} be used for
-rich text representation.}
+\item{description}{Character vector (optional). A description for each
+security scheme. \href{https://spec.commonmark.org/}{CommonMark syntax} may be
+used for rich text representation.}
 }
 \description{
 This is an abstract class that is used to define specific types of security

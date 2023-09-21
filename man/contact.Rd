@@ -11,8 +11,7 @@ contact(name = class_missing, email = class_missing, url = class_missing)
 person or organization.}
 
 \item{email}{Character scalar (optional). The email address of the contact
-person/organization. This
-\emph{must} be in the form of an email address.}
+person/organization. This must be in the form of an email address.}
 
 \item{url}{Character scalar (optional). The URL pointing to the contact
 information.}

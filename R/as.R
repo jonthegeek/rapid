@@ -1,12 +1,13 @@
 .validate_for_as_class <- function(x,
                                    target_S7_class,
+                                   extra_names = NULL,
                                    x_arg = rlang::caller_arg(x),
                                    call = rlang::caller_env()) {
   if (!length(x)) {
     return(NULL)
   }
 
-  valid_names <- S7::prop_names(target_S7_class())
+  valid_names <- c(S7::prop_names(target_S7_class()), extra_names)
 
   if (rlang::is_named2(x)) {
     force(x_arg)
