@@ -1,4 +1,4 @@
-#' @include components-security_scheme_type.R
+#' @include components-security_scheme.R
 NULL
 
 #' API key security schemes
@@ -6,58 +6,41 @@ NULL
 #' Defines one or more API key security schemes that can be used by the
 #' operations.
 #'
-#' @inheritParams security_scheme_type
-#' @inheritParams rlang::args_dots_empty
 #' @param parameter_name Character vector (required). The names of the header,
 #'   query or cookie parameters to be used.
 #' @param location Character vector (required). The location of the API key.
 #'   Valid values are "query", "header" or "cookie".
 #'
-#' @return An `api_key_security_scheme` S7 object, with fields `name`,
-#'   `description`, `parameter_name`, and location.
+#' @return An `api_key_security_scheme` S7 object, with fields `parameter_name`
+#'   and `location`.
 #' @export
-#'
-#' @seealso [as_api_key_security_scheme()] for coercing objects to
-#'   `api_key_security_scheme`.
 #'
 #' @examples
 #' api_key_security_scheme(
-#'   "api_key_example",
-#'   description = "API key security scheme example",
 #'   parameter_name = "Authorization",
 #'   location = "header"
 #' )
 api_key_security_scheme <- S7::new_class(
   name = "api_key_security_scheme",
   package = "rapid",
-  parent = security_scheme_type,
+  parent = security_scheme,
   properties = list(
     parameter_name = class_character,
     location = class_character
   ),
-  constructor = function(name = class_missing,
-                         parameter_name = class_missing,
-                         location = class_missing,
-                         ...,
-                         description = class_missing) {
-    check_dots_empty()
-    name <- name %||% character()
-    parameter_name <- parameter_name %||% character()
-    location <- location %||% character()
-    description <- description %||% character()
+  constructor = function(parameter_name = class_missing,
+                         location = class_missing) {
     S7::new_object(
       S7::S7_object(),
-      name = name,
-      parameter_name = parameter_name,
-      location = location,
-      description = description
+      parameter_name = parameter_name %|0|% character(),
+      location = location %|0|% character()
     )
   },
   validator = function(self) {
     validate_parallel(
       self,
-      "name",
-      required = c("parameter_name", "location")
+      "parameter_name",
+      required = "location"
     ) %|0|% validate_in_fixed(
       self,
       "location",
@@ -67,22 +50,22 @@ api_key_security_scheme <- S7::new_class(
 )
 
 S7::method(length, api_key_security_scheme) <- function(x) {
-  length(x@name)
+  length(x@parameter_name)
 }
 
-#' Coerce lists to API key security schemes
+#' Coerce lists and character vectors to API key security schemes
 #'
-#' `as_api_key_security_scheme()` turns an existing object into a
+#' `as_api_key_security_scheme()` turns an existing object into an
 #' `api_key_security_scheme`. This is in contrast with
-#' [api_key_security_scheme()], which builds a `api_key_security_scheme` from
+#' [api_key_security_scheme()], which builds an `api_key_security_scheme` from
 #' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
-#' @param x The object to coerce. Must be empty or be a list of named lists,
-#'   each with names "description", "name", and/or "in". Additional names are
+#' @param x The object to coerce. Must be empty or be a list or character vector
+#'   with names "name" and either "in" or "location". Additional names are
 #'   ignored.
 #'
-#' @return A `api_key_security_scheme` as returned by
+#' @return An `api_key_security_scheme` as returned by
 #'   [api_key_security_scheme()].
 #' @export
 as_api_key_security_scheme <- S7::new_generic(
@@ -94,27 +77,16 @@ S7::method(as_api_key_security_scheme, api_key_security_scheme) <- function(x) {
   x
 }
 
-S7::method(as_api_key_security_scheme, class_list) <- function(x) {
-  call <- rlang::caller_env()
-  x <- purrr::map(
+S7::method(as_api_key_security_scheme, class_list | class_character) <- function(x) {
+  x <- .validate_for_as_class(
     x,
-    function(x) {
-      .validate_for_as_class(
-        x,
-        api_key_security_scheme,
-        extra_names = "in",
-        x_arg = "x[[i]]",
-        call = call
-      )
-    }
+    api_key_security_scheme,
+    extra_names = c("in", "name")
   )
 
-  nameless <- unname(x)
   api_key_security_scheme(
-    name = names(x),
-    description = .extract_along_chr(nameless, "description"),
-    parameter_name = purrr::map_chr(nameless, "name"),
-    location = purrr::map_chr(nameless, "in")
+    parameter_name = x[["parameter_name"]] %||% x[["name"]],
+    location = x[["location"]] %||% x[["in"]]
   )
 }
 

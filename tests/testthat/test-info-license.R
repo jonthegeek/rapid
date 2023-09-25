@@ -199,8 +199,3 @@ test_that("as_license() works for licenses", {
     license()
   )
 })
-
-# TODO: Prettier printing.
-#
-# TODO: After all that, I think I want to implement components$securitySchemas
-# (etc) to have enough to hit checkpoint 1 for {beekeeper}.
