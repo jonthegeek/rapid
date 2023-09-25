@@ -2,7 +2,7 @@
 % Please edit documentation in R/zz-rapid.R
 \name{rapid}
 \alias{rapid}
-\title{R API definition object}
+\title{R API description object}
 \usage{
 rapid(info = class_missing, ..., servers = class_missing)
 }

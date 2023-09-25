@@ -12,9 +12,9 @@ status](https://www.r-pkg.org/badges/version/rapid)](https://CRAN.R-project.org/
 [![R-CMD-check](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jonthegeek/rapid/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-Convert an API document (APID), such as one that follows the [OpenAPI
+Convert an API description (APID), such as one that follows the [OpenAPI
 Specification](https://spec.openapis.org/oas/v3.1.0), to an R API
-definition object. The R object belongs to a new
+description object. The R object belongs to a new
 [S7](https://rconsortium.github.io/S7) class, `rapid`, which enforces a
 strict, opinionated schema.
 

@@ -12,7 +12,7 @@ NULL
 #' @inheritParams rlang::args_dots_empty
 #' @param title Character scalar. The title of the API. Required when the object
 #'   is not empty.
-#' @param version Character scalar. The version of the API document (which is
+#' @param version Character scalar. The version of the API description (which is
 #'   distinct from the OpenAPI Specification version or the API implementation
 #'   version).  Required when the object is not empty.
 #' @param contact The contact information for the exposed API, generated via

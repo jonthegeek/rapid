@@ -19,7 +19,7 @@ info(
 \item{title}{Character scalar. The title of the API. Required when the object
 is not empty.}
 
-\item{version}{Character scalar. The version of the API document (which is
+\item{version}{Character scalar. The version of the API description (which is
 distinct from the OpenAPI Specification version or the API implementation
 version).  Required when the object is not empty.}
 

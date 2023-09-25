@@ -2,7 +2,7 @@
 #' @include servers.R
 NULL
 
-#' R API definition object
+#' R API description object
 #'
 #' An object that represents an API.
 #'
