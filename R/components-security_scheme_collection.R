@@ -1,7 +1,7 @@
 #' @include components-security_scheme.R
 
-security_schemes <- S7::new_class(
-  name = "security_schemes",
+security_scheme_collection <- S7::new_class(
+  name = "security_scheme_collection",
   package = "rapid",
   properties = list(
     name = class_character,
