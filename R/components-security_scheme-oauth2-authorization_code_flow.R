@@ -50,15 +50,44 @@ oauth2_authorization_code_flow <- S7::new_class(
     )
   },
   validator = function(self) {
-    validate_parallel(
+    validate_lengths(
       self,
       "authorization_url",
-      required = "token_url",
-      optional = c("refresh_url", "scopes")
+      required_same = "token_url",
+      optional_same = "refresh_url",
+      optional_any = "scopes"
     )
   }
 )
 
 # TODO: length
-#
-# TODO: as_
+
+as_oauth2_authorization_code_flow <- S7::new_generic(
+  "as_oauth2_authorization_code_flow",
+  dispatch_args = "x"
+)
+
+S7::method(as_oauth2_authorization_code_flow, oauth2_authorization_code_flow) <- function(x) {
+  x
+}
+
+S7::method(as_oauth2_authorization_code_flow, class_list) <- function(x) {
+  x <- .validate_for_as_class(x, oauth2_authorization_code_flow)
+
+  oauth2_authorization_code_flow(
+    authorization_url = x$authorization_url,
+    token_url = x$token_url,
+    refresh_url = x$refresh_url,
+    scopes = as_scopes(x$scopes)
+  )
+}
+
+S7::method(as_oauth2_authorization_code_flow, class_missing | NULL) <- function(x) {
+  oauth2_authorization_code_flow()
+}
+
+S7::method(as_oauth2_authorization_code_flow, class_any) <- function(x) {
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+  )
+}

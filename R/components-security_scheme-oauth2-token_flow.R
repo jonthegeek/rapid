@@ -46,10 +46,11 @@ oauth2_token_flow <- S7::new_class(
     )
   },
   validator = function(self) {
-    validate_parallel(
+    validate_lengths(
       self,
       "token_url",
-      optional = c("refresh_url", "scopes")
+      optional_same = "refresh_url",
+      optional_any = "scopes"
     )
   }
 )

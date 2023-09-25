@@ -41,14 +41,42 @@ oauth2_implicit_flow <- S7::new_class(
     )
   },
   validator = function(self) {
-    validate_parallel(
+    validate_lengths(
       self,
       "authorization_url",
-      optional = c("refresh_url", "scopes")
+      optional_same = "refresh_url",
+      optional_any = "scopes"
     )
   }
 )
 
 # TODO: length
-#
-# TODO: as
+
+as_oauth2_implicit_flow <- S7::new_generic(
+  "as_oauth2_implicit_flow",
+  dispatch_args = "x"
+)
+
+S7::method(as_oauth2_implicit_flow, oauth2_implicit_flow) <- function(x) {
+  x
+}
+
+S7::method(as_oauth2_implicit_flow, class_list) <- function(x) {
+  x <- .validate_for_as_class(x, oauth2_implicit_flow)
+
+  oauth2_implicit_flow(
+    authorization_url = x$authorization_url,
+    refresh_url = x$refresh_url,
+    scopes = as_scopes(x$scopes)
+  )
+}
+
+S7::method(as_oauth2_implicit_flow, class_missing | NULL) <- function(x) {
+  oauth2_implicit_flow()
+}
+
+S7::method(as_oauth2_implicit_flow, class_any) <- function(x) {
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+  )
+}

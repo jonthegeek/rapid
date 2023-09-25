@@ -35,3 +35,54 @@ oauth2_security_scheme <- S7::new_class(
     )
   }
 )
+
+as_oauth2_security_scheme <- S7::new_generic(
+  "as_oauth2_security_scheme",
+  dispatch_args = "x"
+)
+
+S7::method(as_oauth2_security_scheme, oauth2_security_scheme) <- function(x) {
+  x
+}
+
+S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
+  if (!length(x) || !any(lengths(x))) {
+    return(oauth2_security_scheme())
+  }
+
+  if (!("flows" %in% names(x))) {
+    # TODO: Oops, these should all have x_arg and call args, since there's a
+    # potential flow of as_ calls.
+    cli::cli_abort(
+      "{.arg x} must contain a named flows object."
+    )
+  }
+
+  names(x$flows) <- snakecase::to_snake_case(names(x$flows))
+
+  implicit_flow <- as_oauth2_implicit_flow(x$flows[["implicit"]])
+  password_flow <- as_oauth2_token_flow(x$flows[["password"]])
+  client_credentials_flow <- as_oauth2_token_flow(
+    x$flows[["client_credentials"]]
+  )
+  authorization_code_flow <- as_oauth2_authorization_code_flow(
+    x$flows[["authorization_code"]]
+  )
+
+  oauth2_security_scheme(
+    implicit_flow = implicit_flow,
+    password_flow = password_flow,
+    client_credentials_flow = client_credentials_flow,
+    authorization_code_flow = authorization_code_flow
+  )
+}
+
+S7::method(as_oauth2_security_scheme, class_missing | NULL) <- function(x) {
+  oauth2_security_scheme()
+}
+
+S7::method(as_oauth2_security_scheme, class_any) <- function(x) {
+  cli::cli_abort(
+    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+  )
+}
