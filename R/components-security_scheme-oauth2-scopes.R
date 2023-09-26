@@ -62,9 +62,8 @@ S7::method(length, scopes) <- function(x) {
 
 #' Coerce lists and character vectors to scopes
 #'
-#' `as_scopes()` turns an existing object into a
-#' `scopes`. This is in contrast with [scopes()],
-#' which builds a `scopes` from individual properties.
+#' `as_scopes()` turns an existing object into a `scopes`. This is in contrast
+#' with [scopes()], which builds a `scopes` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be coercible to a named character vector.

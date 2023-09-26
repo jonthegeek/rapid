@@ -15,7 +15,6 @@ as_scopes(x, ...)
 A \code{scopes} as returned by \code{\link[=scopes]{scopes()}}.
 }
 \description{
-\code{as_scopes()} turns an existing object into a
-\code{scopes}. This is in contrast with \code{\link[=scopes]{scopes()}},
-which builds a \code{scopes} from individual properties.
+\code{as_scopes()} turns an existing object into a \code{scopes}. This is in contrast
+with \code{\link[=scopes]{scopes()}}, which builds a \code{scopes} from individual properties.
 }

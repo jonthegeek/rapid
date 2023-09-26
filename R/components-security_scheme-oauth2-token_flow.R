@@ -13,6 +13,8 @@ NULL
 #'   this flow. This must be in the form of a URL. The OAuth2 standard requires
 #'   the use of TLS.
 #'
+#' @return An `oauth2_token_flow` object.
+#'
 #' @export
 #' @examples
 #' oauth2_token_flow(
@@ -64,16 +66,16 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 
 #' Coerce lists to OAuth2 token flow
 #'
-#' `as_oauth2_token_flow()` turns an existing object into a
+#' `as_oauth2_token_flow()` turns an existing object into an
 #' `oauth2_token_flow`. This is in contrast with [oauth2_token_flow()], which
-#' builds a `oauth2_token_flow` from individual properties.
+#' builds an `oauth2_token_flow` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to coerce. Must be empty or be a list of named lists,
 #'   each with names "refresh_url", "scopes", and/or "token_url". Additional
 #'   names are ignored.
 #'
-#' @return A `oauth2_token_flow` as returned by [oauth2_token_flow()].
+#' @return An `oauth2_token_flow` as returned by [oauth2_token_flow()].
 #' @export
 as_oauth2_token_flow <- S7::new_generic(
   "as_oauth2_token_flow",

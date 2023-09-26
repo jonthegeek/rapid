@@ -25,8 +25,8 @@ A \code{license} S7 object describing allowed usage of the API, with
 fields \code{name}, \code{identifier}, and \code{url}.
 }
 \description{
-A \code{license} object provides license information for the API to
-describe how the API can be used.
+A \code{license} object provides license information for the API to describe how
+the API can be used.
 }
 \examples{
 license(

@@ -25,6 +25,9 @@ standard requires the use of TLS.}
 \item{scopes}{An optional \code{\link[=scopes]{scopes()}} object with the available scopes for the
 OAuth2 security scheme.}
 }
+\value{
+An \code{oauth2_token_flow} object.
+}
 \description{
 An \code{oauth2_token_flow} object describes the configuration for the OAuth
 Resource Owner Password flow or the OAuth Client Credentials flow (previously

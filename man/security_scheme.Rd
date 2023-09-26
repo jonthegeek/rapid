@@ -11,5 +11,6 @@ This is an abstract class that is used to define specific types of security
 schemes.
 }
 \seealso{
-\code{\link[=api_key_security_scheme]{api_key_security_scheme()}}
+\code{\link[=api_key_security_scheme]{api_key_security_scheme()}}, \code{\link[=oauth2_security_scheme]{oauth2_security_scheme()}}
 }
+\keyword{internal}

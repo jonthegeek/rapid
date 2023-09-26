@@ -14,10 +14,10 @@ names are ignored.}
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{oauth2_token_flow} as returned by \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}.
+An \code{oauth2_token_flow} as returned by \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}.
 }
 \description{
-\code{as_oauth2_token_flow()} turns an existing object into a
+\code{as_oauth2_token_flow()} turns an existing object into an
 \code{oauth2_token_flow}. This is in contrast with \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}, which
-builds a \code{oauth2_token_flow} from individual properties.
+builds an \code{oauth2_token_flow} from individual properties.
 }
