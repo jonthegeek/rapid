@@ -1,31 +1,26 @@
 test_that("string_replacements() requires names for optional args", {
   expect_snapshot(
     string_replacements("a", "b", "c"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("string_replacements() requires that default matches name", {
   expect_snapshot(
     string_replacements("a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     string_replacements("a", letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     string_replacements(letters, "a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     string_replacements(character(), "a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -48,21 +43,18 @@ test_that("string_replacements() works with equal-length name/default", {
 test_that("string_replacements() requires that optional args are empty or match", {
   expect_snapshot(
     string_replacements("a", "b", enum = list("a", "b")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     string_replacements("a", "b", description = c("a", "b")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("string_replacements() requires that the default is in enum when given", {
   expect_snapshot(
     string_replacements(name = "a", default = "b", enum = "a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     string_replacements(
@@ -70,8 +62,7 @@ test_that("string_replacements() requires that the default is in enum when given
       default = c("b", "a"),
       enum = list("a", "a")
     ),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -111,36 +102,30 @@ test_that("length() of a string_replacements reports the overall length", {
 test_that("as_string_replacements() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_string_replacements(letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_string_replacements(list(a = "Jon", b = "jonthegeek@gmail.com")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_string_replacements(c(a = "Jon", b = "jonthegeek@gmail.com")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_string_replacements() errors informatively for bad classes", {
   expect_snapshot(
     as_string_replacements(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_string_replacements(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_string_replacements(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

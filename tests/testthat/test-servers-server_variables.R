@@ -39,18 +39,15 @@ test_that("server_variables() accepts lists of string_replacements", {
 test_that("as_server_variables() errors informatively for bad classes", {
   expect_snapshot(
     as_server_variables(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_server_variables(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_server_variables(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

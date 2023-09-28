@@ -2,7 +2,7 @@
 
     Code
       contact(name = mean)
-    Condition <rlang_error>
+    Condition
       Error in `contact()`:
       ! Can't coerce `name` <function> to <character>.
 
@@ -10,7 +10,7 @@
 
     Code
       contact(name = c("A", "B"))
-    Condition <rlang_error>
+    Condition
       Error in `contact()`:
       ! `name` must be a single <character>.
       x `name` has 2 values.
@@ -19,7 +19,7 @@
 
     Code
       contact(name = "A", url = "https://example.com", email = mean)
-    Condition <rlang_error>
+    Condition
       Error in `contact()`:
       ! Can't coerce `email` <function> to <character>.
 
@@ -27,7 +27,7 @@
 
     Code
       contact(name = "A", url = "https://example.com", email = c("A", "B"))
-    Condition <rlang_error>
+    Condition
       Error in `contact()`:
       ! `email` must be a single <character>.
       x `email` has 2 values.
@@ -36,7 +36,7 @@
 
     Code
       contact(name = "A", url = "https://example.com", email = "not a real email")
-    Condition <rlang_error>
+    Condition
       Error in `contact()`:
       ! `email` must match the provided regex pattern.
       x Some values do not match.
@@ -68,7 +68,7 @@
 
     Code
       as_contact(letters)
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
@@ -77,7 +77,7 @@
 
     Code
       as_contact(list(a = "Jon", b = "jonthegeek@gmail.com"))
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
@@ -86,7 +86,7 @@
 
     Code
       as_contact(c(a = "Jon", b = "jonthegeek@gmail.com"))
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "name", "email", or "url".
       * Any other names are ignored.
@@ -95,7 +95,7 @@
 
     Code
       as_contact(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <contact>.
 
@@ -103,7 +103,7 @@
 
     Code
       as_contact(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <contact>.
 
@@ -111,7 +111,7 @@
 
     Code
       as_contact(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <contact>.
 

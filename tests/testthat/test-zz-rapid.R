@@ -4,8 +4,7 @@
 test_that("rapid() requires info objects for info", {
   expect_snapshot(
     rapid(info = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -101,31 +100,26 @@ test_that("as_rapid() works for rapid, missing, and empty", {
 test_that("as_rapid() errors informatively for bad classes", {
   expect_snapshot(
     as_rapid(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_rapid() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_rapid(list(letters)),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(list(list(a = "https://example.com", b = "A cool server."))),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

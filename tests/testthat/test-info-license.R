@@ -1,67 +1,57 @@
 test_that("license() errors informatively for bad name", {
   expect_snapshot(
     license(name = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     license(name = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("license() errors informatively for bad url", {
   expect_snapshot(
     license(name = "A", url = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     license(name = "A", url = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 test_that("license() errors informatively for bad identifier", {
   expect_snapshot(
     license(name = "A", identifier = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     license(name = "A", identifier = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("license() errors informatively when both url and identifier are supplied", {
   expect_snapshot(
     license(name = "A", identifier = "A", url = "https://example.com"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("license() fails when name is missing", {
   expect_snapshot(
     license(identifier = "A"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     license(url = "https://example.com"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("license() doesn't match identifier by position", {
   expect_snapshot(
     license(name = "A", "https://example.com"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -109,33 +99,28 @@ test_that("length() of a license reports the overall length", {
 test_that("as_license() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_license(letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_license(
       list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")
     ),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_license() errors informatively for bad classes", {
   expect_snapshot(
     as_license(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_license(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_license(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

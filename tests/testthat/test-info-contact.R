@@ -1,26 +1,22 @@
 test_that("contact() errors informatively for bad name", {
   expect_snapshot(
     contact(name = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     contact(name = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("contact() errors informatively for bad email", {
   expect_snapshot(
     contact(name = "A", url = "https://example.com", email = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     contact(name = "A", url = "https://example.com", email = c("A", "B")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     contact(
@@ -28,8 +24,7 @@ test_that("contact() errors informatively for bad email", {
       url = "https://example.com",
       email = "not a real email"
     ),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -77,36 +72,30 @@ test_that("length() of a contact reports the overall length", {
 test_that("as_contact() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_contact(letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_contact(list(a = "Jon", b = "jonthegeek@gmail.com")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_contact(c(a = "Jon", b = "jonthegeek@gmail.com")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_contact() errors informatively for bad classes", {
   expect_snapshot(
     as_contact(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_contact(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_contact(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

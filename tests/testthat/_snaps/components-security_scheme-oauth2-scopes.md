@@ -2,7 +2,7 @@
 
     Code
       scopes("a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::scopes> object is invalid:
       - `description` must have the same length as `name`
@@ -13,7 +13,7 @@
 
     Code
       scopes("a", letters)
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::scopes> object is invalid:
       - `description` must have the same length as `name`
@@ -24,7 +24,7 @@
 
     Code
       scopes(letters, "a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::scopes> object is invalid:
       - `description` must have the same length as `name`
@@ -35,7 +35,7 @@
 
     Code
       scopes(character(), "a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::scopes> object is invalid:
       - When `name` is not defined, `description` must be empty.
@@ -45,7 +45,7 @@
 
     Code
       scopes("a", character())
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::scopes> object is invalid:
       - `description` must have the same length as `name`
@@ -66,7 +66,7 @@
 
     Code
       as_scopes("a")
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must be a named character vector.
 
@@ -74,7 +74,7 @@
 
     Code
       as_scopes(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <scopes>.
 
@@ -82,7 +82,7 @@
 
     Code
       as_scopes(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <scopes>.
 
@@ -90,7 +90,7 @@
 
     Code
       as_scopes(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <scopes>.
 

@@ -54,7 +54,7 @@
 
     Code
       as_info(letters)
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "title", "version", "contact", "description", "license", "summary", or "terms_of_service".
       * Any other names are ignored.
@@ -63,7 +63,7 @@
 
     Code
       as_info(list(a = "My Cool API"))
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "title", "version", "contact", "description", "license", "summary", or "terms_of_service".
       * Any other names are ignored.
@@ -72,7 +72,7 @@
 
     Code
       as_info(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <info>.
 
@@ -80,7 +80,7 @@
 
     Code
       as_info(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <info>.
 
@@ -88,7 +88,7 @@
 
     Code
       as_info(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <info>.
 

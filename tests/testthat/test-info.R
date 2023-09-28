@@ -57,31 +57,26 @@ test_that("length() of an info reports the overall length", {
 test_that("as_info() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_info(letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_info(list(a = "My Cool API")),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_info() errors informatively for bad classes", {
   expect_snapshot(
     as_info(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_info(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_info(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

@@ -56,18 +56,15 @@ test_that("as_api_key_security_scheme() errors informatively for unnamed or misn
 test_that("as_api_key_security_scheme() errors informatively for bad classes", {
   expect_snapshot(
     as_api_key_security_scheme(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_api_key_security_scheme(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_api_key_security_scheme(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

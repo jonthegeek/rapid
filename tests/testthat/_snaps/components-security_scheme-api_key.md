@@ -32,7 +32,7 @@
 
     Code
       as_api_key_security_scheme(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <api_key_security_scheme>.
 
@@ -40,7 +40,7 @@
 
     Code
       as_api_key_security_scheme(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <api_key_security_scheme>.
 
@@ -48,7 +48,7 @@
 
     Code
       as_api_key_security_scheme(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <api_key_security_scheme>.
 

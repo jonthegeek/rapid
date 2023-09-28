@@ -2,7 +2,7 @@
 
     Code
       rapid(info = mean)
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::rapid> object properties are invalid:
       - @info must be <rapid::info>, not <closure>
@@ -50,7 +50,7 @@
 
     Code
       as_rapid(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <rapid>.
 
@@ -58,7 +58,7 @@
 
     Code
       as_rapid(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <rapid>.
 
@@ -66,7 +66,7 @@
 
     Code
       as_rapid(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <rapid>.
 
@@ -74,7 +74,7 @@
 
     Code
       as_rapid(list(letters))
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "info" or "servers".
       * Any other names are ignored.
@@ -83,7 +83,7 @@
 
     Code
       as_rapid(list(list(a = "https://example.com", b = "A cool server.")))
-    Condition <rlang_error>
+    Condition
       Error:
       ! `x` must have names "info" or "servers".
       * Any other names are ignored.

@@ -2,7 +2,7 @@
 
     Code
       string_replacements("a", "b", "c")
-    Condition <rlib_error_dots_nonempty>
+    Condition
       Error in `string_replacements()`:
       ! `...` must be empty.
       x Problematic argument:
@@ -13,7 +13,7 @@
 
     Code
       string_replacements("a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -24,7 +24,7 @@
 
     Code
       string_replacements("a", letters)
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -35,7 +35,7 @@
 
     Code
       string_replacements(letters, "a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must have the same length as `name`
@@ -46,7 +46,7 @@
 
     Code
       string_replacements(character(), "a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - When `name` is not defined, `default` must be empty.
@@ -68,7 +68,7 @@
 
     Code
       string_replacements("a", "b", enum = list("a", "b"))
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `enum` must be empty or have the same length as `name`
@@ -79,7 +79,7 @@
 
     Code
       string_replacements("a", "b", description = c("a", "b"))
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `description` must be empty or have the same length as `name`
@@ -90,7 +90,7 @@
 
     Code
       string_replacements(name = "a", default = "b", enum = "a")
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
@@ -101,7 +101,7 @@
     Code
       string_replacements(name = c("a", "b"), default = c("b", "a"), enum = list("a",
         "a"))
-    Condition <simpleError>
+    Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
@@ -128,7 +128,7 @@
 
     Code
       as_string_replacements(letters)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <character> to <string_replacements>.
 
@@ -136,7 +136,7 @@
 
     Code
       as_string_replacements(list(a = "Jon", b = "jonthegeek@gmail.com"))
-    Condition <purrr_error_indexed>
+    Condition
       Error in `purrr::map_chr()`:
       i In index: 1.
       Caused by error:
@@ -146,7 +146,7 @@
 
     Code
       as_string_replacements(c(a = "Jon", b = "jonthegeek@gmail.com"))
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <character> to <string_replacements>.
 
@@ -154,7 +154,7 @@
 
     Code
       as_string_replacements(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <string_replacements>.
 
@@ -162,7 +162,7 @@
 
     Code
       as_string_replacements(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <string_replacements>.
 
@@ -170,7 +170,7 @@
 
     Code
       as_string_replacements(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <string_replacements>.
 

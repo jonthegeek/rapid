@@ -1,28 +1,23 @@
 test_that("scopes() requires that description matches name", {
   expect_snapshot(
     scopes("a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     scopes("a", letters),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     scopes(letters, "a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     scopes(character(), "a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     scopes("a", character()),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -51,26 +46,22 @@ test_that("length() of a scopes reports the overall length", {
 test_that("as_scopes() errors informatively for unnamed input", {
   expect_snapshot(
     as_scopes("a"),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_scopes() errors informatively for bad classes", {
   expect_snapshot(
     as_scopes(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_scopes(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_scopes(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

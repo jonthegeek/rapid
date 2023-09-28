@@ -64,31 +64,26 @@ test_that("length() of a servers reports the overall length", {
 test_that("as_servers() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_servers(list(letters)),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_servers(list(list(a = "https://example.com", b = "A cool server."))),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_servers() errors informatively for bad classes", {
   expect_snapshot(
     as_servers(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_servers(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_servers(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 

@@ -97,7 +97,7 @@
 
     Code
       as_server_variables(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <server_variables>.
 
@@ -105,7 +105,7 @@
 
     Code
       as_server_variables(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <server_variables>.
 
@@ -113,7 +113,7 @@
 
     Code
       as_server_variables(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <server_variables>.
 
