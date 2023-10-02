@@ -81,6 +81,7 @@ security_scheme_details <- S7::new_class(
 #' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a named list, where each
 #'   element describes a security scheme object. This object should describe the
 #'   security schemes for a single API.

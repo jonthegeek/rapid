@@ -66,6 +66,7 @@ S7::method(length, scopes) <- function(x) {
 #' with [scopes()], which builds a `scopes` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be coercible to a named character vector.
 #'
 #' @return A `scopes` as returned by [scopes()].

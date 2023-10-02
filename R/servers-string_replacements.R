@@ -88,6 +88,7 @@ S7::method(length, string_replacements) <- function(x) {
 #' which builds a `string_replacements` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of named lists,
 #'   each with names "enum", "default", or "description". Additional names are
 #'   ignored.

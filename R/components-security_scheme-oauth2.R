@@ -9,6 +9,7 @@ NULL
 #' Defines one or more OAuth2 security schemes that can be used by the
 #' operations.
 #'
+#' @inheritParams rlang::args_dots_empty
 #' @param implicit_flow An `oauth2_implicit_flow` object created with
 #'   [oauth2_implicit_flow()].
 #' @param password_flow An `oauth2_token_flow` object created with
@@ -41,8 +42,7 @@ oauth2_security_scheme <- S7::new_class(
                          implicit_flow = class_missing,
                          password_flow = class_missing,
                          client_credentials_flow = class_missing,
-                         authorization_code_flow = class_missing,
-                         description = class_missing) {
+                         authorization_code_flow = class_missing) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),

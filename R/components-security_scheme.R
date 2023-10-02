@@ -18,6 +18,7 @@ security_scheme <- S7::new_class(
 #' security scheme to construct.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a named list, with at
 #'   least an element `type`. The `type` element is processed through
 #'   [snakecase::to_snake_case()], and then must be one of "api_key", "oauth2",

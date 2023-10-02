@@ -99,6 +99,7 @@ S7::method(length, info) <- function(x) {
 #' contrast with [info()], which builds an `info` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "title",
 #'   "version", "contact", "description", "license", "summary", and/or
 #'   "terms_of_service". Extra names are ignored. This object should describe a

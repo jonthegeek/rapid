@@ -69,6 +69,7 @@ S7::method(length, license) <- function(x) {
 #' with [license()], which builds a `license` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "name",
 #'   "identifier", and/or "url". Extra names are ignored. This object should
 #'   describe a single license.

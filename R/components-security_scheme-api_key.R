@@ -61,6 +61,7 @@ S7::method(length, api_key_security_scheme) <- function(x) {
 #' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list or character vector
 #'   with names "name" and either "in" or "location". Additional names are
 #'   ignored.

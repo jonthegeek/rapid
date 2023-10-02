@@ -73,6 +73,7 @@ S7::method(length, rapid) <- function(x) {
 #' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "info" and/or
 #'   "servers". Extra names are ignored.
 #'

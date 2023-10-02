@@ -71,6 +71,7 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 #' builds an `oauth2_token_flow` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of named lists,
 #'   each with names "refresh_url", "scopes", and/or "token_url". Additional
 #'   names are ignored.

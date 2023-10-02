@@ -17,7 +17,7 @@ NULL
 #' oauth2_authorization_code_flow(
 #'   authorization_url = "https://example.com/authorize",
 #'   token_url = "https://example.com/token",
-#'   refresh_url = "https://example.com/refresh"
+#'   refresh_url = "https://example.com/refresh",
 #'   scopes = scopes(
 #'     name = c("server:read", "server:write"),
 #'     description = c("Read server settings", "Write server settings")

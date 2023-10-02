@@ -50,6 +50,7 @@ server_variables <- S7::new_class(
 #' `server_variables` object from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of objects that can
 #'   be coerced to `string_replacements` objects via [as_string_replacements()].
 #'
