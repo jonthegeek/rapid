@@ -66,9 +66,9 @@ info <- S7::new_class(
       S7::S7_object(),
       title = title,
       version = version,
-      contact = contact,
+      contact = as_contact(contact),
       description = description,
-      license = license,
+      license = as_license(license),
       summary = summary,
       terms_of_service = terms_of_service
     )
@@ -112,11 +112,11 @@ S7::method(length, info) <- function(x) {
 #' as_info(list(title = "My Cool API", version = "1.0.0"))
 as_info <- S7::new_generic("as_info", dispatch_args = "x")
 
-S7::method(as_info, info) <- function(x) {
+S7::method(as_info, info) <- function(x, ...) {
   x
 }
 
-S7::method(as_info, class_list | class_character) <- function(x) {
+S7::method(as_info, class_list | class_character) <- function(x, ...) {
   x <- .validate_for_as_class(x, info)
 
   info(
@@ -130,12 +130,12 @@ S7::method(as_info, class_list | class_character) <- function(x) {
   )
 }
 
-S7::method(as_info, class_missing | NULL) <- function(x) {
+S7::method(as_info, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x, ...) {
   info()
 }
 
-S7::method(as_info, class_any) <- function(x) {
+S7::method(as_info, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls info}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls info}."
   )
 }

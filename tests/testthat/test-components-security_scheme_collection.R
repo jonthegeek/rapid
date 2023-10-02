@@ -87,11 +87,11 @@ test_that("as_security_scheme_collection() errors informatively for bad classes"
     error = TRUE
   )
   expect_snapshot(
-    as_info(mean),
+    as_security_scheme_collection(mean),
     error = TRUE
   )
   expect_snapshot(
-    as_info(TRUE),
+    as_security_scheme_collection(TRUE),
     error = TRUE
   )
 })

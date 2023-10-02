@@ -4,6 +4,29 @@
 #' @include components-security_scheme-oauth2-authorization_code_flow.R
 NULL
 
+#' OAuth2 security schemes
+#'
+#' Defines one or more OAuth2 security schemes that can be used by the
+#' operations.
+#'
+#' @param implicit_flow An `oauth2_implicit_flow` object created with
+#'   [oauth2_implicit_flow()].
+#' @param password_flow An `oauth2_token_flow` object created with
+#'   [oauth2_token_flow()].
+#' @param client_credentials_flow An `oauth2_token_flow` object created with
+#'   [oauth2_token_flow()].
+#' @param authorization_code_flow An `oauth2_authorization_code_flow` object
+#'   created with [oauth2_authorization_code_flow()].
+#'
+#' @return An `oauth2_security_scheme` S7 object, with fields `implicit_flow`,
+#'   `password_flow`, `client_credentials_flow`, and `authorization_code_flow`.
+#' @export
+#'
+#' @examples
+#' oauth2_security_scheme()
+#' oauth2_security_scheme(
+#'   password_flow = oauth2_token_flow(token_url = "/tokens/passwords")
+#' )
 oauth2_security_scheme <- S7::new_class(
   name = "oauth2_security_scheme",
   package = "rapid",
@@ -21,17 +44,12 @@ oauth2_security_scheme <- S7::new_class(
                          authorization_code_flow = class_missing,
                          description = class_missing) {
     check_dots_empty()
-    implicit_flow <- implicit_flow %||% oauth2_implicit_flow()
-    password_flow <- password_flow %||% oauth2_token_flow()
-    client_credentials_flow <- client_credentials_flow %||% oauth2_token_flow()
-    authorization_code_flow <- authorization_code_flow %||%
-      oauth2_authorization_code_flow()
     S7::new_object(
       S7::S7_object(),
-      implicit_flow = implicit_flow,
-      password_flow = password_flow,
-      client_credentials_flow = client_credentials_flow,
-      authorization_code_flow = authorization_code_flow
+      implicit_flow = as_oauth2_implicit_flow(implicit_flow),
+      password_flow = as_oauth2_token_flow(password_flow),
+      client_credentials_flow = as_oauth2_token_flow(client_credentials_flow),
+      authorization_code_flow = as_oauth2_authorization_code_flow(authorization_code_flow)
     )
   }
 )
@@ -77,12 +95,12 @@ S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
   )
 }
 
-S7::method(as_oauth2_security_scheme, class_missing | NULL) <- function(x) {
+S7::method(as_oauth2_security_scheme, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
   oauth2_security_scheme()
 }
 
-S7::method(as_oauth2_security_scheme, class_any) <- function(x) {
+S7::method(as_oauth2_security_scheme, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
   )
 }

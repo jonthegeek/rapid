@@ -97,7 +97,7 @@
       as_contact(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <contact>.
+      ! Can't coerce `1:2` <integer> to <contact>.
 
 ---
 
@@ -105,7 +105,7 @@
       as_contact(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <contact>.
+      ! Can't coerce `mean` <function> to <contact>.
 
 ---
 
@@ -113,5 +113,5 @@
       as_contact(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <contact>.
+      ! Can't coerce `TRUE` <logical> to <contact>.
 

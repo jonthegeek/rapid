@@ -4,8 +4,7 @@
       rapid(info = mean)
     Condition
       Error:
-      ! <rapid::rapid> object properties are invalid:
-      - @info must be <rapid::info>, not <closure>
+      ! Can't coerce `info` <function> to <info>.
 
 # rapid() requires info when anything is defined
 

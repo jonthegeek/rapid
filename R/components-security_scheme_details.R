@@ -150,12 +150,12 @@ S7::method(as_security_scheme_details, class_list) <- function(x) {
   )
 }
 
-S7::method(as_security_scheme_details, class_missing | NULL) <- function(x) {
+S7::method(as_security_scheme_details, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
   security_scheme_details()
 }
 
-S7::method(as_security_scheme_details, class_any) <- function(x) {
+S7::method(as_security_scheme_details, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls security_scheme_details}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_scheme_details}."
   )
 }

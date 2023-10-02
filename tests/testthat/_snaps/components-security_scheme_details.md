@@ -134,7 +134,7 @@
       as_security_scheme_details(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <security_scheme_details>.
+      ! Can't coerce `1:2` <integer> to <security_scheme_details>.
 
 ---
 
@@ -142,7 +142,7 @@
       as_security_scheme_details(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <security_scheme_details>.
+      ! Can't coerce `mean` <function> to <security_scheme_details>.
 
 ---
 
@@ -150,5 +150,5 @@
       as_security_scheme_details(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <security_scheme_details>.
+      ! Can't coerce `TRUE` <logical> to <security_scheme_details>.
 

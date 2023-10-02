@@ -37,7 +37,7 @@
       as_servers(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <servers>.
+      ! Can't coerce `1:2` <integer> to <servers>.
 
 ---
 
@@ -45,7 +45,7 @@
       as_servers(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <servers>.
+      ! Can't coerce `mean` <function> to <servers>.
 
 ---
 
@@ -53,5 +53,5 @@
       as_servers(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <servers>.
+      ! Can't coerce `TRUE` <logical> to <servers>.
 

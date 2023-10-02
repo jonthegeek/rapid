@@ -74,7 +74,7 @@
       as_info(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <info>.
+      ! Can't coerce `1:2` <integer> to <info>.
 
 ---
 
@@ -82,7 +82,7 @@
       as_info(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <info>.
+      ! Can't coerce `mean` <function> to <info>.
 
 ---
 
@@ -90,5 +90,5 @@
       as_info(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <info>.
+      ! Can't coerce `TRUE` <logical> to <info>.
 

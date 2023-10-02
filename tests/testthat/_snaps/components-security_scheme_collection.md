@@ -53,7 +53,7 @@
       as_security_scheme_collection(letters)
     Condition
       Error:
-      ! Can't coerce `x` <character> to <security_scheme_collection>.
+      ! Can't coerce `letters` <character> to <security_scheme_collection>.
 
 ---
 
@@ -61,21 +61,21 @@
       as_security_scheme_collection(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <security_scheme_collection>.
+      ! Can't coerce `1:2` <integer> to <security_scheme_collection>.
 
 ---
 
     Code
-      as_info(mean)
+      as_security_scheme_collection(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <info>.
+      ! Can't coerce `mean` <function> to <security_scheme_collection>.
 
 ---
 
     Code
-      as_info(TRUE)
+      as_security_scheme_collection(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <info>.
+      ! Can't coerce `TRUE` <logical> to <security_scheme_collection>.
 

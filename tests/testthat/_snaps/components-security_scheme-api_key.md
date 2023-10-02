@@ -34,7 +34,7 @@
       as_api_key_security_scheme(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <api_key_security_scheme>.
+      ! Can't coerce `1:2` <integer> to <api_key_security_scheme>.
 
 ---
 
@@ -42,7 +42,7 @@
       as_api_key_security_scheme(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <api_key_security_scheme>.
+      ! Can't coerce `mean` <function> to <api_key_security_scheme>.
 
 ---
 
@@ -50,5 +50,5 @@
       as_api_key_security_scheme(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <api_key_security_scheme>.
+      ! Can't coerce `TRUE` <logical> to <api_key_security_scheme>.
 

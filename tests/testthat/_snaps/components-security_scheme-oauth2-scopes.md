@@ -76,7 +76,7 @@
       as_scopes(1:2)
     Condition
       Error:
-      ! Can't coerce `x` <integer> to <scopes>.
+      ! Can't coerce `1:2` <integer> to <scopes>.
 
 ---
 
@@ -84,7 +84,7 @@
       as_scopes(mean)
     Condition
       Error:
-      ! Can't coerce `x` <function> to <scopes>.
+      ! Can't coerce `mean` <function> to <scopes>.
 
 ---
 
@@ -92,5 +92,5 @@
       as_scopes(TRUE)
     Condition
       Error:
-      ! Can't coerce `x` <logical> to <scopes>.
+      ! Can't coerce `TRUE` <logical> to <scopes>.
 

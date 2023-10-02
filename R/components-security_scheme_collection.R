@@ -63,8 +63,7 @@ security_scheme_collection <- S7::new_class(
     S7::new_object(
       S7::S7_object(),
       name = name,
-      details = details %|0|%
-        security_scheme_details(),
+      details = as_security_scheme_details(details),
       description = description
     )
   },
@@ -176,12 +175,12 @@ S7::method(as_security_scheme_collection, class_list) <- function(x) {
   cli::cli_abort(c("{.arg {x}} must have names."))
 }
 
-S7::method(as_security_scheme_collection, class_missing | NULL) <- function(x) {
+S7::method(as_security_scheme_collection, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
   security_scheme_collection()
 }
 
-S7::method(as_security_scheme_collection, class_any) <- function(x) {
+S7::method(as_security_scheme_collection, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls security_scheme_collection}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_scheme_collection}."
   )
 }

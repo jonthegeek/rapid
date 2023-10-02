@@ -90,12 +90,12 @@ S7::method(as_license, class_list | class_character) <- function(x) {
   license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
 }
 
-S7::method(as_license, class_missing | NULL) <- function(x) {
+S7::method(as_license, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
   license()
 }
 
-S7::method(as_license, class_any) <- function(x) {
+S7::method(as_license, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls license}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls license}."
   )
 }
