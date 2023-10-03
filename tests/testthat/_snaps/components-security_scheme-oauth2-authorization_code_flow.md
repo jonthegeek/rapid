@@ -123,3 +123,45 @@
        @ authorization_url: chr "https://auth.ebay.com/oauth2/authorize"
        @ token_url        : chr "https://api.ebay.com/identity/v1/oauth2/token"
 
+# as_oauth2_authorization_code_flow() errors informatively for unnamed or misnamed input
+
+    Code
+      as_oauth2_authorization_code_flow("a")
+    Condition
+      Error:
+      ! `x` must have names "refresh_url", "scopes", "authorization_url", or "token_url".
+      * Any other names are ignored.
+
+---
+
+    Code
+      as_oauth2_authorization_code_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition
+      Error:
+      ! `x` must have names "refresh_url", "scopes", "authorization_url", or "token_url".
+      * Any other names are ignored.
+
+# as_oauth2_authorization_code_flow() errors informatively for bad classes
+
+    Code
+      as_oauth2_authorization_code_flow(1:2)
+    Condition
+      Error:
+      ! Can't coerce `1:2` <integer> to <oauth2_authorization_code_flow>.
+
+---
+
+    Code
+      as_oauth2_authorization_code_flow(mean)
+    Condition
+      Error:
+      ! Can't coerce `mean` <function> to <oauth2_authorization_code_flow>.
+
+---
+
+    Code
+      as_oauth2_authorization_code_flow(TRUE)
+    Condition
+      Error:
+      ! Can't coerce `TRUE` <logical> to <oauth2_authorization_code_flow>.
+

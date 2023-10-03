@@ -3,13 +3,13 @@
 %   R/components-security_scheme-oauth2-implicit_flow.R
 \name{as_oauth2_implicit_flow}
 \alias{as_oauth2_implicit_flow}
-\title{Coerce lists to OAuth2 token flow}
+\title{Coerce lists and character vectors to OAuth2 implicit flows}
 \usage{
 as_oauth2_implicit_flow(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list of named lists,
-each with names "refresh_url", "scopes", and/or "authorizatoin_url", or
+each with names "refresh_url", "scopes", and/or "authorization_url", or
 names that can be coerced to those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}.
 Additional names are ignored.}
 

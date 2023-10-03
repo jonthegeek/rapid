@@ -2,7 +2,7 @@
 % Please edit documentation in R/components-security_scheme-oauth2-token_flow.R
 \name{as_oauth2_token_flow}
 \alias{as_oauth2_token_flow}
-\title{Coerce lists to OAuth2 token flow}
+\title{Coerce lists and character vectors to OAuth2 token flows}
 \usage{
 as_oauth2_token_flow(x, ...)
 }

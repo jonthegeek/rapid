@@ -51,7 +51,7 @@ S7::method(length, oauth2_implicit_flow) <- function(x) {
   length(x@authorization_url)
 }
 
-#' Coerce lists to OAuth2 token flow
+#' Coerce lists and character vectors to OAuth2 implicit flows
 #'
 #' `as_oauth2_implicit_flow()` turns an existing object into an
 #' `oauth2_implicit_flow`. This is in contrast with [oauth2_implicit_flow()],
@@ -60,7 +60,7 @@ S7::method(length, oauth2_implicit_flow) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of named lists,
-#'   each with names "refresh_url", "scopes", and/or "authorizatoin_url", or
+#'   each with names "refresh_url", "scopes", and/or "authorization_url", or
 #'   names that can be coerced to those names via [snakecase::to_snake_case()].
 #'   Additional names are ignored.
 #'

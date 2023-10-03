@@ -76,12 +76,86 @@ test_that("length() of an oauth2_implicit_flow reports the overall length", {
 })
 
 test_that("as_oauth2_implicit_flow() errors informatively for unnamed or misnamed input", {
-  expect_error(
-    as_oauth2_implicit_flow("a"),
-    class = "x"
-  )
   expect_snapshot(
     as_oauth2_implicit_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
     error = TRUE
+  )
+})
+
+test_that("as_oauth2_implicit_flow() errors informatively for bad classes", {
+  expect_snapshot(
+    as_oauth2_implicit_flow(1:2),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_implicit_flow(mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_implicit_flow(TRUE),
+    error = TRUE
+  )
+})
+
+test_that("as_oauth2_implicit_flow() returns expected objects", {
+  expect_identical(
+    as_oauth2_implicit_flow(
+      list(
+        authorization_url = "https://auth.ebay.com/oauth2/authorize",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+      )
+    ),
+    oauth2_implicit_flow(
+      authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+    )
+  )
+
+  expect_identical(
+    as_oauth2_implicit_flow(list()),
+    oauth2_implicit_flow()
+  )
+
+  expect_identical(
+    as_oauth2_implicit_flow(character()),
+    oauth2_implicit_flow()
+  )
+})
+
+test_that("as_oauth2_implicit_flow() works for alternate names", {
+  expect_identical(
+    as_oauth2_implicit_flow(
+      list(
+        authorizationUrl = "https://auth.ebay.com/oauth2/authorize",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        refreshUrl = "https://api.ebay.com/identity/v1/oauth2/refresh"
+      )
+    ),
+    oauth2_implicit_flow(
+      authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+    )
+  )
+})
+
+test_that("as_oauth2_implicit_flow() works for oauth2_implicit_flow", {
+  expect_identical(
+    as_oauth2_implicit_flow(oauth2_implicit_flow()),
+    oauth2_implicit_flow()
   )
 })

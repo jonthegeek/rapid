@@ -93,3 +93,36 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ token_url  : chr "https://auth.ebay.com/oauth2/token"
 
+# as_oauth2_token_flow() errors informatively for unnamed or misnamed input
+
+    Code
+      as_oauth2_token_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition
+      Error:
+      ! `x` must have names "refresh_url", "scopes", or "token_url".
+      * Any other names are ignored.
+
+# as_oauth2_token_flow() errors informatively for bad classes
+
+    Code
+      as_oauth2_token_flow(1:2)
+    Condition
+      Error:
+      ! Can't coerce `1:2` <integer> to <oauth2_token_flow>.
+
+---
+
+    Code
+      as_oauth2_token_flow(mean)
+    Condition
+      Error:
+      ! Can't coerce `mean` <function> to <oauth2_token_flow>.
+
+---
+
+    Code
+      as_oauth2_token_flow(TRUE)
+    Condition
+      Error:
+      ! Can't coerce `TRUE` <logical> to <oauth2_token_flow>.
+

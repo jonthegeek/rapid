@@ -60,6 +60,23 @@ S7::method(length, oauth2_authorization_code_flow) <- function(x) {
   length(x@authorization_url)
 }
 
+#' Coerce lists and character vectors to OAuth2 authorization code flows
+#'
+#' `as_oauth2_authorization_code_flow()` turns an existing object into an
+#' `oauth2_authorization_code_flow`. This is in contrast with
+#' [oauth2_authorization_code_flow()], which builds an
+#' `oauth2_authorization_code_flow` from individual properties.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
+#' @param x The object to coerce. Must be empty or be a list of named lists,
+#'   each with names "refresh_url", "scopes", "authorization_url", and/or
+#'   "token_url", or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Additional names are ignored.
+#'
+#' @return An `oauth2_authorization_code_flow` as returned by
+#'   [oauth2_authorization_code_flow()].
+#' @export
 as_oauth2_authorization_code_flow <- S7::new_generic(
   "as_oauth2_authorization_code_flow",
   dispatch_args = "x"

@@ -92,3 +92,36 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ authorization_url: chr "https://auth.ebay.com/oauth2/authorize"
 
+# as_oauth2_implicit_flow() errors informatively for unnamed or misnamed input
+
+    Code
+      as_oauth2_implicit_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+    Condition
+      Error:
+      ! `x` must have names "refresh_url", "scopes", or "authorization_url".
+      * Any other names are ignored.
+
+# as_oauth2_implicit_flow() errors informatively for bad classes
+
+    Code
+      as_oauth2_implicit_flow(1:2)
+    Condition
+      Error:
+      ! Can't coerce `1:2` <integer> to <oauth2_implicit_flow>.
+
+---
+
+    Code
+      as_oauth2_implicit_flow(mean)
+    Condition
+      Error:
+      ! Can't coerce `mean` <function> to <oauth2_implicit_flow>.
+
+---
+
+    Code
+      as_oauth2_implicit_flow(TRUE)
+    Condition
+      Error:
+      ! Can't coerce `TRUE` <logical> to <oauth2_implicit_flow>.
+

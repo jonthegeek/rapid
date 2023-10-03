@@ -61,7 +61,7 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 # TODO: fix help in all the as_ functions to point out that we snakecase-ize the
 # names.
 
-#' Coerce lists to OAuth2 token flow
+#' Coerce lists and character vectors to OAuth2 token flows
 #'
 #' `as_oauth2_token_flow()` turns an existing object into an
 #' `oauth2_token_flow`. This is in contrast with [oauth2_token_flow()], which

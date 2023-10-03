@@ -98,3 +98,81 @@ test_that("as_oauth2_authorization_code_flow() errors informatively for unnamed 
     error = TRUE
   )
 })
+
+test_that("as_oauth2_authorization_code_flow() errors informatively for bad classes", {
+  expect_snapshot(
+    as_oauth2_authorization_code_flow(1:2),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_authorization_code_flow(mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_authorization_code_flow(TRUE),
+    error = TRUE
+  )
+})
+
+test_that("as_oauth2_authorization_code_flow() returns expected objects", {
+  expect_identical(
+    as_oauth2_authorization_code_flow(
+      list(
+        authorization_url = "https://auth.ebay.com/oauth2/authorize",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        token_url = "https://api.ebay.com/identity/v1/oauth2/token"
+      )
+    ),
+    oauth2_authorization_code_flow(
+      authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      token_url = "https://api.ebay.com/identity/v1/oauth2/token"
+    )
+  )
+
+  expect_identical(
+    as_oauth2_authorization_code_flow(list()),
+    oauth2_authorization_code_flow()
+  )
+
+  expect_identical(
+    as_oauth2_authorization_code_flow(character()),
+    oauth2_authorization_code_flow()
+  )
+})
+
+test_that("as_oauth2_authorization_code_flow() works for alternate names", {
+  expect_identical(
+    as_oauth2_authorization_code_flow(
+      list(
+        authorizationUrl = "https://auth.ebay.com/oauth2/authorize",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        tokenUrl = "https://api.ebay.com/identity/v1/oauth2/token"
+      )
+    ),
+    oauth2_authorization_code_flow(
+      authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      token_url = "https://api.ebay.com/identity/v1/oauth2/token"
+    )
+  )
+})
+
+test_that("as_oauth2_authorization_code_flow() works for oauth2_authorization_code_flow", {
+  expect_identical(
+    as_oauth2_authorization_code_flow(oauth2_authorization_code_flow()),
+    oauth2_authorization_code_flow()
+  )
+})

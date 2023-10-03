@@ -76,12 +76,86 @@ test_that("length() of an oauth2_token_flow reports the overall length", {
 })
 
 test_that("as_oauth2_token_flow() errors informatively for unnamed or misnamed input", {
-  expect_error(
-    as_oauth2_token_flow("a"),
-    class = "x"
-  )
   expect_snapshot(
     as_oauth2_token_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
     error = TRUE
+  )
+})
+
+test_that("as_oauth2_token_flow() errors informatively for bad classes", {
+  expect_snapshot(
+    as_oauth2_token_flow(1:2),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_token_flow(mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_token_flow(TRUE),
+    error = TRUE
+  )
+})
+
+test_that("as_oauth2_token_flow() returns expected objects", {
+  expect_identical(
+    as_oauth2_token_flow(
+      list(
+        token_url = "https://auth.ebay.com/oauth2/token",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+      )
+    ),
+    oauth2_token_flow(
+      token_url = "https://auth.ebay.com/oauth2/token",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+    )
+  )
+
+  expect_identical(
+    as_oauth2_token_flow(list()),
+    oauth2_token_flow()
+  )
+
+  expect_identical(
+    as_oauth2_token_flow(character()),
+    oauth2_token_flow()
+  )
+})
+
+test_that("as_oauth2_token_flow() works for alternate names", {
+  expect_identical(
+    as_oauth2_token_flow(
+      list(
+        tokenUrl = "https://auth.ebay.com/oauth2/token",
+        scopes = list(
+          sell.account = "View and manage your account settings",
+          sell.account.readonly = "View your account settings"
+        ),
+        refreshUrl = "https://api.ebay.com/identity/v1/oauth2/refresh"
+      )
+    ),
+    oauth2_token_flow(
+      token_url = "https://auth.ebay.com/oauth2/token",
+      scopes = c(
+        sell.account = "View and manage your account settings",
+        sell.account.readonly = "View your account settings"
+      ),
+      refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh"
+    )
+  )
+})
+
+test_that("as_oauth2_token_flow() works for oauth2_token_flow", {
+  expect_identical(
+    as_oauth2_token_flow(oauth2_token_flow()),
+    oauth2_token_flow()
   )
 })
