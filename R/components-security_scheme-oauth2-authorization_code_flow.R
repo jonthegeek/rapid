@@ -24,29 +24,25 @@ NULL
 #'   )
 #' )
 oauth2_authorization_code_flow <- S7::new_class(
-  name = "oauth2_token_flow",
+  name = "oauth2_authorization_code_flow",
   package = "rapid",
   parent = oauth2_flow,
   properties = list(
     authorization_url = character_scalar_property("authorization_url"),
     token_url = character_scalar_property("token_url")
   ),
-  constructor = function(authorization_url = class_missing,
-                         token_url = class_missing,
+  constructor = function(authorization_url = character(),
+                         token_url = character(),
                          ...,
-                         refresh_url = class_missing,
-                         scopes = class_missing) {
+                         refresh_url = character(),
+                         scopes = character()) {
     check_dots_empty()
-    authorization_url <- authorization_url %||% character()
-    token_url <- token_url %||% character()
-    refresh_url <- refresh_url %||% character()
-    scopes <- scopes %||% scopes()
     S7::new_object(
       S7::S7_object(),
       authorization_url = authorization_url,
       token_url = token_url,
       refresh_url = refresh_url,
-      scopes = scopes
+      scopes = as_scopes(scopes)
     )
   },
   validator = function(self) {
@@ -60,7 +56,9 @@ oauth2_authorization_code_flow <- S7::new_class(
   }
 )
 
-# TODO: length
+S7::method(length, oauth2_authorization_code_flow) <- function(x) {
+  length(x@authorization_url)
+}
 
 as_oauth2_authorization_code_flow <- S7::new_generic(
   "as_oauth2_authorization_code_flow",
@@ -72,14 +70,7 @@ S7::method(as_oauth2_authorization_code_flow, oauth2_authorization_code_flow) <-
 }
 
 S7::method(as_oauth2_authorization_code_flow, class_list) <- function(x) {
-  x <- .validate_for_as_class(x, oauth2_authorization_code_flow)
-
-  oauth2_authorization_code_flow(
-    authorization_url = x$authorization_url,
-    token_url = x$token_url,
-    refresh_url = x$refresh_url,
-    scopes = as_scopes(x$scopes)
-  )
+  .as_class(x, oauth2_authorization_code_flow)
 }
 
 S7::method(as_oauth2_authorization_code_flow, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {

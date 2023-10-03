@@ -46,21 +46,18 @@ string_replacements <- S7::new_class(
     enum = enum_property("enum"),
     description = class_character
   ),
-  constructor = function(name = class_missing,
-                         default = class_missing,
+  constructor = function(name = character(),
+                         default = character(),
                          ...,
-                         enum = class_missing,
-                         description = class_missing) {
+                         enum = list(),
+                         description = character()) {
     check_dots_empty()
-    name <- name %||% character()
-    default <- default %||% character()
-    description <- description %||% character()
     S7::new_object(
       S7::S7_object(),
-      name = name,
-      default = default,
+      name = name %||% character(),
+      default = default %||% character(),
       enum = enum,
-      description = description
+      description = description %||% character()
     )
   },
   validator = function(self) {

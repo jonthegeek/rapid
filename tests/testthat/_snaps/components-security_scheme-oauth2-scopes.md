@@ -68,7 +68,7 @@
       as_scopes("a")
     Condition
       Error:
-      ! `x` must be a named character vector.
+      ! `"a"` must be a named character vector.
 
 # as_scopes() errors informatively for bad classes
 

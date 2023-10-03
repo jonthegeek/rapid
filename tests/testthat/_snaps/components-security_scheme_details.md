@@ -74,7 +74,7 @@
        .. .. .. @ name       : chr(0) 
        .. .. .. @ description: chr(0) 
        .. .. @ token_url  : chr(0) 
-        ..@ authorization_code_flow: <rapid::oauth2_token_flow>
+        ..@ authorization_code_flow: <rapid::oauth2_authorization_code_flow>
        .. .. @ refresh_url      : chr(0) 
        .. .. @ scopes           : <rapid::scopes>
        .. .. .. @ name       : chr(0) 
@@ -120,7 +120,7 @@
        .. .. .. @ name       : chr(0) 
        .. .. .. @ description: chr(0) 
        .. .. @ token_url  : chr(0) 
-        ..@ authorization_code_flow: <rapid::oauth2_token_flow>
+        ..@ authorization_code_flow: <rapid::oauth2_authorization_code_flow>
        .. .. @ refresh_url      : chr(0) 
        .. .. @ scopes           : <rapid::scopes>
        .. .. .. @ name       : chr(0) 

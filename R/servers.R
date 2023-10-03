@@ -59,6 +59,16 @@ servers <- S7::new_class(
     description = class_character,
     variables = server_variables
   ),
+  constructor = function(url = character(),
+                         description = character(),
+                         variables = server_variables()) {
+    S7::new_object(
+      S7::S7_object(),
+      url = url %||% character(),
+      description = description %||% character(),
+      variables = as_server_variables(variables)
+    )
+  },
   validator = function(self) {
     validate_parallel(
       self,

@@ -28,8 +28,9 @@ api_key_security_scheme <- S7::new_class(
     parameter_name = class_character,
     location = class_character
   ),
-  constructor = function(parameter_name = class_missing,
-                         location = class_missing) {
+  constructor = function(parameter_name = character(),
+                         location = character()) {
+    # TODO: Should these be scalar only?
     S7::new_object(
       S7::S7_object(),
       parameter_name = parameter_name %|0|% character(),
@@ -79,15 +80,10 @@ S7::method(as_api_key_security_scheme, api_key_security_scheme) <- function(x) {
 }
 
 S7::method(as_api_key_security_scheme, class_list | class_character) <- function(x) {
-  x <- .validate_for_as_class(
+  .as_class(
     x,
     api_key_security_scheme,
-    extra_names = c("in", "name")
-  )
-
-  api_key_security_scheme(
-    parameter_name = x[["parameter_name"]] %||% x[["name"]],
-    location = x[["location"]] %||% x[["in"]]
+    extra_names = c("in" =  "location", "name" = "parameter_name")
   )
 }
 

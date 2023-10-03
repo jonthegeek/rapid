@@ -39,10 +39,10 @@ oauth2_security_scheme <- S7::new_class(
     authorization_code_flow = oauth2_authorization_code_flow
   ),
   constructor = function(...,
-                         implicit_flow = class_missing,
-                         password_flow = class_missing,
-                         client_credentials_flow = class_missing,
-                         authorization_code_flow = class_missing) {
+                         implicit_flow = oauth2_implicit_flow(),
+                         password_flow = oauth2_token_flow(),
+                         client_credentials_flow = oauth2_token_flow(),
+                         authorization_code_flow = oauth2_authorization_code_flow()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
@@ -75,23 +75,12 @@ S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
       "{.arg x} must contain a named flows object."
     )
   }
-
   names(x$flows) <- snakecase::to_snake_case(names(x$flows))
-
-  implicit_flow <- as_oauth2_implicit_flow(x$flows[["implicit"]])
-  password_flow <- as_oauth2_token_flow(x$flows[["password"]])
-  client_credentials_flow <- as_oauth2_token_flow(
-    x$flows[["client_credentials"]]
-  )
-  authorization_code_flow <- as_oauth2_authorization_code_flow(
-    x$flows[["authorization_code"]]
-  )
-
   oauth2_security_scheme(
-    implicit_flow = implicit_flow,
-    password_flow = password_flow,
-    client_credentials_flow = client_credentials_flow,
-    authorization_code_flow = authorization_code_flow
+    implicit_flow = x$flows[["implicit"]],
+    password_flow = x$flows[["password"]],
+    client_credentials_flow = x$flows[["client_credentials"]],
+    authorization_code_flow = x$flows[["authorization_code"]]
   )
 }
 

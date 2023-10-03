@@ -46,9 +46,9 @@ license <- S7::new_class(
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
-      name = name,
-      identifier = identifier,
-      url = url
+      name = name %||% character(),
+      identifier = identifier %||% character(),
+      url = url %||% character()
     )
   },
   validator = function(self) {
@@ -87,8 +87,7 @@ S7::method(as_license, license) <- function(x) {
 }
 
 S7::method(as_license, class_list | class_character) <- function(x) {
-  x <- .validate_for_as_class(x, license)
-  license(name = x[["name"]], identifier = x[["identifier"]], url = x[["url"]])
+  .as_class(x, license)
 }
 
 S7::method(as_license, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {

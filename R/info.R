@@ -53,24 +53,24 @@ info <- S7::new_class(
     summary = character_scalar_property("summary"),
     terms_of_service = character_scalar_property("terms_of_service")
   ),
-  constructor = function(title = class_missing,
-                         version = class_missing,
+  constructor = function(title = character(),
+                         version = character(),
                          ...,
                          contact = class_missing,
-                         description = class_missing,
+                         description = character(),
                          license = class_missing,
-                         summary = class_missing,
-                         terms_of_service = class_missing) {
+                         summary = character(),
+                         terms_of_service = character()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
-      title = title,
-      version = version,
+      title = title %||% character(),
+      version = version %||% character(),
       contact = as_contact(contact),
-      description = description,
+      description = description %||% character(),
       license = as_license(license),
-      summary = summary,
-      terms_of_service = terms_of_service
+      summary = summary %||% character(),
+      terms_of_service = terms_of_service %||% character()
     )
   },
   validator = function(self) {
@@ -113,25 +113,15 @@ S7::method(length, info) <- function(x) {
 #' as_info(list(title = "My Cool API", version = "1.0.0"))
 as_info <- S7::new_generic("as_info", dispatch_args = "x")
 
-S7::method(as_info, info) <- function(x, ...) {
+S7::method(as_info, info) <- function(x) {
   x
 }
 
-S7::method(as_info, class_list | class_character) <- function(x, ...) {
-  x <- .validate_for_as_class(x, info)
-
-  info(
-    title = x[["title"]],
-    version = x[["version"]],
-    contact = as_contact(x[["contact"]]),
-    description = x[["description"]],
-    license = as_license(x[["license"]]),
-    summary = x[["summary"]],
-    terms_of_service = x[["terms_of_service"]]
-  )
+S7::method(as_info, class_list | class_character) <- function(x) {
+  .as_class(x, info)
 }
 
-S7::method(as_info, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x, ...) {
+S7::method(as_info, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
   info()
 }
 

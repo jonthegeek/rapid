@@ -37,14 +37,14 @@ scopes <- S7::new_class(
     name = class_character,
     description = class_character
   ),
-  constructor = function(name = class_missing,
-                         description = class_missing) {
+  constructor = function(name = character(),
+                         description = character()) {
     name <- name %|0|% character()
     description <- description %|0|% character()
     S7::new_object(
       S7::S7_object(),
-      name = name,
-      description = description
+      name = name %||% character(),
+      description = description %||% character()
     )
   },
   validator = function(self) {
@@ -80,12 +80,13 @@ S7::method(as_scopes, scopes) <- function(x) {
   x
 }
 
-S7::method(as_scopes, class_list | class_character) <- function(x) {
+S7::method(as_scopes, class_list | class_character) <- function(x, ..., arg = rlang::caller_arg(x)) {
+  force(arg)
   x <- unlist(x)
-  x <- stbl::stabilize_chr(x)
+  x <- stbl::stabilize_chr(x, x_arg = arg)
   if (!rlang::is_named2(x)) {
     cli::cli_abort(
-      "{.arg x} must be a named character vector."
+      "{.arg {arg}} must be a named character vector.",
     )
   }
   scopes(

@@ -89,12 +89,7 @@ S7::method(as_rapid, rapid) <- function(x) {
 }
 
 S7::method(as_rapid, class_list) <- function(x) {
-  x <- .validate_for_as_class(x, rapid)
-
-  rapid(
-    info = as_info(x[["info"]]),
-    servers = as_servers(x[["servers"]])
-  )
+  .as_class(x, rapid)
 }
 
 S7::method(as_rapid, S7::new_S3_class("url")) <- function(x) {

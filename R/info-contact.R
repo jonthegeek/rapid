@@ -65,8 +65,7 @@ S7::method(as_contact, contact) <- function(x) {
 }
 
 S7::method(as_contact, class_list | class_character) <- function(x) {
-  x <- .validate_for_as_class(x, contact)
-  contact(name = x[["name"]], email = x[["email"]], url = x[["url"]])
+  .as_class(x, contact)
 }
 
 S7::method(as_contact, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {

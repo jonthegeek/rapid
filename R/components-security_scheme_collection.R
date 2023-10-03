@@ -55,16 +55,16 @@ security_scheme_collection <- S7::new_class(
     details = security_scheme_details,
     description = class_character
   ),
-  constructor = function(name = class_missing,
-                         details = class_missing,
+  constructor = function(name = character(),
+                         details = security_scheme_details(),
                          ...,
-                         description = class_missing) {
+                         description = character()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
-      name = name,
+      name = name %||% character(),
       details = as_security_scheme_details(details),
-      description = description
+      description = description %||% character()
     )
   },
   validator = function(self) {
@@ -164,11 +164,10 @@ S7::method(as_security_scheme_collection, class_list) <- function(x) {
     scheme_names <- rlang::names2(x)
     x <- unname(x)
     descriptions <- .extract_along_chr(x, "description")
-    schemes <- as_security_scheme_details(x)
     return(
       security_scheme_collection(
         name = scheme_names,
-        details = schemes,
+        details = x,
         description = descriptions
       )
     )

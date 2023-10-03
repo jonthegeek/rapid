@@ -32,19 +32,16 @@ oauth2_token_flow <- S7::new_class(
   properties = list(
     token_url = class_character
   ),
-  constructor = function(token_url = class_missing,
+  constructor = function(token_url = character(),
                          ...,
-                         refresh_url = class_missing,
-                         scopes = class_missing) {
+                         refresh_url = character(),
+                         scopes = character()) {
     check_dots_empty()
-    token_url <- token_url %||% character()
-    refresh_url <- refresh_url %||% character()
-    scopes <- scopes %||% scopes()
     S7::new_object(
       S7::S7_object(),
-      token_url = token_url,
-      refresh_url = refresh_url,
-      scopes = scopes
+      token_url = token_url %||% character(),
+      refresh_url = refresh_url %||% character(),
+      scopes = as_scopes(scopes)
     )
   },
   validator = function(self) {
@@ -88,13 +85,7 @@ S7::method(as_oauth2_token_flow, oauth2_token_flow) <- function(x) {
 }
 
 S7::method(as_oauth2_token_flow, class_list) <- function(x) {
-  x <- .validate_for_as_class(x, oauth2_token_flow)
-
-  oauth2_token_flow(
-    token_url = x$token_url,
-    refresh_url = x$refresh_url,
-    scopes = as_scopes(x$scopes)
-  )
+  .as_class(x, oauth2_token_flow)
 }
 
 S7::method(as_oauth2_token_flow, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
