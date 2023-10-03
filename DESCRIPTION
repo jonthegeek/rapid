@@ -47,6 +47,7 @@ Collate:
     'components-security_scheme-oauth2.R'
     'components-security_scheme_details.R'
     'components-security_scheme_collection.R'
+    'components.R'
     'info-contact.R'
     'info-license.R'
     'info.R'
