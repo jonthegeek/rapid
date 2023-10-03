@@ -14,7 +14,7 @@ security_scheme <- S7::new_class(
 #' Coerce lists to security_scheme objects
 #'
 #' `as_security_scheme()` turns an existing object into a `security_scheme`
-#' object. It uses tye `type` element of such objects to determine which type of
+#' object. It uses the `type` element of such objects to determine which type of
 #' security scheme to construct.
 #'
 #' @inheritParams rlang::args_dots_empty

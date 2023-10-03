@@ -11,13 +11,12 @@
 # api_key_security_scheme() works with valid objects
 
     Code
-      test_result <- api_key_security_scheme(location = c("query", "header"),
-      parameter_name = c("parm1", "parm2"))
+      test_result <- api_key_security_scheme(location = "query", parameter_name = "parm1")
       test_result
     Output
       <rapid::api_key_security_scheme>
-       @ parameter_name: chr [1:2] "parm1" "parm2"
-       @ location      : chr [1:2] "query" "header"
+       @ parameter_name: chr "parm1"
+       @ location      : chr "query"
 
 # as_api_key_security_scheme() errors informatively for unnamed or misnamed input
 

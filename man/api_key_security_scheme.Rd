@@ -18,8 +18,7 @@ An \code{api_key_security_scheme} S7 object, with fields \code{parameter_name}
 and \code{location}.
 }
 \description{
-Defines one or more API key security schemes that can be used by the
-operations.
+Defines an API key security scheme that can be used by the operations.
 }
 \examples{
 api_key_security_scheme(

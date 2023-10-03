@@ -1,10 +1,10 @@
+#' @include properties.R
 #' @include components-security_scheme.R
 NULL
 
 #' API key security schemes
 #'
-#' Defines one or more API key security schemes that can be used by the
-#' operations.
+#' Defines an API key security scheme that can be used by the operations.
 #'
 #' @param parameter_name Character vector (required). The names of the header,
 #'   query or cookie parameters to be used.
@@ -25,16 +25,15 @@ api_key_security_scheme <- S7::new_class(
   package = "rapid",
   parent = security_scheme,
   properties = list(
-    parameter_name = class_character,
-    location = class_character
+    parameter_name = character_scalar_property("parameter_name"),
+    location = character_scalar_property("location")
   ),
   constructor = function(parameter_name = character(),
                          location = character()) {
-    # TODO: Should these be scalar only?
     S7::new_object(
       S7::S7_object(),
-      parameter_name = parameter_name %|0|% character(),
-      location = location %|0|% character()
+      parameter_name = parameter_name,
+      location = location
     )
   },
   validator = function(self) {

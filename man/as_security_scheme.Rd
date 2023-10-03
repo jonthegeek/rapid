@@ -20,7 +20,7 @@ or \code{\link[=oauth2_security_scheme]{oauth2_security_scheme()}}.
 }
 \description{
 \code{as_security_scheme()} turns an existing object into a \code{security_scheme}
-object. It uses tye \code{type} element of such objects to determine which type of
+object. It uses the \code{type} element of such objects to determine which type of
 security scheme to construct.
 }
 \examples{

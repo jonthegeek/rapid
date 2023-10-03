@@ -1,6 +1,12 @@
 #' @include components-security_scheme_details.R
 NULL
 
+# TODO: Create an overall components object (incomplete for now), and add it to
+# rapid.
+#
+# TODO: Consider attempting to coerce flow types to one another when appropriate
+# fields are available.
+
 #' Reusable security schemes for an API
 #'
 #' The object provides reusable security schemes for the API. These schemes may

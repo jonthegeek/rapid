@@ -6,8 +6,7 @@ NULL
 
 #' OAuth2 security schemes
 #'
-#' Defines one or more OAuth2 security schemes that can be used by the
-#' operations.
+#' Defines an OAuth2 security scheme that can be used by the operations.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param implicit_flow An `oauth2_implicit_flow` object created with
@@ -53,6 +52,10 @@ oauth2_security_scheme <- S7::new_class(
     )
   }
 )
+
+S7::method(length, oauth2_security_scheme) <- function(x) {
+  max(lengths(S7::props(x)))
+}
 
 as_oauth2_security_scheme <- S7::new_generic(
   "as_oauth2_security_scheme",

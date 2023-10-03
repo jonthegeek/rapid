@@ -37,8 +37,8 @@ RoxygenNote: 7.2.3
 Collate: 
     'as.R'
     'components-security_scheme.R'
-    'components-security_scheme-api_key.R'
     'properties.R'
+    'components-security_scheme-api_key.R'
     'components-security_scheme-oauth2-scopes.R'
     'components-security_scheme-oauth2-flow.R'
     'components-security_scheme-oauth2-authorization_code_flow.R'

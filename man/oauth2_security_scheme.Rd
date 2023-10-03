@@ -32,8 +32,7 @@ An \code{oauth2_security_scheme} S7 object, with fields \code{implicit_flow},
 \code{password_flow}, \code{client_credentials_flow}, and \code{authorization_code_flow}.
 }
 \description{
-Defines one or more OAuth2 security schemes that can be used by the
-operations.
+Defines an OAuth2 security scheme that can be used by the operations.
 }
 \examples{
 oauth2_security_scheme()

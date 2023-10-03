@@ -25,5 +25,3 @@ oauth2_flow <- S7::new_class(
   ),
   abstract = TRUE
 )
-
-# TODO: as_oauth2_flow? Yes, the name of the object says what type it is.
