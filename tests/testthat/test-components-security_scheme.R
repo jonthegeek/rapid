@@ -86,6 +86,13 @@ test_that("as_security_scheme() returns expected objects", {
   )
 
   expect_identical(
+    as_security_scheme(list()),
+    NULL
+  )
+})
+
+test_that("as_security_scheme() works for re-named parameters", {
+  expect_identical(
     as_security_scheme(
       list(
         `in` = "header",
@@ -97,10 +104,5 @@ test_that("as_security_scheme() returns expected objects", {
       parameter_name = "authorization",
       location = "header"
     )
-  )
-
-  expect_identical(
-    as_security_scheme(list()),
-    NULL
   )
 })

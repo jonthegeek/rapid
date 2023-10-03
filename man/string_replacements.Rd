@@ -5,11 +5,11 @@
 \title{A set of variables for server URL template substitution}
 \usage{
 string_replacements(
-  name = class_missing,
-  default = class_missing,
+  name = character(),
+  default = character(),
   ...,
-  enum = class_missing,
-  description = class_missing
+  enum = list(),
+  description = character()
 )
 }
 \arguments{

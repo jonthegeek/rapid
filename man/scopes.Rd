@@ -4,7 +4,7 @@
 \alias{scopes}
 \title{OAuth2 flow scopes objects}
 \usage{
-scopes(name = class_missing, description = class_missing)
+scopes(name = character(), description = character())
 }
 \arguments{
 \item{name}{Character vector (required). The name of the scope.}

@@ -5,10 +5,10 @@
 \title{Reusable security schemes for an API}
 \usage{
 security_scheme_collection(
-  name = class_missing,
-  details = class_missing,
+  name = character(),
+  details = security_scheme_details(),
   ...,
-  description = class_missing
+  description = character()
 )
 }
 \arguments{

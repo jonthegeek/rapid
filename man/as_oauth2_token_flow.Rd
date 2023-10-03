@@ -8,7 +8,8 @@ as_oauth2_token_flow(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list of named lists,
-each with names "refresh_url", "scopes", and/or "token_url". Additional
+each with names "refresh_url", "scopes", and/or "token_url", or names that
+can be coerced to those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Additional
 names are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}

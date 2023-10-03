@@ -70,7 +70,8 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of named lists,
-#'   each with names "refresh_url", "scopes", and/or "token_url". Additional
+#'   each with names "refresh_url", "scopes", and/or "token_url", or names that
+#'   can be coerced to those names via [snakecase::to_snake_case()]. Additional
 #'   names are ignored.
 #'
 #' @return An `oauth2_token_flow` as returned by [oauth2_token_flow()].
@@ -84,7 +85,7 @@ S7::method(as_oauth2_token_flow, oauth2_token_flow) <- function(x) {
   x
 }
 
-S7::method(as_oauth2_token_flow, class_list) <- function(x) {
+S7::method(as_oauth2_token_flow, class_list | class_character) <- function(x) {
   .as_class(x, oauth2_token_flow)
 }
 
@@ -94,6 +95,6 @@ S7::method(as_oauth2_token_flow, class_missing | NULL | S7::new_S3_class("S7_mis
 
 S7::method(as_oauth2_token_flow, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_token_flow}."
   )
 }

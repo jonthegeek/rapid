@@ -6,10 +6,10 @@
 \usage{
 oauth2_security_scheme(
   ...,
-  implicit_flow = class_missing,
-  password_flow = class_missing,
-  client_credentials_flow = class_missing,
-  authorization_code_flow = class_missing
+  implicit_flow = oauth2_implicit_flow(),
+  password_flow = oauth2_token_flow(),
+  client_credentials_flow = oauth2_token_flow(),
+  authorization_code_flow = oauth2_authorization_code_flow()
 )
 }
 \arguments{

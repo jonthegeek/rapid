@@ -69,7 +69,7 @@ S7::method(as_oauth2_authorization_code_flow, oauth2_authorization_code_flow) <-
   x
 }
 
-S7::method(as_oauth2_authorization_code_flow, class_list) <- function(x) {
+S7::method(as_oauth2_authorization_code_flow, class_list | class_character) <- function(x) {
   .as_class(x, oauth2_authorization_code_flow)
 }
 
@@ -79,6 +79,6 @@ S7::method(as_oauth2_authorization_code_flow, class_missing | NULL | S7::new_S3_
 
 S7::method(as_oauth2_authorization_code_flow, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_authorization_code_flow}."
   )
 }

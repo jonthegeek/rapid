@@ -6,11 +6,11 @@
 \title{OAuth2 authorization code flow object}
 \usage{
 oauth2_authorization_code_flow(
-  authorization_url = class_missing,
-  token_url = class_missing,
+  authorization_url = character(),
+  token_url = character(),
   ...,
-  refresh_url = class_missing,
-  scopes = class_missing
+  refresh_url = character(),
+  scopes = character()
 )
 }
 \arguments{

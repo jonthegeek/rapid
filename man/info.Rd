@@ -5,14 +5,14 @@
 \title{Information about the API}
 \usage{
 info(
-  title = class_missing,
-  version = class_missing,
+  title = character(),
+  version = character(),
   ...,
   contact = class_missing,
-  description = class_missing,
+  description = character(),
   license = class_missing,
-  summary = class_missing,
-  terms_of_service = class_missing
+  summary = character(),
+  terms_of_service = character()
 )
 }
 \arguments{

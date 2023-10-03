@@ -5,9 +5,9 @@
 \title{An object representing a collection of servers}
 \usage{
 servers(
-  url = class_missing,
-  description = class_missing,
-  variables = class_missing
+  url = character(),
+  description = character(),
+  variables = server_variables()
 )
 }
 \arguments{

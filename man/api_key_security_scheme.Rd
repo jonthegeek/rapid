@@ -4,10 +4,7 @@
 \alias{api_key_security_scheme}
 \title{API key security schemes}
 \usage{
-api_key_security_scheme(
-  parameter_name = class_missing,
-  location = class_missing
-)
+api_key_security_scheme(parameter_name = character(), location = character())
 }
 \arguments{
 \item{parameter_name}{Character vector (required). The names of the header,

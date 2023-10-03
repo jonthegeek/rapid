@@ -78,3 +78,23 @@ test_that("oauth2_authorization_code_flow() returns expected objects", {
     c("refresh_url", "scopes", "authorization_url", "token_url")
   )
 })
+
+test_that("length() of an oauth2_authorization_code_flow reports the overall length", {
+  expect_equal(length(oauth2_authorization_code_flow()), 0)
+  expect_equal(length(oauth2_authorization_code_flow("A", "B")), 1)
+  expect_equal(
+    length(oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))),
+    1
+  )
+})
+
+test_that("as_oauth2_authorization_code_flow() errors informatively for unnamed or misnamed input", {
+  expect_snapshot(
+    as_oauth2_authorization_code_flow("a"),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_oauth2_authorization_code_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    error = TRUE
+  )
+})

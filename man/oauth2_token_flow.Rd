@@ -5,10 +5,10 @@
 \title{OAuth2 token flow object}
 \usage{
 oauth2_token_flow(
-  token_url = class_missing,
+  token_url = character(),
   ...,
-  refresh_url = class_missing,
-  scopes = class_missing
+  refresh_url = character(),
+  scopes = character()
 )
 }
 \arguments{
