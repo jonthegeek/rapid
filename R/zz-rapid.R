@@ -43,21 +43,26 @@ rapid <- S7::new_class(
   package = "rapid",
   properties = list(
     info = info,
-    servers = servers
+    servers = servers,
+    components = component_collection
   ),
-  constructor = function(info = class_missing, ..., servers = class_missing) {
+  constructor = function(info = class_missing,
+                         ...,
+                         servers = class_missing,
+                         components = component_collection()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
       info = as_info(info),
-      servers = as_servers(servers)
+      servers = as_servers(servers),
+      components = as_component_collection(components)
     )
   },
   validator = function(self) {
     validate_lengths(
       self,
       key_name = "info",
-      optional_any = "servers"
+      optional_any = c("components", "servers")
     )
   }
 )
@@ -90,7 +95,16 @@ S7::method(as_rapid, rapid) <- function(x) {
 }
 
 S7::method(as_rapid, class_list) <- function(x) {
-  .as_class(x, rapid)
+  rlang::try_fetch(
+    {.as_class(x, rapid)},
+    rapid_missing_names = function(cnd) {
+      cli::cli_abort(
+        "{.arg x} must be comprised of properly formed, supported elements.",
+        class = "rapid_unsupported_elements",
+        parent = cnd
+      )
+    }
+  )
 }
 
 S7::method(as_rapid, S7::new_S3_class("url")) <- function(x) {

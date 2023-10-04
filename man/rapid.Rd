@@ -4,7 +4,12 @@
 \alias{rapid}
 \title{R API description object}
 \usage{
-rapid(info = class_missing, ..., servers = class_missing)
+rapid(
+  info = class_missing,
+  ...,
+  servers = class_missing,
+  components = component_collection()
+)
 }
 \arguments{
 \item{info}{An \code{info} object defined by \code{\link[=info]{info()}}.}
