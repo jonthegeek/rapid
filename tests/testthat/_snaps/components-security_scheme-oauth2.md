@@ -89,7 +89,7 @@
       as_oauth2_security_scheme(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <api_key_security_scheme>.
+      ! Can't coerce `1:2` <integer> to <oauth2_security_scheme>.
 
 ---
 
@@ -97,7 +97,7 @@
       as_oauth2_security_scheme(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <api_key_security_scheme>.
+      ! Can't coerce `mean` <function> to <oauth2_security_scheme>.
 
 ---
 
@@ -105,5 +105,5 @@
       as_oauth2_security_scheme(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <api_key_security_scheme>.
+      ! Can't coerce `TRUE` <logical> to <oauth2_security_scheme>.
 
