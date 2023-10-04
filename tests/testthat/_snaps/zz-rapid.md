@@ -49,6 +49,10 @@
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr(0) 
+       .. @ required_scopes        : list()
+       .. @ rapid_class_requirement: chr "security_scheme"
 
 # as_rapid() errors informatively for bad classes
 
@@ -82,7 +86,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error:
-      ! `x` must have names "info", "servers", or "components".
+      ! `x` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 ---
@@ -93,7 +97,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error:
-      ! `x` must have names "info", "servers", or "components".
+      ! `x` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 # as_rapid() fails gracefully for unsupported urls
@@ -164,4 +168,9 @@
        .. .. ..  ..@ parameter_name: chr "Authorization"
        .. .. ..  ..@ location      : chr "header"
        .. .. @ description: chr "Amazon Signature authorization v4"
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr "hmac"
+       .. @ required_scopes        :List of 1
+       .. .. $ : chr(0) 
+       .. @ rapid_class_requirement: chr "security_scheme"
 

@@ -40,7 +40,7 @@ test_that("rapid() returns an empty rapid", {
   )
   expect_identical(
     S7::prop_names(test_result),
-    c("info", "servers", "components")
+    c("info", "servers", "components", "security")
   )
 })
 

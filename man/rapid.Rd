@@ -8,7 +8,8 @@ rapid(
   info = class_missing,
   ...,
   servers = class_missing,
-  components = component_collection()
+  components = component_collection(),
+  security = security_requirements()
 )
 }
 \arguments{
@@ -20,10 +21,13 @@ rapid(
 
 \item{components}{A \code{component_collection} object defined by
 \code{\link[=component_collection]{component_collection()}}.}
+
+\item{security}{A \code{security_requirements} object defined by
+\code{\link[=security_requirements]{security_requirements()}}.}
 }
 \value{
-A \code{rapid} S7 object, with properties \code{info}, \code{servers}, and
-\code{components}.
+A \code{rapid} S7 object, with properties \code{info}, \code{servers}, \code{components},
+and \code{security}.
 }
 \description{
 An object that represents an API.

@@ -11,9 +11,11 @@ NULL
 #' @param servers A `servers` object defined by [servers()].
 #' @param components A `component_collection` object defined by
 #'   [component_collection()].
+#' @param security A `security_requirements` object defined by
+#'   [security_requirements()].
 #'
-#' @return A `rapid` S7 object, with properties `info`, `servers`, and
-#'   `components`.
+#' @return A `rapid` S7 object, with properties `info`, `servers`, `components`,
+#'   and `security`.
 #' @export
 #'
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
@@ -55,25 +57,28 @@ rapid <- S7::new_class(
   properties = list(
     info = info,
     servers = servers,
-    components = component_collection
+    components = component_collection,
+    security = security_requirements
   ),
   constructor = function(info = class_missing,
                          ...,
                          servers = class_missing,
-                         components = component_collection()) {
+                         components = component_collection(),
+                         security = security_requirements()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
       info = as_info(info),
       servers = as_servers(servers),
-      components = as_component_collection(components)
+      components = as_component_collection(components),
+      security = as_security_requirements(security)
     )
   },
   validator = function(self) {
     validate_lengths(
       self,
       key_name = "info",
-      optional_any = c("components", "servers")
+      optional_any = c("components", "security", "servers")
     )
   }
 )
