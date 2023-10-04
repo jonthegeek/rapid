@@ -8,7 +8,8 @@ as_license(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "name",
-"identifier", and/or "url". Extra names are ignored. This object should
+"identifier", and/or "url", or names that can be coerced to those names via
+\code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored. This object should
 describe a single license.}
 
 \item{...}{These dots are for future extensions and must be empty.}

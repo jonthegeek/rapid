@@ -102,8 +102,9 @@ S7::method(length, info) <- function(x) {
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "title",
 #'   "version", "contact", "description", "license", "summary", and/or
-#'   "terms_of_service". Extra names are ignored. This object should describe a
-#'   single API.
+#'   "terms_of_service", or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
+#'   describe a single API.
 #'
 #' @return An `info` object as returned by [info()].
 #' @export

@@ -75,7 +75,8 @@ S7::method(length, rapid) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "info" and/or
-#'   "servers". Extra names are ignored.
+#'   "servers", or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Extra names are ignored.
 #'
 #' @return A `rapid` object as returned by [rapid()].
 #' @export

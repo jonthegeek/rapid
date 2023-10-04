@@ -87,8 +87,9 @@ S7::method(length, string_replacements) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list of named lists,
-#'   each with names "enum", "default", or "description". Additional names are
-#'   ignored.
+#'   each with names "enum", "default", or "description", or names that can be
+#'   coerced to those names via [snakecase::to_snake_case()]. Additional names
+#'   are ignored.
 #'
 #' @return A `string_replacements` as returned by [string_replacements()].
 #' @export

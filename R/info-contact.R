@@ -49,8 +49,9 @@ S7::method(length, contact) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "name", "email",
-#'   and/or "url". Extra names are ignored. This object should describe a single
-#'   point of contact.
+#'   and/or "url", or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
+#'   describe a single point of contact.
 #'
 #' @return A `contact` as returned by [contact()].
 #' @export

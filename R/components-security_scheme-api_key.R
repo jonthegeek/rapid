@@ -63,8 +63,9 @@ S7::method(length, api_key_security_scheme) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or be a list or character vector
-#'   with names "name" and either "in" or "location". Additional names are
-#'   ignored.
+#'   with names "name" and either "in" or "location", or names that can be
+#'   coerced to those names via [snakecase::to_snake_case()]. Additional names
+#'   are ignored.
 #'
 #' @return An `api_key_security_scheme` as returned by
 #'   [api_key_security_scheme()].

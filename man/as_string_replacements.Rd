@@ -8,8 +8,9 @@ as_string_replacements(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list of named lists,
-each with names "enum", "default", or "description". Additional names are
-ignored.}
+each with names "enum", "default", or "description", or names that can be
+coerced to those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Additional names
+are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 }

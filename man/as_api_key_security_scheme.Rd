@@ -8,8 +8,9 @@ as_api_key_security_scheme(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list or character vector
-with names "name" and either "in" or "location". Additional names are
-ignored.}
+with names "name" and either "in" or "location", or names that can be
+coerced to those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Additional names
+are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 }
