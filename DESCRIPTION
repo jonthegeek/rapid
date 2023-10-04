@@ -1,5 +1,5 @@
 Package: rapid
-Title: R 'API' Definitions
+Title: R 'API' Descriptions
 Version: 0.0.0.9000
 Authors@R: c(
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = c("aut", "cre"),
@@ -7,8 +7,8 @@ Authors@R: c(
     person("The Linux Foundation", role = "cph",
            comment = "OpenAPI Specification")
   )
-Description: Convert an 'API' document ('APID'), such as one that follows
-    the 'OpenAPI Specification', to an R 'API' definition object (a
+Description: Convert an 'API' description ('APID'), such as one that follows
+    the 'OpenAPI Specification', to an R 'API' description object (a
     "rapid").  The rapid object follows the 'OpenAPI Specification' to
     make it easy to convert to and from 'API' documents.
 License: MIT + file LICENSE
@@ -20,7 +20,7 @@ Imports:
     glue,
     purrr,
     rlang (>= 1.1.0),
-    S7 (>= 0.1.0.9000),
+    S7 (>= 0.1.1),
     snakecase,
     stbl,
     yaml
@@ -34,3 +34,30 @@ Config/testthat/parallel: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Collate: 
+    'as.R'
+    'components-security_scheme.R'
+    'properties.R'
+    'components-security_scheme-api_key.R'
+    'components-security_scheme-oauth2-scopes.R'
+    'components-security_scheme-oauth2-flow.R'
+    'components-security_scheme-oauth2-authorization_code_flow.R'
+    'components-security_scheme-oauth2-implicit_flow.R'
+    'components-security_scheme-oauth2-token_flow.R'
+    'components-security_scheme-oauth2.R'
+    'components-security_scheme_details.R'
+    'components-security_scheme_collection.R'
+    'components.R'
+    'info-contact.R'
+    'info-license.R'
+    'info.R'
+    'rapid-package.R'
+    'servers-server_variables.R'
+    'servers-string_replacements.R'
+    'servers.R'
+    'utils.R'
+    'validate_in.R'
+    'validate_lengths.R'
+    'validate_parallel.R'
+    'zz-rapid.R'
+    'zzz.R'

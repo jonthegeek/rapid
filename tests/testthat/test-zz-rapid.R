@@ -4,8 +4,7 @@
 test_that("rapid() requires info objects for info", {
   expect_snapshot(
     rapid(info = mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -41,10 +40,7 @@ test_that("rapid() returns an empty rapid", {
   )
   expect_identical(
     S7::prop_names(test_result),
-    c(
-      "info",
-      "servers"
-    )
+    c("info", "servers", "components")
   )
 })
 
@@ -101,31 +97,26 @@ test_that("as_rapid() works for rapid, missing, and empty", {
 test_that("as_rapid() errors informatively for bad classes", {
   expect_snapshot(
     as_rapid(1:2),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(mean),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(TRUE),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
 test_that("as_rapid() errors informatively for unnamed or misnamed input", {
   expect_snapshot(
     as_rapid(list(letters)),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
   expect_snapshot(
     as_rapid(list(list(a = "https://example.com", b = "A cool server."))),
-    error = TRUE,
-    cnd_class = TRUE
+    error = TRUE
   )
 })
 
@@ -202,13 +193,20 @@ test_that("as_rapid() works for lists", {
   )
 })
 
+test_that("as_rapid() fails gracefully for unsupported urls", {
+  skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
+  expect_error(
+    as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
+    class = "rapid_missing_names"
+  )
+  expect_snapshot(
+    as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
+    error = TRUE
+  )
+})
+
 test_that("as_rapid() works for urls", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
-  expect_snapshot(
-    as_rapid(
-      url("https://api.apis.guru/v2/openapi.yaml")
-    )
-  )
   expect_snapshot(
     as_rapid(
       url(

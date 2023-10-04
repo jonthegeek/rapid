@@ -2,10 +2,9 @@
 
     Code
       rapid(info = mean)
-    Condition <simpleError>
+    Condition
       Error:
-      ! <rapid::rapid> object properties are invalid:
-      - @info must be <rapid::info>, not <closure>
+      ! Can't coerce `info` <function> to <info>.
 
 # rapid() requires info when anything is defined
 
@@ -27,7 +26,7 @@
       test_result
     Output
       <rapid::rapid>
-       @ info   : <rapid::info>
+       @ info      : <rapid::info>
        .. @ title           : chr(0) 
        .. @ version         : chr(0) 
        .. @ contact         : <rapid::contact>
@@ -41,16 +40,21 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
-       @ servers: <rapid::servers>
+       @ servers   : <rapid::servers>
        .. @ url        : chr(0) 
        .. @ description: chr(0) 
        .. @ variables  : <rapid::server_variables>  list()
+       @ components: <rapid::component_collection>
+       .. @ security_schemes: <rapid::security_scheme_collection>
+       .. .. @ name       : chr(0) 
+       .. .. @ details    : <rapid::security_scheme_details>  list()
+       .. .. @ description: chr(0) 
 
 # as_rapid() errors informatively for bad classes
 
     Code
       as_rapid(1:2)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <integer> to <rapid>.
 
@@ -58,7 +62,7 @@
 
     Code
       as_rapid(mean)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <function> to <rapid>.
 
@@ -66,7 +70,7 @@
 
     Code
       as_rapid(TRUE)
-    Condition <rlang_error>
+    Condition
       Error:
       ! Can't coerce `x` <logical> to <rapid>.
 
@@ -74,53 +78,43 @@
 
     Code
       as_rapid(list(letters))
-    Condition <rlang_error>
+    Condition
       Error:
-      ! `x` must have names "info" or "servers".
+      ! `x` must be comprised of properly formed, supported elements.
+      Caused by error:
+      ! `x` must have names "info", "servers", or "components".
       * Any other names are ignored.
 
 ---
 
     Code
       as_rapid(list(list(a = "https://example.com", b = "A cool server.")))
-    Condition <rlang_error>
+    Condition
       Error:
-      ! `x` must have names "info" or "servers".
+      ! `x` must be comprised of properly formed, supported elements.
+      Caused by error:
+      ! `x` must have names "info", "servers", or "components".
       * Any other names are ignored.
 
-# as_rapid() works for urls
+# as_rapid() fails gracefully for unsupported urls
 
     Code
       as_rapid(url("https://api.apis.guru/v2/openapi.yaml"))
-    Output
-      <rapid::rapid>
-       @ info   : <rapid::info>
-       .. @ title           : chr "APIs.guru"
-       .. @ version         : chr "2.2.0"
-       .. @ contact         : <rapid::contact>
-       .. .. @ name : chr "APIs.guru"
-       .. .. @ email: chr "mike.ralphson@gmail.com"
-       .. .. @ url  : chr "https://APIs.guru"
-       .. @ description     : chr "Wikipedia for Web APIs. Repository of API definitions in OpenAPI format.\n**Warning**: If you want to be notifi"| __truncated__
-       .. @ license         : <rapid::license>
-       .. .. @ name      : chr "CC0 1.0"
-       .. .. @ identifier: chr(0) 
-       .. .. @ url       : chr "https://github.com/APIs-guru/openapi-directory#licenses"
-       .. @ summary         : chr(0) 
-       .. @ terms_of_service: chr(0) 
-       @ servers: <rapid::servers>
-       .. @ url        : chr "https://api.apis.guru/v2"
-       .. @ description: chr(0) 
-       .. @ variables  : <rapid::server_variables>  list()
+    Condition
+      Error:
+      ! `x` must be comprised of properly formed, supported elements.
+      Caused by error:
+      ! `x` must have names "security_schemes".
+      * Any other names are ignored.
 
----
+# as_rapid() works for urls
 
     Code
       as_rapid(url(
         "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"))
     Output
       <rapid::rapid>
-       @ info   : <rapid::info>
+       @ info      : <rapid::info>
        .. @ title           : chr "AWS Migration Hub"
        .. @ version         : chr "2017-05-31"
        .. @ contact         : <rapid::contact>
@@ -134,7 +128,7 @@
        .. .. @ url       : chr "http://www.apache.org/licenses/"
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
-       @ servers: <rapid::servers>
+       @ servers   : <rapid::servers>
        .. @ url        : chr [1:4] "http://mgh.{region}.amazonaws.com" ...
        .. @ description: chr [1:4] "The AWS Migration Hub multi-region endpoint" ...
        .. @ variables  : <rapid::server_variables> List of 4
@@ -162,4 +156,12 @@
        .. ..  ..@ enum       :List of 1
        .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
        .. ..  ..@ description: chr "The AWS region"
+       @ components: <rapid::component_collection>
+       .. @ security_schemes: <rapid::security_scheme_collection>
+       .. .. @ name       : chr "hmac"
+       .. .. @ details    : <rapid::security_scheme_details> List of 1
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "Authorization"
+       .. .. ..  ..@ location      : chr "header"
+       .. .. @ description: chr "Amazon Signature authorization v4"
 

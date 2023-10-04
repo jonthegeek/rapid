@@ -8,7 +8,8 @@ as_rapid(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "info" and/or
-"servers". Extra names are ignored.}
+"servers", or names that can be coerced to those names via
+\code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 }

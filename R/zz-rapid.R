@@ -1,12 +1,19 @@
-#' R API definition object
+#' @include info.R
+#' @include servers.R
+NULL
+
+#' R API description object
 #'
 #' An object that represents an API.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param info An `info` object defined by [info()].
 #' @param servers A `servers` object defined by [servers()].
+#' @param components A `component_collection` object defined by
+#'   [component_collection()].
 #'
-#' @return A `rapid` S7 object, with properties `info` and `servers`.
+#' @return A `rapid` S7 object, with properties `info`, `servers`, and
+#'   `components`.
 #' @export
 #'
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
@@ -32,6 +39,14 @@
 #'       "Staging server",
 #'       "Production server"
 #'     )
+#'   ),
+#'   components = component_collection(
+#'     security_schemes = security_scheme_collection(
+#'       name = "a",
+#'       details = security_scheme_details(
+#'         api_key_security_scheme("parm", "query")
+#'       )
+#'     )
 #'   )
 #' )
 rapid <- S7::new_class(
@@ -39,17 +54,26 @@ rapid <- S7::new_class(
   package = "rapid",
   properties = list(
     info = info,
-    servers = servers
+    servers = servers,
+    components = component_collection
   ),
-  constructor = function(info = class_missing, ..., servers = class_missing) {
+  constructor = function(info = class_missing,
+                         ...,
+                         servers = class_missing,
+                         components = component_collection()) {
     check_dots_empty()
-    S7::new_object(S7::S7_object(), info = info, servers = servers)
+    S7::new_object(
+      S7::S7_object(),
+      info = as_info(info),
+      servers = as_servers(servers),
+      components = as_component_collection(components)
+    )
   },
   validator = function(self) {
     validate_lengths(
       self,
       key_name = "info",
-      optional_any = "servers"
+      optional_any = c("components", "servers")
     )
   }
 )
@@ -65,8 +89,10 @@ S7::method(length, rapid) <- function(x) {
 #' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "info" and/or
-#'   "servers". Extra names are ignored.
+#'   "servers", or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Extra names are ignored.
 #'
 #' @return A `rapid` object as returned by [rapid()].
 #' @export
@@ -80,11 +106,15 @@ S7::method(as_rapid, rapid) <- function(x) {
 }
 
 S7::method(as_rapid, class_list) <- function(x) {
-  x <- .validate_for_as_class(x, rapid)
-
-  rapid(
-    info = as_info(x[["info"]]),
-    servers = as_servers(x[["servers"]])
+  rlang::try_fetch(
+    {.as_class(x, rapid)},
+    rapid_missing_names = function(cnd) {
+      cli::cli_abort(
+        "{.arg x} must be comprised of properly formed, supported elements.",
+        class = "rapid_unsupported_elements",
+        parent = cnd
+      )
+    }
   )
 }
 
