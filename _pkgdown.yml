@@ -22,7 +22,7 @@ reference:
     - as_string_replacements
     - server_variables
     - as_server_variables
-  - title: components class
+  - title: component_collection class
     contents:
     - component_collection
     - as_component_collection
@@ -43,3 +43,7 @@ reference:
     - as_oauth2_token_flow
     - scopes
     - as_scopes
+  - title: security_requirements class
+    contents:
+    - security_requirements
+    - as_security_requirements
