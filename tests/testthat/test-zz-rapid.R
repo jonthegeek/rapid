@@ -197,7 +197,7 @@ test_that("as_rapid() fails gracefully for unsupported urls", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
   expect_error(
     as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
-    class = "rapid_missing_names"
+    class = "rapid_error_unsupported_elements"
   )
   expect_snapshot(
     as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
