@@ -13,7 +13,7 @@ NULL
 #' @param scopes An optional [scopes()] object with the available scopes for the
 #'   OAuth2 security scheme.
 #'
-#' @export
+#' @keywords internal
 #' @seealso [oauth2_token_flow()], [oauth2_implicit_flow()], and
 #'   [oauth2_authorization_code_flow()]
 oauth2_flow <- S7::new_class(

@@ -22,3 +22,4 @@ flow objects.
 \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}, \code{\link[=oauth2_implicit_flow]{oauth2_implicit_flow()}}, and
 \code{\link[=oauth2_authorization_code_flow]{oauth2_authorization_code_flow()}}
 }
+\keyword{internal}

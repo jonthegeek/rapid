@@ -57,6 +57,22 @@ S7::method(length, oauth2_security_scheme) <- function(x) {
   max(lengths(S7::props(x)))
 }
 
+#' Coerce lists to oauth2 security schemes
+#'
+#' `as_oauth2_security_scheme()` turns an existing object into an
+#' `oauth2_security_scheme`. This is in contrast with
+#' [oauth2_security_scheme()], which builds an `oauth2_security_scheme` from
+#' individual properties.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
+#' @param x The object to coerce. Must be empty or be a list with an object
+#'   named "flows" or a name that can be coerced to "flows" via
+#'   [snakecase::to_snake_case()]. Additional names are ignored.
+#'
+#' @return An `oauth2_security_scheme` as returned by
+#'   [oauth2_security_scheme()].
+#' @export
 as_oauth2_security_scheme <- S7::new_generic(
   "as_oauth2_security_scheme",
   dispatch_args = "x"
@@ -91,6 +107,6 @@ S7::method(as_oauth2_security_scheme, class_missing | NULL | S7::new_S3_class("S
 
 S7::method(as_oauth2_security_scheme, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_security_scheme}."
   )
 }
