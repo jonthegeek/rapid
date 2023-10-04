@@ -72,8 +72,6 @@ S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
   }
 
   if (!("flows" %in% names(x))) {
-    # TODO: Oops, these should all have x_arg and call args, since there's a
-    # potential flow of as_ calls.
     cli::cli_abort(
       "{.arg x} must contain a named flows object."
     )
