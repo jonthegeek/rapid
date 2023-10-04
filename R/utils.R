@@ -26,3 +26,11 @@
 .empty_to_na <- function(x) {
   x %|0|% NA
 }
+
+.list_remove_wrappers <- function(x) {
+  if (is.list(x) && !rlang::is_named(x)) {
+    x <- purrr::list_c(x)
+    x <- .list_remove_wrappers(x)
+  }
+  x
+}

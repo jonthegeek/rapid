@@ -39,12 +39,10 @@ scopes <- S7::new_class(
   ),
   constructor = function(name = character(),
                          description = character()) {
-    name <- name %|0|% character()
-    description <- description %|0|% character()
     S7::new_object(
       S7::S7_object(),
-      name = name %||% character(),
-      description = description %||% character()
+      name = name %|0|% character(),
+      description = description %|0|% character()
     )
   },
   validator = function(self) {

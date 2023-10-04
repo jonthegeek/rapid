@@ -52,6 +52,7 @@ Collate:
     'info-license.R'
     'info.R'
     'rapid-package.R'
+    'security_requirements.R'
     'servers-server_variables.R'
     'servers-string_replacements.R'
     'servers.R'
