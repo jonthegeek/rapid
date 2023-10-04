@@ -19,6 +19,19 @@
       - When `info` is not defined, `servers` must be empty.
       - `servers` has 3 values.
 
+# security must reference components@security_schemes
+
+    Code
+      rapid(info = info(title = "A", version = "1"), components = component_collection(
+        security_schemes = security_scheme_collection(name = "the_defined_one",
+          details = security_scheme_details(api_key_security_scheme("this_one",
+            location = "header")))), security = security_requirements(name = "an_undefined_one"))
+    Condition
+      Error:
+      ! <rapid::rapid> object is invalid:
+      - `security` must be one of the `security_schemes` defined in `components`.
+      - "an_undefined_one" is not in "the_defined_one".
+
 # rapid() returns an empty rapid
 
     Code

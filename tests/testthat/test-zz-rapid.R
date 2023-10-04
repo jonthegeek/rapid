@@ -28,6 +28,26 @@ test_that("rapid() requires info when anything is defined", {
   )
 })
 
+test_that("security must reference components@security_schemes", {
+  expect_snapshot(
+    rapid(
+      info = info(title = "A", version = "1"),
+      components = component_collection(
+        security_schemes = security_scheme_collection(
+          name = "the_defined_one",
+          details = security_scheme_details(
+            api_key_security_scheme("this_one", location = "header")
+          )
+        )
+      ),
+      security = security_requirements(
+        name = "an_undefined_one"
+      )
+    ),
+    error = TRUE
+  )
+})
+
 test_that("rapid() returns an empty rapid", {
   expect_snapshot({
     test_result <- rapid()

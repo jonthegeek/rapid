@@ -43,9 +43,20 @@ validate_in_fixed <- function(obj,
   }
 }
 
-.msg_some_not_in_fixed <- function(value_name, enums, missing_msgs) {
+.msg_some_not_in_fixed <- function(value_name,
+                                   enums,
+                                   missing_msgs,
+                                   enum_name = "the designated values") {
+  enum_name <- cli::format_inline(enum_name)
   c(
-    cli::format_inline("{.arg {value_name}} must be one of {.or {.val {enums}}}."),
+    cli::format_inline("{.arg {value_name}} must be one of {enum_name}."),
     missing_msgs
   )
+}
+
+validate_in_specific <- function(values, enums, value_name, ...) {
+  missing_msgs <- .check_all_in_enums(values, rep(list(enums), length(values)))
+  if (length(missing_msgs)) {
+    return(.msg_some_not_in_fixed(value_name, enums, missing_msgs, ...))
+  }
 }

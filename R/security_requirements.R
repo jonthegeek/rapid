@@ -1,6 +1,31 @@
 #' @include properties.R
 NULL
 
+#' Security schemes required to execute an operation
+#'
+#' The object lists the required security schemes to execute an operation or
+#' operations.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @param name Character vector (required). The names must correspond to
+#'   security schemes declared in the `security_schemes` property of a
+#'   [component_collection()].
+#' @param required_scopes A list of character vectors, each of which describe
+#'   the scopes required for this security scheme. The vector corresponding to a
+#'   given `name` can be empty.
+#'
+#' @return A `security_requirements` S7 object with references of security
+#'   required for operations.
+#' @export
+#' @examples
+#' security_requirements()
+#' security_requirements(
+#'   name = c("oauth2", "internalApiKey"),
+#'   required_scopes = list(
+#'     c("user", "user:email", "user:follow"),
+#'     character()
+#'   )
+#' )
 security_requirements <- S7::new_class(
   "security_requirements",
   package = "rapid",
@@ -36,6 +61,34 @@ S7::method(length, security_requirements) <- function(x) {
   length(x@name)
 }
 
+#' Coerce lists to as_security_requirements objects
+#'
+#' `as_security_requirements()` turns an existing object into a
+#' `security_requirements` object. This is in contrast with
+#' [security_requirements()], which builds a `security_requirements` from
+#' individual properties.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
+#' @param x The object to coerce. Must be empty or be a list containing a single
+#'   list named "security_schemes", or a name that can be coerced to
+#'   "security_schemes" via [snakecase::to_snake_case()]. Additional names are
+#'   ignored.
+#'
+#' @return A `security_requirements` object as returned by
+#'   [security_requirements()].
+#' @export
+#'
+#' @examples
+#' as_security_requirements()
+#' as_security_requirements(
+#'   list(
+#'     list(
+#'       oauth2 = c("user", "user:email", "user:follow")
+#'     ),
+#'     list(internalApiKey = list())
+#'   )
+#' )
 as_security_requirements <- S7::new_generic(
   "as_security_requirements",
   dispatch_args = "x"

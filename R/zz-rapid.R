@@ -75,11 +75,29 @@ rapid <- S7::new_class(
     )
   },
   validator = function(self) {
-    validate_lengths(
-      self,
-      key_name = "info",
-      optional_any = c("components", "security", "servers")
+    c(
+      msgs <- validate_lengths(
+        self,
+        key_name = "info",
+        optional_any = c("components", "security", "servers")
+      ),
+      validate_in_specific(
+        values = self@security@name,
+        enums = self@components@security_schemes@name,
+        value_name = "security",
+        enum_name = "the {.arg security_schemes} defined in {.arg components}"
+      )
     )
+
+    # if (!all(self@security@name %in% self@components@security_schemes@name)) {
+    #   msgs <- c(
+    #     msgs,
+    #     cli::format_inline(
+    #       "{.arg security} must reference {.arg security_schemes} defined in {.arg components}."
+    #     )
+    #   )
+    # }
+    # msgs
   }
 )
 
