@@ -11,9 +11,11 @@ NULL
 #' @param servers A `servers` object defined by [servers()].
 #' @param components A `component_collection` object defined by
 #'   [component_collection()].
+#' @param security A `security_requirements` object defined by
+#'   [security_requirements()].
 #'
-#' @return A `rapid` S7 object, with properties `info`, `servers`, and
-#'   `components`.
+#' @return A `rapid` S7 object, with properties `info`, `servers`, `components`,
+#'   and `security`.
 #' @export
 #'
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
@@ -55,26 +57,47 @@ rapid <- S7::new_class(
   properties = list(
     info = info,
     servers = servers,
-    components = component_collection
+    components = component_collection,
+    security = security_requirements
   ),
   constructor = function(info = class_missing,
                          ...,
                          servers = class_missing,
-                         components = component_collection()) {
+                         components = component_collection(),
+                         security = security_requirements()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
       info = as_info(info),
       servers = as_servers(servers),
-      components = as_component_collection(components)
+      components = as_component_collection(components),
+      security = as_security_requirements(security)
     )
   },
   validator = function(self) {
-    validate_lengths(
-      self,
-      key_name = "info",
-      optional_any = c("components", "servers")
+    c(
+      msgs <- validate_lengths(
+        self,
+        key_name = "info",
+        optional_any = c("components", "security", "servers")
+      ),
+      validate_in_specific(
+        values = self@security@name,
+        enums = self@components@security_schemes@name,
+        value_name = "security",
+        enum_name = "the {.arg security_schemes} defined in {.arg components}"
+      )
     )
+
+    # if (!all(self@security@name %in% self@components@security_schemes@name)) {
+    #   msgs <- c(
+    #     msgs,
+    #     cli::format_inline(
+    #       "{.arg security} must reference {.arg security_schemes} defined in {.arg components}."
+    #     )
+    #   )
+    # }
+    # msgs
   }
 )
 
@@ -108,10 +131,10 @@ S7::method(as_rapid, rapid) <- function(x) {
 S7::method(as_rapid, class_list) <- function(x) {
   rlang::try_fetch(
     {.as_class(x, rapid)},
-    rapid_missing_names = function(cnd) {
+    rapid_error_missing_names = function(cnd) {
       cli::cli_abort(
         "{.arg x} must be comprised of properly formed, supported elements.",
-        class = "rapid_unsupported_elements",
+        class = "rapid_error_unsupported_elements",
         parent = cnd
       )
     }

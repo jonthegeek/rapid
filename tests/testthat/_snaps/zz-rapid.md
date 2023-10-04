@@ -19,6 +19,19 @@
       - When `info` is not defined, `servers` must be empty.
       - `servers` has 3 values.
 
+# security must reference components@security_schemes
+
+    Code
+      rapid(info = info(title = "A", version = "1"), components = component_collection(
+        security_schemes = security_scheme_collection(name = "the_defined_one",
+          details = security_scheme_details(api_key_security_scheme("this_one",
+            location = "header")))), security = security_requirements(name = "an_undefined_one"))
+    Condition
+      Error:
+      ! <rapid::rapid> object is invalid:
+      - `security` must be one of the `security_schemes` defined in `components`.
+      - "an_undefined_one" is not in "the_defined_one".
+
 # rapid() returns an empty rapid
 
     Code
@@ -49,6 +62,10 @@
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr(0) 
+       .. @ required_scopes        : list()
+       .. @ rapid_class_requirement: chr "security_scheme"
 
 # as_rapid() errors informatively for bad classes
 
@@ -82,7 +99,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error:
-      ! `x` must have names "info", "servers", or "components".
+      ! `x` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 ---
@@ -93,7 +110,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error:
-      ! `x` must have names "info", "servers", or "components".
+      ! `x` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 # as_rapid() fails gracefully for unsupported urls
@@ -164,4 +181,9 @@
        .. .. ..  ..@ parameter_name: chr "Authorization"
        .. .. ..  ..@ location      : chr "header"
        .. .. @ description: chr "Amazon Signature authorization v4"
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr "hmac"
+       .. @ required_scopes        :List of 1
+       .. .. $ : chr(0) 
+       .. @ rapid_class_requirement: chr "security_scheme"
 

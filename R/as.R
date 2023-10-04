@@ -35,7 +35,7 @@
       "{.arg {x_arg}} must have names {.or {.val {valid_names}}}.",
       "*" = "Any other names are ignored."
     ),
-    class = "rapid_missing_names",
+    class = "rapid_error_missing_names",
     call = call
   )
 }
