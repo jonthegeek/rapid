@@ -24,6 +24,14 @@ object (see \code{\link[=security_scheme_collection]{security_scheme_collection(
 }
 \examples{
 component_collection()
+component_collection(
+  security_schemes = security_scheme_collection(
+    name = "a",
+    details = security_scheme_details(
+      api_key_security_scheme("parm", "query")
+    )
+  )
+)
 }
 \seealso{
 \code{\link[=as_component_collection]{as_component_collection()}} for coercing objects to

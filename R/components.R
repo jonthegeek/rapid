@@ -21,6 +21,14 @@ NULL
 #'
 #' @examples
 #' component_collection()
+#' component_collection(
+#'   security_schemes = security_scheme_collection(
+#'     name = "a",
+#'     details = security_scheme_details(
+#'       api_key_security_scheme("parm", "query")
+#'     )
+#'   )
+#' )
 component_collection <- S7::new_class(
   "component_collection",
   package = "rapid",

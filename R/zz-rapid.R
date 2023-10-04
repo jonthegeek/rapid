@@ -9,8 +9,11 @@ NULL
 #' @inheritParams rlang::args_dots_empty
 #' @param info An `info` object defined by [info()].
 #' @param servers A `servers` object defined by [servers()].
+#' @param components A `component_collection` object defined by
+#'   [component_collection()].
 #'
-#' @return A `rapid` S7 object, with properties `info` and `servers`.
+#' @return A `rapid` S7 object, with properties `info`, `servers`, and
+#'   `components`.
 #' @export
 #'
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
@@ -35,6 +38,14 @@ NULL
 #'       "Development server",
 #'       "Staging server",
 #'       "Production server"
+#'     )
+#'   ),
+#'   components = component_collection(
+#'     security_schemes = security_scheme_collection(
+#'       name = "a",
+#'       details = security_scheme_details(
+#'         api_key_security_scheme("parm", "query")
+#'       )
 #'     )
 #'   )
 #' )

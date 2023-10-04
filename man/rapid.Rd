@@ -17,9 +17,13 @@ rapid(
 \item{...}{These dots are for future extensions and must be empty.}
 
 \item{servers}{A \code{servers} object defined by \code{\link[=servers]{servers()}}.}
+
+\item{components}{A \code{component_collection} object defined by
+\code{\link[=component_collection]{component_collection()}}.}
 }
 \value{
-A \code{rapid} S7 object, with properties \code{info} and \code{servers}.
+A \code{rapid} S7 object, with properties \code{info}, \code{servers}, and
+\code{components}.
 }
 \description{
 An object that represents an API.
@@ -44,6 +48,14 @@ rapid(
       "Development server",
       "Staging server",
       "Production server"
+    )
+  ),
+  components = component_collection(
+    security_schemes = security_scheme_collection(
+      name = "a",
+      details = security_scheme_details(
+        api_key_security_scheme("parm", "query")
+      )
     )
   )
 )
