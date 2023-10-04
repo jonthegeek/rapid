@@ -42,7 +42,7 @@ properties."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Coerce lists and character vectors to servers</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/servers-zz-servers.R" class="external-link"><code>R/servers-zz-servers.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/servers.R" class="external-link"><code>R/servers.R</code></a></small>
       <div class="d-none name"><code>as_servers.Rd</code></div>
     </div>
 
@@ -61,7 +61,8 @@ properties.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>The object to coerce. Must be empty or have names "name", "email",
-and/or "url". Extra names are ignored.</p></dd>
+and/or "url", or names that can be coerced to those names via
+<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored.</p></dd>
 
 
 <dt>...</dt>

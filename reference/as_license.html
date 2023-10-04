@@ -40,7 +40,7 @@ with license(), which builds a license from individual properties."><!-- mathjax
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Coerce lists and character vectors to licenses</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info-01-license.R" class="external-link"><code>R/info-01-license.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info-license.R" class="external-link"><code>R/info-license.R</code></a></small>
       <div class="d-none name"><code>as_license.Rd</code></div>
     </div>
 
@@ -58,7 +58,9 @@ with <code><a href="license.html">license()</a></code>, which builds a <code>lic
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>The object to coerce. Must be empty or have names "name",
-"identifier", and/or "url". Extra names are ignored.</p></dd>
+"identifier", and/or "url", or names that can be coerced to those names via
+<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored. This object should
+describe a single license.</p></dd>
 
 
 <dt>...</dt>

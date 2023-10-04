@@ -40,7 +40,7 @@ contrast with info(), which builds an info from individual properties."><!-- mat
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Coerce lists and character vectors to info objects</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info-zz-info.R" class="external-link"><code>R/info-zz-info.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info.R" class="external-link"><code>R/info.R</code></a></small>
       <div class="d-none name"><code>as_info.Rd</code></div>
     </div>
 
@@ -59,7 +59,9 @@ contrast with <code><a href="info.html">info()</a></code>, which builds an <code
     <dl><dt>x</dt>
 <dd><p>The object to coerce. Must be empty or have names "title",
 "version", "contact", "description", "license", "summary", and/or
-"terms_of_service". Extra names are ignored.</p></dd>
+"terms_of_service", or names that can be coerced to those names via
+<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored. This object should
+describe a single API.</p></dd>
 
 
 <dt>...</dt>

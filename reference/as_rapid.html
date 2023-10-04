@@ -61,7 +61,8 @@ properties.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>The object to coerce. Must be empty or have names "info" and/or
-"servers". Extra names are ignored.</p></dd>
+"servers", or names that can be coerced to those names via
+<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored.</p></dd>
 
 
 <dt>...</dt>
@@ -79,7 +80,7 @@ properties.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">as_rapid</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;rapid::rapid&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ info   : &lt;rapid::info&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ info      : &lt;rapid::info&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ title           : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ version         : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ contact         : &lt;rapid::contact&gt;</span>
@@ -93,10 +94,15 @@ properties.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ url       : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ summary         : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ terms_of_service: chr(0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ servers: &lt;rapid::servers&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ servers   : &lt;rapid::servers&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url        : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ description: chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ variables  : &lt;rapid::server_variables&gt;  list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ components: &lt;rapid::component_collection&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ security_schemes: &lt;rapid::security_scheme_collection&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ name       : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ details    : &lt;rapid::security_scheme_details&gt;  list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ description: chr(0) </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

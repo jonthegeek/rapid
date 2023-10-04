@@ -42,40 +42,41 @@ generation tools for convenience."><!-- mathjax --><script src="https://cdnjs.cl
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Information about the API</h1>
-      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info-zz-info.R" class="external-link"><code>R/info-zz-info.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jonthegeek/rapid/blob/HEAD/R/info.R" class="external-link"><code>R/info.R</code></a></small>
       <div class="d-none name"><code>info.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
-    <p>The object provides metadata about the API. The metadata <em>may</em> be used by the
-clients if needed, and <em>may</em> be presented in editing or documentation
+    <p>The object provides metadata about the API. The metadata may be used by the
+clients if needed, and may be presented in editing or documentation
 generation tools for convenience.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">info</span><span class="op">(</span></span>
-<span>  title <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  version <span class="op">=</span> <span class="va">class_missing</span>,</span>
+<span>  title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  contact <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  description <span class="op">=</span> <span class="va">class_missing</span>,</span>
+<span>  description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  license <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  summary <span class="op">=</span> <span class="va">class_missing</span>,</span>
-<span>  terms_of_service <span class="op">=</span> <span class="va">class_missing</span></span>
+<span>  summary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  terms_of_service <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>title</dt>
-<dd><p>The title of the API. Required when the object is not empty.</p></dd>
+<dd><p>Character scalar. The title of the API. Required when the object
+is not empty.</p></dd>
 
 
 <dt>version</dt>
-<dd><p>The version of the API document (which is distinct from the
-OpenAPI Specification version or the API implementation version).  Required
-when the object is not empty.</p></dd>
+<dd><p>Character scalar. The version of the API description (which is
+distinct from the OpenAPI Specification version or the API implementation
+version).  Required when the object is not empty.</p></dd>
 
 
 <dt>...</dt>
@@ -88,7 +89,8 @@ when the object is not empty.</p></dd>
 
 
 <dt>description</dt>
-<dd><p>A description of the API. <a href="https://spec.commonmark.org/" class="external-link">CommonMark syntax</a> <em>may</em> be used for rich text
+<dd><p>Character scalar (optional). A description of the API.
+<a href="https://spec.commonmark.org/" class="external-link">CommonMark syntax</a> may be used for rich text
 representation.</p></dd>
 
 
@@ -98,18 +100,19 @@ representation.</p></dd>
 
 
 <dt>summary</dt>
-<dd><p>A short summary of the API.</p></dd>
+<dd><p>Character scalar (optional). A short summary of the API.</p></dd>
 
 
 <dt>terms_of_service</dt>
-<dd><p>A URL to the Terms of Service for the API.</p></dd>
+<dd><p>Character scalar (optional). A URL to the Terms of
+Service for the API.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>An <code>info</code> S7 object.</p>
+<p>An <code>info</code> S7 object with metadata describing a single API.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

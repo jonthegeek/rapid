@@ -28,6 +28,15 @@
     <loc>https://jonthegeek.github.io/rapid/principles.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/api_key_security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_api_key_security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_component_collection.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_contact.html</loc>
   </url>
   <url>
@@ -37,7 +46,31 @@
     <loc>https://jonthegeek.github.io/rapid/reference/as_license.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_oauth2_authorization_code_flow.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_oauth2_implicit_flow.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_oauth2_security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_oauth2_token_flow.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_rapid.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_scopes.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_security_scheme_collection.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_security_scheme_details.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_server_variables.html</loc>
@@ -47,6 +80,9 @@
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_string_replacements.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/component_collection.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/contact.html</loc>
@@ -61,7 +97,34 @@
     <loc>https://jonthegeek.github.io/rapid/reference/license.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/oauth2_authorization_code_flow.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/oauth2_flow.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/oauth2_implicit_flow.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/oauth2_security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/oauth2_token_flow.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/rapid.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/scopes.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/security_scheme.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/security_scheme_collection.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/security_scheme_details.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/server_variables.html</loc>
