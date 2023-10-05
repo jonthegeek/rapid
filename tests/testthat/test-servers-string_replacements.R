@@ -99,17 +99,17 @@ test_that("length() of a string_replacements reports the overall length", {
   expect_equal(length(string_replacements(name = "A", default = "A")), 1)
 })
 
-test_that("as_string_replacements() errors for un/misnamed input", {
+test_that("as_string_replacements() errors for unnamed input", {
   expect_snapshot(
     as_string_replacements(letters),
     error = TRUE
   )
   expect_snapshot(
-    as_string_replacements(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_string_replacements(list("Jon", "jonthegeek@gmail.com")),
     error = TRUE
   )
   expect_snapshot(
-    as_string_replacements(c(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_string_replacements(c("Jon", "jonthegeek@gmail.com")),
     error = TRUE
   )
 })

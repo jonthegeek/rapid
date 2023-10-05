@@ -93,10 +93,10 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ token_url  : chr "https://auth.ebay.com/oauth2/token"
 
-# as_oauth2_token_flow() errors for unnamed or misnamed input
+# as_oauth2_token_flow() errors for unnamed input
 
     Code
-      as_oauth2_token_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_oauth2_token_flow(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must have names "refresh_url", "scopes", or "token_url".

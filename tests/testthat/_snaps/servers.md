@@ -9,21 +9,10 @@
        @ description: chr(0) 
        @ variables  : <rapid::server_variables>  list()
 
-# as_servers() errors informatively for unnamed or misnamed input
+# as_servers() errors informatively for unnamed input
 
     Code
       as_servers(list(letters))
-    Condition
-      Error in `purrr::map()`:
-      i In index: 1.
-      Caused by error in `as_servers()`:
-      ! `x[[i]]` must have names "url", "description", or "variables".
-      * Any other names are ignored.
-
----
-
-    Code
-      as_servers(list(list(a = "https://example.com", b = "A cool server.")))
     Condition
       Error in `purrr::map()`:
       i In index: 1.

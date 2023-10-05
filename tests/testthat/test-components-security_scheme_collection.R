@@ -70,7 +70,7 @@ test_that("length() of security_scheme_collection reports the overall length", {
   )
 })
 
-test_that("as_security_scheme_collection() errors for un/misnamed input", {
+test_that("as_security_scheme_collection() errors for unnamed input", {
   expect_snapshot(
     as_security_scheme_collection(as.list(letters)),
     error = TRUE

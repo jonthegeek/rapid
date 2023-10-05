@@ -129,13 +129,13 @@ test_that("as_rapid() errors informatively for bad classes", {
   )
 })
 
-test_that("as_rapid() errors informatively for unnamed or misnamed input", {
+test_that("as_rapid() errors informatively for unnamed input", {
   expect_snapshot(
     as_rapid(list(letters)),
     error = TRUE
   )
   expect_snapshot(
-    as_rapid(list(list(a = "https://example.com", b = "A cool server."))),
+    as_rapid(list(list("https://example.com", "A cool server."))),
     error = TRUE
   )
 })
@@ -213,25 +213,72 @@ test_that("as_rapid() works for lists", {
   )
 })
 
-test_that("as_rapid() fails gracefully for unsupported urls", {
-  skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
-  expect_error(
-    as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
-    class = "rapid_error_unsupported_elements"
-  )
-  expect_snapshot(
-    as_rapid(url("https://api.apis.guru/v2/openapi.yaml")),
-    error = TRUE
-  )
-})
-
 test_that("as_rapid() works for urls", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
+
+  expect_warning(
+    expect_warning(
+      expect_warning(
+        expect_warning(
+          expect_warning(
+            as_rapid(
+              url(
+                "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"
+              )
+            ),
+            "x_has_equivalent_paths",
+            class = "rapid_warning_extra_names"
+          ),
+          "x_release",
+          class = "rapid_warning_extra_names"
+        ),
+        "x_twitter",
+        class = "rapid_warning_extra_names"
+      ),
+      "parameters",
+      class = "rapid_warning_extra_names"
+    ),
+    "x_amazon_apigateway_authtype",
+    class = "rapid_warning_extra_names"
+  )
+
   expect_snapshot(
-    as_rapid(
+    suppressWarnings(as_rapid(
       url(
         "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"
       )
-    )
+    ))
+  )
+})
+
+test_that("as_rapid() works for empty optional fields", {
+  # TODO: Manually generate a more-broken example.
+  #
+  # x <-
+  #   url("https://api.apis.guru/v2/specs/fec.gov/1.0/openapi.yaml") |>
+  #   yaml::read_yaml()
+  # saveRDS(x, test_path("fixtures", "fec.rds"))
+  x <- readRDS(test_path("fixtures", "fec.rds"))
+
+  expect_warning(
+    expect_warning(
+      expect_warning(
+        expect_warning(
+          as_rapid(x),
+          "openapi",
+          class = "rapid_warning_extra_names"
+        ),
+        "x_twitter",
+        class = "rapid_warning_extra_names"
+      ),
+      "x_apisguru_categories",
+      class = "rapid_warning_extra_names"
+    ),
+    "schemas",
+    class = "rapid_warning_extra_names"
+  )
+
+  expect_snapshot(
+    suppressWarnings(as_rapid(x))
   )
 })

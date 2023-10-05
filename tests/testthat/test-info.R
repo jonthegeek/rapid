@@ -54,13 +54,13 @@ test_that("length() of an info reports the overall length", {
   )
 })
 
-test_that("as_info() errors informatively for unnamed or misnamed input", {
+test_that("as_info() errors informatively for unnamed input", {
   expect_snapshot(
     as_info(letters),
     error = TRUE
   )
   expect_snapshot(
-    as_info(list(a = "My Cool API")),
+    as_info(list("My Cool API")),
     error = TRUE
   )
 })

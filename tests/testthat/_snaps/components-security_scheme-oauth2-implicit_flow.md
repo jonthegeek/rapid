@@ -92,10 +92,10 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ authorization_url: chr "https://auth.ebay.com/oauth2/authorize"
 
-# as_oauth2_implicit_flow() errors for unnamed or misnamed input
+# as_oauth2_implicit_flow() errors for unnamed input
 
     Code
-      as_oauth2_implicit_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_oauth2_implicit_flow(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must have names "refresh_url", "scopes", or "authorization_url".

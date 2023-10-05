@@ -90,13 +90,9 @@ test_that("length() of oauth2_authorization_code_flow reports overall length", {
   )
 })
 
-test_that("as_oauth2_authorization_code_flow() errors for un/misnamed input", {
+test_that("as_oauth2_authorization_code_flow() errors for unnamed input", {
   expect_snapshot(
     as_oauth2_authorization_code_flow("a"),
-    error = TRUE
-  )
-  expect_snapshot(
-    as_oauth2_authorization_code_flow(list(a = "Jon", b = "jtg@gmail.com")),
     error = TRUE
   )
 })

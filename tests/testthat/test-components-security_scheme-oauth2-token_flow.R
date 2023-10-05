@@ -75,9 +75,9 @@ test_that("length() of an oauth2_token_flow reports the overall length", {
   )
 })
 
-test_that("as_oauth2_token_flow() errors for unnamed or misnamed input", {
+test_that("as_oauth2_token_flow() errors for unnamed input", {
   expect_snapshot(
-    as_oauth2_token_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_oauth2_token_flow(list("Jon", "jonthegeek@gmail.com")),
     error = TRUE
   )
 })

@@ -50,7 +50,7 @@
        @ summary         : chr(0) 
        @ terms_of_service: chr(0) 
 
-# as_info() errors informatively for unnamed or misnamed input
+# as_info() errors informatively for unnamed input
 
     Code
       as_info(letters)
@@ -62,7 +62,7 @@
 ---
 
     Code
-      as_info(list(a = "My Cool API"))
+      as_info(list("My Cool API"))
     Condition
       Error:
       ! `x` must have names "title", "version", "contact", "description", "license", "summary", or "terms_of_service".

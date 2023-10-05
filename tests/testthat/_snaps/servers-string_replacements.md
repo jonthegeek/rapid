@@ -124,7 +124,7 @@
        .. $ : NULL
        @ description: chr [1:3] "The active user's folder." NA NA
 
-# as_string_replacements() errors for un/misnamed input
+# as_string_replacements() errors for unnamed input
 
     Code
       as_string_replacements(letters)
@@ -135,7 +135,7 @@
 ---
 
     Code
-      as_string_replacements(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_string_replacements(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error in `purrr::map_chr()`:
       i In index: 1.
@@ -145,7 +145,7 @@
 ---
 
     Code
-      as_string_replacements(c(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_string_replacements(c("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! Can't coerce `x` <character> to <string_replacements>.

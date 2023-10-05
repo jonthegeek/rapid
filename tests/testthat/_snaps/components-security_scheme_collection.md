@@ -39,7 +39,7 @@
        @ details    : <rapid::security_scheme_details>  list()
        @ description: chr(0) 
 
-# as_security_scheme_collection() errors for un/misnamed input
+# as_security_scheme_collection() errors for unnamed input
 
     Code
       as_security_scheme_collection(as.list(letters))

@@ -134,6 +134,9 @@ S7::method(as_servers, class_list) <- function(x) {
       )
     }
   )
+  if (!any(lengths(x))) {
+    x <- NULL
+  }
 
   servers(
     url = purrr::map_chr(x, "url"),

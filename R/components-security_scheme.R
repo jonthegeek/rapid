@@ -78,7 +78,9 @@ S7::method(as_security_scheme, class_list) <- function(x) {
   if (!length(x) || !any(lengths(x))) {
     return(NULL)
   }
-  switch(snakecase::to_snake_case(x$type),
+  type <- snakecase::to_snake_case(x$type)
+  x$type <- NULL
+  switch(type,
     api_key = as_api_key_security_scheme(x),
     # http = as_http_security_scheme(x),
     # mutual_tls = as_mutual_tls_security_scheme(x),

@@ -96,15 +96,9 @@ test_that("length() of a license reports the overall length", {
   expect_equal(length(license(name = "A")), 1)
 })
 
-test_that("as_license() errors informatively for unnamed or misnamed input", {
+test_that("as_license() errors informatively for unnamed input", {
   expect_snapshot(
     as_license(letters),
-    error = TRUE
-  )
-  expect_snapshot(
-    as_license(
-      list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")
-    ),
     error = TRUE
   )
 })
@@ -135,43 +129,28 @@ test_that("as_license() returns expected objects", {
       identifier = "Apache-2.0"
     )
   )
-  expect_identical(
+  expect_warning(
     as_license(c(
       name = "Apache 2.0",
       identifier = "Apache-2.0",
       x = "https://jonthegeek.com"
     )),
-    license(
-      name = "Apache 2.0",
-      identifier = "Apache-2.0"
-    )
+    class = "rapid_warning_extra_names"
   )
   expect_identical(
-    as_license(
-      c(
-        identifier = "Apache-2.0",
+    suppressWarnings(
+      as_license(c(
         name = "Apache 2.0",
+        identifier = "Apache-2.0",
         x = "https://jonthegeek.com"
-      )
+      ))
     ),
     license(
       name = "Apache 2.0",
       identifier = "Apache-2.0"
     )
   )
-  expect_identical(
-    as_license(
-      list(
-        name = "Apache 2.0",
-        identifier = "Apache-2.0",
-        x = "https://jonthegeek.com"
-      )
-    ),
-    license(
-      name = "Apache 2.0",
-      identifier = "Apache-2.0"
-    )
-  )
+
   expect_identical(
     as_license(list()),
     license()

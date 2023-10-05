@@ -75,10 +75,10 @@
        .. @ authorization_url: chr(0) 
        .. @ token_url        : chr(0) 
 
-# as_oauth2_security_scheme() errors for unnamed or misnamed input
+# as_oauth2_security_scheme() errors for unnamed input
 
     Code
-      as_oauth2_security_scheme(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_oauth2_security_scheme(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must contain a named flows object.

@@ -24,14 +24,24 @@
   if (rlang::is_named2(x)) {
     force(x_arg)
     x <- rlang::set_names(x, snakecase::to_snake_case)
-    if (any(names(x) %in% valid_names)) {
-      x <- as.list(x)[names(x) %in% valid_names]
-      if (length(extra_names)) {
-        to_rename <- names(x) %in% names(extra_names)
-        names(x)[to_rename] <- extra_names[names(x)[to_rename]]
-      }
-      return(x)
+    ignored_names <- names(x)[!names(x) %in% valid_names]
+    x <- as.list(x)[names(x) %in% valid_names]
+    if (length(extra_names)) {
+      to_rename <- names(x) %in% names(extra_names)
+      names(x)[to_rename] <- extra_names[names(x)[to_rename]]
     }
+    x <- x %|0|% NULL
+    if (length(ignored_names)) {
+      cli::cli_warn(
+        c(
+          "{.arg {x_arg}} expects names {.or {.val {valid_names}}}.",
+          "*" = "Ignored names: {.val {ignored_names}}."
+        ),
+        class = "rapid_warning_extra_names"
+      )
+    }
+
+    return(x)
   }
 
   cli::cli_abort(

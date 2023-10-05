@@ -18,10 +18,10 @@
        @ parameter_name: chr "parm1"
        @ location      : chr "query"
 
-# as_api_key_security_scheme() errors for un/misnamed input
+# as_api_key_security_scheme() errors for unnamed input
 
     Code
-      as_api_key_security_scheme(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_api_key_security_scheme(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must have names "parameter_name", "location", "in", or "name".
