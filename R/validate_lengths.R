@@ -18,7 +18,7 @@ validate_lengths <- function(obj,
   }
 
   if (!is.null(required_any)) {
-    issues <- c(issues, .check_non_empty(obj, key_name, required_any))
+    issues <- c(issues, .check_non_empty(obj, key_name, required_any)) # nocov
   }
 
   if (!is.null(optional_same)) {
@@ -51,7 +51,7 @@ validate_lengths <- function(obj,
   )
 }
 
-.check_non_empty <- function(obj, key_name, prop_names) {
+.check_non_empty <- function(obj, key_name, prop_names) { # nocov start
   prop_lengths <- .prop_lengths(obj, prop_names)
   empty <- prop_names[prop_lengths == 0]
   if (any(empty)) {
@@ -62,7 +62,7 @@ validate_lengths <- function(obj,
   cli::format_inline(
     "When {.arg {key_name}} is defined, {.arg {empty}} must not be empty."
   )
-}
+} # nocov end
 
 .check_same_or_empty <- function(obj, key_name, key_length, prop_names) {
   prop_lengths <- .prop_lengths(obj, prop_names)

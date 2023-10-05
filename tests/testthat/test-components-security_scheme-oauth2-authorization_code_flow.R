@@ -79,7 +79,7 @@ test_that("oauth2_authorization_code_flow() returns expected objects", {
   )
 })
 
-test_that("length() of oauth2_authorization_code_flow reports the overall length", {
+test_that("length() of oauth2_authorization_code_flow reports overall length", {
   expect_equal(length(oauth2_authorization_code_flow()), 0)
   expect_equal(length(oauth2_authorization_code_flow("A", "B")), 1)
   expect_equal(

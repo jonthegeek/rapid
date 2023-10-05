@@ -41,7 +41,7 @@ security_scheme_details(
       token_url = "/account/profile/authorization",
       scopes = scopes(
         name = "Catalog",
-        description = "Modify profile preferences and activity (bookmarks, watch list)"
+        description = "Modify profile preferences and activity"
       )
     )
   ),

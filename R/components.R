@@ -127,9 +127,10 @@ S7::method(as_component_collection, class_missing | NULL) <- function(x) {
   component_collection()
 }
 
-S7::method(as_component_collection, class_any) <- function(x,
-                                                           ...,
-                                                           arg = rlang::caller_arg(x)) {
+S7::method(
+  as_component_collection,
+  class_any
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls component_collection}."
   )

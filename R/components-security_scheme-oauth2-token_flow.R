@@ -93,9 +93,10 @@ S7::method(
   oauth2_token_flow()
 }
 
-S7::method(as_oauth2_token_flow, class_any) <- function(x,
-                                                        ...,
-                                                        arg = rlang::caller_arg(x)) {
+S7::method(
+  as_oauth2_token_flow,
+  class_any
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_token_flow}."
   )
