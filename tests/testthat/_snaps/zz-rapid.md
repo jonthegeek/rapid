@@ -116,8 +116,8 @@
 # as_rapid() works for urls
 
     Code
-      as_rapid(url(
-        "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"))
+      suppressWarnings(as_rapid(url(
+        "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml")))
     Output
       <rapid::rapid>
        @ info      : <rapid::info>
@@ -179,7 +179,7 @@
 # as_rapid() works for empty optional fields
 
     Code
-      as_rapid(x)
+      suppressWarnings(as_rapid(x))
     Output
       <rapid::rapid>
        @ info      : <rapid::info>

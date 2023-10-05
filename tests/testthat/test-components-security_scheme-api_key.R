@@ -64,7 +64,7 @@ test_that("as_api_key_security_scheme() errors informatively for bad classes", {
 })
 
 test_that("as_api_key_security_scheme() returns expected objects", {
-  expect_identical(
+  expect_warning(
     as_api_key_security_scheme(
       list(
         name = "Authorization",
@@ -72,6 +72,18 @@ test_that("as_api_key_security_scheme() returns expected objects", {
         `x-amazon-apigateway-authtype` = "awsSigv4"
       )
     ),
+    regexp = "x_amazon_apigateway_authtype",
+    class = "rapid_warning_extra_names"
+  )
+
+  expect_identical(
+    suppressWarnings(as_api_key_security_scheme(
+      list(
+        name = "Authorization",
+        `in` = "header",
+        `x-amazon-apigateway-authtype` = "awsSigv4"
+      )
+    )),
     api_key_security_scheme(
       parameter_name = "Authorization",
       location = "header"

@@ -118,8 +118,7 @@ test_that("as_contact() returns expected objects", {
     as_contact(
       c(
         name = "Jon",
-        email = "jonthegeek@gmail.com",
-        x = "https://jonthegeek.com"
+        email = "jonthegeek@gmail.com"
       )
     ),
     contact(
@@ -131,8 +130,7 @@ test_that("as_contact() returns expected objects", {
     as_contact(
       c(
         email = "jonthegeek@gmail.com",
-        name = "Jon",
-        x = "https://jonthegeek.com"
+        name = "Jon"
       )
     ),
     contact(
@@ -144,8 +142,7 @@ test_that("as_contact() returns expected objects", {
     as_contact(
       list(
         name = "Jon",
-        email = "jonthegeek@gmail.com",
-        x = "https://jonthegeek.com"
+        email = "jonthegeek@gmail.com"
       )
     ),
     contact(

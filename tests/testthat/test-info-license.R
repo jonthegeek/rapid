@@ -129,43 +129,28 @@ test_that("as_license() returns expected objects", {
       identifier = "Apache-2.0"
     )
   )
-  expect_identical(
+  expect_warning(
     as_license(c(
       name = "Apache 2.0",
       identifier = "Apache-2.0",
       x = "https://jonthegeek.com"
     )),
-    license(
-      name = "Apache 2.0",
-      identifier = "Apache-2.0"
-    )
+    class = "rapid_warning_extra_names"
   )
   expect_identical(
-    as_license(
-      c(
-        identifier = "Apache-2.0",
+    suppressWarnings(
+      as_license(c(
         name = "Apache 2.0",
+        identifier = "Apache-2.0",
         x = "https://jonthegeek.com"
-      )
+      ))
     ),
     license(
       name = "Apache 2.0",
       identifier = "Apache-2.0"
     )
   )
-  expect_identical(
-    as_license(
-      list(
-        name = "Apache 2.0",
-        identifier = "Apache-2.0",
-        x = "https://jonthegeek.com"
-      )
-    ),
-    license(
-      name = "Apache 2.0",
-      identifier = "Apache-2.0"
-    )
-  )
+
   expect_identical(
     as_license(list()),
     license()
