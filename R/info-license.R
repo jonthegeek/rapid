@@ -91,11 +91,16 @@ S7::method(as_license, class_list | class_character) <- function(x) {
   .as_class(x, license)
 }
 
-S7::method(as_license, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_license,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   license()
 }
 
-S7::method(as_license, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(as_license, class_any) <- function(x,
+                                              ...,
+                                              arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls license}."
   )

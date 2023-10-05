@@ -1,4 +1,8 @@
-.as_class <- function(x, target_S7_class, ..., arg = rlang::caller_arg(x), call = rlang::caller_env()) {
+.as_class <- function(x,
+                      target_S7_class,
+                      ...,
+                      arg = rlang::caller_arg(x),
+                      call = rlang::caller_env()) {
   force(arg)
   x <- .validate_for_as_class(x, target_S7_class, ..., x_arg = arg, call = call)
   rlang::inject({

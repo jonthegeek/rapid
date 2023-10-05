@@ -79,7 +79,10 @@ S7::method(as_api_key_security_scheme, api_key_security_scheme) <- function(x) {
   x
 }
 
-S7::method(as_api_key_security_scheme, class_list | class_character) <- function(x) {
+S7::method(
+  as_api_key_security_scheme,
+  class_list | class_character
+) <- function(x) {
   .as_class(
     x,
     api_key_security_scheme,
@@ -87,11 +90,17 @@ S7::method(as_api_key_security_scheme, class_list | class_character) <- function
   )
 }
 
-S7::method(as_api_key_security_scheme, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_api_key_security_scheme,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   api_key_security_scheme()
 }
 
-S7::method(as_api_key_security_scheme, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(
+  as_api_key_security_scheme,
+  class_any
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
   )

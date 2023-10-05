@@ -69,7 +69,7 @@ test_that("length() of a oauth2_security_scheme reports the proper length", {
   )
 })
 
-test_that("as_oauth2_security_scheme() errors informatively for unnamed or misnamed input", {
+test_that("as_oauth2_security_scheme() errors for unnamed or misnamed input", {
   expect_snapshot(
     as_oauth2_security_scheme(
       list(a = "Jon", b = "jonthegeek@gmail.com")
@@ -78,7 +78,7 @@ test_that("as_oauth2_security_scheme() errors informatively for unnamed or misna
   )
 })
 
-test_that("as_oauth2_security_scheme() errors informatively for bad classes", {
+test_that("as_oauth2_security_scheme() errors for bad classes", {
   expect_snapshot(
     as_oauth2_security_scheme(1:2),
     error = TRUE

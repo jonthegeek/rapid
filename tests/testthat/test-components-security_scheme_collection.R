@@ -23,7 +23,7 @@ test_that("security_scheme_collection() requires required parameters", {
   )
 })
 
-test_that("security_scheme_collection() returns an empty security_scheme_collection", {
+test_that("security_scheme_collection() -> empty security_scheme_collection", {
   expect_snapshot({
     test_result <- security_scheme_collection()
     test_result
@@ -43,7 +43,7 @@ test_that("security_scheme_collection() returns an empty security_scheme_collect
   )
 })
 
-test_that("length() of a security_scheme_collection reports the overall length", {
+test_that("length() of security_scheme_collection reports the overall length", {
   expect_equal(length(security_scheme_collection()), 0)
   expect_equal(
     length(
@@ -70,14 +70,14 @@ test_that("length() of a security_scheme_collection reports the overall length",
   )
 })
 
-test_that("as_security_scheme_collection() errors informatively for unnamed or misnamed input", {
+test_that("as_security_scheme_collection() errors for un/misnamed input", {
   expect_snapshot(
     as_security_scheme_collection(as.list(letters)),
     error = TRUE
   )
 })
 
-test_that("as_security_scheme_collection() errors informatively for bad classes", {
+test_that("as_security_scheme_collection() errors for bad classes", {
   expect_snapshot(
     as_security_scheme_collection(letters),
     error = TRUE
@@ -120,7 +120,7 @@ test_that("as_security_scheme_collection() returns expected objects", {
           flows = list(
             password = list(
               scopes = list(
-                Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+                Catalog = "Modify profile preferences and activity"
               ),
               tokenUrl = "/account/profile/authorization"
             )
@@ -166,7 +166,7 @@ test_that("as_security_scheme_collection() returns expected objects", {
             token_url = "/account/profile/authorization",
             scopes = scopes(
               name = "Catalog",
-              description = "Modify profile preferences and activity (bookmarks, watch list)"
+              description = "Modify profile preferences and activity"
             )
           )
         ),
@@ -188,7 +188,7 @@ test_that("as_security_scheme_collection() returns expected objects", {
   )
 })
 
-test_that("as_security_scheme_collection() works for security_scheme_collections", {
+test_that("as_security_scheme_collection() ok w security_scheme_collections", {
   expect_identical(
     as_security_scheme_collection(security_scheme_collection()),
     security_scheme_collection()

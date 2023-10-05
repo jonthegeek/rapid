@@ -40,7 +40,7 @@ test_that("string_replacements() works with equal-length name/default", {
   )
 })
 
-test_that("string_replacements() requires that optional args are empty or match", {
+test_that("string_replacements() requires optional args are empty or match", {
   expect_snapshot(
     string_replacements("a", "b", enum = list("a", "b")),
     error = TRUE
@@ -51,7 +51,7 @@ test_that("string_replacements() requires that optional args are empty or match"
   )
 })
 
-test_that("string_replacements() requires that the default is in enum when given", {
+test_that("string_replacements() requires default is in enum when given", {
   expect_snapshot(
     string_replacements(name = "a", default = "b", enum = "a"),
     error = TRUE
@@ -99,7 +99,7 @@ test_that("length() of a string_replacements reports the overall length", {
   expect_equal(length(string_replacements(name = "A", default = "A")), 1)
 })
 
-test_that("as_string_replacements() errors informatively for unnamed or misnamed input", {
+test_that("as_string_replacements() errors for un/misnamed input", {
   expect_snapshot(
     as_string_replacements(letters),
     error = TRUE

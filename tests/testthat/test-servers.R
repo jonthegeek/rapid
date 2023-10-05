@@ -111,7 +111,7 @@ test_that("as_servers() returns expected objects", {
           variables = list(
             username = list(
               default = "demo",
-              description = "this value is assigned by the service provider, in this example `gigantic-server.com`"
+              description = "this value is assigned by the service provider"
             ),
             port = list(enum = c("8443", "443"), default = "8443"),
             basePath = list(default = "v2")
@@ -126,7 +126,7 @@ test_that("as_servers() returns expected objects", {
         string_replacements(
           name = c("username", "port", "basePath"),
           description = c(
-            "this value is assigned by the service provider, in this example `gigantic-server.com`",
+            "this value is assigned by the service provider",
             NA, NA
           ),
           default = c("demo", "8443", "v2"),

@@ -41,7 +41,7 @@ test_that("length() of a api_key_security_scheme reports the proper length", {
   )
 })
 
-test_that("as_api_key_security_scheme() errors informatively for unnamed or misnamed input", {
+test_that("as_api_key_security_scheme() errors for un/misnamed input", {
   expect_snapshot(
     as_api_key_security_scheme(list(a = "Jon", b = "jonthegeek@gmail.com")),
     error = TRUE

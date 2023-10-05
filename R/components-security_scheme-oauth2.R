@@ -48,7 +48,9 @@ oauth2_security_scheme <- S7::new_class(
       implicit_flow = as_oauth2_implicit_flow(implicit_flow),
       password_flow = as_oauth2_token_flow(password_flow),
       client_credentials_flow = as_oauth2_token_flow(client_credentials_flow),
-      authorization_code_flow = as_oauth2_authorization_code_flow(authorization_code_flow)
+      authorization_code_flow = as_oauth2_authorization_code_flow(
+        authorization_code_flow
+      )
     )
   }
 )
@@ -101,11 +103,17 @@ S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
   )
 }
 
-S7::method(as_oauth2_security_scheme, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_oauth2_security_scheme,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   oauth2_security_scheme()
 }
 
-S7::method(as_oauth2_security_scheme, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(
+  as_oauth2_security_scheme,
+  class_any
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_security_scheme}."
   )

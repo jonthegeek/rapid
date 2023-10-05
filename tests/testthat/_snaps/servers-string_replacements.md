@@ -64,7 +64,7 @@
        @ enum       : list()
        @ description: chr(0) 
 
-# string_replacements() requires that optional args are empty or match
+# string_replacements() requires optional args are empty or match
 
     Code
       string_replacements("a", "b", enum = list("a", "b"))
@@ -86,7 +86,7 @@
       - `name` has 1 value.
       - `description` has 2 values.
 
-# string_replacements() requires that the default is in enum when given
+# string_replacements() requires default is in enum when given
 
     Code
       string_replacements(name = "a", default = "b", enum = "a")
@@ -124,7 +124,7 @@
        .. $ : NULL
        @ description: chr [1:3] "The active user's folder." NA NA
 
-# as_string_replacements() errors informatively for unnamed or misnamed input
+# as_string_replacements() errors for un/misnamed input
 
     Code
       as_string_replacements(letters)

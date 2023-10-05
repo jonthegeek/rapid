@@ -78,7 +78,10 @@ S7::method(as_scopes, scopes) <- function(x) {
   x
 }
 
-S7::method(as_scopes, class_list | class_character) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(
+  as_scopes,
+  class_list | class_character
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   force(arg)
   x <- unlist(x)
   x <- stbl::stabilize_chr(x, x_arg = arg)
@@ -93,11 +96,16 @@ S7::method(as_scopes, class_list | class_character) <- function(x, ..., arg = rl
   )
 }
 
-S7::method(as_scopes, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_scopes,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   scopes()
 }
 
-S7::method(as_scopes, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(as_scopes, class_any) <- function(x,
+                                             ...,
+                                             arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls scopes}."
   )

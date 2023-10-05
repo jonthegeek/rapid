@@ -66,7 +66,7 @@ test_that("as_security_scheme() returns expected objects", {
         flows = list(
           password = list(
             scopes = list(
-              Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+              Catalog = "Modify profile preferences and activity"
             ),
             tokenUrl = "/account/profile/authorization"
           )
@@ -79,7 +79,7 @@ test_that("as_security_scheme() returns expected objects", {
         token_url = "/account/profile/authorization",
         scopes = scopes(
           name = "Catalog",
-          description = "Modify profile preferences and activity (bookmarks, watch list)"
+          description = "Modify profile preferences and activity"
         )
       )
     )
