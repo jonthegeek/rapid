@@ -64,7 +64,7 @@
        @ email: chr(0) 
        @ url  : chr(0) 
 
-# as_contact() errors informatively for unnamed or misnamed input
+# as_contact() errors informatively for unnamed input
 
     Code
       as_contact(letters)
@@ -76,7 +76,7 @@
 ---
 
     Code
-      as_contact(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_contact(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must have names "name", "email", or "url".
@@ -85,7 +85,7 @@
 ---
 
     Code
-      as_contact(c(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_contact(c("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
       ! `x` must have names "name", "email", or "url".

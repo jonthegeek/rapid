@@ -24,14 +24,16 @@
   if (rlang::is_named2(x)) {
     force(x_arg)
     x <- rlang::set_names(x, snakecase::to_snake_case)
-    if (any(names(x) %in% valid_names)) {
+    # if (any(names(x) %in% valid_names)) {
       x <- as.list(x)[names(x) %in% valid_names]
       if (length(extra_names)) {
         to_rename <- names(x) %in% names(extra_names)
         names(x)[to_rename] <- extra_names[names(x)[to_rename]]
       }
-      return(x)
-    }
+      # return(x)
+    # }
+    x <- x %|0|% NULL
+    return(x)
   }
 
   cli::cli_abort(

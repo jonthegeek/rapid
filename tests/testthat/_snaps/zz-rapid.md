@@ -91,7 +91,7 @@
       Error:
       ! Can't coerce `x` <logical> to <rapid>.
 
-# as_rapid() errors informatively for unnamed or misnamed input
+# as_rapid() errors informatively for unnamed input
 
     Code
       as_rapid(list(letters))
@@ -105,23 +105,12 @@
 ---
 
     Code
-      as_rapid(list(list(a = "https://example.com", b = "A cool server.")))
+      as_rapid(list(list("https://example.com", "A cool server.")))
     Condition
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error:
       ! `x` must have names "info", "servers", "components", or "security".
-      * Any other names are ignored.
-
-# as_rapid() fails gracefully for unsupported urls
-
-    Code
-      as_rapid(url("https://api.apis.guru/v2/openapi.yaml"))
-    Condition
-      Error:
-      ! `x` must be comprised of properly formed, supported elements.
-      Caused by error:
-      ! `x` must have names "security_schemes".
       * Any other names are ignored.
 
 # as_rapid() works for urls
@@ -184,6 +173,52 @@
        @ security  : <rapid::security_requirements>
        .. @ name                   : chr "hmac"
        .. @ required_scopes        :List of 1
+       .. .. $ : chr(0) 
+       .. @ rapid_class_requirement: chr "security_scheme"
+
+# as_rapid() works for empty optional fields
+
+    Code
+      as_rapid(x)
+    Output
+      <rapid::rapid>
+       @ info      : <rapid::info>
+       .. @ title           : chr "OpenFEC"
+       .. @ version         : chr "1.0"
+       .. @ contact         : <rapid::contact>
+       .. .. @ name : chr(0) 
+       .. .. @ email: chr(0) 
+       .. .. @ url  : chr(0) 
+       .. @ description     : chr "This application programming interface (API) allows you to explore the way candidates and committees fund their"| __truncated__
+       .. @ license         : <rapid::license>
+       .. .. @ name      : chr(0) 
+       .. .. @ identifier: chr(0) 
+       .. .. @ url       : chr(0) 
+       .. @ summary         : chr(0) 
+       .. @ terms_of_service: chr(0) 
+       @ servers   : <rapid::servers>
+       .. @ url        : chr "/v1"
+       .. @ description: chr(0) 
+       .. @ variables  : <rapid::server_variables>  list()
+       @ components: <rapid::component_collection>
+       .. @ security_schemes: <rapid::security_scheme_collection>
+       .. .. @ name       : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. .. @ details    : <rapid::security_scheme_details> List of 3
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "X-Api-Key"
+       .. .. ..  ..@ location      : chr "header"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. @ description: chr(0) 
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. @ required_scopes        :List of 3
+       .. .. $ : chr(0) 
+       .. .. $ : chr(0) 
        .. .. $ : chr(0) 
        .. @ rapid_class_requirement: chr "security_scheme"
 

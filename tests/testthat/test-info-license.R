@@ -96,15 +96,9 @@ test_that("length() of a license reports the overall length", {
   expect_equal(length(license(name = "A")), 1)
 })
 
-test_that("as_license() errors informatively for unnamed or misnamed input", {
+test_that("as_license() errors informatively for unnamed input", {
   expect_snapshot(
     as_license(letters),
-    error = TRUE
-  )
-  expect_snapshot(
-    as_license(
-      list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/")
-    ),
     error = TRUE
   )
 })

@@ -69,17 +69,17 @@ test_that("length() of a contact reports the overall length", {
   expect_equal(length(contact(name = "A")), 1)
 })
 
-test_that("as_contact() errors informatively for unnamed or misnamed input", {
+test_that("as_contact() errors informatively for unnamed input", {
   expect_snapshot(
     as_contact(letters),
     error = TRUE
   )
   expect_snapshot(
-    as_contact(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_contact(list("Jon", "jonthegeek@gmail.com")),
     error = TRUE
   )
   expect_snapshot(
-    as_contact(c(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_contact(c("Jon", "jonthegeek@gmail.com")),
     error = TRUE
   )
 })

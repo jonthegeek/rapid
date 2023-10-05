@@ -111,19 +111,10 @@
        @ identifier: chr "technically these have a fancy required format"
        @ url       : chr(0) 
 
-# as_license() errors informatively for unnamed or misnamed input
+# as_license() errors informatively for unnamed input
 
     Code
       as_license(letters)
-    Condition
-      Error:
-      ! `x` must have names "name", "identifier", or "url".
-      * Any other names are ignored.
-
----
-
-    Code
-      as_license(list(a = "Apache 2.0", b = "https://opensource.org/license/apache-2-0/"))
     Condition
       Error:
       ! `x` must have names "name", "identifier", or "url".

@@ -45,13 +45,13 @@ test_that("length() of an security_schemes reports the overall length", {
   )
 })
 
-test_that("as_component_collection() errors for unnamed or misnamed input", {
+test_that("as_component_collection() errors for unnamed input", {
   expect_snapshot(
     as_component_collection(as.list(letters)),
     error = TRUE
   )
   expect_snapshot(
-    as_component_collection(list(a = "My Cool API")),
+    as_component_collection(list("My Cool API")),
     error = TRUE
   )
 })
