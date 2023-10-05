@@ -2,6 +2,7 @@
 
 character_scalar_property <- function(x_arg, ...) {
   S7::new_property(
+    name = x_arg,
     class = class_character,
     setter = function(self, value) {
       call <- rlang::caller_env(3)
@@ -13,7 +14,7 @@ character_scalar_property <- function(x_arg, ...) {
         call = call,
         ...
       )
-      S7::prop(self, x_arg) <- value
+      prop(self, x_arg) <- value
       self
     }
   )
@@ -21,6 +22,7 @@ character_scalar_property <- function(x_arg, ...) {
 
 enum_property <- function(x_arg) {
   S7::new_property(
+    name = x_arg,
     class = class_list,
     setter = function(self, value) {
       call <- rlang::caller_env(3)
@@ -42,7 +44,7 @@ enum_property <- function(x_arg) {
       if (!any(lengths(value))) {
         value <- list()
       }
-      S7::prop(self, x_arg, check = FALSE) <- value
+      prop(self, x_arg, check = FALSE) <- value
       self
     }
   )
@@ -68,7 +70,7 @@ list_of_characters <- function(x_arg, ...) {
           )
         }
       )
-      S7::prop(self, x_arg) <- value
+      prop(self, x_arg) <- value
       self
     }
   )

@@ -28,7 +28,7 @@
       - When `name` is not defined, `details` must be empty.
       - `details` has 1 value.
 
-# security_scheme_collection() returns an empty security_scheme_collection
+# security_scheme_collection() -> empty security_scheme_collection
 
     Code
       test_result <- security_scheme_collection()
@@ -39,7 +39,7 @@
        @ details    : <rapid::security_scheme_details>  list()
        @ description: chr(0) 
 
-# as_security_scheme_collection() errors informatively for unnamed or misnamed input
+# as_security_scheme_collection() errors for un/misnamed input
 
     Code
       as_security_scheme_collection(as.list(letters))
@@ -47,7 +47,7 @@
       Error:
       ! `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`, `n`, `o`, `p`, `q`, `r`, ..., `y`, and `z` must have names.
 
-# as_security_scheme_collection() errors informatively for bad classes
+# as_security_scheme_collection() errors for bad classes
 
     Code
       as_security_scheme_collection(letters)

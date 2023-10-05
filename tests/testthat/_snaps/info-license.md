@@ -49,7 +49,7 @@
       ! `identifier` must be a single <character>.
       x `identifier` has 2 values.
 
-# license() errors informatively when both url and identifier are supplied
+# license() errors when both url and identifier are supplied
 
     Code
       license(name = "A", identifier = "A", url = "https://example.com")

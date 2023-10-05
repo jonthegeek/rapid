@@ -30,7 +30,7 @@ test_that("license() errors informatively for bad identifier", {
   )
 })
 
-test_that("license() errors informatively when both url and identifier are supplied", {
+test_that("license() errors when both url and identifier are supplied", {
   expect_snapshot(
     license(name = "A", identifier = "A", url = "https://example.com"),
     error = TRUE

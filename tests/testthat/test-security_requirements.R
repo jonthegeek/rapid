@@ -1,14 +1,3 @@
-# TODO: Remove these musings. Security Requirements Objects can be:
-# * In the top-level "security" field.
-# * In the "security" field of an "operation" object, which is itself inside a
-# "path item object". "path item" can be:
-# ** inside a "paths" object.
-# ** inside a "callbacks" object, in "components" ("callbacks" field).
-# ** inside "components" directly (pathItems field)
-# ** in the "webhooks" top-level field
-#
-# This is our first super-reusable object, be careful!
-
 test_that("security_requirements() requires parallel parameters", {
   expect_error(
     security_requirements(required_scopes = "a"),
@@ -38,7 +27,10 @@ test_that("security_requirements() rapid_class_requirement field is fixed", {
 test_that("security_requirements have expected lengths", {
   expect_equal(length(security_requirements()), 0)
   expect_equal(length(security_requirements(letters)), 26)
-  expect_equal(length(security_requirements("a", required_scopes = list(letters))), 1)
+  expect_equal(
+    length(security_requirements("a", required_scopes = list(letters))),
+    1
+  )
 })
 
 test_that("as_security_requirements() fails for bad classes", {

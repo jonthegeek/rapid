@@ -142,7 +142,10 @@ S7::method(as_servers, class_list) <- function(x) {
   )
 }
 
-S7::method(as_servers, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_servers,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   servers()
 }
 

@@ -93,7 +93,7 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ token_url  : chr "https://auth.ebay.com/oauth2/token"
 
-# as_oauth2_token_flow() errors informatively for unnamed or misnamed input
+# as_oauth2_token_flow() errors for unnamed or misnamed input
 
     Code
       as_oauth2_token_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))

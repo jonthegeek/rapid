@@ -75,7 +75,7 @@
        .. @ authorization_url: chr(0) 
        .. @ token_url        : chr(0) 
 
-# as_oauth2_security_scheme() errors informatively for unnamed or misnamed input
+# as_oauth2_security_scheme() errors for unnamed or misnamed input
 
     Code
       as_oauth2_security_scheme(list(a = "Jon", b = "jonthegeek@gmail.com"))
@@ -83,7 +83,7 @@
       Error:
       ! `x` must contain a named flows object.
 
-# as_oauth2_security_scheme() errors informatively for bad classes
+# as_oauth2_security_scheme() errors for bad classes
 
     Code
       as_oauth2_security_scheme(1:2)

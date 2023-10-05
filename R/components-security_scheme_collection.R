@@ -122,7 +122,7 @@ S7::method(length, security_scheme_collection) <- function(x) {
 #'       flows = list(
 #'         password = list(
 #'           scopes = list(
-#'             Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+#'             Catalog = "Modify profile preferences and activity"
 #'           ),
 #'           tokenUrl = "/account/profile/authorization"
 #'         )
@@ -175,11 +175,17 @@ S7::method(as_security_scheme_collection, class_list) <- function(x) {
   cli::cli_abort(c("{.arg {x}} must have names."))
 }
 
-S7::method(as_security_scheme_collection, class_missing | NULL | S7::new_S3_class("S7_missing")) <- function(x) {
+S7::method(
+  as_security_scheme_collection,
+  class_missing | NULL | S7::new_S3_class("S7_missing")
+) <- function(x) {
   security_scheme_collection()
 }
 
-S7::method(as_security_scheme_collection, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
+S7::method(
+  as_security_scheme_collection,
+  class_any
+) <- function(x, ..., arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_scheme_collection}."
   )

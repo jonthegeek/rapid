@@ -92,7 +92,7 @@
        .. @ description: chr [1:2] "View and manage your account settings" ...
        @ authorization_url: chr "https://auth.ebay.com/oauth2/authorize"
 
-# as_oauth2_implicit_flow() errors informatively for unnamed or misnamed input
+# as_oauth2_implicit_flow() errors for unnamed or misnamed input
 
     Code
       as_oauth2_implicit_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))

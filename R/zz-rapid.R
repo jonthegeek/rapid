@@ -76,7 +76,7 @@ rapid <- S7::new_class(
   },
   validator = function(self) {
     c(
-      msgs <- validate_lengths(
+      validate_lengths(
         self,
         key_name = "info",
         optional_any = c("components", "security", "servers")
@@ -88,16 +88,6 @@ rapid <- S7::new_class(
         enum_name = "the {.arg security_schemes} defined in {.arg components}"
       )
     )
-
-    # if (!all(self@security@name %in% self@components@security_schemes@name)) {
-    #   msgs <- c(
-    #     msgs,
-    #     cli::format_inline(
-    #       "{.arg security} must reference {.arg security_schemes} defined in {.arg components}."
-    #     )
-    #   )
-    # }
-    # msgs
   }
 )
 
@@ -130,7 +120,9 @@ S7::method(as_rapid, rapid) <- function(x) {
 
 S7::method(as_rapid, class_list) <- function(x) {
   rlang::try_fetch(
-    {.as_class(x, rapid)},
+    {
+      .as_class(x, rapid)
+    },
     rapid_error_missing_names = function(cnd) {
       cli::cli_abort(
         "{.arg x} must be comprised of properly formed, supported elements.",

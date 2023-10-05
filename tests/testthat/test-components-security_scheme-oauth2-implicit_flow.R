@@ -75,7 +75,7 @@ test_that("length() of an oauth2_implicit_flow reports the overall length", {
   )
 })
 
-test_that("as_oauth2_implicit_flow() errors informatively for unnamed or misnamed input", {
+test_that("as_oauth2_implicit_flow() errors for unnamed or misnamed input", {
   expect_snapshot(
     as_oauth2_implicit_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
     error = TRUE

@@ -45,7 +45,7 @@ test_that("length() of an security_schemes reports the overall length", {
   )
 })
 
-test_that("as_component_collection() errors informatively for unnamed or misnamed input", {
+test_that("as_component_collection() errors for unnamed or misnamed input", {
   expect_snapshot(
     as_component_collection(as.list(letters)),
     error = TRUE
@@ -95,7 +95,7 @@ test_that("as_component_collection() returns expected objects", {
           flows = list(
             password = list(
               scopes = list(
-                Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+                Catalog = "Modify profile preferences and activity"
               ),
               tokenUrl = "/account/profile/authorization"
             )
@@ -142,7 +142,7 @@ test_that("as_component_collection() returns expected objects", {
               token_url = "/account/profile/authorization",
               scopes = scopes(
                 name = "Catalog",
-                description = "Modify profile preferences and activity (bookmarks, watch list)"
+                description = "Modify profile preferences and activity"
               )
             )
           ),
@@ -190,7 +190,7 @@ test_that("as_component_collection() works with camelCase", {
           flows = list(
             password = list(
               scopes = list(
-                Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+                Catalog = "Modify profile preferences and activity"
               ),
               tokenUrl = "/account/profile/authorization"
             )
@@ -237,7 +237,7 @@ test_that("as_component_collection() works with camelCase", {
               token_url = "/account/profile/authorization",
               scopes = scopes(
                 name = "Catalog",
-                description = "Modify profile preferences and activity (bookmarks, watch list)"
+                description = "Modify profile preferences and activity"
               )
             )
           ),

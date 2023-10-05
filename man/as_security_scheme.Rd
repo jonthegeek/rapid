@@ -48,7 +48,7 @@ as_security_scheme(
     flows = list(
       password = list(
         scopes = list(
-          Catalog = "Modify profile preferences and activity (bookmarks, watch list)"
+          Catalog = "Modify profile preferences and activity"
         ),
         tokenUrl = "/account/profile/authorization"
       )

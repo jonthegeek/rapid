@@ -29,7 +29,7 @@
       - All values must be <security_scheme> objects.
       - Bad values at 2 and 4.
 
-# security_scheme_details() returns an empty security_scheme_details
+# security_scheme_details() returns empty security_scheme_details
 
     Code
       security_scheme_details()

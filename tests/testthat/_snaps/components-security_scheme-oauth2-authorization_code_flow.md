@@ -39,7 +39,7 @@
       - When `authorization_url` is not defined, `scopes` must be empty.
       - `scopes` has 1 value.
 
-# oauth2_authorization_code_flow() returns an empty oauth2_authorization_code_flow
+# oauth2_authorization_code_flow() returns empty
 
     Code
       oauth2_authorization_code_flow()
@@ -74,7 +74,7 @@
       * ..1 = c(d = "d")
       i Did you forget to name an argument?
 
-# oauth2_authorization_code_flow() errors informatively for bad classes
+# oauth2_authorization_code_flow() errors for bad classes
 
     Code
       oauth2_authorization_code_flow(mean, mean)
@@ -123,7 +123,7 @@
        @ authorization_url: chr "https://auth.ebay.com/oauth2/authorize"
        @ token_url        : chr "https://api.ebay.com/identity/v1/oauth2/token"
 
-# as_oauth2_authorization_code_flow() errors informatively for unnamed or misnamed input
+# as_oauth2_authorization_code_flow() errors for un/misnamed input
 
     Code
       as_oauth2_authorization_code_flow("a")
@@ -135,13 +135,13 @@
 ---
 
     Code
-      as_oauth2_authorization_code_flow(list(a = "Jon", b = "jonthegeek@gmail.com"))
+      as_oauth2_authorization_code_flow(list(a = "Jon", b = "jtg@gmail.com"))
     Condition
       Error:
       ! `x` must have names "refresh_url", "scopes", "authorization_url", or "token_url".
       * Any other names are ignored.
 
-# as_oauth2_authorization_code_flow() errors informatively for bad classes
+# as_oauth2_authorization_code_flow() errors for bad classes
 
     Code
       as_oauth2_authorization_code_flow(1:2)

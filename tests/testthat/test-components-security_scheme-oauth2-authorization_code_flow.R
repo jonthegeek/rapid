@@ -17,7 +17,7 @@ test_that("oauth2_authorization_code_flow() requires compatible lengths", {
   )
 })
 
-test_that("oauth2_authorization_code_flow() returns an empty oauth2_authorization_code_flow", {
+test_that("oauth2_authorization_code_flow() returns empty", {
   expect_snapshot(oauth2_authorization_code_flow())
 })
 
@@ -32,7 +32,7 @@ test_that("oauth2_authorization_code_flow() requires names for optionals", {
   )
 })
 
-test_that("oauth2_authorization_code_flow() errors informatively for bad classes", {
+test_that("oauth2_authorization_code_flow() errors for bad classes", {
   expect_snapshot(
     oauth2_authorization_code_flow(mean, mean),
     error = TRUE
@@ -79,27 +79,29 @@ test_that("oauth2_authorization_code_flow() returns expected objects", {
   )
 })
 
-test_that("length() of an oauth2_authorization_code_flow reports the overall length", {
+test_that("length() of oauth2_authorization_code_flow reports overall length", {
   expect_equal(length(oauth2_authorization_code_flow()), 0)
   expect_equal(length(oauth2_authorization_code_flow("A", "B")), 1)
   expect_equal(
-    length(oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))),
+    length(
+      oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))
+    ),
     1
   )
 })
 
-test_that("as_oauth2_authorization_code_flow() errors informatively for unnamed or misnamed input", {
+test_that("as_oauth2_authorization_code_flow() errors for un/misnamed input", {
   expect_snapshot(
     as_oauth2_authorization_code_flow("a"),
     error = TRUE
   )
   expect_snapshot(
-    as_oauth2_authorization_code_flow(list(a = "Jon", b = "jonthegeek@gmail.com")),
+    as_oauth2_authorization_code_flow(list(a = "Jon", b = "jtg@gmail.com")),
     error = TRUE
   )
 })
 
-test_that("as_oauth2_authorization_code_flow() errors informatively for bad classes", {
+test_that("as_oauth2_authorization_code_flow() errors for bad classes", {
   expect_snapshot(
     as_oauth2_authorization_code_flow(1:2),
     error = TRUE
@@ -170,7 +172,7 @@ test_that("as_oauth2_authorization_code_flow() works for alternate names", {
   )
 })
 
-test_that("as_oauth2_authorization_code_flow() works for oauth2_authorization_code_flow", {
+test_that("as_oauth2_authorization_code_flow() works w/ itself", {
   expect_identical(
     as_oauth2_authorization_code_flow(oauth2_authorization_code_flow()),
     oauth2_authorization_code_flow()

@@ -10,7 +10,7 @@
        .. @ details    : <rapid::security_scheme_details>  list()
        .. @ description: chr(0) 
 
-# as_component_collection() errors informatively for unnamed or misnamed input
+# as_component_collection() errors for unnamed or misnamed input
 
     Code
       as_component_collection(as.list(letters))
