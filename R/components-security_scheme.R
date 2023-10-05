@@ -78,13 +78,12 @@ S7::method(as_security_scheme, class_list) <- function(x) {
   if (!length(x) || !any(lengths(x))) {
     return(NULL)
   }
-  switch(
-    snakecase::to_snake_case(x$type),
+  switch(snakecase::to_snake_case(x$type),
     api_key = as_api_key_security_scheme(x),
     # http = as_http_security_scheme(x),
     # mutual_tls = as_mutual_tls_security_scheme(x),
     oauth_2 = as_oauth2_security_scheme(x),
-    oauth2 = as_oauth2_security_scheme(x) #,
+    oauth2 = as_oauth2_security_scheme(x) # ,
     # open_id_connect = as_open_id_connect_security_scheme(x)
   )
 }

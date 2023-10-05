@@ -120,7 +120,9 @@ S7::method(as_rapid, rapid) <- function(x) {
 
 S7::method(as_rapid, class_list) <- function(x) {
   rlang::try_fetch(
-    {.as_class(x, rapid)},
+    {
+      .as_class(x, rapid)
+    },
     rapid_error_missing_names = function(cnd) {
       cli::cli_abort(
         "{.arg x} must be comprised of properly formed, supported elements.",

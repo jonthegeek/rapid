@@ -86,7 +86,7 @@ S7::method(
   .as_class(
     x,
     api_key_security_scheme,
-    extra_names = c("in" =  "location", "name" = "parameter_name")
+    extra_names = c("in" = "location", "name" = "parameter_name")
   )
 }
 
