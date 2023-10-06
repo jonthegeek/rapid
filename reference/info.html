@@ -62,7 +62,8 @@ generation tools for convenience.</p>
 <span>  description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  license <span class="op">=</span> <span class="va">class_missing</span>,</span>
 <span>  summary <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  terms_of_service <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  terms_of_service <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  origin <span class="op">=</span> <span class="fu"><a href="class_origin.html">class_origin</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -107,6 +108,13 @@ representation.</p></dd>
 <dd><p>Character scalar (optional). A URL to the Terms of
 Service for the API.</p></dd>
 
+
+<dt>origin</dt>
+<dd><p>The url and related information about the document used to
+build the API description. This is used to resolve relative paths in the
+API description. Note: This is not part of the OpenAPI Specification, but
+is sometimes supplied as "x-origin".</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -136,6 +144,10 @@ Service for the API.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url       : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ summary         : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ terms_of_service: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ origin          : &lt;rapid::class_origin&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url    : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ format : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ version: chr(0) </span>
 <span class="r-in"><span><span class="fu">info</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  title <span class="op">=</span> <span class="st">"My Cool API"</span>,</span></span>
 <span class="r-in"><span>  version <span class="op">=</span> <span class="st">"1.0.2"</span>,</span></span>
@@ -158,6 +170,33 @@ Service for the API.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url       : chr "https://opensource.org/license/apache-2-0/"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ summary         : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ terms_of_service: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ origin          : &lt;rapid::class_origin&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url    : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ format : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ version: chr(0) </span>
+<span class="r-in"><span><span class="fu">info</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  title <span class="op">=</span> <span class="st">"My Abbreviated API"</span>,</span></span>
+<span class="r-in"><span>  version <span class="op">=</span> <span class="st">"2.0.0"</span>,</span></span>
+<span class="r-in"><span>  origin <span class="op">=</span> <span class="st">"https://root.url"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;rapid::info&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ title           : chr "My Abbreviated API"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ version         : chr "2.0.0"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ contact         : &lt;rapid::contact&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ email: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url  : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ description     : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ license         : &lt;rapid::license&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name      : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ identifier: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url       : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ summary         : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ terms_of_service: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ origin          : &lt;rapid::class_origin&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ url    : chr "https://root.url"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ format : chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ version: chr(0) </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

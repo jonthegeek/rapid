@@ -58,6 +58,9 @@
     <loc>https://jonthegeek.github.io/rapid/reference/as_oauth2_token_flow.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_origin.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_rapid.html</loc>
   </url>
   <url>
@@ -83,6 +86,9 @@
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_string_replacements.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/class_origin.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/component_collection.html</loc>
