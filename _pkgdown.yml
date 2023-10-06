@@ -6,6 +6,7 @@ reference:
     contents:
     - rapid
     - as_rapid
+    - expand_servers
   - title: info class
     contents:
     - info
