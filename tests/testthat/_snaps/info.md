@@ -49,6 +49,10 @@
        .. @ url       : chr(0) 
        @ summary         : chr(0) 
        @ terms_of_service: chr(0) 
+       @ origin          : <rapid::class_origin>
+       .. @ url    : chr(0) 
+       .. @ format : chr(0) 
+       .. @ version: chr(0) 
 
 # as_info() errors informatively for unnamed input
 
@@ -56,7 +60,7 @@
       as_info(letters)
     Condition
       Error:
-      ! `x` must have names "title", "version", "contact", "description", "license", "summary", or "terms_of_service".
+      ! `x` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
       * Any other names are ignored.
 
 ---
@@ -65,7 +69,7 @@
       as_info(list("My Cool API"))
     Condition
       Error:
-      ! `x` must have names "title", "version", "contact", "description", "license", "summary", or "terms_of_service".
+      ! `x` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
       * Any other names are ignored.
 
 # as_info() errors informatively for bad classes

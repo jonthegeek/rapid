@@ -50,6 +50,7 @@ Collate:
     'components.R'
     'info-contact.R'
     'info-license.R'
+    'info-origin.R'
     'info.R'
     'rapid-package.R'
     'security_requirements.R'

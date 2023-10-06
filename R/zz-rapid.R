@@ -134,7 +134,12 @@ S7::method(as_rapid, class_list) <- function(x) {
 }
 
 S7::method(as_rapid, S7::new_S3_class("url")) <- function(x) {
+  url <- summary(x)$description
   x <- yaml::read_yaml(x)
+  if (!length(x$info$`x-origin`)) {
+    x$info$`x-origin` <- list(url = url)
+  }
+
   as_rapid(x)
 }
 

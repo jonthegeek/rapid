@@ -32,7 +32,8 @@ test_that("info() returns an empty info", {
       "description",
       "license",
       "summary",
-      "terms_of_service"
+      "terms_of_service",
+      "origin"
     )
   )
 })
@@ -127,5 +128,20 @@ test_that("as_info() works for infos", {
   expect_identical(
     as_info(info()),
     info()
+  )
+})
+
+test_that("as_info() converts x-origin to origin", {
+  expect_identical(
+    as_info(list(
+      title = "My API",
+      version = "1",
+      x_origin = "https://root.url"
+    )),
+    info(
+      title = "My API",
+      version = "1",
+      origin = class_origin("https://root.url")
+    )
   )
 })

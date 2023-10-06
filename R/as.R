@@ -19,7 +19,9 @@
     return(NULL)
   }
 
-  valid_names <- c(S7::prop_names(target_S7_class()), names(extra_names))
+  valid_names <- snakecase::to_snake_case(
+    c(S7::prop_names(target_S7_class()), names(extra_names))
+  )
 
   if (rlang::is_named2(x)) {
     force(x_arg)
@@ -27,6 +29,10 @@
     ignored_names <- names(x)[!names(x) %in% valid_names]
     x <- as.list(x)[names(x) %in% valid_names]
     if (length(extra_names)) {
+      extra_names <- rlang::set_names(
+        snakecase::to_snake_case(extra_names),
+        snakecase::to_snake_case(names(extra_names))
+      )
       to_rename <- names(x) %in% names(extra_names)
       names(x)[to_rename] <- extra_names[names(x)[to_rename]]
     }

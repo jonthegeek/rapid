@@ -8,8 +8,9 @@ as_info(x, ...)
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "title",
-"version", "contact", "description", "license", "summary", and/or
-"terms_of_service", or names that can be coerced to those names via
+"version", "contact", "description", "license", "summary",
+"terms_of_service", and/or "origin" (or "x-origin", which will be coerced
+to "origin"), or names that can be coerced to those names via
 \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored. This object should
 describe a single API.}
 
