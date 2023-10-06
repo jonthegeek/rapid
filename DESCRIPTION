@@ -23,6 +23,7 @@ Imports:
     S7 (>= 0.1.1),
     snakecase,
     stbl,
+    xml2,
     yaml
 Suggests: 
     testthat (>= 3.0.0)
@@ -35,9 +36,22 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Collate: 
+    'properties.R'
+    'security_requirements.R'
+    'components-security_scheme_details.R'
+    'components-security_scheme_collection.R'
+    'components.R'
+    'servers-server_variables.R'
+    'servers-string_replacements.R'
+    'servers.R'
+    'info-origin.R'
+    'info-license.R'
+    'info-contact.R'
+    'info.R'
+    'zz-rapid.R'
+    'absolute_paths.R'
     'as.R'
     'components-security_scheme.R'
-    'properties.R'
     'components-security_scheme-api_key.R'
     'components-security_scheme-oauth2-scopes.R'
     'components-security_scheme-oauth2-flow.R'
@@ -45,21 +59,9 @@ Collate:
     'components-security_scheme-oauth2-implicit_flow.R'
     'components-security_scheme-oauth2-token_flow.R'
     'components-security_scheme-oauth2.R'
-    'components-security_scheme_details.R'
-    'components-security_scheme_collection.R'
-    'components.R'
-    'info-contact.R'
-    'info-license.R'
-    'info-origin.R'
-    'info.R'
     'rapid-package.R'
-    'security_requirements.R'
-    'servers-server_variables.R'
-    'servers-string_replacements.R'
-    'servers.R'
     'utils.R'
     'validate_in.R'
     'validate_lengths.R'
     'validate_parallel.R'
-    'zz-rapid.R'
     'zzz.R'

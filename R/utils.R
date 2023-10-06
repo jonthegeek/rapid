@@ -34,3 +34,7 @@
   }
   x
 }
+
+.is_relative_url <- function(x) {
+  grepl("^/", x)
+}

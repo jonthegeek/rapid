@@ -10,6 +10,7 @@
 #' @importFrom S7 prop<-
 #' @importFrom stbl stabilize_chr_scalar
 #' @importFrom stbl to_chr_scalar
+#' @importFrom xml2 url_absolute
 #' @importFrom yaml read_yaml
 ## usethis namespace: end
 NULL

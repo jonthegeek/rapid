@@ -1,5 +1,7 @@
 #' @include info.R
 #' @include servers.R
+#' @include components.R
+#' @include security_requirements.R
 NULL
 
 #' R API description object
@@ -121,7 +123,8 @@ S7::method(as_rapid, rapid) <- function(x) {
 S7::method(as_rapid, class_list) <- function(x) {
   rlang::try_fetch(
     {
-      .as_class(x, rapid)
+      x <- .as_class(x, rapid)
+      expand_servers(x)
     },
     rapid_error_missing_names = function(cnd) {
       cli::cli_abort(
