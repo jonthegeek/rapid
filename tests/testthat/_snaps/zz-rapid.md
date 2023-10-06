@@ -251,7 +251,7 @@
        .. .. @ format : chr "openapi"
        .. .. @ version: chr "3.0"
        @ servers   : <rapid::servers>
-       .. @ url        : chr "/v1"
+       .. @ url        : chr "https://api.open.fec.gov/v1"
        .. @ description: chr(0) 
        .. @ variables  : <rapid::server_variables>  list()
        @ components: <rapid::component_collection>

@@ -114,8 +114,8 @@ S7::method(as_origin, class_missing | NULL) <- function(x) {
 }
 
 S7::method(as_origin, class_any) <- function(x,
-                                              ...,
-                                              arg = rlang::caller_arg(x)) {
+                                             ...,
+                                             arg = rlang::caller_arg(x)) {
   cli::cli_abort(
     "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls class_origin}."
   )
