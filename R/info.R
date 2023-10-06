@@ -1,5 +1,6 @@
 #' @include info-contact.R
 #' @include info-license.R
+#' @include info-origin.R
 #' @include properties.R
 NULL
 
@@ -25,6 +26,10 @@ NULL
 #' @param summary Character scalar (optional). A short summary of the API.
 #' @param terms_of_service Character scalar (optional). A URL to the Terms of
 #'   Service for the API.
+#' @param origin The url and related information about the document used to
+#'   build the API description. This is used to resolve relative paths in the
+#'   API description. Note: This is not part of the OpenAPI Specification, but
+#'   is sometimes supplied as "x-origin".
 #'
 #' @return An `info` S7 object with metadata describing a single API.
 #' @export
@@ -41,6 +46,11 @@ NULL
 #'     url = "https://opensource.org/license/apache-2-0/"
 #'   )
 #' )
+#' info(
+#'   title = "My Abbreviated API",
+#'   version = "2.0.0",
+#'   origin = "https://root.url"
+#' )
 info <- S7::new_class(
   "info",
   package = "rapid",
@@ -51,7 +61,8 @@ info <- S7::new_class(
     description = character_scalar_property("description"),
     license = license,
     summary = character_scalar_property("summary"),
-    terms_of_service = character_scalar_property("terms_of_service")
+    terms_of_service = character_scalar_property("terms_of_service"),
+    origin = class_origin
   ),
   constructor = function(title = character(),
                          version = character(),
@@ -60,7 +71,8 @@ info <- S7::new_class(
                          description = character(),
                          license = class_missing,
                          summary = character(),
-                         terms_of_service = character()) {
+                         terms_of_service = character(),
+                         origin = class_origin()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
@@ -70,7 +82,8 @@ info <- S7::new_class(
       description = description %||% character(),
       license = as_license(license),
       summary = summary %||% character(),
-      terms_of_service = terms_of_service %||% character()
+      terms_of_service = terms_of_service %||% character(),
+      origin = as_origin(origin)
     )
   },
   validator = function(self) {
@@ -83,7 +96,8 @@ info <- S7::new_class(
         "description",
         "license",
         "summary",
-        "terms_of_service"
+        "terms_of_service",
+        "origin"
       )
     )
   }
@@ -101,8 +115,9 @@ S7::method(length, info) <- function(x) {
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "title",
-#'   "version", "contact", "description", "license", "summary", and/or
-#'   "terms_of_service", or names that can be coerced to those names via
+#'   "version", "contact", "description", "license", "summary",
+#'   "terms_of_service", and/or "origin" (or "x-origin", which will be coerced
+#'   to "origin"), or names that can be coerced to those names via
 #'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
 #'   describe a single API.
 #'
@@ -119,7 +134,7 @@ S7::method(as_info, info) <- function(x) {
 }
 
 S7::method(as_info, class_list | class_character) <- function(x) {
-  .as_class(x, info)
+  .as_class(x, info, extra_names = c("x-origin" = "origin"))
 }
 
 S7::method(

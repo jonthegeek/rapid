@@ -53,6 +53,10 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
+       .. @ origin          : <rapid::class_origin>
+       .. .. @ url    : chr(0) 
+       .. .. @ format : chr(0) 
+       .. .. @ version: chr(0) 
        @ servers   : <rapid::servers>
        .. @ url        : chr(0) 
        .. @ description: chr(0) 
@@ -134,6 +138,10 @@
        .. .. @ url       : chr "http://www.apache.org/licenses/"
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
+       .. @ origin          : <rapid::class_origin>
+       .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
+       .. .. @ format : chr(0) 
+       .. .. @ version: chr(0) 
        @ servers   : <rapid::servers>
        .. @ url        : chr [1:4] "http://mgh.{region}.amazonaws.com" ...
        .. @ description: chr [1:4] "The AWS Migration Hub multi-region endpoint" ...
@@ -176,6 +184,48 @@
        .. .. $ : chr(0) 
        .. @ rapid_class_requirement: chr "security_scheme"
 
+# as_rapid() stores origin info for urls
+
+    Code
+      test_result <- suppressWarnings(as_rapid(url(test_url)))
+      test_result
+    Output
+      <rapid::rapid>
+       @ info      : <rapid::info>
+       .. @ title           : chr "OpenFEC"
+       .. @ version         : chr "1.0"
+       .. @ contact         : <rapid::contact>
+       .. .. @ name : chr(0) 
+       .. .. @ email: chr(0) 
+       .. .. @ url  : chr(0) 
+       .. @ description     : chr "This application programming interface (API) allows you to explore the way candidates and committees fund their"| __truncated__
+       .. @ license         : <rapid::license>
+       .. .. @ name      : chr(0) 
+       .. .. @ identifier: chr(0) 
+       .. .. @ url       : chr(0) 
+       .. @ summary         : chr(0) 
+       .. @ terms_of_service: chr(0) 
+       .. @ origin          : <rapid::class_origin>
+       .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
+       .. .. @ format : chr(0) 
+       .. .. @ version: chr(0) 
+       @ servers   : <rapid::servers>
+       .. @ url        : chr(0) 
+       .. @ description: chr(0) 
+       .. @ variables  : <rapid::server_variables>  list()
+       @ components: <rapid::component_collection>
+       .. @ security_schemes: <rapid::security_scheme_collection>
+       .. .. @ name       : chr(0) 
+       .. .. @ details    : <rapid::security_scheme_details>  list()
+       .. .. @ description: chr(0) 
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. @ required_scopes        :List of 3
+       .. .. $ : chr(0) 
+       .. .. $ : chr(0) 
+       .. .. $ : chr(0) 
+       .. @ rapid_class_requirement: chr "security_scheme"
+
 # as_rapid() works for empty optional fields
 
     Code
@@ -196,6 +246,10 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
+       .. @ origin          : <rapid::class_origin>
+       .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
+       .. .. @ format : chr "openapi"
+       .. .. @ version: chr "3.0"
        @ servers   : <rapid::servers>
        .. @ url        : chr "/v1"
        .. @ description: chr(0) 

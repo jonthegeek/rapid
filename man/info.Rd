@@ -12,7 +12,8 @@ info(
   description = character(),
   license = class_missing,
   summary = character(),
-  terms_of_service = character()
+  terms_of_service = character(),
+  origin = class_origin()
 )
 }
 \arguments{
@@ -39,6 +40,11 @@ representation.}
 
 \item{terms_of_service}{Character scalar (optional). A URL to the Terms of
 Service for the API.}
+
+\item{origin}{The url and related information about the document used to
+build the API description. This is used to resolve relative paths in the
+API description. Note: This is not part of the OpenAPI Specification, but
+is sometimes supplied as "x-origin".}
 }
 \value{
 An \code{info} S7 object with metadata describing a single API.
@@ -57,6 +63,11 @@ info(
     name = "Apache 2.0",
     url = "https://opensource.org/license/apache-2-0/"
   )
+)
+info(
+  title = "My Abbreviated API",
+  version = "2.0.0",
+  origin = "https://root.url"
 )
 }
 \seealso{
