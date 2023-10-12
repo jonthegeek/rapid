@@ -154,8 +154,6 @@ S7::method(
 }
 
 S7::method(as_security_scheme_collection, class_list) <- function(x) {
-  # This is the first one where we're fundamentally rearranging things, so watch
-  # out for new things to standardize (and then delete this comment)!
   if (!length(x) || !any(lengths(x))) {
     return(security_scheme_collection())
   }

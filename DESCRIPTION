@@ -38,6 +38,7 @@ RoxygenNote: 7.2.3
 Collate: 
     'properties.R'
     'security_requirements.R'
+    'as_list.R'
     'components-security_scheme_details.R'
     'components-security_scheme_collection.R'
     'components.R'
