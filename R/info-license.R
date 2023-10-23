@@ -88,7 +88,7 @@ S7::method(as_license, license) <- function(x) {
 }
 
 S7::method(as_license, class_list | class_character) <- function(x) {
-  .as_class(x, license)
+  as_rapid_class(x, license)
 }
 
 S7::method(

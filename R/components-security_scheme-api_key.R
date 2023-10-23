@@ -83,10 +83,10 @@ S7::method(
   as_api_key_security_scheme,
   class_list | class_character
 ) <- function(x) {
-  .as_class(
+  as_rapid_class(
     x,
     api_key_security_scheme,
-    extra_names = c("in" = "location", "name" = "parameter_name")
+    alternate_names = c("in" = "location", "name" = "parameter_name")
   )
 }
 

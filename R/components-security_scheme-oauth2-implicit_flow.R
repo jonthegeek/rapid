@@ -79,7 +79,7 @@ S7::method(
   as_oauth2_implicit_flow,
   class_list | class_character
 ) <- function(x) {
-  .as_class(x, oauth2_implicit_flow)
+  as_rapid_class(x, oauth2_implicit_flow)
 }
 
 S7::method(

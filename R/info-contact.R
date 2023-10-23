@@ -66,7 +66,7 @@ S7::method(as_contact, contact) <- function(x) {
 }
 
 S7::method(as_contact, class_list | class_character) <- function(x) {
-  .as_class(x, contact)
+  as_rapid_class(x, contact)
 }
 
 S7::method(

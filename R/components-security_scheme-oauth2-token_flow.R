@@ -83,7 +83,7 @@ S7::method(as_oauth2_token_flow, oauth2_token_flow) <- function(x) {
 }
 
 S7::method(as_oauth2_token_flow, class_list | class_character) <- function(x) {
-  .as_class(x, oauth2_token_flow)
+  as_rapid_class(x, oauth2_token_flow)
 }
 
 S7::method(

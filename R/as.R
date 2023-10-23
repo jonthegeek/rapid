@@ -1,18 +1,40 @@
-.as_class <- function(x,
-                      target_S7_class,
-                      ...,
-                      arg = rlang::caller_arg(x),
-                      call = rlang::caller_env()) {
+#' Convert to a rapid-style class
+#'
+#' Convert a named list into a rapid-style class.
+#'
+#' @inheritParams rlang::args_dots_empty
+#' @inheritParams rlang::args_error_context
+#' @param x The object to coerce. Must be empty or have names corresponding to
+#'   the parameter of the `target_class`, or names that can be coerced to those
+#'   names via [snakecase::to_snake_case()]. Extra names are ignored.
+#' @param target_class The S7 class to which the object should be converted.
+#' @param alternate_names Character vector (optional). An optional named
+#'   character vector, where the names are the names as they might appear in
+#'   `x`, and the values are the corresponding properties.
+#'
+#' @return An object with the specified `target_class`.
+#' @export
+as_rapid_class <- function(x,
+                           target_class,
+                           alternate_names = NULL,
+                           arg = rlang::caller_arg(x),
+                           call = rlang::caller_env()) {
   force(arg)
-  x <- .validate_for_as_class(x, target_S7_class, ..., x_arg = arg, call = call)
+  x <- .validate_for_as_class(
+    x,
+    target_class,
+    alternate_names = alternate_names,
+    x_arg = arg,
+    call = call
+  )
   rlang::inject({
-    target_S7_class(!!!x)
+    target_class(!!!x)
   })
 }
 
 .validate_for_as_class <- function(x,
-                                   target_S7_class,
-                                   extra_names = NULL,
+                                   target_class,
+                                   alternate_names = NULL,
                                    x_arg = rlang::caller_arg(x),
                                    call = rlang::caller_env()) {
   if (!length(x)) {
@@ -20,7 +42,7 @@
   }
 
   valid_names <- snakecase::to_snake_case(
-    c(S7::prop_names(target_S7_class()), names(extra_names))
+    c(S7::prop_names(target_class()), names(alternate_names))
   )
 
   if (rlang::is_named2(x)) {
@@ -28,13 +50,13 @@
     x <- rlang::set_names(x, snakecase::to_snake_case)
     ignored_names <- names(x)[!names(x) %in% valid_names]
     x <- as.list(x)[names(x) %in% valid_names]
-    if (length(extra_names)) {
-      extra_names <- rlang::set_names(
-        snakecase::to_snake_case(extra_names),
-        snakecase::to_snake_case(names(extra_names))
+    if (length(alternate_names)) {
+      alternate_names <- rlang::set_names(
+        snakecase::to_snake_case(alternate_names),
+        snakecase::to_snake_case(names(alternate_names))
       )
-      to_rename <- names(x) %in% names(extra_names)
-      names(x)[to_rename] <- extra_names[names(x)[to_rename]]
+      to_rename <- names(x) %in% names(alternate_names)
+      names(x)[to_rename] <- alternate_names[names(x)[to_rename]]
     }
     x <- x %|0|% NULL
     if (length(ignored_names)) {

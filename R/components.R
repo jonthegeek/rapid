@@ -120,7 +120,7 @@ S7::method(as_component_collection, component_collection) <- function(x) {
 }
 
 S7::method(as_component_collection, class_list) <- function(x) {
-  .as_class(x, component_collection)
+  as_rapid_class(x, component_collection)
 }
 
 S7::method(as_component_collection, class_missing | NULL) <- function(x) {

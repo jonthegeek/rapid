@@ -50,3 +50,6 @@ reference:
     contents:
     - security_requirements
     - as_security_requirements
+  - title: other
+    contents:
+    - as_rapid_class
