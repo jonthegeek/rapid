@@ -115,14 +115,9 @@ S7::method(length, servers) <- function(x) {
 #'     )
 #'   )
 #' )
-as_servers <- S7::new_generic("as_servers", dispatch_args = "x")
+as_servers <- S7::new_generic("as_servers", "x")
 
-S7::method(as_servers, servers) <- function(x) {
-  x
-}
-
-S7::method(as_servers, class_list) <- function(x) {
-  call <- rlang::caller_env()
+S7::method(as_servers, class_list) <- function(x, ..., call = caller_env()) {
   x <- purrr::map(
     x,
     function(x) {
@@ -145,17 +140,9 @@ S7::method(as_servers, class_list) <- function(x) {
   )
 }
 
-S7::method(
-  as_servers,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  servers()
-}
-
 S7::method(as_servers, class_any) <- function(x,
                                               ...,
-                                              arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls servers}."
-  )
+                                              arg = caller_arg(x),
+                                              call = caller_env()) {
+  as_api_object(x, servers, ..., arg = arg, call = call)
 }

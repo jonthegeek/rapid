@@ -76,14 +76,7 @@ server_variables <- S7::new_class(
 #'     )
 #'   )
 #' )
-as_server_variables <- S7::new_generic(
-  "as_server_variables",
-  dispatch_args = "x"
-)
-
-S7::method(as_server_variables, server_variables) <- function(x) {
-  x
-}
+as_server_variables <- S7::new_generic("as_server_variables", "x")
 
 S7::method(as_server_variables, class_list) <- function(x) {
   if (!length(x) || !any(lengths(x))) {
@@ -94,12 +87,9 @@ S7::method(as_server_variables, class_list) <- function(x) {
   )
 }
 
-S7::method(as_server_variables, class_missing | NULL) <- function(x) {
-  server_variables()
-}
-
-S7::method(as_server_variables, class_any) <- function(x) {
-  cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls server_variables}."
-  )
+S7::method(as_server_variables, class_any) <- function(x,
+                                                       ...,
+                                                       arg = caller_arg(x),
+                                                       call = caller_env()) {
+  as_api_object(x, server_variables, ..., arg = arg, call = call)
 }

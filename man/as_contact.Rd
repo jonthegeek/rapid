@@ -4,7 +4,7 @@
 \alias{as_contact}
 \title{Coerce lists and character vectors to contacts}
 \usage{
-as_contact(x, ...)
+as_contact(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "name", "email",
@@ -13,6 +13,15 @@ and/or "url", or names that can be coerced to those names via
 describe a single point of contact.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 A \code{contact} as returned by \code{\link[=contact]{contact()}}.

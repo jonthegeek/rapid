@@ -4,7 +4,7 @@
 \alias{as_oauth2_token_flow}
 \title{Coerce lists and character vectors to OAuth2 token flows}
 \usage{
-as_oauth2_token_flow(x, ...)
+as_oauth2_token_flow(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list of named lists,
@@ -13,6 +13,15 @@ can be coerced to those names via \code{\link[snakecase:caseconverter]{snakecase
 names are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An \code{oauth2_token_flow} as returned by \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}.

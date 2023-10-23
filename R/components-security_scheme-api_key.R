@@ -70,38 +70,16 @@ S7::method(length, api_key_security_scheme) <- function(x) {
 #' @return An `api_key_security_scheme` as returned by
 #'   [api_key_security_scheme()].
 #' @export
-as_api_key_security_scheme <- S7::new_generic(
-  "as_api_key_security_scheme",
-  dispatch_args = "x"
-)
-
-S7::method(as_api_key_security_scheme, api_key_security_scheme) <- function(x) {
-  x
-}
-
-S7::method(
-  as_api_key_security_scheme,
-  class_list | class_character
-) <- function(x) {
-  as_rapid_class(
+as_api_key_security_scheme <- function(x,
+                                       ...,
+                                       arg = caller_arg(x),
+                                       call = caller_env()) {
+  as_api_object(
     x,
     api_key_security_scheme,
-    alternate_names = c("in" = "location", "name" = "parameter_name")
-  )
-}
-
-S7::method(
-  as_api_key_security_scheme,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  api_key_security_scheme()
-}
-
-S7::method(
-  as_api_key_security_scheme,
-  class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls api_key_security_scheme}."
+    ...,
+    alternate_names = c("in" = "location", "name" = "parameter_name"),
+    arg = arg,
+    call = call
   )
 }

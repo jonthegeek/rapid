@@ -143,17 +143,14 @@ S7::method(length, security_scheme_collection) <- function(x) {
 #' )
 as_security_scheme_collection <- S7::new_generic(
   "as_security_scheme_collection",
-  dispatch_args = "x"
+  "x"
 )
 
 S7::method(
   as_security_scheme_collection,
-  security_scheme_collection
-) <- function(x) {
-  x
-}
-
-S7::method(as_security_scheme_collection, class_list) <- function(x) {
+  class_list
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  force(arg)
   # This is the first one where we're fundamentally rearranging things, so watch
   # out for new things to standardize (and then delete this comment)!
   if (!length(x) || !any(lengths(x))) {
@@ -172,21 +169,15 @@ S7::method(as_security_scheme_collection, class_list) <- function(x) {
       )
     )
   }
-  cli::cli_abort(c("{.arg {x}} must have names."))
-}
-
-S7::method(
-  as_security_scheme_collection,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  security_scheme_collection()
+  cli::cli_abort(
+    c("{.arg {arg}} must have names."),
+    call = call
+  )
 }
 
 S7::method(
   as_security_scheme_collection,
   class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_scheme_collection}."
-  )
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, security_scheme_collection, ..., arg = arg, call = call)
 }

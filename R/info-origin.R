@@ -89,34 +89,33 @@ S7::method(length, class_origin) <- function(x) {
 #'     )
 #'   )
 #' )
-as_origin <- S7::new_generic("as_origin", dispatch_args = "x")
+as_origin <- S7::new_generic("as_origin", "x", function(x,
+                                                        ...,
+                                                        arg = caller_arg(x),
+                                                        call = caller_env()) {
+  S7::S7_dispatch()
+})
 
-S7::method(as_origin, class_origin) <- function(x) {
-  x
+S7::method(as_origin, class_any) <- function(x,
+                                             ...,
+                                             arg = caller_arg(x),
+                                             call = caller_env()) {
+  as_api_object(x, class_origin, ..., arg = arg, call = call)
 }
 
-S7::method(as_origin, class_list | class_character) <- function(x) {
+S7::method(
+  as_origin,
+  class_list | class_character
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  force(arg)
   # Case 1: Passed in as a simple character vector, or that wrapped in a list.
-  if (length(x) == 1 && lengths(x) == 1 && is.character(unlist(x))) {
+  if (length(x) == 1 && is.character(unlist(x)) && lengths(x) == 1) {
     x <- list(url = unname(unlist(x)))
   }
   # Case 2: apis.guru provides a list of lists, but we currently only support
   # the case where that list has 1 entry.
-  if (length(x) == 1 && lengths(x) > 1) {
+  if (is.list(x) && length(x) == 1 && lengths(x) > 1) {
     x <- x[[1]]
   }
-
-  as_rapid_class(x, class_origin)
-}
-
-S7::method(as_origin, class_missing | NULL) <- function(x) {
-  class_origin()
-}
-
-S7::method(as_origin, class_any) <- function(x,
-                                             ...,
-                                             arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls class_origin}."
-  )
+  as_api_object(x, class_origin, ..., arg = arg, call = call)
 }

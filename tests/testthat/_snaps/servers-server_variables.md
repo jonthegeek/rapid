@@ -98,22 +98,22 @@
     Code
       as_server_variables(1:2)
     Condition
-      Error:
-      ! Can't coerce `x` <integer> to <server_variables>.
+      Error in `as_server_variables()`:
+      ! Can't coerce `1:2` <integer> to <rapid::server_variables>.
 
 ---
 
     Code
       as_server_variables(mean)
     Condition
-      Error:
-      ! Can't coerce `x` <function> to <server_variables>.
+      Error in `as_server_variables()`:
+      ! Can't coerce `mean` <function> to <rapid::server_variables>.
 
 ---
 
     Code
       as_server_variables(TRUE)
     Condition
-      Error:
-      ! Can't coerce `x` <logical> to <server_variables>.
+      Error in `as_server_variables()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::server_variables>.
 

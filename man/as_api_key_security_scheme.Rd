@@ -4,7 +4,7 @@
 \alias{as_api_key_security_scheme}
 \title{Coerce lists and character vectors to API key security schemes}
 \usage{
-as_api_key_security_scheme(x, ...)
+as_api_key_security_scheme(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or be a list or character vector
@@ -13,6 +13,15 @@ coerced to those names via \code{\link[snakecase:caseconverter]{snakecase::to_sn
 are ignored.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An \code{api_key_security_scheme} as returned by

@@ -68,34 +68,41 @@ security_scheme <- S7::new_class(
 #'     type = "apiKey"
 #'   )
 #' )
-as_security_scheme <- S7::new_generic("as_security_scheme", dispatch_args = "x")
+as_security_scheme <- S7::new_generic("as_security_scheme", "x")
 
-S7::method(as_security_scheme, security_scheme) <- function(x) {
+S7::method(as_security_scheme, security_scheme) <- function(x, ...) {
   x
 }
 
-S7::method(as_security_scheme, class_list) <- function(x) {
+S7::method(as_security_scheme, class_list) <- function(x,
+                                                       ...,
+                                                       arg = caller_arg(x),
+                                                       call = caller_env()) {
   if (!length(x) || !any(lengths(x))) {
     return(NULL)
   }
   type <- snakecase::to_snake_case(x$type)
   x$type <- NULL
   switch(type,
-    api_key = as_api_key_security_scheme(x),
-    # http = as_http_security_scheme(x),
-    # mutual_tls = as_mutual_tls_security_scheme(x),
-    oauth_2 = as_oauth2_security_scheme(x),
-    oauth2 = as_oauth2_security_scheme(x) # ,
-    # open_id_connect = as_open_id_connect_security_scheme(x)
+    api_key = as_api_key_security_scheme(x, ..., arg = arg, call = call),
+    oauth_2 = as_oauth2_security_scheme(x, ..., arg = arg, call = call),
+    oauth2 = as_oauth2_security_scheme(x, ..., arg = arg, call = call)
   )
 }
 
-S7::method(as_security_scheme, class_missing | NULL) <- function(x) {
+S7::method(
+  as_security_scheme,
+  class_missing | NULL
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
   NULL
 }
 
-S7::method(as_security_scheme, class_any) <- function(x) {
+S7::method(as_security_scheme, class_any) <- function(x,
+                                                      ...,
+                                                      arg = caller_arg(x),
+                                                      call = caller_env()) {
   cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls security_scheme}."
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls rapid::security_scheme}.",
+    call = call
   )
 }

@@ -129,8 +129,9 @@
     Code
       as_string_replacements(letters)
     Condition
-      Error:
-      ! Can't coerce `x` <character> to <string_replacements>.
+      Error in `as_string_replacements()`:
+      ! `letters` must have names "name", "default", "enum", or "description".
+      * Any other names are ignored.
 
 ---
 
@@ -147,30 +148,31 @@
     Code
       as_string_replacements(c("Jon", "jonthegeek@gmail.com"))
     Condition
-      Error:
-      ! Can't coerce `x` <character> to <string_replacements>.
+      Error in `as_string_replacements()`:
+      ! `c("Jon", "jonthegeek@gmail.com")` must have names "name", "default", "enum", or "description".
+      * Any other names are ignored.
 
 # as_string_replacements() errors informatively for bad classes
 
     Code
       as_string_replacements(1:2)
     Condition
-      Error:
-      ! Can't coerce `x` <integer> to <string_replacements>.
+      Error in `as_string_replacements()`:
+      ! Can't coerce `1:2` <integer> to <rapid::string_replacements>.
 
 ---
 
     Code
       as_string_replacements(mean)
     Condition
-      Error:
-      ! Can't coerce `x` <function> to <string_replacements>.
+      Error in `as_string_replacements()`:
+      ! Can't coerce `mean` <function> to <rapid::string_replacements>.
 
 ---
 
     Code
       as_string_replacements(TRUE)
     Condition
-      Error:
-      ! Can't coerce `x` <logical> to <string_replacements>.
+      Error in `as_string_replacements()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::string_replacements>.
 

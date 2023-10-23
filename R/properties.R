@@ -1,3 +1,11 @@
+#' @importFrom rlang caller_arg
+#' @export
+rlang::caller_arg
+
+#' @importFrom rlang caller_env
+#' @export
+rlang::caller_env
+
 # These should probably be defined in a separate package.
 
 character_scalar_property <- function(x_arg, ...) {
@@ -5,7 +13,7 @@ character_scalar_property <- function(x_arg, ...) {
     name = x_arg,
     class = class_character,
     setter = function(self, value) {
-      call <- rlang::caller_env(3)
+      call <- caller_env(3)
       value <- value %||% character()
       value <- stbl::stabilize_chr_scalar(
         value,
@@ -25,7 +33,7 @@ enum_property <- function(x_arg) {
     name = x_arg,
     class = class_list,
     setter = function(self, value) {
-      call <- rlang::caller_env(3)
+      call <- caller_env(3)
       if (!is.null(value) && !is.list(value)) {
         value <- list(value)
       }
@@ -55,7 +63,7 @@ list_of_characters <- function(x_arg, ...) {
     name = x_arg,
     class = class_list,
     setter = function(self, value) {
-      call <- rlang::caller_env(3)
+      call <- caller_env(3)
       value <- as.list(value)
       value <- purrr::map(
         value,

@@ -110,28 +110,9 @@ S7::method(length, component_collection) <- function(x) {
 #'     )
 #'   )
 #' ))
-as_component_collection <- S7::new_generic(
-  "as_component_collection",
-  dispatch_args = "x"
-)
-
-S7::method(as_component_collection, component_collection) <- function(x) {
-  x
-}
-
-S7::method(as_component_collection, class_list) <- function(x) {
-  as_rapid_class(x, component_collection)
-}
-
-S7::method(as_component_collection, class_missing | NULL) <- function(x) {
-  component_collection()
-}
-
-S7::method(
-  as_component_collection,
-  class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls component_collection}."
-  )
+as_component_collection <- function(x,
+                                    ...,
+                                    arg = caller_arg(x),
+                                    call = caller_env()) {
+  as_api_object(x, component_collection, ..., arg = arg, call = call)
 }

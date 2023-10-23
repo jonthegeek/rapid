@@ -3,8 +3,8 @@
     Code
       rapid(info = mean)
     Condition
-      Error:
-      ! Can't coerce `info` <function> to <info>.
+      Error in `rapid()`:
+      ! Can't coerce `info` <function> to <rapid::info>.
 
 # rapid() requires info when anything is defined
 
@@ -76,24 +76,24 @@
     Code
       as_rapid(1:2)
     Condition
-      Error:
-      ! Can't coerce `x` <integer> to <rapid>.
+      Error in `as_rapid()`:
+      ! Can't coerce `1:2` <integer> to <rapid::rapid>.
 
 ---
 
     Code
       as_rapid(mean)
     Condition
-      Error:
-      ! Can't coerce `x` <function> to <rapid>.
+      Error in `as_rapid()`:
+      ! Can't coerce `mean` <function> to <rapid::rapid>.
 
 ---
 
     Code
       as_rapid(TRUE)
     Condition
-      Error:
-      ! Can't coerce `x` <logical> to <rapid>.
+      Error in `as_rapid()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::rapid>.
 
 # as_rapid() errors informatively for unnamed input
 
@@ -102,8 +102,8 @@
     Condition
       Error:
       ! `x` must be comprised of properly formed, supported elements.
-      Caused by error:
-      ! `x` must have names "info", "servers", "components", or "security".
+      Caused by error in `as_rapid()`:
+      ! `list(letters)` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 ---
@@ -113,8 +113,8 @@
     Condition
       Error:
       ! `x` must be comprised of properly formed, supported elements.
-      Caused by error:
-      ! `x` must have names "info", "servers", "components", or "security".
+      Caused by error in `as_rapid()`:
+      ! `list(list("https://example.com", "A cool server."))` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
 # as_rapid() works for urls

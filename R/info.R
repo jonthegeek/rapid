@@ -127,25 +127,13 @@ S7::method(length, info) <- function(x) {
 #' @examples
 #' as_info()
 #' as_info(list(title = "My Cool API", version = "1.0.0"))
-as_info <- S7::new_generic("as_info", dispatch_args = "x")
-
-S7::method(as_info, info) <- function(x) {
-  x
-}
-
-S7::method(as_info, class_list | class_character) <- function(x) {
-  as_rapid_class(x, info, alternate_names = c("x-origin" = "origin"))
-}
-
-S7::method(
-  as_info,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  info()
-}
-
-S7::method(as_info, class_any) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls info}."
+as_info <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(
+    x,
+    info,
+    ...,
+    alternate_names = c("x-origin" = "origin"),
+    arg = arg,
+    call = call
   )
 }

@@ -4,7 +4,7 @@
 \alias{as_info}
 \title{Coerce lists and character vectors to info objects}
 \usage{
-as_info(x, ...)
+as_info(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "title",
@@ -15,6 +15,15 @@ to "origin"), or names that can be coerced to those names via
 describe a single API.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 An \code{info} object as returned by \code{\link[=info]{info()}}.

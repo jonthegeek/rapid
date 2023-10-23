@@ -16,7 +16,7 @@
       as_component_collection(as.list(letters))
     Condition
       Error:
-      ! `x` must have names "security_schemes".
+      ! `as.list(letters)` must have names "security_schemes".
       * Any other names are ignored.
 
 ---
@@ -25,7 +25,7 @@
       as_component_collection(list("My Cool API"))
     Condition
       Error:
-      ! `x` must have names "security_schemes".
+      ! `list("My Cool API")` must have names "security_schemes".
       * Any other names are ignored.
 
 # as_component_collection() errors informatively for bad classes
@@ -34,7 +34,7 @@
       as_component_collection(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <component_collection>.
+      ! Can't coerce `1:2` <integer> to <rapid::component_collection>.
 
 ---
 
@@ -42,7 +42,7 @@
       as_component_collection(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <component_collection>.
+      ! Can't coerce `mean` <function> to <rapid::component_collection>.
 
 ---
 
@@ -50,5 +50,5 @@
       as_component_collection(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <component_collection>.
+      ! Can't coerce `TRUE` <logical> to <rapid::component_collection>.
 

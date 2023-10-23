@@ -25,22 +25,22 @@
     Code
       as_servers(1:2)
     Condition
-      Error:
-      ! Can't coerce `1:2` <integer> to <servers>.
+      Error in `as_servers()`:
+      ! Can't coerce `1:2` <integer> to <rapid::servers>.
 
 ---
 
     Code
       as_servers(mean)
     Condition
-      Error:
-      ! Can't coerce `mean` <function> to <servers>.
+      Error in `as_servers()`:
+      ! Can't coerce `mean` <function> to <rapid::servers>.
 
 ---
 
     Code
       as_servers(TRUE)
     Condition
-      Error:
-      ! Can't coerce `TRUE` <logical> to <servers>.
+      Error in `as_servers()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::servers>.
 

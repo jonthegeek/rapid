@@ -4,7 +4,7 @@
 \alias{as_license}
 \title{Coerce lists and character vectors to licenses}
 \usage{
-as_license(x, ...)
+as_license(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
 \item{x}{The object to coerce. Must be empty or have names "name",
@@ -13,6 +13,15 @@ as_license(x, ...)
 describe a single license.}
 
 \item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument
+will be mentioned in error messages as the input that is at the
+origin of a problem.}
+
+\item{call}{The execution environment of a currently
+running function, e.g. \code{caller_env()}. The function will be
+mentioned in error messages as the source of the error. See the
+\code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
 A \code{license} as returned by \code{\link[=license]{license()}}.

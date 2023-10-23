@@ -81,27 +81,6 @@ S7::method(length, license) <- function(x) {
 #' @examples
 #' as_license()
 #' as_license(list(name = "Apache 2.0", identifier = "Apache-2.0"))
-as_license <- S7::new_generic("as_license", dispatch_args = "x")
-
-S7::method(as_license, license) <- function(x) {
-  x
-}
-
-S7::method(as_license, class_list | class_character) <- function(x) {
-  as_rapid_class(x, license)
-}
-
-S7::method(
-  as_license,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  license()
-}
-
-S7::method(as_license, class_any) <- function(x,
-                                              ...,
-                                              arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls license}."
-  )
+as_license <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, license, ..., arg = arg, call = call)
 }

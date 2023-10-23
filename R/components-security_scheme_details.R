@@ -133,36 +133,28 @@ security_scheme_details <- S7::new_class(
 #'     )
 #'   )
 #' )
-as_security_scheme_details <- S7::new_generic(
-  "as_security_scheme_details",
-  dispatch_args = "x"
-)
+as_security_scheme_details <- S7::new_generic("as_security_scheme_details", "x")
 
-S7::method(as_security_scheme_details, security_scheme_details) <- function(x) {
-  x
-}
-
-S7::method(as_security_scheme_details, class_list) <- function(x) {
+S7::method(
+  as_security_scheme_details,
+  class_list
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
   if (!length(x) || !any(lengths(x))) {
     return(security_scheme_details())
   }
   security_scheme_details(
-    purrr::map(unname(x), as_security_scheme)
+    purrr::map(
+      unname(x),
+      function(x) {
+        as_security_scheme(x, ..., arg = arg, call = call)
+      }
+    )
   )
-}
-
-S7::method(
-  as_security_scheme_details,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  security_scheme_details()
 }
 
 S7::method(
   as_security_scheme_details,
   class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_scheme_details}."
-  )
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, security_scheme_details, ..., arg = arg, call = call)
 }
