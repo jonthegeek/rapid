@@ -134,7 +134,7 @@ S7::method(as_info, info) <- function(x) {
 }
 
 S7::method(as_info, class_list | class_character) <- function(x) {
-  .as_class(x, info, extra_names = c("x-origin" = "origin"))
+  as_rapid_class(x, info, alternate_names = c("x-origin" = "origin"))
 }
 
 S7::method(

@@ -123,7 +123,7 @@ S7::method(as_rapid, rapid) <- function(x) {
 S7::method(as_rapid, class_list) <- function(x) {
   rlang::try_fetch(
     {
-      x <- .as_class(x, rapid)
+      x <- as_rapid_class(x, rapid)
       expand_servers(x)
     },
     rapid_error_missing_names = function(cnd) {

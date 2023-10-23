@@ -106,7 +106,7 @@ S7::method(as_origin, class_list | class_character) <- function(x) {
     x <- x[[1]]
   }
 
-  .as_class(x, class_origin)
+  as_rapid_class(x, class_origin)
 }
 
 S7::method(as_origin, class_missing | NULL) <- function(x) {
