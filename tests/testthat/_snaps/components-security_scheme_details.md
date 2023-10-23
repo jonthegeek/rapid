@@ -133,22 +133,22 @@
     Code
       as_security_scheme_details(1:2)
     Condition
-      Error:
-      ! Can't coerce `1:2` <integer> to <security_scheme_details>.
+      Error in `as_security_scheme_details()`:
+      ! Can't coerce `1:2` <integer> to <rapid::security_scheme_details>.
 
 ---
 
     Code
       as_security_scheme_details(mean)
     Condition
-      Error:
-      ! Can't coerce `mean` <function> to <security_scheme_details>.
+      Error in `as_security_scheme_details()`:
+      ! Can't coerce `mean` <function> to <rapid::security_scheme_details>.
 
 ---
 
     Code
       as_security_scheme_details(TRUE)
     Condition
-      Error:
-      ! Can't coerce `TRUE` <logical> to <security_scheme_details>.
+      Error in `as_security_scheme_details()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::security_scheme_details>.
 

@@ -14,32 +14,32 @@
     Code
       oauth2_security_scheme(implicit_flow = oauth2_token_flow())
     Condition
-      Error:
-      ! Can't coerce `implicit_flow` <rapid::oauth2_token_flow/rapid::oauth2_flow/S7_object> to <oauth2_implicit_flow>.
+      Error in `oauth2_security_scheme()`:
+      ! Can't coerce `implicit_flow` <rapid::oauth2_token_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_implicit_flow>.
 
 ---
 
     Code
       oauth2_security_scheme(password_flow = oauth2_implicit_flow())
     Condition
-      Error:
-      ! Can't coerce `password_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <oauth2_token_flow>.
+      Error in `oauth2_security_scheme()`:
+      ! Can't coerce `password_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_token_flow>.
 
 ---
 
     Code
       oauth2_security_scheme(client_credentials_flow = oauth2_implicit_flow())
     Condition
-      Error:
-      ! Can't coerce `client_credentials_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <oauth2_token_flow>.
+      Error in `oauth2_security_scheme()`:
+      ! Can't coerce `client_credentials_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_token_flow>.
 
 ---
 
     Code
       oauth2_security_scheme(authorization_code_flow = oauth2_implicit_flow())
     Condition
-      Error:
-      ! Can't coerce `authorization_code_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <oauth2_authorization_code_flow>.
+      Error in `oauth2_security_scheme()`:
+      ! Can't coerce `authorization_code_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_authorization_code_flow>.
 
 # oauth2_security_scheme() works with valid objects
 
@@ -80,30 +80,30 @@
     Code
       as_oauth2_security_scheme(list("Jon", "jonthegeek@gmail.com"))
     Condition
-      Error:
-      ! `x` must contain a named flows object.
+      Error in `as_oauth2_security_scheme()`:
+      ! `list("Jon", "jonthegeek@gmail.com")` must contain a named flows object.
 
 # as_oauth2_security_scheme() errors for bad classes
 
     Code
       as_oauth2_security_scheme(1:2)
     Condition
-      Error:
-      ! Can't coerce `1:2` <integer> to <oauth2_security_scheme>.
+      Error in `as_oauth2_security_scheme()`:
+      ! Can't coerce `1:2` <integer> to <rapid::oauth2_security_scheme>.
 
 ---
 
     Code
       as_oauth2_security_scheme(mean)
     Condition
-      Error:
-      ! Can't coerce `mean` <function> to <oauth2_security_scheme>.
+      Error in `as_oauth2_security_scheme()`:
+      ! Can't coerce `mean` <function> to <rapid::oauth2_security_scheme>.
 
 ---
 
     Code
       as_oauth2_security_scheme(TRUE)
     Condition
-      Error:
-      ! Can't coerce `TRUE` <logical> to <oauth2_security_scheme>.
+      Error in `as_oauth2_security_scheme()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::oauth2_security_scheme>.
 

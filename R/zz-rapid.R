@@ -114,16 +114,27 @@ S7::method(length, rapid) <- function(x) {
 #'
 #' @examples
 #' as_rapid()
-as_rapid <- S7::new_generic("as_rapid", dispatch_args = "x")
+as_rapid <- S7::new_generic("as_rapid", "x")
 
-S7::method(as_rapid, rapid) <- function(x) {
-  x
+S7::method(as_rapid, S7::new_S3_class("url")) <- function(x,
+                                                          ...,
+                                                          arg = caller_arg(x),
+                                                          call = caller_env()) {
+  url <- summary(x)$description
+  x <- yaml::read_yaml(x)
+  if (!length(x$info$`x-origin`)) {
+    x$info$`x-origin` <- list(url = url)
+  }
+  as_rapid(x, ..., arg = arg, call = call)
 }
 
-S7::method(as_rapid, class_list) <- function(x) {
+S7::method(as_rapid, class_any) <- function(x,
+                                            ...,
+                                            arg = caller_arg(x),
+                                            call = caller_env()) {
   rlang::try_fetch(
     {
-      x <- as_rapid_class(x, rapid)
+      x <- as_api_object(x, rapid, ..., arg = arg, call = call)
       expand_servers(x)
     },
     rapid_error_missing_names = function(cnd) {
@@ -133,25 +144,5 @@ S7::method(as_rapid, class_list) <- function(x) {
         parent = cnd
       )
     }
-  )
-}
-
-S7::method(as_rapid, S7::new_S3_class("url")) <- function(x) {
-  url <- summary(x)$description
-  x <- yaml::read_yaml(x)
-  if (!length(x$info$`x-origin`)) {
-    x$info$`x-origin` <- list(url = url)
-  }
-
-  as_rapid(x)
-}
-
-S7::method(as_rapid, class_missing | NULL) <- function(x) {
-  rapid()
-}
-
-S7::method(as_rapid, class_any) <- function(x) {
-  cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls rapid}."
   )
 }

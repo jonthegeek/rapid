@@ -59,27 +59,6 @@ S7::method(length, contact) <- function(x) {
 #' @examples
 #' as_contact()
 #' as_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
-as_contact <- S7::new_generic("as_contact", dispatch_args = "x")
-
-S7::method(as_contact, contact) <- function(x) {
-  x
-}
-
-S7::method(as_contact, class_list | class_character) <- function(x) {
-  as_rapid_class(x, contact)
-}
-
-S7::method(
-  as_contact,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  contact()
-}
-
-S7::method(as_contact, class_any) <- function(x,
-                                              ...,
-                                              arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls contact}."
-  )
+as_contact <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, contact, ..., arg = arg, call = call)
 }

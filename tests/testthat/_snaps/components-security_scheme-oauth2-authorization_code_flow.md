@@ -103,7 +103,7 @@
     Code
       oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d")
     Condition
-      Error:
+      Error in `as_scopes()`:
       ! `scopes` must be a named character vector.
 
 # oauth2_authorization_code_flow() returns expected objects
@@ -129,7 +129,7 @@
       as_oauth2_authorization_code_flow("a")
     Condition
       Error:
-      ! `x` must have names "refresh_url", "scopes", "authorization_url", or "token_url".
+      ! `"a"` must have names "refresh_url", "scopes", "authorization_url", or "token_url".
       * Any other names are ignored.
 
 # as_oauth2_authorization_code_flow() errors for bad classes
@@ -138,7 +138,7 @@
       as_oauth2_authorization_code_flow(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <oauth2_authorization_code_flow>.
+      ! Can't coerce `1:2` <integer> to <rapid::oauth2_authorization_code_flow>.
 
 ---
 
@@ -146,7 +146,7 @@
       as_oauth2_authorization_code_flow(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <oauth2_authorization_code_flow>.
+      ! Can't coerce `mean` <function> to <rapid::oauth2_authorization_code_flow>.
 
 ---
 
@@ -154,5 +154,5 @@
       as_oauth2_authorization_code_flow(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <oauth2_authorization_code_flow>.
+      ! Can't coerce `TRUE` <logical> to <rapid::oauth2_authorization_code_flow>.
 

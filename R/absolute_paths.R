@@ -13,7 +13,7 @@ NULL
 #' @return A `rapid` object as returned by [rapid()], with absolute server
 #'   paths.
 #' @export
-expand_servers <- S7::new_generic("expand_servers", dispatch_args = "x")
+expand_servers <- S7::new_generic("expand_servers", "x")
 
 S7::method(expand_servers, rapid) <- function(x) {
   if (length(x@servers@url)) {
@@ -37,8 +37,8 @@ S7::method(expand_servers, rapid) <- function(x) {
 }
 
 S7::method(expand_servers, class_any) <- function(x,
-                                                  arg = rlang::caller_arg(x),
-                                                  call = rlang::caller_env()) {
+                                                  arg = caller_arg(x),
+                                                  call = caller_env()) {
   cli::cli_abort(
     "{.arg {arg}} {.cls {class(x)}} must be a {.cls rapid}.",
     call = call

@@ -117,7 +117,7 @@
       as_license(letters)
     Condition
       Error:
-      ! `x` must have names "name", "identifier", or "url".
+      ! `letters` must have names "name", "identifier", or "url".
       * Any other names are ignored.
 
 # as_license() errors informatively for bad classes
@@ -126,7 +126,7 @@
       as_license(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <license>.
+      ! Can't coerce `1:2` <integer> to <rapid::license>.
 
 ---
 
@@ -134,7 +134,7 @@
       as_license(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <license>.
+      ! Can't coerce `mean` <function> to <rapid::license>.
 
 ---
 
@@ -142,5 +142,5 @@
       as_license(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <license>.
+      ! Can't coerce `TRUE` <logical> to <rapid::license>.
 

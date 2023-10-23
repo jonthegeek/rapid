@@ -60,7 +60,7 @@
       as_info(letters)
     Condition
       Error:
-      ! `x` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
+      ! `letters` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
       * Any other names are ignored.
 
 ---
@@ -69,7 +69,7 @@
       as_info(list("My Cool API"))
     Condition
       Error:
-      ! `x` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
+      ! `list("My Cool API")` must have names "title", "version", "contact", "description", "license", "summary", "terms_of_service", "origin", or "x_origin".
       * Any other names are ignored.
 
 # as_info() errors informatively for bad classes
@@ -78,7 +78,7 @@
       as_info(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <info>.
+      ! Can't coerce `1:2` <integer> to <rapid::info>.
 
 ---
 
@@ -86,7 +86,7 @@
       as_info(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <info>.
+      ! Can't coerce `mean` <function> to <rapid::info>.
 
 ---
 
@@ -94,5 +94,5 @@
       as_info(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <info>.
+      ! Can't coerce `TRUE` <logical> to <rapid::info>.
 

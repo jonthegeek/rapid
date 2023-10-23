@@ -89,19 +89,12 @@ S7::method(length, security_requirements) <- function(x) {
 #'     list(internalApiKey = list())
 #'   )
 #' )
-as_security_requirements <- S7::new_generic(
-  "as_security_requirements",
-  dispatch_args = "x"
-)
-
-S7::method(as_security_requirements, security_requirements) <- function(x) {
-  x
-}
+as_security_requirements <- S7::new_generic("as_security_requirements", "x")
 
 S7::method(
   as_security_requirements,
   class_list
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
+) <- function(x, ..., arg = caller_arg(x)) {
   force(arg)
   x <- .list_remove_wrappers(x)
 
@@ -116,16 +109,9 @@ S7::method(
   )
 }
 
-S7::method(as_security_requirements, class_missing | NULL) <- function(x) {
-  security_requirements()
-}
-
 S7::method(
   as_security_requirements,
   class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls security_requirements}.",
-    class = "rapid_error_unknown_coercion"
-  )
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, security_requirements, ..., arg = arg, call = call)
 }

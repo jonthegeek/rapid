@@ -108,14 +108,7 @@ S7::method(length, string_replacements) <- function(x) {
 #'     )
 #'   )
 #' )
-as_string_replacements <- S7::new_generic(
-  "as_string_replacements",
-  dispatch_args = "x"
-)
-
-S7::method(as_string_replacements, string_replacements) <- function(x) {
-  x
-}
+as_string_replacements <- S7::new_generic("as_string_replacements", "x")
 
 S7::method(as_string_replacements, class_list) <- function(x) {
   nameless <- unname(x)
@@ -127,12 +120,9 @@ S7::method(as_string_replacements, class_list) <- function(x) {
   )
 }
 
-S7::method(as_string_replacements, class_missing | NULL) <- function(x) {
-  string_replacements()
-}
-
-S7::method(as_string_replacements, class_any) <- function(x) {
-  cli::cli_abort(
-    "Can't coerce {.arg x} {.cls {class(x)}} to {.cls string_replacements}."
-  )
+S7::method(as_string_replacements, class_any) <- function(x,
+                                                          ...,
+                                                          arg = caller_arg(x),
+                                                          call = caller_env()) {
+  as_api_object(x, string_replacements, ..., arg = arg, call = call)
 }

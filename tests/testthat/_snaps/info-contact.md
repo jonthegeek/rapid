@@ -70,7 +70,7 @@
       as_contact(letters)
     Condition
       Error:
-      ! `x` must have names "name", "email", or "url".
+      ! `letters` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 ---
@@ -79,7 +79,7 @@
       as_contact(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
-      ! `x` must have names "name", "email", or "url".
+      ! `list("Jon", "jonthegeek@gmail.com")` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 ---
@@ -88,7 +88,7 @@
       as_contact(c("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
-      ! `x` must have names "name", "email", or "url".
+      ! `c("Jon", "jonthegeek@gmail.com")` must have names "name", "email", or "url".
       * Any other names are ignored.
 
 # as_contact() errors informatively for bad classes
@@ -97,7 +97,7 @@
       as_contact(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <contact>.
+      ! Can't coerce `1:2` <integer> to <rapid::contact>.
 
 ---
 
@@ -105,7 +105,7 @@
       as_contact(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <contact>.
+      ! Can't coerce `mean` <function> to <rapid::contact>.
 
 ---
 
@@ -113,5 +113,5 @@
       as_contact(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <contact>.
+      ! Can't coerce `TRUE` <logical> to <rapid::contact>.
 

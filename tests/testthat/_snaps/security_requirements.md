@@ -24,22 +24,22 @@
     Code
       as_security_requirements(x)
     Condition
-      Error:
-      ! Can't coerce `x` <integer> to <security_requirements>.
+      Error in `as_security_requirements()`:
+      ! Can't coerce `x` <integer> to <rapid::security_requirements>.
 
 ---
 
     Code
       as_security_requirements(x)
     Condition
-      Error:
-      ! Can't coerce `x` <function> to <security_requirements>.
+      Error in `as_security_requirements()`:
+      ! Can't coerce `x` <function> to <rapid::security_requirements>.
 
 ---
 
     Code
       as_security_requirements(x)
     Condition
-      Error:
-      ! Can't coerce `x` <logical> to <security_requirements>.
+      Error in `as_security_requirements()`:
+      ! Can't coerce `x` <logical> to <rapid::security_requirements>.
 

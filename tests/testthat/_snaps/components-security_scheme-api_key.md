@@ -24,7 +24,7 @@
       as_api_key_security_scheme(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
-      ! `x` must have names "parameter_name", "location", "in", or "name".
+      ! `list("Jon", "jonthegeek@gmail.com")` must have names "parameter_name", "location", "in", or "name".
       * Any other names are ignored.
 
 # as_api_key_security_scheme() errors informatively for bad classes
@@ -33,7 +33,7 @@
       as_api_key_security_scheme(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <api_key_security_scheme>.
+      ! Can't coerce `1:2` <integer> to <rapid::api_key_security_scheme>.
 
 ---
 
@@ -41,7 +41,7 @@
       as_api_key_security_scheme(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <api_key_security_scheme>.
+      ! Can't coerce `mean` <function> to <rapid::api_key_security_scheme>.
 
 ---
 
@@ -49,5 +49,5 @@
       as_api_key_security_scheme(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <api_key_security_scheme>.
+      ! Can't coerce `TRUE` <logical> to <rapid::api_key_security_scheme>.
 

@@ -1,8 +1,5 @@
-validate_in_enums <- function(obj,
-                              value_name,
-                              enum_name) {
+validate_in_enums <- function(obj, value_name, enum_name) {
   enums <- S7::prop(obj, enum_name)
-
   if (length(enums)) {
     missing_msgs <- .check_all_in_enums(S7::prop(obj, value_name), enums)
     if (length(missing_msgs)) {

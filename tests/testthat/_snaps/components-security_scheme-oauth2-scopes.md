@@ -67,7 +67,7 @@
     Code
       as_scopes("a")
     Condition
-      Error:
+      Error in `as_scopes()`:
       ! `"a"` must be a named character vector.
 
 # as_scopes() errors informatively for bad classes
@@ -75,22 +75,22 @@
     Code
       as_scopes(1:2)
     Condition
-      Error:
-      ! Can't coerce `1:2` <integer> to <scopes>.
+      Error in `as_scopes()`:
+      ! Can't coerce `1:2` <integer> to <rapid::scopes>.
 
 ---
 
     Code
       as_scopes(mean)
     Condition
-      Error:
-      ! Can't coerce `mean` <function> to <scopes>.
+      Error in `as_scopes()`:
+      ! Can't coerce `mean` <function> to <rapid::scopes>.
 
 ---
 
     Code
       as_scopes(TRUE)
     Condition
-      Error:
-      ! Can't coerce `TRUE` <logical> to <scopes>.
+      Error in `as_scopes()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::scopes>.
 

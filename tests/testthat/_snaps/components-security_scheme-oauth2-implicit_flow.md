@@ -74,7 +74,7 @@
     Code
       oauth2_implicit_flow("a", refresh_url = "c", scopes = "d")
     Condition
-      Error:
+      Error in `as_scopes()`:
       ! `scopes` must be a named character vector.
 
 # oauth2_implicit_flow() returns expected objects
@@ -98,7 +98,7 @@
       as_oauth2_implicit_flow(list("Jon", "jonthegeek@gmail.com"))
     Condition
       Error:
-      ! `x` must have names "refresh_url", "scopes", or "authorization_url".
+      ! `list("Jon", "jonthegeek@gmail.com")` must have names "refresh_url", "scopes", or "authorization_url".
       * Any other names are ignored.
 
 # as_oauth2_implicit_flow() errors informatively for bad classes
@@ -107,7 +107,7 @@
       as_oauth2_implicit_flow(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <oauth2_implicit_flow>.
+      ! Can't coerce `1:2` <integer> to <rapid::oauth2_implicit_flow>.
 
 ---
 
@@ -115,7 +115,7 @@
       as_oauth2_implicit_flow(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <oauth2_implicit_flow>.
+      ! Can't coerce `mean` <function> to <rapid::oauth2_implicit_flow>.
 
 ---
 
@@ -123,5 +123,5 @@
       as_oauth2_implicit_flow(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <oauth2_implicit_flow>.
+      ! Can't coerce `TRUE` <logical> to <rapid::oauth2_implicit_flow>.
 

@@ -1,6 +1,6 @@
-#' Convert to a rapid-style class
+#' Convert to a rapid-style object
 #'
-#' Convert a named list into a rapid-style class.
+#' Convert a named list into an object with a rapid-style class.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -14,11 +14,34 @@
 #'
 #' @return An object with the specified `target_class`.
 #' @export
-as_rapid_class <- function(x,
-                           target_class,
-                           alternate_names = NULL,
-                           arg = rlang::caller_arg(x),
-                           call = rlang::caller_env()) {
+as_api_object <- S7::new_generic(
+  "as_api_object",
+  "x",
+  function(x,
+           target_class,
+           ...,
+           alternate_names = NULL,
+           arg = caller_arg(x),
+           call = caller_env()) {
+    if (missing(x)) return(target_class())
+    force(arg)
+    rlang::check_dots_empty(call = call)
+    if (S7::S7_inherits(x, target_class)) {
+      return(x)
+    }
+    S7::S7_dispatch()
+  }
+)
+
+S7::method(
+  as_api_object,
+  class_list | class_character
+) <- function(x,
+              target_class,
+              ...,
+              alternate_names = NULL,
+              arg = caller_arg(x),
+              call = caller_env()) {
   force(arg)
   x <- .validate_for_as_class(
     x,
@@ -32,11 +55,37 @@ as_rapid_class <- function(x,
   })
 }
 
+S7::method(
+  as_api_object,
+  NULL | S7::new_S3_class("S7_missing")
+) <- function(x,
+              target_class,
+              ...,
+              alternate_names = NULL,
+              arg = caller_arg(x),
+              call = caller_env()) {
+  target_class()
+}
+
+S7::method(as_api_object, class_any) <- function(x,
+                                                 target_class,
+                                                 ...,
+                                                 alternate_names = NULL,
+                                                 arg = caller_arg(x),
+                                                 call = caller_env()) {
+  target_class_nm <- class(target_class())[[1]]
+  cli::cli_abort(
+    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls {target_class_nm}}.",
+    class = "rapid_error_unknown_coercion",
+    call = call
+  )
+}
+
 .validate_for_as_class <- function(x,
                                    target_class,
                                    alternate_names = NULL,
-                                   x_arg = rlang::caller_arg(x),
-                                   call = rlang::caller_env()) {
+                                   x_arg = caller_arg(x),
+                                   call = caller_env()) {
   if (!length(x)) {
     return(NULL)
   }

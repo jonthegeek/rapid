@@ -73,31 +73,9 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 #'
 #' @return An `oauth2_token_flow` as returned by [oauth2_token_flow()].
 #' @export
-as_oauth2_token_flow <- S7::new_generic(
-  "as_oauth2_token_flow",
-  dispatch_args = "x"
-)
-
-S7::method(as_oauth2_token_flow, oauth2_token_flow) <- function(x) {
-  x
-}
-
-S7::method(as_oauth2_token_flow, class_list | class_character) <- function(x) {
-  as_rapid_class(x, oauth2_token_flow)
-}
-
-S7::method(
-  as_oauth2_token_flow,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  oauth2_token_flow()
-}
-
-S7::method(
-  as_oauth2_token_flow,
-  class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_token_flow}."
-  )
+as_oauth2_token_flow <- function(x,
+                                 ...,
+                                 arg = caller_arg(x),
+                                 call = caller_env()) {
+  as_api_object(x, oauth2_token_flow, ..., arg = arg, call = call)
 }

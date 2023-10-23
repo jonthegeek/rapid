@@ -52,4 +52,4 @@ reference:
     - as_security_requirements
   - title: other
     contents:
-    - as_rapid_class
+    - as_api_object

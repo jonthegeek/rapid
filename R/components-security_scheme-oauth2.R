@@ -75,23 +75,21 @@ S7::method(length, oauth2_security_scheme) <- function(x) {
 #' @return An `oauth2_security_scheme` as returned by
 #'   [oauth2_security_scheme()].
 #' @export
-as_oauth2_security_scheme <- S7::new_generic(
-  "as_oauth2_security_scheme",
-  dispatch_args = "x"
-)
+as_oauth2_security_scheme <- S7::new_generic("as_oauth2_security_scheme", "x")
 
-S7::method(as_oauth2_security_scheme, oauth2_security_scheme) <- function(x) {
-  x
-}
-
-S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
+S7::method(
+  as_oauth2_security_scheme,
+  class_list
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  force(arg)
   if (!length(x) || !any(lengths(x))) {
     return(oauth2_security_scheme())
   }
 
   if (!("flows" %in% names(x))) {
     cli::cli_abort(
-      "{.arg x} must contain a named flows object."
+      "{.arg {arg}} must contain a named flows object.",
+      call = call
     )
   }
   names(x$flows) <- snakecase::to_snake_case(names(x$flows))
@@ -105,16 +103,7 @@ S7::method(as_oauth2_security_scheme, class_list) <- function(x) {
 
 S7::method(
   as_oauth2_security_scheme,
-  class_missing | NULL | S7::new_S3_class("S7_missing")
-) <- function(x) {
-  oauth2_security_scheme()
-}
-
-S7::method(
-  as_oauth2_security_scheme,
   class_any
-) <- function(x, ..., arg = rlang::caller_arg(x)) {
-  cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls oauth2_security_scheme}."
-  )
+) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+  as_api_object(x, oauth2_security_scheme, ..., arg = arg, call = call)
 }

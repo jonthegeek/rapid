@@ -44,38 +44,39 @@
     Code
       as_security_scheme_collection(as.list(letters))
     Condition
-      Error:
-      ! `a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`, `n`, `o`, `p`, `q`, `r`, ..., `y`, and `z` must have names.
+      Error in `as_security_scheme_collection()`:
+      ! `as.list(letters)` must have names.
 
 # as_security_scheme_collection() errors for bad classes
 
     Code
       as_security_scheme_collection(letters)
     Condition
-      Error:
-      ! Can't coerce `letters` <character> to <security_scheme_collection>.
+      Error in `as_security_scheme_collection()`:
+      ! `letters` must have names "name", "details", or "description".
+      * Any other names are ignored.
 
 ---
 
     Code
       as_security_scheme_collection(1:2)
     Condition
-      Error:
-      ! Can't coerce `1:2` <integer> to <security_scheme_collection>.
+      Error in `as_security_scheme_collection()`:
+      ! Can't coerce `1:2` <integer> to <rapid::security_scheme_collection>.
 
 ---
 
     Code
       as_security_scheme_collection(mean)
     Condition
-      Error:
-      ! Can't coerce `mean` <function> to <security_scheme_collection>.
+      Error in `as_security_scheme_collection()`:
+      ! Can't coerce `mean` <function> to <rapid::security_scheme_collection>.
 
 ---
 
     Code
       as_security_scheme_collection(TRUE)
     Condition
-      Error:
-      ! Can't coerce `TRUE` <logical> to <security_scheme_collection>.
+      Error in `as_security_scheme_collection()`:
+      ! Can't coerce `TRUE` <logical> to <rapid::security_scheme_collection>.
 
