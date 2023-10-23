@@ -2,8 +2,6 @@ url: https://jonthegeek.github.io/rapid/
 template:
   bootstrap: 5
 reference:
-  - title: general purpose
-    - as_rapid_class
   - title: rapid class
     contents:
     - rapid
@@ -52,3 +50,6 @@ reference:
     contents:
     - security_requirements
     - as_security_requirements
+  - title: other
+    contents:
+    - as_rapid_class
