@@ -62,7 +62,8 @@ properties.</p>
     <dl><dt>x</dt>
 <dd><p>The object to coerce. Must be empty or have names "info" and/or
 "servers", or names that can be coerced to those names via
-<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored.</p></dd>
+<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored. <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">url()</a></code> objects are
+read with <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::fromJSON()</a></code> or <code><a href="https://rdrr.io/pkg/yaml/man/read_yaml.html" class="external-link">yaml::read_yaml()</a></code> before conversion.</p></dd>
 
 
 <dt>...</dt>
