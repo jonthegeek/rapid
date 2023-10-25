@@ -23,7 +23,9 @@ as_api_object <- S7::new_generic(
            alternate_names = NULL,
            arg = caller_arg(x),
            call = caller_env()) {
-    if (missing(x)) return(target_class())
+    if (missing(x)) {
+      return(target_class())
+    }
     force(arg)
     rlang::check_dots_empty(call = call)
     if (S7::S7_inherits(x, target_class)) {

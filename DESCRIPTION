@@ -18,6 +18,7 @@ BugReports: https://github.com/jonthegeek/rapid/issues
 Imports: 
     cli,
     glue,
+    jsonlite,
     purrr,
     rlang (>= 1.1.0),
     S7 (>= 0.1.1),
@@ -60,6 +61,7 @@ Collate:
     'components-security_scheme-oauth2-token_flow.R'
     'components-security_scheme-oauth2.R'
     'rapid-package.R'
+    'urls.R'
     'utils.R'
     'validate_in.R'
     'validate_lengths.R'
