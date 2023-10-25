@@ -107,7 +107,8 @@ S7::method(length, rapid) <- function(x) {
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be empty or have names "info" and/or
 #'   "servers", or names that can be coerced to those names via
-#'   [snakecase::to_snake_case()]. Extra names are ignored.
+#'   [snakecase::to_snake_case()]. Extra names are ignored. [url()] objects are
+#'   read with [jsonlite::fromJSON()] or [yaml::read_yaml()] before conversion.
 #'
 #' @return A `rapid` object as returned by [rapid()].
 #' @export
@@ -120,10 +121,10 @@ S7::method(as_rapid, S7::new_S3_class("url")) <- function(x,
                                                           ...,
                                                           arg = caller_arg(x),
                                                           call = caller_env()) {
-  url <- summary(x)$description
-  x <- yaml::read_yaml(x)
+  url_string <- .url_to_string(x)
+  x <- .url_fetch(url_string)
   if (!length(x$info$`x-origin`)) {
-    x$info$`x-origin` <- list(url = url)
+    x$info$`x-origin` <- list(url = url_string)
   }
   as_rapid(x, ..., arg = arg, call = call)
 }

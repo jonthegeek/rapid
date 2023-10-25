@@ -213,65 +213,76 @@ test_that("as_rapid() works for lists", {
   )
 })
 
-test_that("as_rapid() works for urls", {
+test_that("as_rapid() works for yaml urls", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
-
-  expect_warning(
+  yaml_url <- "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"
+  expect_warning(expect_warning(
     expect_warning(
       expect_warning(
         expect_warning(
           expect_warning(
-            expect_warning(
-              as_rapid(
-                url(
-                  "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"
-                )
-              ),
-              "x_has_equivalent_paths",
-              class = "rapid_warning_extra_names"
-            ),
-            "x_release",
+            {
+              test_result <- as_rapid(url(yaml_url))
+            },
+            "x_has_equivalent_paths",
             class = "rapid_warning_extra_names"
           ),
-          "x_twitter",
+          "x_release",
           class = "rapid_warning_extra_names"
         ),
-        "parameters",
+        "x_twitter",
         class = "rapid_warning_extra_names"
       ),
-      "x_amazon_apigateway_authtype",
+      "parameters",
       class = "rapid_warning_extra_names"
     ),
-    "x_apisguru_driver",
+    "x_amazon_apigateway_authtype",
     class = "rapid_warning_extra_names"
-  )
+  ), "x_apisguru_driver", class = "rapid_warning_extra_names")
+  expect_snapshot(test_result)
+})
 
-  expect_snapshot(
-    suppressWarnings(as_rapid(
-      url(
-        "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml"
-      )
-    ))
-  )
+test_that("as_rapid() works for json urls", {
+  skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
+
+  json_url <- "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.json"
+  expect_warning(expect_warning(
+    expect_warning(
+      expect_warning(
+        expect_warning(
+          expect_warning(
+            {
+              test_result <- as_rapid(url(json_url))
+            },
+            "x_has_equivalent_paths",
+            class = "rapid_warning_extra_names"
+          ),
+          "x_release",
+          class = "rapid_warning_extra_names"
+        ),
+        "x_twitter",
+        class = "rapid_warning_extra_names"
+      ),
+      "parameters",
+      class = "rapid_warning_extra_names"
+    ),
+    "x_amazon_apigateway_authtype",
+    class = "rapid_warning_extra_names"
+  ), "x_apisguru_driver", class = "rapid_warning_extra_names")
+  expect_snapshot(test_result)
 })
 
 test_that("as_rapid() stores origin info for urls", {
   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")
-
   test_url <- "https://api.open.fec.gov/swagger/"
-
   expect_warning(
-    as_rapid(url(test_url)),
+    {
+      test_result <- as_rapid(url(test_url))
+    },
     "swagger",
     class = "rapid_warning_extra_names"
   )
-
-  expect_snapshot({
-    test_result <- suppressWarnings(
-      as_rapid(url(test_url))
-    )
-    test_result
-  })
+  expect_snapshot(test_result)
   expect_identical(test_result@info@origin@url, test_url)
 })
 
@@ -288,7 +299,9 @@ test_that("as_rapid() works for empty optional fields", {
     expect_warning(
       expect_warning(
         expect_warning(
-          as_rapid(x),
+          {
+            test_result <- as_rapid(x)
+          },
           "openapi",
           class = "rapid_warning_extra_names"
         ),
@@ -302,7 +315,5 @@ test_that("as_rapid() works for empty optional fields", {
     class = "rapid_warning_extra_names"
   )
 
-  expect_snapshot(
-    suppressWarnings(as_rapid(x))
-  )
+  expect_snapshot(test_result)
 })

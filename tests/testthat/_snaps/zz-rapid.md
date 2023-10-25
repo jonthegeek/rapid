@@ -117,11 +117,76 @@
       ! `list(list("https://example.com", "A cool server."))` must have names "info", "servers", "components", or "security".
       * Any other names are ignored.
 
-# as_rapid() works for urls
+# as_rapid() works for yaml urls
 
     Code
-      suppressWarnings(as_rapid(url(
-        "https://api.apis.guru/v2/specs/amazonaws.com/AWSMigrationHub/2017-05-31/openapi.yaml")))
+      test_result
+    Output
+      <rapid::rapid>
+       @ info      : <rapid::info>
+       .. @ title           : chr "AWS Migration Hub"
+       .. @ version         : chr "2017-05-31"
+       .. @ contact         : <rapid::contact>
+       .. .. @ name : chr "Mike Ralphson"
+       .. .. @ email: chr "mike.ralphson@gmail.com"
+       .. .. @ url  : chr "https://github.com/mermade/aws2openapi"
+       .. @ description     : chr "<p>The AWS Migration Hub API methods help to obtain server and application migration status and integrate your "| __truncated__
+       .. @ license         : <rapid::license>
+       .. .. @ name      : chr "Apache 2.0 License"
+       .. .. @ identifier: chr(0) 
+       .. .. @ url       : chr "http://www.apache.org/licenses/"
+       .. @ summary         : chr(0) 
+       .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
+       .. @ origin          : <rapid::class_origin>
+       .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
+       .. .. @ format : chr(0) 
+       .. .. @ version: chr(0) 
+       @ servers   : <rapid::servers>
+       .. @ url        : chr [1:4] "http://mgh.{region}.amazonaws.com" ...
+       .. @ description: chr [1:4] "The AWS Migration Hub multi-region endpoint" ...
+       .. @ variables  : <rapid::server_variables> List of 4
+       .. .. $ : <rapid::string_replacements>
+       .. ..  ..@ name       : chr "region"
+       .. ..  ..@ default    : chr "us-east-1"
+       .. ..  ..@ enum       :List of 1
+       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
+       .. ..  ..@ description: chr "The AWS region"
+       .. .. $ : <rapid::string_replacements>
+       .. ..  ..@ name       : chr "region"
+       .. ..  ..@ default    : chr "us-east-1"
+       .. ..  ..@ enum       :List of 1
+       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
+       .. ..  ..@ description: chr "The AWS region"
+       .. .. $ : <rapid::string_replacements>
+       .. ..  ..@ name       : chr "region"
+       .. ..  ..@ default    : chr "cn-north-1"
+       .. ..  ..@ enum       :List of 1
+       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
+       .. ..  ..@ description: chr "The AWS region"
+       .. .. $ : <rapid::string_replacements>
+       .. ..  ..@ name       : chr "region"
+       .. ..  ..@ default    : chr "cn-north-1"
+       .. ..  ..@ enum       :List of 1
+       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
+       .. ..  ..@ description: chr "The AWS region"
+       @ components: <rapid::component_collection>
+       .. @ security_schemes: <rapid::security_scheme_collection>
+       .. .. @ name       : chr "hmac"
+       .. .. @ details    : <rapid::security_scheme_details> List of 1
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "Authorization"
+       .. .. ..  ..@ location      : chr "header"
+       .. .. @ description: chr "Amazon Signature authorization v4"
+       @ security  : <rapid::security_requirements>
+       .. @ name                   : chr "hmac"
+       .. @ required_scopes        :List of 1
+       .. .. $ : chr(0) 
+       .. @ rapid_class_requirement: chr "security_scheme"
+
+# as_rapid() works for json urls
+
+    Code
+      test_result
     Output
       <rapid::rapid>
        @ info      : <rapid::info>
@@ -187,7 +252,6 @@
 # as_rapid() stores origin info for urls
 
     Code
-      test_result <- suppressWarnings(as_rapid(url(test_url)))
       test_result
     Output
       <rapid::rapid>
@@ -229,7 +293,7 @@
 # as_rapid() works for empty optional fields
 
     Code
-      suppressWarnings(as_rapid(x))
+      test_result
     Output
       <rapid::rapid>
        @ info      : <rapid::info>
