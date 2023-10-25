@@ -77,7 +77,7 @@ S7::method(
 ) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
   force(arg)
   x <- unlist(x)
-  x <- stbl::stabilize_chr(x, x_arg = arg)
+  x <- stabilize_chr(x, x_arg = arg)
   if (!rlang::is_named2(x)) {
     cli::cli_abort(
       "{.arg {arg}} must be a named character vector.",
