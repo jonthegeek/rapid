@@ -65,6 +65,13 @@ test_that("as_scopes() errors informatively for bad classes", {
   )
 })
 
+test_that("as_scopes() errors informatively for weird lists", {
+  expect_error(
+    as_scopes(list(a = mean)),
+    class = "stbl_error_coerce_character"
+  )
+})
+
 test_that("as_scopes() returns expected objects", {
   expect_identical(
     as_scopes(

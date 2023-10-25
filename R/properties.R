@@ -15,7 +15,7 @@ character_scalar_property <- function(x_arg, ...) {
     setter = function(self, value) {
       call <- caller_env(3)
       value <- value %||% character()
-      value <- stbl::stabilize_chr_scalar(
+      value <- stabilize_chr_scalar(
         value,
         allow_null = FALSE,
         x_arg = x_arg,
@@ -40,7 +40,7 @@ enum_property <- function(x_arg) {
       value <- purrr::map(
         value,
         function(enumerations) {
-          enumerations <- stbl::stabilize_chr(
+          enumerations <- stabilize_chr(
             enumerations,
             allow_na = FALSE,
             x_arg = x_arg,
@@ -69,7 +69,7 @@ list_of_characters <- function(x_arg, ...) {
         value,
         function(x) {
           x <- x %|0|% character()
-          stbl::stabilize_chr(
+          stabilize_chr(
             x,
             allow_na = FALSE,
             x_arg = x_arg,
