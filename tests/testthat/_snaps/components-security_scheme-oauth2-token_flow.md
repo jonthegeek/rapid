@@ -1,7 +1,7 @@
-# oauth2_token_flow() requires compatible lengths
+# class_oauth2_token_flow() requires compatible lengths
 
     Code
-      oauth2_token_flow(refresh_url = "a")
+      class_oauth2_token_flow(refresh_url = "a")
     Condition
       Error:
       ! <rapid::oauth2_token_flow> object is invalid:
@@ -11,17 +11,17 @@
 ---
 
     Code
-      oauth2_token_flow(scopes = c(a = "a"))
+      class_oauth2_token_flow(scopes = c(a = "a"))
     Condition
       Error:
       ! <rapid::oauth2_token_flow> object is invalid:
       - When `token_url` is not defined, `scopes` must be empty.
       - `scopes` has 1 value.
 
-# oauth2_token_flow() returns an empty oauth2_token_flow
+# class_oauth2_token_flow() returns an empty oauth2_token_flow
 
     Code
-      oauth2_token_flow()
+      class_oauth2_token_flow()
     Output
       <rapid::oauth2_token_flow>
        @ refresh_url: chr(0) 
@@ -30,12 +30,12 @@
        .. @ description: chr(0) 
        @ token_url  : chr(0) 
 
-# oauth2_token_flow() requires names for optionals
+# class_oauth2_token_flow() requires names for optionals
 
     Code
-      oauth2_token_flow("a", "b", "c")
+      class_oauth2_token_flow("a", "b", "c")
     Condition
-      Error in `oauth2_token_flow()`:
+      Error in `class_oauth2_token_flow()`:
       ! `...` must be empty.
       x Problematic arguments:
       * ..1 = "b"
@@ -45,18 +45,18 @@
 ---
 
     Code
-      oauth2_token_flow("a", refresh_url = "c", c(d = "d"))
+      class_oauth2_token_flow("a", refresh_url = "c", c(d = "d"))
     Condition
-      Error in `oauth2_token_flow()`:
+      Error in `class_oauth2_token_flow()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = c(d = "d")
       i Did you forget to name an argument?
 
-# oauth2_token_flow() errors informatively for bad classes
+# class_oauth2_token_flow() errors informatively for bad classes
 
     Code
-      oauth2_token_flow(mean)
+      class_oauth2_token_flow(mean)
     Condition
       Error:
       ! <rapid::oauth2_token_flow> object properties are invalid:
@@ -65,23 +65,23 @@
 ---
 
     Code
-      oauth2_token_flow("a", refresh_url = mean)
+      class_oauth2_token_flow("a", refresh_url = mean)
     Condition
-      Error in `oauth2_token_flow()`:
+      Error in `class_oauth2_token_flow()`:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_token_flow("a", refresh_url = "c", scopes = "d")
+      class_oauth2_token_flow("a", refresh_url = "c", scopes = "d")
     Condition
       Error in `as_scopes()`:
       ! `scopes` must be a named character vector.
 
-# oauth2_token_flow() returns expected objects
+# class_oauth2_token_flow() returns expected objects
 
     Code
-      test_result <- oauth2_token_flow(token_url = "https://auth.ebay.com/oauth2/token",
+      test_result <- class_oauth2_token_flow(token_url = "https://auth.ebay.com/oauth2/token",
         scopes = c(sell.account = "View and manage your account settings",
           sell.account.readonly = "View your account settings"), refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh")
       test_result

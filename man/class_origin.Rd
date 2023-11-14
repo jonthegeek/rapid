@@ -27,12 +27,12 @@ will be "3.0" (as in "OpenAPI Specification version 3.0"), "3.1", or a
 patch version of those.}
 }
 \value{
-A \code{class_origin} S7 object describing where to find the API
-description, with fields \code{url}, \code{format}, and \code{version}.
+An \code{origin} S7 object describing where to find the API description,
+with fields \code{url}, \code{format}, and \code{version}.
 }
 \description{
-A \code{class_origin} object provides information about the primary source
-document(s) used to build an API.
+An \code{origin} object provides information about the primary source document(s)
+used to build an API.
 }
 \examples{
 class_origin(
@@ -42,5 +42,5 @@ class_origin(
 )
 }
 \seealso{
-\code{\link[=as_origin]{as_origin()}} for coercing objects to \code{class_origin}.
+\code{\link[=as_origin]{as_origin()}} for coercing objects to \code{origin}.
 }

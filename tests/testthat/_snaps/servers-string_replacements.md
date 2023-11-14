@@ -1,18 +1,18 @@
-# string_replacements() requires names for optional args
+# class_string_replacements() requires names for optional args
 
     Code
-      string_replacements("a", "b", "c")
+      class_string_replacements("a", "b", "c")
     Condition
-      Error in `string_replacements()`:
+      Error in `class_string_replacements()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = "c"
       i Did you forget to name an argument?
 
-# string_replacements() requires that default matches name
+# class_string_replacements() requires that default matches name
 
     Code
-      string_replacements("a")
+      class_string_replacements("a")
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -23,7 +23,7 @@
 ---
 
     Code
-      string_replacements("a", letters)
+      class_string_replacements("a", letters)
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -34,7 +34,7 @@
 ---
 
     Code
-      string_replacements(letters, "a")
+      class_string_replacements(letters, "a")
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -45,17 +45,17 @@
 ---
 
     Code
-      string_replacements(character(), "a")
+      class_string_replacements(character(), "a")
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - When `name` is not defined, `default` must be empty.
       - `default` has 1 value.
 
-# string_replacements() works with equal-length name/default
+# class_string_replacements() works with equal-length name/default
 
     Code
-      test_result <- string_replacements("a", "b")
+      test_result <- class_string_replacements("a", "b")
       test_result
     Output
       <rapid::string_replacements>
@@ -64,10 +64,10 @@
        @ enum       : list()
        @ description: chr(0) 
 
-# string_replacements() requires optional args are empty or match
+# class_string_replacements() requires optional args are empty or match
 
     Code
-      string_replacements("a", "b", enum = list("a", "b"))
+      class_string_replacements("a", "b", enum = list("a", "b"))
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -78,7 +78,7 @@
 ---
 
     Code
-      string_replacements("a", "b", description = c("a", "b"))
+      class_string_replacements("a", "b", description = c("a", "b"))
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -86,10 +86,10 @@
       - `name` has 1 value.
       - `description` has 2 values.
 
-# string_replacements() requires default is in enum when given
+# class_string_replacements() requires default is in enum when given
 
     Code
-      string_replacements(name = "a", default = "b", enum = "a")
+      class_string_replacements(name = "a", default = "b", enum = "a")
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
@@ -99,20 +99,21 @@
 ---
 
     Code
-      string_replacements(name = c("a", "b"), default = c("b", "a"), enum = list("a",
-        "a"))
+      class_string_replacements(name = c("a", "b"), default = c("b", "a"), enum = list(
+        "a", "a"))
     Condition
       Error:
       ! <rapid::string_replacements> object is invalid:
       - `default` must be in `enum`.
       - "b" is not in "a".
 
-# string_replacements() works for a full object
+# class_string_replacements() works for a full object
 
     Code
-      test_result <- string_replacements(name = c("username", "port", "basePath"),
-      default = c("demo", "8443", "v2"), description = c("The active user's folder.",
-        NA, NA), enum = list(NULL, c("8443", "443"), NULL))
+      test_result <- class_string_replacements(name = c("username", "port",
+        "basePath"), default = c("demo", "8443", "v2"), description = c(
+        "The active user's folder.", NA, NA), enum = list(NULL, c("8443", "443"),
+      NULL))
       test_result
     Output
       <rapid::string_replacements>

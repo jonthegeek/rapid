@@ -15,12 +15,12 @@ test_that("as_security_scheme() errors informatively for bad classes", {
 
 test_that("as_security_scheme() works for security_schemes", {
   expect_identical(
-    as_security_scheme(oauth2_security_scheme()),
-    oauth2_security_scheme()
+    as_security_scheme(class_oauth2_security_scheme()),
+    class_oauth2_security_scheme()
   )
   expect_identical(
-    as_security_scheme(api_key_security_scheme()),
-    api_key_security_scheme()
+    as_security_scheme(class_api_key_security_scheme()),
+    class_api_key_security_scheme()
   )
 })
 
@@ -43,10 +43,10 @@ test_that("as_security_scheme() returns expected objects", {
         type = "oauth2"
       )
     ),
-    oauth2_security_scheme(
-      password_flow = oauth2_token_flow(
+    class_oauth2_security_scheme(
+      password_flow = class_oauth2_token_flow(
         token_url = "/account/authorization",
-        scopes = scopes(
+        scopes = class_scopes(
           name = c("Catalog", "Commerce", "Playback", "Settings"),
           description = c(
             "Access all read-only content",
@@ -74,10 +74,10 @@ test_that("as_security_scheme() returns expected objects", {
         type = "oauth2"
       )
     ),
-    oauth2_security_scheme(
-      password_flow = oauth2_token_flow(
+    class_oauth2_security_scheme(
+      password_flow = class_oauth2_token_flow(
         token_url = "/account/profile/authorization",
-        scopes = scopes(
+        scopes = class_scopes(
           name = "Catalog",
           description = "Modify profile preferences and activity"
         )
@@ -100,7 +100,7 @@ test_that("as_security_scheme() works for re-named parameters", {
         type = "apiKey"
       )
     ),
-    api_key_security_scheme(
+    class_api_key_security_scheme(
       parameter_name = "authorization",
       location = "header"
     )

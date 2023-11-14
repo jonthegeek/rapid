@@ -24,11 +24,11 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-A \code{contact} as returned by \code{\link[=contact]{contact()}}.
+A \code{contact} as returned by \code{\link[=class_contact]{class_contact()}}.
 }
 \description{
 \code{as_contact()} turns an existing object into a \code{contact}. This is in contrast
-with \code{\link[=contact]{contact()}}, which builds a \code{contact} from individual properties.
+with \code{\link[=class_contact]{class_contact()}}, which builds a \code{contact} from individual properties.
 }
 \examples{
 as_contact()

@@ -1,7 +1,7 @@
-# info() validates property length.
+# class_info() validates property length.
 
     Code
-      info(title = "My API")
+      class_info(title = "My API")
     Condition
       Error:
       ! <rapid::info> object is invalid:
@@ -12,7 +12,7 @@
 ---
 
     Code
-      info(version = "My API")
+      class_info(version = "My API")
     Condition
       Error:
       ! <rapid::info> object is invalid:
@@ -22,17 +22,17 @@
 ---
 
     Code
-      info(summary = "My API")
+      class_info(summary = "My API")
     Condition
       Error:
       ! <rapid::info> object is invalid:
       - When `title` is not defined, `summary` must be empty.
       - `summary` has 1 value.
 
-# info() returns an empty info
+# class_info() returns an empty info
 
     Code
-      test_result <- info()
+      test_result <- class_info()
       test_result
     Output
       <rapid::info>
@@ -49,7 +49,7 @@
        .. @ url       : chr(0) 
        @ summary         : chr(0) 
        @ terms_of_service: chr(0) 
-       @ origin          : <rapid::class_origin>
+       @ origin          : <rapid::origin>
        .. @ url    : chr(0) 
        .. @ format : chr(0) 
        .. @ version: chr(0) 

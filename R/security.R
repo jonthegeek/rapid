@@ -9,25 +9,25 @@ NULL
 #' @inheritParams rlang::args_dots_empty
 #' @param name Character vector (required). The names must correspond to
 #'   security schemes declared in the `security_schemes` property of a
-#'   [component_collection()].
+#'   [class_components()].
 #' @param required_scopes A list of character vectors, each of which describe
 #'   the scopes required for this security scheme. The vector corresponding to a
 #'   given `name` can be empty.
 #'
-#' @return A `security_requirements` S7 object with references of security
-#'   required for operations.
+#' @return A `security` S7 object with references of security required for
+#'   operations.
 #' @export
 #' @examples
-#' security_requirements()
-#' security_requirements(
+#' class_security()
+#' class_security(
 #'   name = c("oauth2", "internalApiKey"),
 #'   required_scopes = list(
 #'     c("user", "user:email", "user:follow"),
 #'     character()
 #'   )
 #' )
-security_requirements <- S7::new_class(
-  "security_requirements",
+class_security <- S7::new_class(
+  "security",
   package = "rapid",
   properties = list(
     name = class_character,
@@ -57,16 +57,15 @@ security_requirements <- S7::new_class(
   }
 )
 
-S7::method(length, security_requirements) <- function(x) {
+S7::method(length, class_security) <- function(x) {
   length(x@name)
 }
 
-#' Coerce lists to as_security_requirements objects
+#' Coerce lists to as_security objects
 #'
-#' `as_security_requirements()` turns an existing object into a
-#' `security_requirements` object. This is in contrast with
-#' [security_requirements()], which builds a `security_requirements` from
-#' individual properties.
+#' `as_security()` turns an existing object into a `security` object. This is in
+#' contrast with [class_security()], which builds a `security` from individual
+#' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -75,13 +74,12 @@ S7::method(length, security_requirements) <- function(x) {
 #'   "security_schemes" via [snakecase::to_snake_case()]. Additional names are
 #'   ignored.
 #'
-#' @return A `security_requirements` object as returned by
-#'   [security_requirements()].
+#' @return A `security` object as returned by [class_security()].
 #' @export
 #'
 #' @examples
-#' as_security_requirements()
-#' as_security_requirements(
+#' as_security()
+#' as_security(
 #'   list(
 #'     list(
 #'       oauth2 = c("user", "user:email", "user:follow")
@@ -89,10 +87,10 @@ S7::method(length, security_requirements) <- function(x) {
 #'     list(internalApiKey = list())
 #'   )
 #' )
-as_security_requirements <- S7::new_generic("as_security_requirements", "x")
+as_security <- S7::new_generic("as_security", "x")
 
 S7::method(
-  as_security_requirements,
+  as_security,
   class_list
 ) <- function(x, ..., arg = caller_arg(x)) {
   force(arg)
@@ -103,15 +101,15 @@ S7::method(
       "{.arg {arg}} must be a named list.",
     )
   }
-  security_requirements(
+  class_security(
     name = names(x),
     required_scopes = unname(x)
   )
 }
 
 S7::method(
-  as_security_requirements,
+  as_security,
   class_any
 ) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
-  as_api_object(x, security_requirements, ..., arg = arg, call = call)
+  as_api_object(x, class_security, ..., arg = arg, call = call)
 }

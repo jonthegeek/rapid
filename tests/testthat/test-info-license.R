@@ -1,63 +1,63 @@
-test_that("license() errors informatively for bad name", {
+test_that("class_license() errors informatively for bad name", {
   expect_snapshot(
-    license(name = mean),
+    class_license(name = mean),
     error = TRUE
   )
   expect_snapshot(
-    license(name = c("A", "B")),
-    error = TRUE
-  )
-})
-
-test_that("license() errors informatively for bad url", {
-  expect_snapshot(
-    license(name = "A", url = mean),
-    error = TRUE
-  )
-  expect_snapshot(
-    license(name = "A", url = c("A", "B")),
-    error = TRUE
-  )
-})
-test_that("license() errors informatively for bad identifier", {
-  expect_snapshot(
-    license(name = "A", identifier = mean),
-    error = TRUE
-  )
-  expect_snapshot(
-    license(name = "A", identifier = c("A", "B")),
+    class_license(name = c("A", "B")),
     error = TRUE
   )
 })
 
-test_that("license() errors when both url and identifier are supplied", {
+test_that("class_license() errors informatively for bad url", {
   expect_snapshot(
-    license(name = "A", identifier = "A", url = "https://example.com"),
+    class_license(name = "A", url = mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_license(name = "A", url = c("A", "B")),
+    error = TRUE
+  )
+})
+test_that("class_license() errors informatively for bad identifier", {
+  expect_snapshot(
+    class_license(name = "A", identifier = mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_license(name = "A", identifier = c("A", "B")),
     error = TRUE
   )
 })
 
-test_that("license() fails when name is missing", {
+test_that("class_license() errors when both url and identifier are supplied", {
   expect_snapshot(
-    license(identifier = "A"),
-    error = TRUE
-  )
-  expect_snapshot(
-    license(url = "https://example.com"),
+    class_license(name = "A", identifier = "A", url = "https://example.com"),
     error = TRUE
   )
 })
 
-test_that("license() doesn't match identifier by position", {
+test_that("class_license() fails when name is missing", {
   expect_snapshot(
-    license(name = "A", "https://example.com"),
+    class_license(identifier = "A"),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_license(url = "https://example.com"),
     error = TRUE
   )
 })
 
-test_that("license() returns a license when everything is ok", {
+test_that("class_license() doesn't match identifier by position", {
+  expect_snapshot(
+    class_license(name = "A", "https://example.com"),
+    error = TRUE
+  )
+})
+
+test_that("class_license() returns a license when everything is ok", {
   expect_snapshot({
-    test_result <- license(
+    test_result <- class_license(
       name = "A",
       url = "https://example.com"
     )
@@ -74,7 +74,7 @@ test_that("license() returns a license when everything is ok", {
   )
 
   expect_snapshot({
-    test_result <- license(
+    test_result <- class_license(
       name = "A",
       identifier = "technically these have a fancy required format"
     )
@@ -92,8 +92,8 @@ test_that("license() returns a license when everything is ok", {
 })
 
 test_that("length() of a license reports the overall length", {
-  expect_equal(length(license()), 0)
-  expect_equal(length(license(name = "A")), 1)
+  expect_equal(length(class_license()), 0)
+  expect_equal(length(class_license(name = "A")), 1)
 })
 
 test_that("as_license() errors informatively for unnamed input", {
@@ -124,7 +124,7 @@ test_that("as_license() returns expected objects", {
       name = "Apache 2.0",
       identifier = "Apache-2.0"
     )),
-    license(
+    class_license(
       name = "Apache 2.0",
       identifier = "Apache-2.0"
     )
@@ -145,7 +145,7 @@ test_that("as_license() returns expected objects", {
         x = "https://jonthegeek.com"
       ))
     ),
-    license(
+    class_license(
       name = "Apache 2.0",
       identifier = "Apache-2.0"
     )
@@ -153,13 +153,13 @@ test_that("as_license() returns expected objects", {
 
   expect_identical(
     as_license(list()),
-    license()
+    class_license()
   )
 })
 
 test_that("as_license() works for licenses", {
   expect_identical(
-    as_license(license()),
-    license()
+    as_license(class_license()),
+    class_license()
   )
 })

@@ -24,11 +24,11 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-A \code{license} as returned by \code{\link[=license]{license()}}.
+A \code{license} as returned by \code{\link[=class_license]{class_license()}}.
 }
 \description{
 \code{as_license()} turns an existing object into a \code{license}. This is in contrast
-with \code{\link[=license]{license()}}, which builds a \code{license} from individual properties.
+with \code{\link[=class_license]{class_license()}}, which builds a \code{license} from individual properties.
 }
 \examples{
 as_license()

@@ -1,4 +1,4 @@
-#' @include components-security_scheme_collection.R
+#' @include components-security_schemes.R
 NULL
 
 #' An element to hold various schemas for the API
@@ -7,53 +7,53 @@ NULL
 #' defined within the components object will have no effect on the API unless
 #' they are explicitly referenced from properties outside the components object.
 #' We currently only support the security_schemes object within the components
-#' object (see [security_scheme_collection()]).
+#' object (see [class_security_schemes()]).
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param security_schemes An object to hold reusable security scheme objects
-#'   created by [security_scheme_collection()].
+#'   created by [class_security_schemes()].
 #'
-#' @return A `component_collection` S7 object with various schemas for the API.
+#' @return A `components` S7 object with various schemas for the API.
 #' @export
 #'
-#' @seealso [as_component_collection()] for coercing objects to
-#'   `component_collection` objects.
+#' @seealso [as_components()] for coercing objects to
+#'   `components` objects.
 #'
 #' @examples
-#' component_collection()
-#' component_collection(
-#'   security_schemes = security_scheme_collection(
+#' class_components()
+#' class_components(
+#'   security_schemes = class_security_schemes(
 #'     name = "a",
-#'     details = security_scheme_details(
-#'       api_key_security_scheme("parm", "query")
+#'     details = class_security_scheme_details(
+#'       class_api_key_security_scheme("parm", "query")
 #'     )
 #'   )
 #' )
-component_collection <- S7::new_class(
-  "component_collection",
+class_components <- S7::new_class(
+  "components",
   package = "rapid",
   properties = list(
-    security_schemes = security_scheme_collection
+    security_schemes = class_security_schemes
   ),
   constructor = function(...,
-                         security_schemes = security_scheme_collection()) {
+                         security_schemes = class_security_schemes()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
-      security_schemes = as_security_scheme_collection(security_schemes)
+      security_schemes = as_security_schemes(security_schemes)
     )
   }
 )
 
-S7::method(length, component_collection) <- function(x) {
+S7::method(length, class_components) <- function(x) {
   sum(lengths(S7::props(x)) > 0)
 }
 
-#' Coerce lists to component_collection objects
+#' Coerce lists to components objects
 #'
-#' `as_component_collection()` turns an existing object into a
-#' `component_collection` object. This is in contrast with
-#' [component_collection()], which builds a `component_collection` from
+#' `as_components()` turns an existing object into a
+#' `components` object. This is in contrast with
+#' [class_components()], which builds a `components` from
 #' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -63,13 +63,13 @@ S7::method(length, component_collection) <- function(x) {
 #'   "security_schemes" via [snakecase::to_snake_case()]. Additional names are
 #'   ignored.
 #'
-#' @return A `component_collection` object as returned by
-#'   [component_collection()].
+#' @return A `components` object as returned by
+#'   [class_components()].
 #' @export
 #'
 #' @examples
-#' as_component_collection()
-#' as_component_collection(list(
+#' as_components()
+#' as_components(list(
 #'   securitySchemes = list(
 #'     accountAuth = list(
 #'       description = "Account JWT token",
@@ -110,9 +110,9 @@ S7::method(length, component_collection) <- function(x) {
 #'     )
 #'   )
 #' ))
-as_component_collection <- function(x,
-                                    ...,
-                                    arg = caller_arg(x),
-                                    call = caller_env()) {
-  as_api_object(x, component_collection, ..., arg = arg, call = call)
+as_components <- function(x,
+                          ...,
+                          arg = caller_arg(x),
+                          call = caller_env()) {
+  as_api_object(x, class_components, ..., arg = arg, call = call)
 }

@@ -24,10 +24,10 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-An \code{oauth2_token_flow} as returned by \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}.
+An \code{oauth2_token_flow} as returned by \code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}}.
 }
 \description{
 \code{as_oauth2_token_flow()} turns an existing object into an
-\code{oauth2_token_flow}. This is in contrast with \code{\link[=oauth2_token_flow]{oauth2_token_flow()}}, which
+\code{oauth2_token_flow}. This is in contrast with \code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}}, which
 builds an \code{oauth2_token_flow} from individual properties.
 }

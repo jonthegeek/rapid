@@ -10,7 +10,7 @@
 #' @seealso [as_scopes()] for coercing objects to `scopes`.
 #' @export
 #' @examples
-#' scopes(
+#' class_scopes(
 #'   name = c(
 #'     "https://www.googleapis.com/auth/youtube",
 #'     "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
@@ -30,7 +30,7 @@
 #'     "View private information of your YouTube channel"
 #'   )
 #' )
-scopes <- S7::new_class(
+class_scopes <- S7::new_class(
   name = "scopes",
   package = "rapid",
   properties = list(
@@ -54,20 +54,20 @@ scopes <- S7::new_class(
   }
 )
 
-S7::method(length, scopes) <- function(x) {
+S7::method(length, class_scopes) <- function(x) {
   length(x@name)
 }
 
 #' Coerce lists and character vectors to scopes
 #'
 #' `as_scopes()` turns an existing object into a `scopes`. This is in contrast
-#' with [scopes()], which builds a `scopes` from individual properties.
+#' with [class_scopes()], which builds a `scopes` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
 #' @param x The object to coerce. Must be coercible to a named character vector.
 #'
-#' @return A `scopes` as returned by [scopes()].
+#' @return A `scopes` as returned by [class_scopes()].
 #' @export
 as_scopes <- S7::new_generic("as_scopes", "x")
 
@@ -84,7 +84,7 @@ S7::method(
       call = call
     )
   }
-  scopes(
+  class_scopes(
     name = names(x),
     description = unname(x)
   )
@@ -94,5 +94,5 @@ S7::method(as_scopes, class_any) <- function(x,
                                              ...,
                                              arg = caller_arg(x),
                                              call = caller_env()) {
-  as_api_object(x, scopes, ..., arg = arg, call = call)
+  as_api_object(x, class_scopes, ..., arg = arg, call = call)
 }

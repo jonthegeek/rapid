@@ -31,11 +31,11 @@ mentioned in error messages as the source of the error. See the
 }
 \value{
 An \code{oauth2_authorization_code_flow} as returned by
-\code{\link[=oauth2_authorization_code_flow]{oauth2_authorization_code_flow()}}.
+\code{\link[=class_oauth2_authorization_code_flow]{class_oauth2_authorization_code_flow()}}.
 }
 \description{
 \code{as_oauth2_authorization_code_flow()} turns an existing object into an
 \code{oauth2_authorization_code_flow}. This is in contrast with
-\code{\link[=oauth2_authorization_code_flow]{oauth2_authorization_code_flow()}}, which builds an
+\code{\link[=class_oauth2_authorization_code_flow]{class_oauth2_authorization_code_flow()}}, which builds an
 \code{oauth2_authorization_code_flow} from individual properties.
 }

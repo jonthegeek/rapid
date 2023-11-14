@@ -1,59 +1,59 @@
-test_that("oauth2_authorization_code_flow() requires compatible lengths", {
+test_that("class_oauth2_authorization_code_flow() requires compatible lengths", {
   expect_snapshot(
-    oauth2_authorization_code_flow("a"),
+    class_oauth2_authorization_code_flow("a"),
     error = TRUE
   )
   expect_snapshot(
-    oauth2_authorization_code_flow(token_url = "a"),
+    class_oauth2_authorization_code_flow(token_url = "a"),
     error = TRUE
   )
   expect_snapshot(
-    oauth2_authorization_code_flow(refresh_url = "a"),
+    class_oauth2_authorization_code_flow(refresh_url = "a"),
     error = TRUE
   )
   expect_snapshot(
-    oauth2_authorization_code_flow(scopes = c("a" = "a")),
-    error = TRUE
-  )
-})
-
-test_that("oauth2_authorization_code_flow() returns empty", {
-  expect_snapshot(oauth2_authorization_code_flow())
-})
-
-test_that("oauth2_authorization_code_flow() requires names for optionals", {
-  expect_snapshot(
-    oauth2_authorization_code_flow("a", "b", "c"),
-    error = TRUE
-  )
-  expect_snapshot(
-    oauth2_authorization_code_flow("a", "b", refresh_url = "c", c("d" = "d")),
+    class_oauth2_authorization_code_flow(scopes = c("a" = "a")),
     error = TRUE
   )
 })
 
-test_that("oauth2_authorization_code_flow() errors for bad classes", {
+test_that("class_oauth2_authorization_code_flow() returns empty", {
+  expect_snapshot(class_oauth2_authorization_code_flow())
+})
+
+test_that("class_oauth2_authorization_code_flow() requires names for optionals", {
   expect_snapshot(
-    oauth2_authorization_code_flow(mean, mean),
+    class_oauth2_authorization_code_flow("a", "b", "c"),
     error = TRUE
   )
   expect_snapshot(
-    oauth2_authorization_code_flow("a", mean),
-    error = TRUE
-  )
-  expect_snapshot(
-    oauth2_authorization_code_flow("a", "b", refresh_url = mean),
-    error = TRUE
-  )
-  expect_snapshot(
-    oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d"),
+    class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", c("d" = "d")),
     error = TRUE
   )
 })
 
-test_that("oauth2_authorization_code_flow() returns expected objects", {
+test_that("class_oauth2_authorization_code_flow() errors for bad classes", {
+  expect_snapshot(
+    class_oauth2_authorization_code_flow(mean, mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_oauth2_authorization_code_flow("a", mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_oauth2_authorization_code_flow("a", "b", refresh_url = mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d"),
+    error = TRUE
+  )
+})
+
+test_that("class_oauth2_authorization_code_flow() returns expected objects", {
   expect_snapshot({
-    test_result <- oauth2_authorization_code_flow(
+    test_result <- class_oauth2_authorization_code_flow(
       authorization_url = "https://auth.ebay.com/oauth2/authorize",
       token_url = "https://api.ebay.com/identity/v1/oauth2/token",
       scopes = c(
@@ -80,11 +80,11 @@ test_that("oauth2_authorization_code_flow() returns expected objects", {
 })
 
 test_that("length() of oauth2_authorization_code_flow reports overall length", {
-  expect_equal(length(oauth2_authorization_code_flow()), 0)
-  expect_equal(length(oauth2_authorization_code_flow("A", "B")), 1)
+  expect_equal(length(class_oauth2_authorization_code_flow()), 0)
+  expect_equal(length(class_oauth2_authorization_code_flow("A", "B")), 1)
   expect_equal(
     length(
-      oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))
+      class_oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))
     ),
     1
   )
@@ -124,7 +124,7 @@ test_that("as_oauth2_authorization_code_flow() returns expected objects", {
         token_url = "https://api.ebay.com/identity/v1/oauth2/token"
       )
     ),
-    oauth2_authorization_code_flow(
+    class_oauth2_authorization_code_flow(
       authorization_url = "https://auth.ebay.com/oauth2/authorize",
       scopes = c(
         sell.account = "View and manage your account settings",
@@ -136,12 +136,12 @@ test_that("as_oauth2_authorization_code_flow() returns expected objects", {
 
   expect_identical(
     as_oauth2_authorization_code_flow(list()),
-    oauth2_authorization_code_flow()
+    class_oauth2_authorization_code_flow()
   )
 
   expect_identical(
     as_oauth2_authorization_code_flow(character()),
-    oauth2_authorization_code_flow()
+    class_oauth2_authorization_code_flow()
   )
 })
 
@@ -157,7 +157,7 @@ test_that("as_oauth2_authorization_code_flow() works for alternate names", {
         tokenUrl = "https://api.ebay.com/identity/v1/oauth2/token"
       )
     ),
-    oauth2_authorization_code_flow(
+    class_oauth2_authorization_code_flow(
       authorization_url = "https://auth.ebay.com/oauth2/authorize",
       scopes = c(
         sell.account = "View and manage your account settings",
@@ -170,7 +170,7 @@ test_that("as_oauth2_authorization_code_flow() works for alternate names", {
 
 test_that("as_oauth2_authorization_code_flow() works w/ itself", {
   expect_identical(
-    as_oauth2_authorization_code_flow(oauth2_authorization_code_flow()),
-    oauth2_authorization_code_flow()
+    as_oauth2_authorization_code_flow(class_oauth2_authorization_code_flow()),
+    class_oauth2_authorization_code_flow()
   )
 })

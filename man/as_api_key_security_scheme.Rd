@@ -25,11 +25,11 @@ mentioned in error messages as the source of the error. See the
 }
 \value{
 An \code{api_key_security_scheme} as returned by
-\code{\link[=api_key_security_scheme]{api_key_security_scheme()}}.
+\code{\link[=class_api_key_security_scheme]{class_api_key_security_scheme()}}.
 }
 \description{
 \code{as_api_key_security_scheme()} turns an existing object into an
 \code{api_key_security_scheme}. This is in contrast with
-\code{\link[=api_key_security_scheme]{api_key_security_scheme()}}, which builds an \code{api_key_security_scheme} from
-individual properties.
+\code{\link[=class_api_key_security_scheme]{class_api_key_security_scheme()}}, which builds an \code{api_key_security_scheme}
+from individual properties.
 }

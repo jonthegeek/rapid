@@ -1,67 +1,67 @@
-# license() errors informatively for bad name
+# class_license() errors informatively for bad name
 
     Code
-      license(name = mean)
+      class_license(name = mean)
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! Can't coerce `name` <function> to <character>.
 
 ---
 
     Code
-      license(name = c("A", "B"))
+      class_license(name = c("A", "B"))
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! `name` must be a single <character>.
       x `name` has 2 values.
 
-# license() errors informatively for bad url
+# class_license() errors informatively for bad url
 
     Code
-      license(name = "A", url = mean)
+      class_license(name = "A", url = mean)
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! Can't coerce `url` <function> to <character>.
 
 ---
 
     Code
-      license(name = "A", url = c("A", "B"))
+      class_license(name = "A", url = c("A", "B"))
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! `url` must be a single <character>.
       x `url` has 2 values.
 
-# license() errors informatively for bad identifier
+# class_license() errors informatively for bad identifier
 
     Code
-      license(name = "A", identifier = mean)
+      class_license(name = "A", identifier = mean)
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! Can't coerce `identifier` <function> to <character>.
 
 ---
 
     Code
-      license(name = "A", identifier = c("A", "B"))
+      class_license(name = "A", identifier = c("A", "B"))
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! `identifier` must be a single <character>.
       x `identifier` has 2 values.
 
-# license() errors when both url and identifier are supplied
+# class_license() errors when both url and identifier are supplied
 
     Code
-      license(name = "A", identifier = "A", url = "https://example.com")
+      class_license(name = "A", identifier = "A", url = "https://example.com")
     Condition
       Error:
       ! <rapid::license> object is invalid:
       - At most one of @identifier and @url must be supplied.
 
-# license() fails when name is missing
+# class_license() fails when name is missing
 
     Code
-      license(identifier = "A")
+      class_license(identifier = "A")
     Condition
       Error:
       ! <rapid::license> object is invalid:
@@ -71,28 +71,28 @@
 ---
 
     Code
-      license(url = "https://example.com")
+      class_license(url = "https://example.com")
     Condition
       Error:
       ! <rapid::license> object is invalid:
       - When `name` is not defined, `url` must be empty.
       - `url` has 1 value.
 
-# license() doesn't match identifier by position
+# class_license() doesn't match identifier by position
 
     Code
-      license(name = "A", "https://example.com")
+      class_license(name = "A", "https://example.com")
     Condition
-      Error in `license()`:
+      Error in `class_license()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = "https://example.com"
       i Did you forget to name an argument?
 
-# license() returns a license when everything is ok
+# class_license() returns a license when everything is ok
 
     Code
-      test_result <- license(name = "A", url = "https://example.com")
+      test_result <- class_license(name = "A", url = "https://example.com")
       test_result
     Output
       <rapid::license>
@@ -103,7 +103,7 @@
 ---
 
     Code
-      test_result <- license(name = "A", identifier = "technically these have a fancy required format")
+      test_result <- class_license(name = "A", identifier = "technically these have a fancy required format")
       test_result
     Output
       <rapid::license>

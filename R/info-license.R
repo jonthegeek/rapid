@@ -23,15 +23,15 @@ NULL
 #' @seealso [as_license()] for coercing objects to `license`.
 #'
 #' @examples
-#' license(
+#' class_license(
 #'   "Apache 2.0",
 #'   identifier = "Apache-2.0"
 #' )
-#' license(
+#' class_license(
 #'   "Apache 2.0",
 #'   url = "https://opensource.org/license/apache-2-0/"
 #' )
-license <- S7::new_class(
+class_license <- S7::new_class(
   "license",
   package = "rapid",
   properties = list(
@@ -59,14 +59,14 @@ license <- S7::new_class(
   }
 )
 
-S7::method(length, license) <- function(x) {
+S7::method(length, class_license) <- function(x) {
   max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to licenses
 #'
 #' `as_license()` turns an existing object into a `license`. This is in contrast
-#' with [license()], which builds a `license` from individual properties.
+#' with [class_license()], which builds a `license` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -75,12 +75,12 @@ S7::method(length, license) <- function(x) {
 #'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
 #'   describe a single license.
 #'
-#' @return A `license` as returned by [license()].
+#' @return A `license` as returned by [class_license()].
 #' @export
 #'
 #' @examples
 #' as_license()
 #' as_license(list(name = "Apache 2.0", identifier = "Apache-2.0"))
 as_license <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
-  as_api_object(x, license, ..., arg = arg, call = call)
+  as_api_object(x, class_license, ..., arg = arg, call = call)
 }

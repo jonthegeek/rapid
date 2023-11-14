@@ -1,7 +1,7 @@
-# servers() returns an empty server
+# class_servers() returns an empty server
 
     Code
-      test_result <- servers()
+      test_result <- class_servers()
       test_result
     Output
       <rapid::servers>

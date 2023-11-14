@@ -1,15 +1,16 @@
-# rapid() requires info objects for info
+# class_rapid() requires info objects for info
 
     Code
-      rapid(info = mean)
+      class_rapid(info = mean)
     Condition
-      Error in `rapid()`:
+      Error in `class_rapid()`:
       ! Can't coerce `info` <function> to <rapid::info>.
 
-# rapid() requires info when anything is defined
+# class_rapid() requires info when anything is defined
 
     Code
-      rapid(servers = servers(url = c("https://development.gigantic-server.com/v1",
+      class_rapid(servers = class_servers(url = c(
+        "https://development.gigantic-server.com/v1",
         "https://staging.gigantic-server.com/v1",
         "https://api.gigantic-server.com/v1"), description = c("Development server",
         "Staging server", "Production server")))
@@ -22,20 +23,20 @@
 # security must reference components@security_schemes
 
     Code
-      rapid(info = info(title = "A", version = "1"), components = component_collection(
-        security_schemes = security_scheme_collection(name = "the_defined_one",
-          details = security_scheme_details(api_key_security_scheme("this_one",
-            location = "header")))), security = security_requirements(name = "an_undefined_one"))
+      class_rapid(info = class_info(title = "A", version = "1"), components = class_components(
+        security_schemes = class_security_schemes(name = "the_defined_one", details = class_security_scheme_details(
+          class_api_key_security_scheme("this_one", location = "header")))),
+      security = class_security(name = "an_undefined_one"))
     Condition
       Error:
       ! <rapid::rapid> object is invalid:
       - `security` must be one of the `security_schemes` defined in `components`.
       - "an_undefined_one" is not in "the_defined_one".
 
-# rapid() returns an empty rapid
+# class_rapid() returns an empty rapid
 
     Code
-      test_result <- rapid()
+      test_result <- class_rapid()
       test_result
     Output
       <rapid::rapid>
@@ -53,7 +54,7 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
-       .. @ origin          : <rapid::class_origin>
+       .. @ origin          : <rapid::origin>
        .. .. @ url    : chr(0) 
        .. .. @ format : chr(0) 
        .. .. @ version: chr(0) 
@@ -61,12 +62,12 @@
        .. @ url        : chr(0) 
        .. @ description: chr(0) 
        .. @ variables  : <rapid::server_variables>  list()
-       @ components: <rapid::component_collection>
-       .. @ security_schemes: <rapid::security_scheme_collection>
+       @ components: <rapid::components>
+       .. @ security_schemes: <rapid::security_schemes>
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
-       @ security  : <rapid::security_requirements>
+       @ security  : <rapid::security>
        .. @ name                   : chr(0) 
        .. @ required_scopes        : list()
        .. @ rapid_class_requirement: chr "security_scheme"
@@ -137,7 +138,7 @@
        .. .. @ url       : chr "http://www.apache.org/licenses/"
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
-       .. @ origin          : <rapid::class_origin>
+       .. @ origin          : <rapid::origin>
        .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
        .. .. @ format : chr(0) 
        .. .. @ version: chr(0) 
@@ -169,15 +170,15 @@
        .. ..  ..@ enum       :List of 1
        .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
        .. ..  ..@ description: chr "The AWS region"
-       @ components: <rapid::component_collection>
-       .. @ security_schemes: <rapid::security_scheme_collection>
+       @ components: <rapid::components>
+       .. @ security_schemes: <rapid::security_schemes>
        .. .. @ name       : chr "hmac"
        .. .. @ details    : <rapid::security_scheme_details> List of 1
        .. .. .. $ : <rapid::api_key_security_scheme>
        .. .. ..  ..@ parameter_name: chr "Authorization"
        .. .. ..  ..@ location      : chr "header"
        .. .. @ description: chr "Amazon Signature authorization v4"
-       @ security  : <rapid::security_requirements>
+       @ security  : <rapid::security>
        .. @ name                   : chr "hmac"
        .. @ required_scopes        :List of 1
        .. .. $ : chr(0) 
@@ -203,7 +204,7 @@
        .. .. @ url       : chr "http://www.apache.org/licenses/"
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
-       .. @ origin          : <rapid::class_origin>
+       .. @ origin          : <rapid::origin>
        .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
        .. .. @ format : chr(0) 
        .. .. @ version: chr(0) 
@@ -235,15 +236,15 @@
        .. ..  ..@ enum       :List of 1
        .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
        .. ..  ..@ description: chr "The AWS region"
-       @ components: <rapid::component_collection>
-       .. @ security_schemes: <rapid::security_scheme_collection>
+       @ components: <rapid::components>
+       .. @ security_schemes: <rapid::security_schemes>
        .. .. @ name       : chr "hmac"
        .. .. @ details    : <rapid::security_scheme_details> List of 1
        .. .. .. $ : <rapid::api_key_security_scheme>
        .. .. ..  ..@ parameter_name: chr "Authorization"
        .. .. ..  ..@ location      : chr "header"
        .. .. @ description: chr "Amazon Signature authorization v4"
-       @ security  : <rapid::security_requirements>
+       @ security  : <rapid::security>
        .. @ name                   : chr "hmac"
        .. @ required_scopes        :List of 1
        .. .. $ : chr(0) 
@@ -269,7 +270,7 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
-       .. @ origin          : <rapid::class_origin>
+       .. @ origin          : <rapid::origin>
        .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
        .. .. @ format : chr(0) 
        .. .. @ version: chr(0) 
@@ -277,12 +278,12 @@
        .. @ url        : chr(0) 
        .. @ description: chr(0) 
        .. @ variables  : <rapid::server_variables>  list()
-       @ components: <rapid::component_collection>
-       .. @ security_schemes: <rapid::security_scheme_collection>
+       @ components: <rapid::components>
+       .. @ security_schemes: <rapid::security_schemes>
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
-       @ security  : <rapid::security_requirements>
+       @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
        .. .. $ : chr(0) 
@@ -310,7 +311,7 @@
        .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
        .. @ terms_of_service: chr(0) 
-       .. @ origin          : <rapid::class_origin>
+       .. @ origin          : <rapid::origin>
        .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
        .. .. @ format : chr "openapi"
        .. .. @ version: chr "3.0"
@@ -318,8 +319,8 @@
        .. @ url        : chr "https://api.open.fec.gov/v1"
        .. @ description: chr(0) 
        .. @ variables  : <rapid::server_variables>  list()
-       @ components: <rapid::component_collection>
-       .. @ security_schemes: <rapid::security_scheme_collection>
+       @ components: <rapid::components>
+       .. @ security_schemes: <rapid::security_schemes>
        .. .. @ name       : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. .. @ details    : <rapid::security_scheme_details> List of 3
        .. .. .. $ : <rapid::api_key_security_scheme>
@@ -332,7 +333,7 @@
        .. .. ..  ..@ parameter_name: chr "api_key"
        .. .. ..  ..@ location      : chr "query"
        .. .. @ description: chr(0) 
-       @ security  : <rapid::security_requirements>
+       @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
        .. .. $ : chr(0) 

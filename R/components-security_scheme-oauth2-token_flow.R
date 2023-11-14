@@ -7,7 +7,7 @@ NULL
 #' Resource Owner Password flow or the OAuth Client Credentials flow (previously
 #' called application in OpenAPI 2.0).
 #'
-#' @inheritParams oauth2_flow
+#' @inheritParams abstract_oauth2_flow
 #' @inheritParams rlang::args_dots_empty
 #' @param token_url Character vector (required). The token URL to be used for
 #'   this flow. This must be in the form of a URL. The OAuth2 standard requires
@@ -17,25 +17,25 @@ NULL
 #'
 #' @export
 #' @examples
-#' oauth2_token_flow(
+#' class_oauth2_token_flow(
 #'   token_url = "https://example.com/token",
 #'   refresh_url = "https://example.com/refresh",
-#'   scopes = scopes(
+#'   scopes = class_scopes(
 #'     name = c("server:read", "server:write"),
 #'     description = c("Read server settings", "Write server settings")
 #'   )
 #' )
-oauth2_token_flow <- S7::new_class(
+class_oauth2_token_flow <- S7::new_class(
   name = "oauth2_token_flow",
   package = "rapid",
-  parent = oauth2_flow,
+  parent = abstract_oauth2_flow,
   properties = list(
     token_url = class_character
   ),
   constructor = function(token_url = character(),
                          ...,
                          refresh_url = character(),
-                         scopes = character()) {
+                         scopes = class_scopes()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
@@ -54,14 +54,14 @@ oauth2_token_flow <- S7::new_class(
   }
 )
 
-S7::method(length, oauth2_token_flow) <- function(x) {
+S7::method(length, class_oauth2_token_flow) <- function(x) {
   length(x@token_url)
 }
 
 #' Coerce lists and character vectors to OAuth2 token flows
 #'
 #' `as_oauth2_token_flow()` turns an existing object into an
-#' `oauth2_token_flow`. This is in contrast with [oauth2_token_flow()], which
+#' `oauth2_token_flow`. This is in contrast with [class_oauth2_token_flow()], which
 #' builds an `oauth2_token_flow` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -71,11 +71,11 @@ S7::method(length, oauth2_token_flow) <- function(x) {
 #'   can be coerced to those names via [snakecase::to_snake_case()]. Additional
 #'   names are ignored.
 #'
-#' @return An `oauth2_token_flow` as returned by [oauth2_token_flow()].
+#' @return An `oauth2_token_flow` as returned by [class_oauth2_token_flow()].
 #' @export
 as_oauth2_token_flow <- function(x,
                                  ...,
                                  arg = caller_arg(x),
                                  call = caller_env()) {
-  as_api_object(x, oauth2_token_flow, ..., arg = arg, call = call)
+  as_api_object(x, class_oauth2_token_flow, ..., arg = arg, call = call)
 }

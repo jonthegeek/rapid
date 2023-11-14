@@ -15,11 +15,11 @@ read with \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or \code{\link[y
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{rapid} object as returned by \code{\link[=rapid]{rapid()}}.
+A \code{rapid} object as returned by \code{\link[=class_rapid]{class_rapid()}}.
 }
 \description{
 \code{as_rapid()} turns an existing object into a \code{rapid} object. This is in
-contrast with \code{\link[=rapid]{rapid()}}, which builds a \code{rapid} object from individual
+contrast with \code{\link[=class_rapid]{class_rapid()}}, which builds a \code{rapid} object from individual
 properties.
 }
 \examples{

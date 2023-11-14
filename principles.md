@@ -10,6 +10,11 @@ I also belatedly noticed that I had `server()` (singular) where the OAS specific
 I have updated that. 
 Be careful to match the class names to the pluralization in the specification!
 
+Update: Arguments that match function names (which are then called) are no bueno.
+I'm using `class_{class}` for the constructor functions, similar to `class_character()`, etc, from S7.
+I am doing this strictly, even for plural objects.
+I hate the idea of having both singular and plural versions of objects, but I think it's worth it in order to match the schema fairly closely.
+
 ## Specification extensions
 
 OAS allows for [Specification Extensions](https://spec.openapis.org/oas/v3.1.0#specificationExtensions), which are extra fields that begin with "x-".

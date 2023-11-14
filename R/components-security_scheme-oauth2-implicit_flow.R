@@ -6,7 +6,7 @@ NULL
 #' An `oauth2_implicit_flow` object describes the configuration for the OAuth
 #' Implicit flow.
 #'
-#' @inheritParams oauth2_flow
+#' @inheritParams abstract_oauth2_flow
 #' @inheritParams rlang::args_dots_empty
 #' @param authorization_url Character vector (required). The authorization URL
 #'   to be used for this flow. This must be in the form of a URL. The OAuth2
@@ -14,21 +14,21 @@ NULL
 #'
 #' @export
 #' @examples
-#' oauth2_implicit_flow(
+#' class_oauth2_implicit_flow(
 #'   authorization_url = "https://example.com/authorize",
 #'   refresh_url = "https://example.com/refresh"
 #' )
-oauth2_implicit_flow <- S7::new_class(
+class_oauth2_implicit_flow <- S7::new_class(
   name = "oauth2_implicit_flow",
   package = "rapid",
-  parent = oauth2_flow,
+  parent = abstract_oauth2_flow,
   properties = list(
     authorization_url = character_scalar_property("authorization_url")
   ),
   constructor = function(authorization_url = character(),
                          ...,
                          refresh_url = character(),
-                         scopes = character()) {
+                         scopes = class_scopes()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
@@ -47,14 +47,14 @@ oauth2_implicit_flow <- S7::new_class(
   }
 )
 
-S7::method(length, oauth2_implicit_flow) <- function(x) {
+S7::method(length, class_oauth2_implicit_flow) <- function(x) {
   length(x@authorization_url)
 }
 
 #' Coerce lists and character vectors to OAuth2 implicit flows
 #'
 #' `as_oauth2_implicit_flow()` turns an existing object into an
-#' `oauth2_implicit_flow`. This is in contrast with [oauth2_implicit_flow()],
+#' `oauth2_implicit_flow`. This is in contrast with [class_oauth2_implicit_flow()],
 #' which builds an `oauth2_implicit_flow` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -64,11 +64,11 @@ S7::method(length, oauth2_implicit_flow) <- function(x) {
 #'   names that can be coerced to those names via [snakecase::to_snake_case()].
 #'   Additional names are ignored.
 #'
-#' @return An `oauth2_implicit_flow` as returned by [oauth2_implicit_flow()].
+#' @return An `oauth2_implicit_flow` as returned by [class_oauth2_implicit_flow()].
 #' @export
 as_oauth2_implicit_flow <- function(x,
                                     ...,
                                     arg = caller_arg(x),
                                     call = caller_env()) {
-  as_api_object(x, oauth2_implicit_flow, ..., arg = arg, call = call)
+  as_api_object(x, class_oauth2_implicit_flow, ..., arg = arg, call = call)
 }

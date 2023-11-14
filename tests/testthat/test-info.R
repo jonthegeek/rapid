@@ -1,21 +1,21 @@
-test_that("info() validates property length.", {
+test_that("class_info() validates property length.", {
   expect_snapshot(
-    info(title = "My API"),
+    class_info(title = "My API"),
     error = TRUE
   )
   expect_snapshot(
-    info(version = "My API"),
+    class_info(version = "My API"),
     error = TRUE
   )
   expect_snapshot(
-    info(summary = "My API"),
+    class_info(summary = "My API"),
     error = TRUE
   )
 })
 
-test_that("info() returns an empty info", {
+test_that("class_info() returns an empty info", {
   expect_snapshot({
-    test_result <- info()
+    test_result <- class_info()
     test_result
   })
   expect_s3_class(
@@ -39,13 +39,13 @@ test_that("info() returns an empty info", {
 })
 
 test_that("length() of an info reports the overall length", {
-  expect_equal(length(info()), 0)
+  expect_equal(length(class_info()), 0)
   expect_equal(
     length(
-      info(
+      class_info(
         title = "My Cool API",
         version = "one",
-        license = license(
+        license = class_license(
           name = "Apache 2.0",
           url = "https://opensource.org/license/apache-2-0/"
         )
@@ -87,7 +87,7 @@ test_that("as_info() returns expected objects", {
       title = "My API",
       version = "1"
     )),
-    info(
+    class_info(
       title = "My API",
       version = "1"
     )
@@ -105,14 +105,14 @@ test_that("as_info() returns expected objects", {
         identifier = "Apache-2.0"
       )
     )),
-    info(
+    class_info(
       title = "My API",
       version = "1",
-      contact = contact(
+      contact = class_contact(
         name = "Jon",
         email = "jonthegeek@gmail.com"
       ),
-      license = license(
+      license = class_license(
         name = "Apache 2.0",
         identifier = "Apache-2.0"
       )
@@ -120,14 +120,14 @@ test_that("as_info() returns expected objects", {
   )
   expect_identical(
     as_info(list()),
-    info()
+    class_info()
   )
 })
 
 test_that("as_info() works for infos", {
   expect_identical(
-    as_info(info()),
-    info()
+    as_info(class_info()),
+    class_info()
   )
 })
 
@@ -138,7 +138,7 @@ test_that("as_info() converts x-origin to origin", {
       version = "1",
       x_origin = "https://root.url"
     )),
-    info(
+    class_info(
       title = "My API",
       version = "1",
       origin = class_origin("https://root.url")

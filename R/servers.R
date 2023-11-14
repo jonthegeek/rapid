@@ -8,12 +8,12 @@ NULL
 #' servers are intended to be used as the base urls for calls to the API.
 #'
 #' @param url Character vector (required). The urls of the target hosts. These
-#'   urls support [string_replacements()]. Variable substitutions will be made
-#'   when a variable is named in \{brackets\}.
+#'   urls support [class_string_replacements()]. Variable substitutions will be
+#'   made when a variable is named in \{brackets\}.
 #' @param description Character vector (optional). Strings describing the hosts
 #'   designated by `url`. [CommonMark syntax](https://spec.commonmark.org/) may
 #'   be used for rich text representation.
-#' @param variables A [server_variables()] object.
+#' @param variables A [class_server_variables()] object.
 #'
 #' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
@@ -22,7 +22,7 @@ NULL
 #' @seealso [as_servers()] for coercing objects to `servers`.
 #'
 #' @examples
-#' servers(
+#' class_servers(
 #'   url = c(
 #'     "https://development.gigantic-server.com/v1",
 #'     "https://staging.gigantic-server.com/v1",
@@ -34,10 +34,10 @@ NULL
 #'     "Production server"
 #'   )
 #' )
-#' servers(
+#' class_servers(
 #'   url = "https://{username}.gigantic-server.com:{port}/{basePath}",
 #'   description = "The production API server",
-#'   variables = server_variables(string_replacements(
+#'   variables = class_server_variables(class_string_replacements(
 #'     name = c("username", "port", "basePath"),
 #'     default = c("demo", "8443", "v2"),
 #'     description = c(
@@ -51,17 +51,17 @@ NULL
 #'     )
 #'   ))
 #' )
-servers <- S7::new_class(
+class_servers <- S7::new_class(
   "servers",
   package = "rapid",
   properties = list(
     url = class_character,
     description = class_character,
-    variables = server_variables
+    variables = class_server_variables
   ),
   constructor = function(url = character(),
                          description = character(),
-                         variables = server_variables()) {
+                         variables = class_server_variables()) {
     S7::new_object(
       S7::S7_object(),
       url = url %||% character(),
@@ -78,14 +78,14 @@ servers <- S7::new_class(
   }
 )
 
-S7::method(length, servers) <- function(x) {
+S7::method(length, class_servers) <- function(x) {
   length(x@url)
 }
 
 #' Coerce lists and character vectors to servers
 #'
 #' `as_servers()` turns an existing object into a `servers` object. This is in
-#' contrast with [servers()], which builds a `servers` object from individual
+#' contrast with [class_servers()], which builds a `servers` object from individual
 #' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -94,7 +94,7 @@ S7::method(length, servers) <- function(x) {
 #'   and/or "url", or names that can be coerced to those names via
 #'   [snakecase::to_snake_case()]. Extra names are ignored.
 #'
-#' @return A `servers` object as returned by [servers()].
+#' @return A `servers` object as returned by [class_servers()].
 #' @export
 #'
 #' @examples
@@ -123,7 +123,7 @@ S7::method(as_servers, class_list) <- function(x, ..., call = caller_env()) {
     function(x) {
       .validate_for_as_class(
         x,
-        servers,
+        class_servers,
         x_arg = "x[[i]]",
         call = call
       )
@@ -133,7 +133,7 @@ S7::method(as_servers, class_list) <- function(x, ..., call = caller_env()) {
     x <- NULL
   }
 
-  servers(
+  class_servers(
     url = purrr::map_chr(x, "url"),
     description = .extract_along_chr(x, "description"),
     variables = as_server_variables(purrr::map(x, "variables"))
@@ -144,5 +144,5 @@ S7::method(as_servers, class_any) <- function(x,
                                               ...,
                                               arg = caller_arg(x),
                                               call = caller_env()) {
-  as_api_object(x, servers, ..., arg = arg, call = call)
+  as_api_object(x, class_servers, ..., arg = arg, call = call)
 }

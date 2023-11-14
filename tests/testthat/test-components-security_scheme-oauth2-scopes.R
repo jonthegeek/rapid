@@ -1,29 +1,29 @@
-test_that("scopes() requires that description matches name", {
+test_that("class_scopes() requires that description matches name", {
   expect_snapshot(
-    scopes("a"),
+    class_scopes("a"),
     error = TRUE
   )
   expect_snapshot(
-    scopes("a", letters),
+    class_scopes("a", letters),
     error = TRUE
   )
   expect_snapshot(
-    scopes(letters, "a"),
+    class_scopes(letters, "a"),
     error = TRUE
   )
   expect_snapshot(
-    scopes(character(), "a"),
+    class_scopes(character(), "a"),
     error = TRUE
   )
   expect_snapshot(
-    scopes("a", character()),
+    class_scopes("a", character()),
     error = TRUE
   )
 })
 
-test_that("scopes() works with equal-length name/descript", {
+test_that("class_scopes() works with equal-length name/descript", {
   expect_snapshot({
-    test_result <- scopes("a", "b")
+    test_result <- class_scopes("a", "b")
     test_result
   })
   expect_s3_class(
@@ -38,9 +38,9 @@ test_that("scopes() works with equal-length name/descript", {
 })
 
 test_that("length() of a scopes reports the overall length", {
-  expect_equal(length(scopes()), 0)
-  expect_equal(length(scopes(name = "A", description = "A")), 1)
-  expect_equal(length(scopes(name = letters, description = LETTERS)), 26)
+  expect_equal(length(class_scopes()), 0)
+  expect_equal(length(class_scopes(name = "A", description = "A")), 1)
+  expect_equal(length(class_scopes(name = letters, description = LETTERS)), 26)
 })
 
 test_that("as_scopes() errors informatively for unnamed input", {
@@ -80,7 +80,7 @@ test_that("as_scopes() returns expected objects", {
         b = "bb"
       )
     ),
-    scopes(
+    class_scopes(
       name = c("a", "b"),
       description = c("aa", "bb")
     )
@@ -92,7 +92,7 @@ test_that("as_scopes() returns expected objects", {
         b = "bb"
       )
     ),
-    scopes(
+    class_scopes(
       name = c("a", "b"),
       description = c("aa", "bb")
     )
@@ -100,18 +100,18 @@ test_that("as_scopes() returns expected objects", {
 
   expect_identical(
     as_scopes(list()),
-    scopes()
+    class_scopes()
   )
 
   expect_identical(
     as_scopes(character()),
-    scopes()
+    class_scopes()
   )
 })
 
 test_that("as_scopes() works for scopes", {
   expect_identical(
-    as_scopes(scopes()),
-    scopes()
+    as_scopes(class_scopes()),
+    class_scopes()
   )
 })

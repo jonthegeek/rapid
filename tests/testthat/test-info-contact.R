@@ -1,25 +1,25 @@
-test_that("contact() errors informatively for bad name", {
+test_that("class_contact() errors informatively for bad name", {
   expect_snapshot(
-    contact(name = mean),
+    class_contact(name = mean),
     error = TRUE
   )
   expect_snapshot(
-    contact(name = c("A", "B")),
+    class_contact(name = c("A", "B")),
     error = TRUE
   )
 })
 
-test_that("contact() errors informatively for bad email", {
+test_that("class_contact() errors informatively for bad email", {
   expect_snapshot(
-    contact(name = "A", url = "https://example.com", email = mean),
+    class_contact(name = "A", url = "https://example.com", email = mean),
     error = TRUE
   )
   expect_snapshot(
-    contact(name = "A", url = "https://example.com", email = c("A", "B")),
+    class_contact(name = "A", url = "https://example.com", email = c("A", "B")),
     error = TRUE
   )
   expect_snapshot(
-    contact(
+    class_contact(
       name = "A",
       url = "https://example.com",
       email = "not a real email"
@@ -28,9 +28,9 @@ test_that("contact() errors informatively for bad email", {
   )
 })
 
-test_that("contact() returns a contact when everything is ok", {
+test_that("class_contact() returns a contact when everything is ok", {
   expect_snapshot({
-    test_result <- contact(
+    test_result <- class_contact(
       name = "A",
       url = "https://example.com",
       email = "real.email@address.place"
@@ -48,9 +48,9 @@ test_that("contact() returns a contact when everything is ok", {
   )
 })
 
-test_that("contact() without args returns an empty contact", {
+test_that("class_contact() without args returns an empty contact", {
   expect_snapshot({
-    test_result <- contact()
+    test_result <- class_contact()
     test_result
   })
   expect_s3_class(
@@ -65,8 +65,8 @@ test_that("contact() without args returns an empty contact", {
 })
 
 test_that("length() of a contact reports the overall length", {
-  expect_equal(length(contact()), 0)
-  expect_equal(length(contact(name = "A")), 1)
+  expect_equal(length(class_contact()), 0)
+  expect_equal(length(class_contact(name = "A")), 1)
 })
 
 test_that("as_contact() errors informatively for unnamed input", {
@@ -108,7 +108,7 @@ test_that("as_contact() returns expected objects", {
         url = "https://jonthegeek.com"
       )
     ),
-    contact(
+    class_contact(
       name = "Jon",
       email = "jonthegeek@gmail.com",
       url = "https://jonthegeek.com"
@@ -121,7 +121,7 @@ test_that("as_contact() returns expected objects", {
         email = "jonthegeek@gmail.com"
       )
     ),
-    contact(
+    class_contact(
       name = "Jon",
       email = "jonthegeek@gmail.com"
     )
@@ -133,7 +133,7 @@ test_that("as_contact() returns expected objects", {
         name = "Jon"
       )
     ),
-    contact(
+    class_contact(
       name = "Jon",
       email = "jonthegeek@gmail.com"
     )
@@ -145,20 +145,20 @@ test_that("as_contact() returns expected objects", {
         email = "jonthegeek@gmail.com"
       )
     ),
-    contact(
+    class_contact(
       name = "Jon",
       email = "jonthegeek@gmail.com"
     )
   )
   expect_identical(
     as_contact(list()),
-    contact()
+    class_contact()
   )
 })
 
 test_that("as_contact() works for contacts", {
   expect_identical(
-    as_contact(contact()),
-    contact()
+    as_contact(class_contact()),
+    class_contact()
   )
 })

@@ -3,8 +3,8 @@ NULL
 
 #' Source information for the API description
 #'
-#' A `class_origin` object provides information about the primary source
-#' document(s) used to build an API.
+#' An `origin` object provides information about the primary source document(s)
+#' used to build an API.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @param url Character (required). The URL(s) where the document(s) can be
@@ -17,11 +17,11 @@ NULL
 #'   will be "3.0" (as in "OpenAPI Specification version 3.0"), "3.1", or a
 #'   patch version of those.
 #'
-#' @return A `class_origin` S7 object describing where to find the API
-#'   description, with fields `url`, `format`, and `version`.
+#' @return An `origin` S7 object describing where to find the API description,
+#'   with fields `url`, `format`, and `version`.
 #' @export
 #'
-#' @seealso [as_origin()] for coercing objects to `class_origin`.
+#' @seealso [as_origin()] for coercing objects to `origin`.
 #'
 #' @examples
 #' class_origin(
@@ -30,7 +30,7 @@ NULL
 #'   version = "3.0"
 #' )
 class_origin <- S7::new_class(
-  "class_origin",
+  "origin",
   package = "rapid",
   properties = list(
     url = character_scalar_property("url"),
@@ -62,11 +62,10 @@ S7::method(length, class_origin) <- function(x) {
   length(x@url)
 }
 
-#' Coerce lists and character vectors to class_origin
+#' Coerce lists and character vectors to origin
 #'
-#' `as_origin()` turns an existing object into a `class_origin`. This is in
-#' contrast with [class_origin()], which builds a `class_origin` from individual
-#' properties.
+#' `as_origin()` turns an existing object into an `origin`. This is in contrast
+#' with [class_origin()], which builds an `origin` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -75,7 +74,7 @@ S7::method(length, class_origin) <- function(x) {
 #'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
 #'   describe a single origin for this API description.
 #'
-#' @return A `class_origin` as returned by [class_origin()].
+#' @return An `origin` as returned by [class_origin()].
 #' @export
 #'
 #' @examples

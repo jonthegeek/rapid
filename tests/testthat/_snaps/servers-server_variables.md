@@ -1,7 +1,7 @@
-# server_variables() errors informatively for bad contents
+# class_server_variables() errors informatively for bad contents
 
     Code
-      server_variables(letters)
+      class_server_variables(letters)
     Condition
       Error:
       ! <rapid::server_variables> object is invalid:
@@ -11,7 +11,7 @@
 ---
 
     Code
-      server_variables(list(letters, letters))
+      class_server_variables(list(letters, letters))
     Condition
       Error:
       ! <rapid::server_variables> object is invalid:
@@ -21,24 +21,25 @@
 ---
 
     Code
-      server_variables(string_replacements(), letters, string_replacements(), letters)
+      class_server_variables(class_string_replacements(), letters,
+      class_string_replacements(), letters)
     Condition
       Error:
       ! <rapid::server_variables> object is invalid:
       - All values must be <string_replacements> objects.
       - Bad values at 2 and 4.
 
-# server_variables() returns an empty server_variables
+# class_server_variables() returns an empty server_variables
 
     Code
-      server_variables()
+      class_server_variables()
     Output
       <rapid::server_variables>  list()
 
-# server_variables() accepts bare string_replacements
+# class_server_variables() accepts bare string_replacements
 
     Code
-      server_variables(string_replacements())
+      class_server_variables(class_string_replacements())
     Output
       <rapid::server_variables> List of 1
        $ : <rapid::string_replacements>
@@ -50,7 +51,7 @@
 ---
 
     Code
-      server_variables(string_replacements(), string_replacements())
+      class_server_variables(class_string_replacements(), class_string_replacements())
     Output
       <rapid::server_variables> List of 2
        $ : <rapid::string_replacements>
@@ -64,10 +65,10 @@
         ..@ enum       : list()
         ..@ description: chr(0) 
 
-# server_variables() accepts lists of string_replacements
+# class_server_variables() accepts lists of string_replacements
 
     Code
-      server_variables(list(string_replacements()))
+      class_server_variables(list(class_string_replacements()))
     Output
       <rapid::server_variables> List of 1
        $ : <rapid::string_replacements>
@@ -79,7 +80,8 @@
 ---
 
     Code
-      server_variables(list(string_replacements(), string_replacements()))
+      class_server_variables(list(class_string_replacements(),
+      class_string_replacements()))
     Output
       <rapid::server_variables> List of 2
        $ : <rapid::string_replacements>

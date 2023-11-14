@@ -11,26 +11,26 @@ NULL
 #' @param name Character vector (required). Names by which security schemes will
 #'   be referenced.
 #' @param details The details of each security scheme, as a
-#'   [security_scheme_details()] object.
+#'   [class_security_scheme_details()] object.
 #' @param description Character vector (optional). A short description for the
 #'   security schemes. [CommonMark syntax](https://spec.commonmark.org/) may be
 #'   used for rich text representation.
 #'
-#' @return A `security_scheme_collection` S7 object with details about security
-#'   available for operations.
+#' @return A `security_schemes` S7 object with details about security available
+#'   for operations.
 #' @export
 #' @examples
-#' security_scheme_collection()
-#' security_scheme_collection(
+#' class_security_schemes()
+#' class_security_schemes(
 #'   name = c(
 #'     "accountAuth",
 #'     "resetPasswordAuth"
 #'   ),
-#'   details = security_scheme_details(
-#'     oauth2_security_scheme(
-#'       password_flow = oauth2_token_flow(
+#'   details = class_security_scheme_details(
+#'     class_oauth2_security_scheme(
+#'       password_flow = class_oauth2_token_flow(
 #'         token_url = "/account/authorization",
-#'         scopes = scopes(
+#'         scopes = class_scopes(
 #'           name = c("Catalog", "Commerce", "Playback", "Settings"),
 #'           description = c(
 #'             "Access all read-only content",
@@ -41,22 +41,22 @@ NULL
 #'         )
 #'       )
 #'     ),
-#'     api_key_security_scheme(
+#'     class_api_key_security_scheme(
 #'       parameter_name = "authorization",
 #'       location = "header"
 #'     )
 #'   )
 #' )
-security_scheme_collection <- S7::new_class(
-  name = "security_scheme_collection",
+class_security_schemes <- S7::new_class(
+  name = "security_schemes",
   package = "rapid",
   properties = list(
     name = class_character,
-    details = security_scheme_details,
+    details = class_security_scheme_details,
     description = class_character
   ),
   constructor = function(name = character(),
-                         details = security_scheme_details(),
+                         details = class_security_scheme_details(),
                          ...,
                          description = character()) {
     check_dots_empty()
@@ -77,16 +77,15 @@ security_scheme_collection <- S7::new_class(
   }
 )
 
-S7::method(length, security_scheme_collection) <- function(x) {
+S7::method(length, class_security_schemes) <- function(x) {
   length(x@name)
 }
 
-#' Coerce lists to security_scheme_collection objects
+#' Coerce lists to security_schemes objects
 #'
-#' `as_security_scheme_collection()` turns an existing object into a
-#' `security_scheme_collection` object. This is in contrast with
-#' [security_scheme_collection()], which builds a `security_scheme_collection`
-#' from individual properties.
+#' `as_security_schemes()` turns an existing object into a `security_schemes`
+#' object. This is in contrast with [class_security_schemes()], which builds a
+#' `security_schemes` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -94,13 +93,13 @@ S7::method(length, security_scheme_collection) <- function(x) {
 #'   element describes a security scheme object. This object should describe the
 #'   security schemes for a single API.
 #'
-#' @return A `security_scheme_collection` object as returned by
-#'   [security_scheme_collection()].
+#' @return A `security_schemes` object as returned by
+#'   [class_security_schemes()].
 #' @export
 #'
 #' @examples
-#' as_security_scheme_collection()
-#' as_security_scheme_collection(
+#' as_security_schemes()
+#' as_security_schemes(
 #'   list(
 #'     accountAuth = list(
 #'       description = "Account JWT token",
@@ -141,20 +140,20 @@ S7::method(length, security_scheme_collection) <- function(x) {
 #'     )
 #'   )
 #' )
-as_security_scheme_collection <- S7::new_generic(
-  "as_security_scheme_collection",
+as_security_schemes <- S7::new_generic(
+  "as_security_schemes",
   "x"
 )
 
 S7::method(
-  as_security_scheme_collection,
+  as_security_schemes,
   class_list
 ) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
   force(arg)
   # This is the first one where we're fundamentally rearranging things, so watch
   # out for new things to standardize (and then delete this comment)!
   if (!length(x) || !any(lengths(x))) {
-    return(security_scheme_collection())
+    return(class_security_schemes())
   }
 
   if (rlang::is_named2(x)) {
@@ -162,7 +161,7 @@ S7::method(
     x <- unname(x)
     descriptions <- .extract_along_chr(x, "description")
     return(
-      security_scheme_collection(
+      class_security_schemes(
         name = scheme_names,
         details = x,
         description = descriptions
@@ -176,8 +175,8 @@ S7::method(
 }
 
 S7::method(
-  as_security_scheme_collection,
+  as_security_schemes,
   class_any
 ) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
-  as_api_object(x, security_scheme_collection, ..., arg = arg, call = call)
+  as_api_object(x, class_security_schemes, ..., arg = arg, call = call)
 }

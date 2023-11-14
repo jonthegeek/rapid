@@ -15,13 +15,13 @@ security schemes for a single API.}
 }
 \value{
 A \code{security_scheme_details} object as returned by
-\code{\link[=security_scheme_details]{security_scheme_details()}}.
+\code{\link[=class_security_scheme_details]{class_security_scheme_details()}}.
 }
 \description{
 \code{as_security_scheme_details()} turns an existing object into a
 \code{security_scheme_details} object. This is in contrast with
-\code{\link[=security_scheme_details]{security_scheme_details()}}, which builds a \code{security_scheme_details} from
-individual properties.
+\code{\link[=class_security_scheme_details]{class_security_scheme_details()}}, which builds a \code{security_scheme_details}
+from individual properties.
 }
 \examples{
 as_security_scheme_details()

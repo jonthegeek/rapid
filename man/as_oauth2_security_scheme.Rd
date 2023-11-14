@@ -15,11 +15,11 @@ named "flows" or a name that can be coerced to "flows" via
 }
 \value{
 An \code{oauth2_security_scheme} as returned by
-\code{\link[=oauth2_security_scheme]{oauth2_security_scheme()}}.
+\code{\link[=class_oauth2_security_scheme]{class_oauth2_security_scheme()}}.
 }
 \description{
 \code{as_oauth2_security_scheme()} turns an existing object into an
 \code{oauth2_security_scheme}. This is in contrast with
-\code{\link[=oauth2_security_scheme]{oauth2_security_scheme()}}, which builds an \code{oauth2_security_scheme} from
-individual properties.
+\code{\link[=class_oauth2_security_scheme]{class_oauth2_security_scheme()}}, which builds an \code{oauth2_security_scheme}
+from individual properties.
 }
