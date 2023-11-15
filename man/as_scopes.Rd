@@ -12,9 +12,9 @@ as_scopes(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{scopes} as returned by \code{\link[=scopes]{scopes()}}.
+A \code{scopes} as returned by \code{\link[=class_scopes]{class_scopes()}}.
 }
 \description{
 \code{as_scopes()} turns an existing object into a \code{scopes}. This is in contrast
-with \code{\link[=scopes]{scopes()}}, which builds a \code{scopes} from individual properties.
+with \code{\link[=class_scopes]{class_scopes()}}, which builds a \code{scopes} from individual properties.
 }

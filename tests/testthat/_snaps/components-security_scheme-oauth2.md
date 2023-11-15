@@ -1,50 +1,50 @@
-# oauth2_security_scheme() requires names
+# class_oauth2_security_scheme() requires names
 
     Code
-      oauth2_security_scheme(oauth2_token_flow())
+      class_oauth2_security_scheme(class_oauth2_token_flow())
     Condition
-      Error in `oauth2_security_scheme()`:
+      Error in `class_oauth2_security_scheme()`:
       ! `...` must be empty.
       x Problematic argument:
-      * ..1 = oauth2_token_flow()
+      * ..1 = class_oauth2_token_flow()
       i Did you forget to name an argument?
 
-# oauth2_security_scheme() requires the right types of flows
+# class_oauth2_security_scheme() requires the right types of flows
 
     Code
-      oauth2_security_scheme(implicit_flow = oauth2_token_flow())
+      class_oauth2_security_scheme(implicit_flow = class_oauth2_token_flow())
     Condition
-      Error in `oauth2_security_scheme()`:
+      Error in `class_oauth2_security_scheme()`:
       ! Can't coerce `implicit_flow` <rapid::oauth2_token_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_implicit_flow>.
 
 ---
 
     Code
-      oauth2_security_scheme(password_flow = oauth2_implicit_flow())
+      class_oauth2_security_scheme(password_flow = class_oauth2_implicit_flow())
     Condition
-      Error in `oauth2_security_scheme()`:
+      Error in `class_oauth2_security_scheme()`:
       ! Can't coerce `password_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_token_flow>.
 
 ---
 
     Code
-      oauth2_security_scheme(client_credentials_flow = oauth2_implicit_flow())
+      class_oauth2_security_scheme(client_credentials_flow = class_oauth2_implicit_flow())
     Condition
-      Error in `oauth2_security_scheme()`:
+      Error in `class_oauth2_security_scheme()`:
       ! Can't coerce `client_credentials_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_token_flow>.
 
 ---
 
     Code
-      oauth2_security_scheme(authorization_code_flow = oauth2_implicit_flow())
+      class_oauth2_security_scheme(authorization_code_flow = class_oauth2_implicit_flow())
     Condition
-      Error in `oauth2_security_scheme()`:
+      Error in `class_oauth2_security_scheme()`:
       ! Can't coerce `authorization_code_flow` <rapid::oauth2_implicit_flow/rapid::oauth2_flow/S7_object> to <rapid::oauth2_authorization_code_flow>.
 
-# oauth2_security_scheme() works with valid objects
+# class_oauth2_security_scheme() works with valid objects
 
     Code
-      test_result <- oauth2_security_scheme(password_flow = oauth2_token_flow(
+      test_result <- class_oauth2_security_scheme(password_flow = class_oauth2_token_flow(
         token_url = "/tokens/passwords"))
       test_result
     Output

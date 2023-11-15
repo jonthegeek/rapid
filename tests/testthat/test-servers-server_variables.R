@@ -1,38 +1,43 @@
-test_that("server_variables() errors informatively for bad contents", {
+test_that("class_server_variables() errors informatively for bad contents", {
   expect_snapshot(
-    server_variables(letters),
+    class_server_variables(letters),
     error = TRUE
   )
   expect_snapshot(
-    server_variables(list(letters, letters)),
+    class_server_variables(list(letters, letters)),
     error = TRUE
   )
   expect_snapshot(
-    server_variables(
-      string_replacements(),
+    class_server_variables(
+      class_string_replacements(),
       letters,
-      string_replacements(),
+      class_string_replacements(),
       letters
     ),
     error = TRUE
   )
 })
 
-test_that("server_variables() returns an empty server_variables", {
-  expect_snapshot(server_variables())
+test_that("class_server_variables() returns an empty server_variables", {
+  expect_snapshot(class_server_variables())
 })
 
-test_that("server_variables() accepts bare string_replacements", {
-  expect_snapshot(server_variables(string_replacements()))
+test_that("class_server_variables() accepts bare string_replacements", {
+  expect_snapshot(class_server_variables(class_string_replacements()))
   expect_snapshot(
-    server_variables(string_replacements(), string_replacements())
+    class_server_variables(
+      class_string_replacements(),
+      class_string_replacements()
+    )
   )
 })
 
-test_that("server_variables() accepts lists of string_replacements", {
-  expect_snapshot(server_variables(list(string_replacements())))
+test_that("class_server_variables() accepts lists of string_replacements", {
+  expect_snapshot(class_server_variables(list(class_string_replacements())))
   expect_snapshot(
-    server_variables(list(string_replacements(), string_replacements()))
+    class_server_variables(
+      list(class_string_replacements(), class_string_replacements())
+    )
   )
 })
 
@@ -60,8 +65,8 @@ test_that("as_server_variables() returns expected objects", {
         )
       )
     ),
-    server_variables(
-      string_replacements(
+    class_server_variables(
+      class_string_replacements(
         name = "username",
         default = "demo",
         description = "Name of the user."
@@ -87,13 +92,13 @@ test_that("as_server_variables() returns expected objects", {
         )
       )
     ),
-    server_variables(
-      string_replacements(
+    class_server_variables(
+      class_string_replacements(
         name = "username",
         default = "demo",
         description = "Name of the user."
       ),
-      string_replacements(
+      class_string_replacements(
         name = c("username", "port"),
         default = c("demo", 8443),
         description = c("Name of the user.", NA),
@@ -103,13 +108,13 @@ test_that("as_server_variables() returns expected objects", {
   )
   expect_identical(
     as_server_variables(list()),
-    server_variables()
+    class_server_variables()
   )
 })
 
 test_that("as_server_variables() works for server_variables", {
   expect_identical(
-    as_server_variables(server_variables()),
-    server_variables()
+    as_server_variables(class_server_variables()),
+    class_server_variables()
   )
 })

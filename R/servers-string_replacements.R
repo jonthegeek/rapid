@@ -27,17 +27,17 @@ NULL
 #' @export
 #'
 #' @seealso [as_string_replacements()] for coercing objects to
-#'   `string_replacements`, and [server_variables()] for creating collections of
-#'   `string_replacements`.
+#'   `string_replacements`, and [class_server_variables()] for creating
+#'   collections of `string_replacements`.
 #'
 #' @examples
-#' string_replacements(
+#' class_string_replacements(
 #'   "username",
 #'   "demo",
 #'   enum = c("demo", "other"),
 #'   description = "The active user's folder."
 #' )
-string_replacements <- S7::new_class(
+class_string_replacements <- S7::new_class(
   "string_replacements",
   package = "rapid",
   properties = list(
@@ -74,15 +74,16 @@ string_replacements <- S7::new_class(
   }
 )
 
-S7::method(length, string_replacements) <- function(x) {
+S7::method(length, class_string_replacements) <- function(x) {
   length(x@name)
 }
 
 #' Coerce lists to string_replacements
 #'
 #' `as_string_replacements()` turns an existing object into a
-#' `string_replacements`. This is in contrast with [string_replacements()],
-#' which builds a `string_replacements` from individual properties.
+#' `string_replacements`. This is in contrast with
+#' [class_string_replacements()], which builds a `string_replacements` from
+#' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -91,7 +92,7 @@ S7::method(length, string_replacements) <- function(x) {
 #'   coerced to those names via [snakecase::to_snake_case()]. Additional names
 #'   are ignored.
 #'
-#' @return A `string_replacements` as returned by [string_replacements()].
+#' @return A `string_replacements` as returned by [class_string_replacements()].
 #' @export
 #'
 #' @examples
@@ -112,7 +113,7 @@ as_string_replacements <- S7::new_generic("as_string_replacements", "x")
 
 S7::method(as_string_replacements, class_list) <- function(x) {
   nameless <- unname(x)
-  string_replacements(
+  class_string_replacements(
     name = names(x),
     default = purrr::map_chr(nameless, "default"),
     enum = purrr::map(nameless, "enum"),
@@ -124,5 +125,5 @@ S7::method(as_string_replacements, class_any) <- function(x,
                                                           ...,
                                                           arg = caller_arg(x),
                                                           call = caller_env()) {
-  as_api_object(x, string_replacements, ..., arg = arg, call = call)
+  as_api_object(x, class_string_replacements, ..., arg = arg, call = call)
 }

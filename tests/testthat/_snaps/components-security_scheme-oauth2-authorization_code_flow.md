@@ -1,7 +1,7 @@
-# oauth2_authorization_code_flow() requires compatible lengths
+# class_oauth2_authorization_code_flow() requires compatible lengths
 
     Code
-      oauth2_authorization_code_flow("a")
+      class_oauth2_authorization_code_flow("a")
     Condition
       Error:
       ! <rapid::oauth2_authorization_code_flow> object is invalid:
@@ -12,7 +12,7 @@
 ---
 
     Code
-      oauth2_authorization_code_flow(token_url = "a")
+      class_oauth2_authorization_code_flow(token_url = "a")
     Condition
       Error:
       ! <rapid::oauth2_authorization_code_flow> object is invalid:
@@ -22,7 +22,7 @@
 ---
 
     Code
-      oauth2_authorization_code_flow(refresh_url = "a")
+      class_oauth2_authorization_code_flow(refresh_url = "a")
     Condition
       Error:
       ! <rapid::oauth2_authorization_code_flow> object is invalid:
@@ -32,17 +32,17 @@
 ---
 
     Code
-      oauth2_authorization_code_flow(scopes = c(a = "a"))
+      class_oauth2_authorization_code_flow(scopes = c(a = "a"))
     Condition
       Error:
       ! <rapid::oauth2_authorization_code_flow> object is invalid:
       - When `authorization_url` is not defined, `scopes` must be empty.
       - `scopes` has 1 value.
 
-# oauth2_authorization_code_flow() returns empty
+# class_oauth2_authorization_code_flow() returns empty
 
     Code
-      oauth2_authorization_code_flow()
+      class_oauth2_authorization_code_flow()
     Output
       <rapid::oauth2_authorization_code_flow>
        @ refresh_url      : chr(0) 
@@ -52,12 +52,12 @@
        @ authorization_url: chr(0) 
        @ token_url        : chr(0) 
 
-# oauth2_authorization_code_flow() requires names for optionals
+# class_oauth2_authorization_code_flow() requires names for optionals
 
     Code
-      oauth2_authorization_code_flow("a", "b", "c")
+      class_oauth2_authorization_code_flow("a", "b", "c")
     Condition
-      Error in `oauth2_authorization_code_flow()`:
+      Error in `class_oauth2_authorization_code_flow()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = "c"
@@ -66,50 +66,50 @@
 ---
 
     Code
-      oauth2_authorization_code_flow("a", "b", refresh_url = "c", c(d = "d"))
+      class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", c(d = "d"))
     Condition
-      Error in `oauth2_authorization_code_flow()`:
+      Error in `class_oauth2_authorization_code_flow()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = c(d = "d")
       i Did you forget to name an argument?
 
-# oauth2_authorization_code_flow() errors for bad classes
+# class_oauth2_authorization_code_flow() errors for bad classes
 
     Code
-      oauth2_authorization_code_flow(mean, mean)
+      class_oauth2_authorization_code_flow(mean, mean)
     Condition
-      Error in `oauth2_authorization_code_flow()`:
+      Error in `class_oauth2_authorization_code_flow()`:
       ! Can't coerce `authorization_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_authorization_code_flow("a", mean)
+      class_oauth2_authorization_code_flow("a", mean)
     Condition
-      Error in `oauth2_authorization_code_flow()`:
+      Error in `class_oauth2_authorization_code_flow()`:
       ! Can't coerce `token_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_authorization_code_flow("a", "b", refresh_url = mean)
+      class_oauth2_authorization_code_flow("a", "b", refresh_url = mean)
     Condition
-      Error in `oauth2_authorization_code_flow()`:
+      Error in `class_oauth2_authorization_code_flow()`:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d")
+      class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d")
     Condition
       Error in `as_scopes()`:
       ! `scopes` must be a named character vector.
 
-# oauth2_authorization_code_flow() returns expected objects
+# class_oauth2_authorization_code_flow() returns expected objects
 
     Code
-      test_result <- oauth2_authorization_code_flow(authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      test_result <- class_oauth2_authorization_code_flow(authorization_url = "https://auth.ebay.com/oauth2/authorize",
         token_url = "https://api.ebay.com/identity/v1/oauth2/token", scopes = c(
           sell.account = "View and manage your account settings",
           sell.account.readonly = "View your account settings"), refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh")

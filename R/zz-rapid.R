@@ -1,7 +1,7 @@
 #' @include info.R
 #' @include servers.R
 #' @include components.R
-#' @include security_requirements.R
+#' @include security.R
 NULL
 
 #' R API description object
@@ -9,12 +9,10 @@ NULL
 #' An object that represents an API.
 #'
 #' @inheritParams rlang::args_dots_empty
-#' @param info An `info` object defined by [info()].
-#' @param servers A `servers` object defined by [servers()].
-#' @param components A `component_collection` object defined by
-#'   [component_collection()].
-#' @param security A `security_requirements` object defined by
-#'   [security_requirements()].
+#' @param info An `info` object defined by [class_info()].
+#' @param servers A `servers` object defined by [class_servers()].
+#' @param components A `components` object defined by [class_components()].
+#' @param security A `security` object defined by [class_security()].
 #'
 #' @return A `rapid` S7 object, with properties `info`, `servers`, `components`,
 #'   and `security`.
@@ -23,16 +21,16 @@ NULL
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
 #'
 #' @examples
-#' rapid()
-#' rapid(
-#'   info = info(title = "A", version = "1"),
-#'   servers = servers(
+#' class_rapid()
+#' class_rapid(
+#'   info = class_info(title = "A", version = "1"),
+#'   servers = class_servers(
 #'     url = "https://development.gigantic-server.com/v1"
 #'   )
 #' )
-#' rapid(
-#'   info = info(title = "A", version = "1"),
-#'   servers = servers(
+#' class_rapid(
+#'   info = class_info(title = "A", version = "1"),
+#'   servers = class_servers(
 #'     url = c(
 #'       "https://development.gigantic-server.com/v1",
 #'       "https://staging.gigantic-server.com/v1",
@@ -44,36 +42,36 @@ NULL
 #'       "Production server"
 #'     )
 #'   ),
-#'   components = component_collection(
-#'     security_schemes = security_scheme_collection(
+#'   components = class_components(
+#'     security_schemes = class_security_schemes(
 #'       name = "a",
-#'       details = security_scheme_details(
-#'         api_key_security_scheme("parm", "query")
+#'       details = class_security_scheme_details(
+#'         class_api_key_security_scheme("parm", "query")
 #'       )
 #'     )
 #'   )
 #' )
-rapid <- S7::new_class(
+class_rapid <- S7::new_class(
   "rapid",
   package = "rapid",
   properties = list(
-    info = info,
-    servers = servers,
-    components = component_collection,
-    security = security_requirements
+    info = class_info,
+    servers = class_servers,
+    components = class_components,
+    security = class_security
   ),
-  constructor = function(info = class_missing,
+  constructor = function(info = class_info(),
                          ...,
-                         servers = class_missing,
-                         components = component_collection(),
-                         security = security_requirements()) {
+                         servers = class_servers(),
+                         components = class_components(),
+                         security = class_security()) {
     check_dots_empty()
     S7::new_object(
       S7::S7_object(),
       info = as_info(info),
       servers = as_servers(servers),
-      components = as_component_collection(components),
-      security = as_security_requirements(security)
+      components = as_components(components),
+      security = as_security(security)
     )
   },
   validator = function(self) {
@@ -93,14 +91,14 @@ rapid <- S7::new_class(
   }
 )
 
-S7::method(length, rapid) <- function(x) {
+S7::method(length, class_rapid) <- function(x) {
   length(x@info)
 }
 
 #' Coerce lists and urls to rapid objects
 #'
 #' `as_rapid()` turns an existing object into a `rapid` object. This is in
-#' contrast with [rapid()], which builds a `rapid` object from individual
+#' contrast with [class_rapid()], which builds a `rapid` object from individual
 #' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -110,7 +108,7 @@ S7::method(length, rapid) <- function(x) {
 #'   [snakecase::to_snake_case()]. Extra names are ignored. [url()] objects are
 #'   read with [jsonlite::fromJSON()] or [yaml::read_yaml()] before conversion.
 #'
-#' @return A `rapid` object as returned by [rapid()].
+#' @return A `rapid` object as returned by [class_rapid()].
 #' @export
 #'
 #' @examples
@@ -135,7 +133,7 @@ S7::method(as_rapid, class_any) <- function(x,
                                             call = caller_env()) {
   rlang::try_fetch(
     {
-      x <- as_api_object(x, rapid, ..., arg = arg, call = call)
+      x <- as_api_object(x, class_rapid, ..., arg = arg, call = call)
       expand_servers(x)
     },
     rapid_error_missing_names = function(cnd) {

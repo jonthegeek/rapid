@@ -1,11 +1,11 @@
-test_that("component_collection() returns an empty component_collection", {
+test_that("class_components() returns an empty components", {
   expect_snapshot({
-    test_result <- component_collection()
+    test_result <- class_components()
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::component_collection", "S7_object"),
+    class = c("rapid::components", "S7_object"),
     exact = TRUE
   )
   expect_identical(
@@ -15,14 +15,14 @@ test_that("component_collection() returns an empty component_collection", {
 })
 
 test_that("length() of an security_schemes reports the overall length", {
-  expect_equal(length(component_collection()), 0)
+  expect_equal(length(class_components()), 0)
   expect_equal(
     length(
-      component_collection(
-        security_schemes = security_scheme_collection(
+      class_components(
+        security_schemes = class_security_schemes(
           name = "a",
-          details = security_scheme_details(
-            api_key_security_scheme("parm", "query")
+          details = class_security_scheme_details(
+            class_api_key_security_scheme("parm", "query")
           )
         )
       )
@@ -31,12 +31,12 @@ test_that("length() of an security_schemes reports the overall length", {
   )
   expect_equal(
     length(
-      component_collection(
-        security_schemes = security_scheme_collection(
+      class_components(
+        security_schemes = class_security_schemes(
           name = c("a", "b"),
-          details = security_scheme_details(
-            api_key_security_scheme("parm", "query"),
-            api_key_security_scheme("parm", "query")
+          details = class_security_scheme_details(
+            class_api_key_security_scheme("parm", "query"),
+            class_api_key_security_scheme("parm", "query")
           )
         )
       )
@@ -45,35 +45,35 @@ test_that("length() of an security_schemes reports the overall length", {
   )
 })
 
-test_that("as_component_collection() errors for unnamed input", {
+test_that("as_components() errors for unnamed input", {
   expect_snapshot(
-    as_component_collection(as.list(letters)),
+    as_components(as.list(letters)),
     error = TRUE
   )
   expect_snapshot(
-    as_component_collection(list("My Cool API")),
-    error = TRUE
-  )
-})
-
-test_that("as_component_collection() errors informatively for bad classes", {
-  expect_snapshot(
-    as_component_collection(1:2),
-    error = TRUE
-  )
-  expect_snapshot(
-    as_component_collection(mean),
-    error = TRUE
-  )
-  expect_snapshot(
-    as_component_collection(TRUE),
+    as_components(list("My Cool API")),
     error = TRUE
   )
 })
 
-test_that("as_component_collection() returns expected objects", {
+test_that("as_components() errors informatively for bad classes", {
+  expect_snapshot(
+    as_components(1:2),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_components(mean),
+    error = TRUE
+  )
+  expect_snapshot(
+    as_components(TRUE),
+    error = TRUE
+  )
+})
+
+test_that("as_components() returns expected objects", {
   expect_identical(
-    as_component_collection(list(
+    as_components(list(
       security_schemes = list(
         accountAuth = list(
           description = "Account JWT token",
@@ -114,19 +114,19 @@ test_that("as_component_collection() returns expected objects", {
         )
       )
     )),
-    component_collection(
-      security_schemes = security_scheme_collection(
+    class_components(
+      security_schemes = class_security_schemes(
         name = c(
           "accountAuth",
           "profileAuth",
           "resetPasswordAuth",
           "verifyEmailAuth"
         ),
-        details = security_scheme_details(
-          oauth2_security_scheme(
-            password_flow = oauth2_token_flow(
+        details = class_security_scheme_details(
+          class_oauth2_security_scheme(
+            password_flow = class_oauth2_token_flow(
               token_url = "/account/authorization",
-              scopes = scopes(
+              scopes = class_scopes(
                 name = c("Catalog", "Commerce", "Playback", "Settings"),
                 description = c(
                   "Access all read-only content",
@@ -137,20 +137,20 @@ test_that("as_component_collection() returns expected objects", {
               )
             )
           ),
-          oauth2_security_scheme(
-            password_flow = oauth2_token_flow(
+          class_oauth2_security_scheme(
+            password_flow = class_oauth2_token_flow(
               token_url = "/account/profile/authorization",
-              scopes = scopes(
+              scopes = class_scopes(
                 name = "Catalog",
                 description = "Modify profile preferences and activity"
               )
             )
           ),
-          api_key_security_scheme(
+          class_api_key_security_scheme(
             parameter_name = "authorization",
             location = "header"
           ),
-          api_key_security_scheme(
+          class_api_key_security_scheme(
             parameter_name = "authorization",
             location = "header"
           )
@@ -161,14 +161,14 @@ test_that("as_component_collection() returns expected objects", {
   )
 
   expect_identical(
-    as_component_collection(list()),
-    component_collection()
+    as_components(list()),
+    class_components()
   )
 })
 
-test_that("as_component_collection() works with camelCase", {
+test_that("as_components() works with camelCase", {
   expect_identical(
-    as_component_collection(list(
+    as_components(list(
       securitySchemes = list(
         accountAuth = list(
           description = "Account JWT token",
@@ -209,19 +209,19 @@ test_that("as_component_collection() works with camelCase", {
         )
       )
     )),
-    component_collection(
-      security_schemes = security_scheme_collection(
+    class_components(
+      security_schemes = class_security_schemes(
         name = c(
           "accountAuth",
           "profileAuth",
           "resetPasswordAuth",
           "verifyEmailAuth"
         ),
-        details = security_scheme_details(
-          oauth2_security_scheme(
-            password_flow = oauth2_token_flow(
+        details = class_security_scheme_details(
+          class_oauth2_security_scheme(
+            password_flow = class_oauth2_token_flow(
               token_url = "/account/authorization",
-              scopes = scopes(
+              scopes = class_scopes(
                 name = c("Catalog", "Commerce", "Playback", "Settings"),
                 description = c(
                   "Access all read-only content",
@@ -232,20 +232,20 @@ test_that("as_component_collection() works with camelCase", {
               )
             )
           ),
-          oauth2_security_scheme(
-            password_flow = oauth2_token_flow(
+          class_oauth2_security_scheme(
+            password_flow = class_oauth2_token_flow(
               token_url = "/account/profile/authorization",
-              scopes = scopes(
+              scopes = class_scopes(
                 name = "Catalog",
                 description = "Modify profile preferences and activity"
               )
             )
           ),
-          api_key_security_scheme(
+          class_api_key_security_scheme(
             parameter_name = "authorization",
             location = "header"
           ),
-          api_key_security_scheme(
+          class_api_key_security_scheme(
             parameter_name = "authorization",
             location = "header"
           )
@@ -256,9 +256,9 @@ test_that("as_component_collection() works with camelCase", {
   )
 })
 
-test_that("as_component_collection() works for component_collections", {
+test_that("as_components() works for components", {
   expect_identical(
-    as_component_collection(component_collection()),
-    component_collection()
+    as_components(class_components()),
+    class_components()
   )
 })

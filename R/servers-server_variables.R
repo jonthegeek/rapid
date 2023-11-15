@@ -1,22 +1,22 @@
 #' A collection of string replacements for multiple servers
 #'
 #' A list of string replacements objects, each of which is constructed with
-#' [string_replacements()].
+#' [class_string_replacements()].
 #'
-#' @param ... One or more [string_replacements()] objects, or a list of
-#'   [string_replacements()] objects.
+#' @param ... One or more [class_string_replacements()] objects, or a list of
+#'   [class_string_replacements()] objects.
 #'
 #' @return A `server_variables` S7 object, which is a validated list of
-#'   [string_replacements()] objects.
+#'   [class_string_replacements()] objects.
 #' @export
 #'
 #' @seealso [as_server_variables()] for coercing objects to `server_variables`.
 #'
 #' @examples
-#' server_variables(
-#'   list(string_replacements(), string_replacements())
+#' class_server_variables(
+#'   list(class_string_replacements(), class_string_replacements())
 #' )
-server_variables <- S7::new_class(
+class_server_variables <- S7::new_class(
   "server_variables",
   package = "rapid",
   parent = class_list,
@@ -29,7 +29,7 @@ server_variables <- S7::new_class(
   validator = function(self) {
     bad_string_replacements <- !purrr::map_lgl(
       S7::S7_data(self),
-      ~ S7::S7_inherits(.x, string_replacements)
+      ~ S7::S7_inherits(.x, class_string_replacements)
     )
     if (any(bad_string_replacements)) {
       bad_locations <- which(bad_string_replacements)
@@ -46,7 +46,7 @@ server_variables <- S7::new_class(
 #' Coerce lists to server_variables
 #'
 #' `as_server_variables()` turns an existing object into a `server_variables`
-#' object. This is in contrast with [server_variables()], which builds a
+#' object. This is in contrast with [class_server_variables()], which builds a
 #' `server_variables` object from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
@@ -54,7 +54,7 @@ server_variables <- S7::new_class(
 #' @param x The object to coerce. Must be empty or be a list of objects that can
 #'   be coerced to `string_replacements` objects via [as_string_replacements()].
 #'
-#' @return A `server_variables` object as returned by [server_variables()].
+#' @return A `server_variables` object as returned by [class_server_variables()].
 #' @export
 #'
 #' @examples
@@ -80,9 +80,9 @@ as_server_variables <- S7::new_generic("as_server_variables", "x")
 
 S7::method(as_server_variables, class_list) <- function(x) {
   if (!length(x) || !any(lengths(x))) {
-    return(server_variables())
+    return(class_server_variables())
   }
-  server_variables(
+  class_server_variables(
     purrr::map(x, as_string_replacements)
   )
 }
@@ -91,5 +91,5 @@ S7::method(as_server_variables, class_any) <- function(x,
                                                        ...,
                                                        arg = caller_arg(x),
                                                        call = caller_env()) {
-  as_api_object(x, server_variables, ..., arg = arg, call = call)
+  as_api_object(x, class_server_variables, ..., arg = arg, call = call)
 }

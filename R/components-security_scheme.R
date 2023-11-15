@@ -4,8 +4,8 @@
 #' schemes.
 #'
 #' @keywords internal
-#' @seealso [api_key_security_scheme()], [oauth2_security_scheme()]
-security_scheme <- S7::new_class(
+#' @seealso [class_api_key_security_scheme()], [class_oauth2_security_scheme()]
+abstract_security_scheme <- S7::new_class(
   name = "security_scheme",
   package = "rapid",
   abstract = TRUE
@@ -24,8 +24,8 @@ security_scheme <- S7::new_class(
 #'   [snakecase::to_snake_case()], and then must be one of "api_key", "oauth2",
 #'   or "oauth_2".
 #'
-#' @return A `security_scheme` object as returned by [api_key_security_scheme()]
-#'   or [oauth2_security_scheme()].
+#' @return A `security_scheme` object as returned by
+#'   [class_api_key_security_scheme()] or [class_oauth2_security_scheme()].
 #' @export
 #'
 #' @examples
@@ -70,7 +70,7 @@ security_scheme <- S7::new_class(
 #' )
 as_security_scheme <- S7::new_generic("as_security_scheme", "x")
 
-S7::method(as_security_scheme, security_scheme) <- function(x, ...) {
+S7::method(as_security_scheme, abstract_security_scheme) <- function(x, ...) {
   x
 }
 

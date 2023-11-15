@@ -1,6 +1,6 @@
-test_that("servers() returns an empty server", {
+test_that("class_servers() returns an empty server", {
   expect_snapshot({
-    test_result <- servers()
+    test_result <- class_servers()
     test_result
   })
   expect_s3_class(
@@ -19,10 +19,10 @@ test_that("servers() returns an empty server", {
 })
 
 test_that("length() of a servers reports the overall length", {
-  expect_equal(length(servers()), 0)
+  expect_equal(length(class_servers()), 0)
   expect_equal(
     length(
-      servers(
+      class_servers(
         url = c(
           "https://development.gigantic-server.com/v1",
           "https://staging.gigantic-server.com/v1",
@@ -39,10 +39,10 @@ test_that("length() of a servers reports the overall length", {
   )
   expect_equal(
     length(
-      servers(
+      class_servers(
         url = "https://{username}.gigantic-server.com:{port}/{basePath}",
         description = "The production API server",
-        variables = server_variables(string_replacements(
+        variables = class_server_variables(class_string_replacements(
           name = c("username", "port", "basePath"),
           default = c("demo", "8443", "v2"),
           description = c(
@@ -93,7 +93,7 @@ test_that("as_servers() returns expected objects", {
         )
       )
     ),
-    servers(
+    class_servers(
       url = "https://example.com",
       description = "The only server."
     )
@@ -115,11 +115,11 @@ test_that("as_servers() returns expected objects", {
         )
       )
     ),
-    servers(
+    class_servers(
       url = "https://{username}.gigantic-server.com:{port}/{basePath}",
       description = "The production API server",
-      variables = server_variables(
-        string_replacements(
+      variables = class_server_variables(
+        class_string_replacements(
           name = c("username", "port", "basePath"),
           description = c(
             "this value is assigned by the service provider",
@@ -133,13 +133,13 @@ test_that("as_servers() returns expected objects", {
   )
   expect_identical(
     as_servers(list()),
-    servers()
+    class_servers()
   )
 })
 
 test_that("as_servers() works for servers", {
   expect_identical(
-    as_servers(servers()),
-    servers()
+    as_servers(class_servers()),
+    class_servers()
   )
 })

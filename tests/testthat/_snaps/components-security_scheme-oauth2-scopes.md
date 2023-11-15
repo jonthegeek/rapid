@@ -1,7 +1,7 @@
-# scopes() requires that description matches name
+# class_scopes() requires that description matches name
 
     Code
-      scopes("a")
+      class_scopes("a")
     Condition
       Error:
       ! <rapid::scopes> object is invalid:
@@ -12,7 +12,7 @@
 ---
 
     Code
-      scopes("a", letters)
+      class_scopes("a", letters)
     Condition
       Error:
       ! <rapid::scopes> object is invalid:
@@ -23,7 +23,7 @@
 ---
 
     Code
-      scopes(letters, "a")
+      class_scopes(letters, "a")
     Condition
       Error:
       ! <rapid::scopes> object is invalid:
@@ -34,7 +34,7 @@
 ---
 
     Code
-      scopes(character(), "a")
+      class_scopes(character(), "a")
     Condition
       Error:
       ! <rapid::scopes> object is invalid:
@@ -44,7 +44,7 @@
 ---
 
     Code
-      scopes("a", character())
+      class_scopes("a", character())
     Condition
       Error:
       ! <rapid::scopes> object is invalid:
@@ -52,10 +52,10 @@
       - `name` has 1 value.
       - `description` has no values.
 
-# scopes() works with equal-length name/descript
+# class_scopes() works with equal-length name/descript
 
     Code
-      test_result <- scopes("a", "b")
+      test_result <- class_scopes("a", "b")
       test_result
     Output
       <rapid::scopes>

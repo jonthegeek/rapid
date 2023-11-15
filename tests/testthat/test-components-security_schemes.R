@@ -1,21 +1,21 @@
-test_that("security_scheme_collection() requires name for description", {
+test_that("class_security_schemes() requires name for description", {
   expect_error(
-    security_scheme_collection("a", details = NULL, "description"),
+    class_security_schemes("a", details = NULL, "description"),
     class = "rlib_error_dots_nonempty"
   )
   expect_snapshot(
-    security_scheme_collection("a", details = NULL, "description"),
+    class_security_schemes("a", details = NULL, "description"),
     error = TRUE
   )
 })
 
-test_that("security_scheme_collection() requires required parameters", {
+test_that("class_security_schemes() requires required parameters", {
   expect_snapshot(
     {
-      security_scheme_collection("a")
-      security_scheme_collection(
-        details = security_scheme_details(
-          api_key_security_scheme("parm", "query")
+      class_security_schemes("a")
+      class_security_schemes(
+        details = class_security_scheme_details(
+          class_api_key_security_scheme("parm", "query")
         )
       )
     },
@@ -23,14 +23,14 @@ test_that("security_scheme_collection() requires required parameters", {
   )
 })
 
-test_that("security_scheme_collection() -> empty security_scheme_collection", {
+test_that("class_security_schemes() -> empty security_schemes", {
   expect_snapshot({
-    test_result <- security_scheme_collection()
+    test_result <- class_security_schemes()
     test_result
   })
   expect_s3_class(
     test_result,
-    class = c("rapid::security_scheme_collection", "S7_object"),
+    class = c("rapid::security_schemes", "S7_object"),
     exact = TRUE
   )
   expect_identical(
@@ -43,14 +43,14 @@ test_that("security_scheme_collection() -> empty security_scheme_collection", {
   )
 })
 
-test_that("length() of security_scheme_collection reports the overall length", {
-  expect_equal(length(security_scheme_collection()), 0)
+test_that("length() of security_schemes reports the overall length", {
+  expect_equal(length(class_security_schemes()), 0)
   expect_equal(
     length(
-      security_scheme_collection(
+      class_security_schemes(
         name = "a",
-        details = security_scheme_details(
-          api_key_security_scheme("parm", "query")
+        details = class_security_scheme_details(
+          class_api_key_security_scheme("parm", "query")
         )
       )
     ),
@@ -58,11 +58,11 @@ test_that("length() of security_scheme_collection reports the overall length", {
   )
   expect_equal(
     length(
-      security_scheme_collection(
+      class_security_schemes(
         name = c("a", "b"),
-        details = security_scheme_details(
-          api_key_security_scheme("parm", "query"),
-          api_key_security_scheme("parm", "query")
+        details = class_security_scheme_details(
+          class_api_key_security_scheme("parm", "query"),
+          class_api_key_security_scheme("parm", "query")
         )
       )
     ),
@@ -70,35 +70,35 @@ test_that("length() of security_scheme_collection reports the overall length", {
   )
 })
 
-test_that("as_security_scheme_collection() errors for unnamed input", {
+test_that("as_security_schemes() errors for unnamed input", {
   expect_snapshot(
-    as_security_scheme_collection(as.list(letters)),
+    as_security_schemes(as.list(letters)),
     error = TRUE
   )
 })
 
-test_that("as_security_scheme_collection() errors for bad classes", {
+test_that("as_security_schemes() errors for bad classes", {
   expect_snapshot(
-    as_security_scheme_collection(letters),
+    as_security_schemes(letters),
     error = TRUE
   )
   expect_snapshot(
-    as_security_scheme_collection(1:2),
+    as_security_schemes(1:2),
     error = TRUE
   )
   expect_snapshot(
-    as_security_scheme_collection(mean),
+    as_security_schemes(mean),
     error = TRUE
   )
   expect_snapshot(
-    as_security_scheme_collection(TRUE),
+    as_security_schemes(TRUE),
     error = TRUE
   )
 })
 
-test_that("as_security_scheme_collection() returns expected objects", {
+test_that("as_security_schemes() returns expected objects", {
   expect_identical(
-    as_security_scheme_collection(
+    as_security_schemes(
       list(
         accountAuth = list(
           description = "Account JWT token",
@@ -139,18 +139,18 @@ test_that("as_security_scheme_collection() returns expected objects", {
         )
       )
     ),
-    security_scheme_collection(
+    class_security_schemes(
       name = c(
         "accountAuth",
         "profileAuth",
         "resetPasswordAuth",
         "verifyEmailAuth"
       ),
-      details = security_scheme_details(
-        oauth2_security_scheme(
-          password_flow = oauth2_token_flow(
+      details = class_security_scheme_details(
+        class_oauth2_security_scheme(
+          password_flow = class_oauth2_token_flow(
             token_url = "/account/authorization",
-            scopes = scopes(
+            scopes = class_scopes(
               name = c("Catalog", "Commerce", "Playback", "Settings"),
               description = c(
                 "Access all read-only content",
@@ -161,20 +161,20 @@ test_that("as_security_scheme_collection() returns expected objects", {
             )
           )
         ),
-        oauth2_security_scheme(
-          password_flow = oauth2_token_flow(
+        class_oauth2_security_scheme(
+          password_flow = class_oauth2_token_flow(
             token_url = "/account/profile/authorization",
-            scopes = scopes(
+            scopes = class_scopes(
               name = "Catalog",
               description = "Modify profile preferences and activity"
             )
           )
         ),
-        api_key_security_scheme(
+        class_api_key_security_scheme(
           parameter_name = "authorization",
           location = "header"
         ),
-        api_key_security_scheme(
+        class_api_key_security_scheme(
           parameter_name = "authorization",
           location = "header"
         )
@@ -183,14 +183,14 @@ test_that("as_security_scheme_collection() returns expected objects", {
     )
   )
   expect_identical(
-    as_security_scheme_collection(list()),
-    security_scheme_collection()
+    as_security_schemes(list()),
+    class_security_schemes()
   )
 })
 
-test_that("as_security_scheme_collection() ok w security_scheme_collections", {
+test_that("as_security_schemes() ok w security_schemes", {
   expect_identical(
-    as_security_scheme_collection(security_scheme_collection()),
-    security_scheme_collection()
+    as_security_schemes(class_security_schemes()),
+    class_security_schemes()
   )
 })

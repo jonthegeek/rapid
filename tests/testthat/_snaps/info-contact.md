@@ -1,51 +1,51 @@
-# contact() errors informatively for bad name
+# class_contact() errors informatively for bad name
 
     Code
-      contact(name = mean)
+      class_contact(name = mean)
     Condition
-      Error in `contact()`:
+      Error in `class_contact()`:
       ! Can't coerce `name` <function> to <character>.
 
 ---
 
     Code
-      contact(name = c("A", "B"))
+      class_contact(name = c("A", "B"))
     Condition
-      Error in `contact()`:
+      Error in `class_contact()`:
       ! `name` must be a single <character>.
       x `name` has 2 values.
 
-# contact() errors informatively for bad email
+# class_contact() errors informatively for bad email
 
     Code
-      contact(name = "A", url = "https://example.com", email = mean)
+      class_contact(name = "A", url = "https://example.com", email = mean)
     Condition
-      Error in `contact()`:
+      Error in `class_contact()`:
       ! Can't coerce `email` <function> to <character>.
 
 ---
 
     Code
-      contact(name = "A", url = "https://example.com", email = c("A", "B"))
+      class_contact(name = "A", url = "https://example.com", email = c("A", "B"))
     Condition
-      Error in `contact()`:
+      Error in `class_contact()`:
       ! `email` must be a single <character>.
       x `email` has 2 values.
 
 ---
 
     Code
-      contact(name = "A", url = "https://example.com", email = "not a real email")
+      class_contact(name = "A", url = "https://example.com", email = "not a real email")
     Condition
-      Error in `contact()`:
+      Error in `class_contact()`:
       ! `email` must match the provided regex pattern.
       x Some values do not match.
       * Locations: 1
 
-# contact() returns a contact when everything is ok
+# class_contact() returns a contact when everything is ok
 
     Code
-      test_result <- contact(name = "A", url = "https://example.com", email = "real.email@address.place")
+      test_result <- class_contact(name = "A", url = "https://example.com", email = "real.email@address.place")
       test_result
     Output
       <rapid::contact>
@@ -53,10 +53,10 @@
        @ email: chr "real.email@address.place"
        @ url  : chr "https://example.com"
 
-# contact() without args returns an empty contact
+# class_contact() without args returns an empty contact
 
     Code
-      test_result <- contact()
+      test_result <- class_contact()
       test_result
     Output
       <rapid::contact>

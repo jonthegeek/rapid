@@ -12,7 +12,7 @@ expand_servers(x, ...)
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{rapid} object as returned by \code{\link[=rapid]{rapid()}}, with absolute server
+A \code{rapid} object as returned by \code{\link[=class_rapid]{class_rapid()}}, with absolute server
 paths.
 }
 \description{

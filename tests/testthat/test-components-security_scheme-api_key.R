@@ -1,6 +1,6 @@
-test_that("api_key_security_scheme() requires that location is valid", {
+test_that("class_api_key_security_scheme() requires that location is valid", {
   expect_snapshot(
-    api_key_security_scheme(
+    class_api_key_security_scheme(
       location = "invalid place",
       parameter_name = "parm1"
     ),
@@ -8,9 +8,9 @@ test_that("api_key_security_scheme() requires that location is valid", {
   )
 })
 
-test_that("api_key_security_scheme() works with valid objects", {
+test_that("class_api_key_security_scheme() works with valid objects", {
   expect_snapshot({
-    test_result <- api_key_security_scheme(
+    test_result <- class_api_key_security_scheme(
       location = "query",
       parameter_name = "parm1"
     )
@@ -32,10 +32,10 @@ test_that("api_key_security_scheme() works with valid objects", {
 })
 
 test_that("length() of a api_key_security_scheme reports the proper length", {
-  expect_equal(length(api_key_security_scheme()), 0)
+  expect_equal(length(class_api_key_security_scheme()), 0)
   expect_equal(
     length(
-      api_key_security_scheme(location = "header", parameter_name = "parm2")
+      class_api_key_security_scheme(location = "header", parameter_name = "parm2")
     ),
     1
   )
@@ -84,7 +84,7 @@ test_that("as_api_key_security_scheme() returns expected objects", {
         `x-amazon-apigateway-authtype` = "awsSigv4"
       )
     )),
-    api_key_security_scheme(
+    class_api_key_security_scheme(
       parameter_name = "Authorization",
       location = "header"
     )
@@ -96,7 +96,7 @@ test_that("as_api_key_security_scheme() returns expected objects", {
         `in` = "cookie"
       )
     ),
-    api_key_security_scheme(
+    class_api_key_security_scheme(
       parameter_name = "X-APISETU-CLIENTID",
       location = "cookie"
     )
@@ -108,7 +108,7 @@ test_that("as_api_key_security_scheme() returns expected objects", {
         location = "query"
       )
     ),
-    api_key_security_scheme(
+    class_api_key_security_scheme(
       parameter_name = "X-APISETU-APIKEY",
       location = "query"
     )
@@ -116,13 +116,13 @@ test_that("as_api_key_security_scheme() returns expected objects", {
 
   expect_identical(
     as_api_key_security_scheme(list()),
-    api_key_security_scheme()
+    class_api_key_security_scheme()
   )
 })
 
 test_that("as_api_key_security_scheme() works for api_key_security_scheme", {
   expect_identical(
-    as_api_key_security_scheme(api_key_security_scheme()),
-    api_key_security_scheme()
+    as_api_key_security_scheme(class_api_key_security_scheme()),
+    class_api_key_security_scheme()
   )
 })

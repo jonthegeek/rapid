@@ -1,7 +1,7 @@
-# security_scheme_details() errors informatively for bad contents
+# class_security_scheme_details() errors informatively for bad contents
 
     Code
-      security_scheme_details(letters)
+      class_security_scheme_details(letters)
     Condition
       Error:
       ! <rapid::security_scheme_details> object is invalid:
@@ -11,7 +11,7 @@
 ---
 
     Code
-      security_scheme_details(list(letters, letters))
+      class_security_scheme_details(list(letters, letters))
     Condition
       Error:
       ! <rapid::security_scheme_details> object is invalid:
@@ -21,25 +21,25 @@
 ---
 
     Code
-      security_scheme_details(api_key_security_scheme(), letters,
-      oauth2_security_scheme(), letters)
+      class_security_scheme_details(class_api_key_security_scheme(), letters,
+      class_oauth2_security_scheme(), letters)
     Condition
       Error:
       ! <rapid::security_scheme_details> object is invalid:
       - All values must be <security_scheme> objects.
       - Bad values at 2 and 4.
 
-# security_scheme_details() returns empty security_scheme_details
+# class_security_scheme_details() returns empty security_scheme_details
 
     Code
-      security_scheme_details()
+      class_security_scheme_details()
     Output
       <rapid::security_scheme_details>  list()
 
-# security_scheme_details() accepts bare security_schemes
+# class_security_scheme_details() accepts bare security_schemes
 
     Code
-      security_scheme_details(api_key_security_scheme())
+      class_security_scheme_details(class_api_key_security_scheme())
     Output
       <rapid::security_scheme_details> List of 1
        $ : <rapid::api_key_security_scheme>
@@ -49,7 +49,8 @@
 ---
 
     Code
-      security_scheme_details(api_key_security_scheme(), oauth2_security_scheme())
+      class_security_scheme_details(class_api_key_security_scheme(),
+      class_oauth2_security_scheme())
     Output
       <rapid::security_scheme_details> List of 2
        $ : <rapid::api_key_security_scheme>
@@ -82,10 +83,10 @@
        .. .. @ authorization_url: chr(0) 
        .. .. @ token_url        : chr(0) 
 
-# security_scheme_details() accepts lists of security_schemes
+# class_security_scheme_details() accepts lists of security_schemes
 
     Code
-      security_scheme_details(list(api_key_security_scheme()))
+      class_security_scheme_details(list(class_api_key_security_scheme()))
     Output
       <rapid::security_scheme_details> List of 1
        $ : <rapid::api_key_security_scheme>
@@ -95,7 +96,8 @@
 ---
 
     Code
-      security_scheme_details(list(api_key_security_scheme(), oauth2_security_scheme()))
+      class_security_scheme_details(list(class_api_key_security_scheme(),
+      class_oauth2_security_scheme()))
     Output
       <rapid::security_scheme_details> List of 2
        $ : <rapid::api_key_security_scheme>

@@ -15,12 +15,13 @@ are ignored.}
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{string_replacements} as returned by \code{\link[=string_replacements]{string_replacements()}}.
+A \code{string_replacements} as returned by \code{\link[=class_string_replacements]{class_string_replacements()}}.
 }
 \description{
 \code{as_string_replacements()} turns an existing object into a
-\code{string_replacements}. This is in contrast with \code{\link[=string_replacements]{string_replacements()}},
-which builds a \code{string_replacements} from individual properties.
+\code{string_replacements}. This is in contrast with
+\code{\link[=class_string_replacements]{class_string_replacements()}}, which builds a \code{string_replacements} from
+individual properties.
 }
 \examples{
 as_string_replacements()

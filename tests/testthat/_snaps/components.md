@@ -1,19 +1,19 @@
-# component_collection() returns an empty component_collection
+# class_components() returns an empty components
 
     Code
-      test_result <- component_collection()
+      test_result <- class_components()
       test_result
     Output
-      <rapid::component_collection>
-       @ security_schemes: <rapid::security_scheme_collection>
+      <rapid::components>
+       @ security_schemes: <rapid::security_schemes>
        .. @ name       : chr(0) 
        .. @ details    : <rapid::security_scheme_details>  list()
        .. @ description: chr(0) 
 
-# as_component_collection() errors for unnamed input
+# as_components() errors for unnamed input
 
     Code
-      as_component_collection(as.list(letters))
+      as_components(as.list(letters))
     Condition
       Error:
       ! `as.list(letters)` must have names "security_schemes".
@@ -22,33 +22,33 @@
 ---
 
     Code
-      as_component_collection(list("My Cool API"))
+      as_components(list("My Cool API"))
     Condition
       Error:
       ! `list("My Cool API")` must have names "security_schemes".
       * Any other names are ignored.
 
-# as_component_collection() errors informatively for bad classes
+# as_components() errors informatively for bad classes
 
     Code
-      as_component_collection(1:2)
+      as_components(1:2)
     Condition
       Error:
-      ! Can't coerce `1:2` <integer> to <rapid::component_collection>.
+      ! Can't coerce `1:2` <integer> to <rapid::components>.
 
 ---
 
     Code
-      as_component_collection(mean)
+      as_components(mean)
     Condition
       Error:
-      ! Can't coerce `mean` <function> to <rapid::component_collection>.
+      ! Can't coerce `mean` <function> to <rapid::components>.
 
 ---
 
     Code
-      as_component_collection(TRUE)
+      as_components(TRUE)
     Condition
       Error:
-      ! Can't coerce `TRUE` <logical> to <rapid::component_collection>.
+      ! Can't coerce `TRUE` <logical> to <rapid::components>.
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/info-origin.R
 \name{as_origin}
 \alias{as_origin}
-\title{Coerce lists and character vectors to class_origin}
+\title{Coerce lists and character vectors to origin}
 \usage{
 as_origin(x, ..., arg = caller_arg(x), call = caller_env())
 }
@@ -24,12 +24,11 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-A \code{class_origin} as returned by \code{\link[=class_origin]{class_origin()}}.
+An \code{origin} as returned by \code{\link[=class_origin]{class_origin()}}.
 }
 \description{
-\code{as_origin()} turns an existing object into a \code{class_origin}. This is in
-contrast with \code{\link[=class_origin]{class_origin()}}, which builds a \code{class_origin} from individual
-properties.
+\code{as_origin()} turns an existing object into an \code{origin}. This is in contrast
+with \code{\link[=class_origin]{class_origin()}}, which builds an \code{origin} from individual properties.
 }
 \examples{
 as_origin()

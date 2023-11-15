@@ -1,32 +1,32 @@
-test_that("string_replacements() requires names for optional args", {
+test_that("class_string_replacements() requires names for optional args", {
   expect_snapshot(
-    string_replacements("a", "b", "c"),
+    class_string_replacements("a", "b", "c"),
     error = TRUE
   )
 })
 
-test_that("string_replacements() requires that default matches name", {
+test_that("class_string_replacements() requires that default matches name", {
   expect_snapshot(
-    string_replacements("a"),
+    class_string_replacements("a"),
     error = TRUE
   )
   expect_snapshot(
-    string_replacements("a", letters),
+    class_string_replacements("a", letters),
     error = TRUE
   )
   expect_snapshot(
-    string_replacements(letters, "a"),
+    class_string_replacements(letters, "a"),
     error = TRUE
   )
   expect_snapshot(
-    string_replacements(character(), "a"),
+    class_string_replacements(character(), "a"),
     error = TRUE
   )
 })
 
-test_that("string_replacements() works with equal-length name/default", {
+test_that("class_string_replacements() works with equal-length name/default", {
   expect_snapshot({
-    test_result <- string_replacements("a", "b")
+    test_result <- class_string_replacements("a", "b")
     test_result
   })
   expect_s3_class(
@@ -40,24 +40,24 @@ test_that("string_replacements() works with equal-length name/default", {
   )
 })
 
-test_that("string_replacements() requires optional args are empty or match", {
+test_that("class_string_replacements() requires optional args are empty or match", {
   expect_snapshot(
-    string_replacements("a", "b", enum = list("a", "b")),
+    class_string_replacements("a", "b", enum = list("a", "b")),
     error = TRUE
   )
   expect_snapshot(
-    string_replacements("a", "b", description = c("a", "b")),
+    class_string_replacements("a", "b", description = c("a", "b")),
     error = TRUE
   )
 })
 
-test_that("string_replacements() requires default is in enum when given", {
+test_that("class_string_replacements() requires default is in enum when given", {
   expect_snapshot(
-    string_replacements(name = "a", default = "b", enum = "a"),
+    class_string_replacements(name = "a", default = "b", enum = "a"),
     error = TRUE
   )
   expect_snapshot(
-    string_replacements(
+    class_string_replacements(
       name = c("a", "b"),
       default = c("b", "a"),
       enum = list("a", "a")
@@ -66,9 +66,9 @@ test_that("string_replacements() requires default is in enum when given", {
   )
 })
 
-test_that("string_replacements() works for a full object", {
+test_that("class_string_replacements() works for a full object", {
   expect_snapshot({
-    test_result <- string_replacements(
+    test_result <- class_string_replacements(
       name = c("username", "port", "basePath"),
       default = c("demo", "8443", "v2"),
       description = c(
@@ -95,8 +95,8 @@ test_that("string_replacements() works for a full object", {
 })
 
 test_that("length() of a string_replacements reports the overall length", {
-  expect_equal(length(string_replacements()), 0)
-  expect_equal(length(string_replacements(name = "A", default = "A")), 1)
+  expect_equal(length(class_string_replacements()), 0)
+  expect_equal(length(class_string_replacements(name = "A", default = "A")), 1)
 })
 
 test_that("as_string_replacements() errors for unnamed input", {
@@ -139,7 +139,7 @@ test_that("as_string_replacements() returns expected objects", {
         )
       )
     ),
-    string_replacements(
+    class_string_replacements(
       name = "username",
       default = "demo",
       description = "Name of the user."
@@ -155,7 +155,7 @@ test_that("as_string_replacements() returns expected objects", {
         )
       )
     ),
-    string_replacements(
+    class_string_replacements(
       name = "username",
       default = "demo",
       description = "Name of the user."
@@ -175,7 +175,7 @@ test_that("as_string_replacements() returns expected objects", {
         )
       )
     ),
-    string_replacements(
+    class_string_replacements(
       name = c("username", "port"),
       default = c("demo", 8443),
       enum = list(NULL, c(8443, 443)),
@@ -185,13 +185,13 @@ test_that("as_string_replacements() returns expected objects", {
 
   expect_identical(
     as_string_replacements(list()),
-    string_replacements()
+    class_string_replacements()
   )
 })
 
 test_that("as_string_replacements() works for string_replacements", {
   expect_identical(
-    as_string_replacements(string_replacements()),
-    string_replacements()
+    as_string_replacements(class_string_replacements()),
+    class_string_replacements()
   )
 })

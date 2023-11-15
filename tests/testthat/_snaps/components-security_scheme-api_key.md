@@ -1,17 +1,18 @@
-# api_key_security_scheme() requires that location is valid
+# class_api_key_security_scheme() requires that location is valid
 
     Code
-      api_key_security_scheme(location = "invalid place", parameter_name = "parm1")
+      class_api_key_security_scheme(location = "invalid place", parameter_name = "parm1")
     Condition
       Error:
       ! <rapid::api_key_security_scheme> object is invalid:
       - `location` must be one of the designated values.
       - "invalid place" is not in "query", "header", and "cookie".
 
-# api_key_security_scheme() works with valid objects
+# class_api_key_security_scheme() works with valid objects
 
     Code
-      test_result <- api_key_security_scheme(location = "query", parameter_name = "parm1")
+      test_result <- class_api_key_security_scheme(location = "query",
+        parameter_name = "parm1")
       test_result
     Output
       <rapid::api_key_security_scheme>

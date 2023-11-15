@@ -16,14 +16,14 @@ NULL
 #' @export
 #'
 #' @examples
-#' api_key_security_scheme(
+#' class_api_key_security_scheme(
 #'   parameter_name = "Authorization",
 #'   location = "header"
 #' )
-api_key_security_scheme <- S7::new_class(
+class_api_key_security_scheme <- S7::new_class(
   name = "api_key_security_scheme",
   package = "rapid",
-  parent = security_scheme,
+  parent = abstract_security_scheme,
   properties = list(
     parameter_name = character_scalar_property("parameter_name"),
     location = character_scalar_property("location")
@@ -49,7 +49,7 @@ api_key_security_scheme <- S7::new_class(
   }
 )
 
-S7::method(length, api_key_security_scheme) <- function(x) {
+S7::method(length, class_api_key_security_scheme) <- function(x) {
   length(x@parameter_name)
 }
 
@@ -57,8 +57,8 @@ S7::method(length, api_key_security_scheme) <- function(x) {
 #'
 #' `as_api_key_security_scheme()` turns an existing object into an
 #' `api_key_security_scheme`. This is in contrast with
-#' [api_key_security_scheme()], which builds an `api_key_security_scheme` from
-#' individual properties.
+#' [class_api_key_security_scheme()], which builds an `api_key_security_scheme`
+#' from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -68,7 +68,7 @@ S7::method(length, api_key_security_scheme) <- function(x) {
 #'   are ignored.
 #'
 #' @return An `api_key_security_scheme` as returned by
-#'   [api_key_security_scheme()].
+#'   [class_api_key_security_scheme()].
 #' @export
 as_api_key_security_scheme <- function(x,
                                        ...,
@@ -76,7 +76,7 @@ as_api_key_security_scheme <- function(x,
                                        call = caller_env()) {
   as_api_object(
     x,
-    api_key_security_scheme,
+    class_api_key_security_scheme,
     ...,
     alternate_names = c("in" = "location", "name" = "parameter_name"),
     arg = arg,

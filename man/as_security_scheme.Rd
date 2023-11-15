@@ -15,8 +15,8 @@ or "oauth_2".}
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{security_scheme} object as returned by \code{\link[=api_key_security_scheme]{api_key_security_scheme()}}
-or \code{\link[=oauth2_security_scheme]{oauth2_security_scheme()}}.
+A \code{security_scheme} object as returned by
+\code{\link[=class_api_key_security_scheme]{class_api_key_security_scheme()}} or \code{\link[=class_oauth2_security_scheme]{class_oauth2_security_scheme()}}.
 }
 \description{
 \code{as_security_scheme()} turns an existing object into a \code{security_scheme}

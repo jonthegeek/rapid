@@ -17,7 +17,7 @@ NULL
 #'   distinct from the OpenAPI Specification version or the API implementation
 #'   version).  Required when the object is not empty.
 #' @param contact The contact information for the exposed API, generated via
-#'   [contact()].
+#'   [class_contact()].
 #' @param description Character scalar (optional). A description of the API.
 #'   [CommonMark syntax](https://spec.commonmark.org/) may be used for rich text
 #'   representation.
@@ -37,29 +37,29 @@ NULL
 #' @seealso [as_info()] for coercing objects to `info`.
 #'
 #' @examples
-#' info()
-#' info(
+#' class_info()
+#' class_info(
 #'   title = "My Cool API",
 #'   version = "1.0.2",
-#'   license = license(
+#'   license = class_license(
 #'     name = "Apache 2.0",
 #'     url = "https://opensource.org/license/apache-2-0/"
 #'   )
 #' )
-#' info(
+#' class_info(
 #'   title = "My Abbreviated API",
 #'   version = "2.0.0",
 #'   origin = "https://root.url"
 #' )
-info <- S7::new_class(
+class_info <- S7::new_class(
   "info",
   package = "rapid",
   properties = list(
     title = character_scalar_property("title"),
     version = character_scalar_property("version"),
-    contact = contact,
+    contact = class_contact,
     description = character_scalar_property("description"),
-    license = license,
+    license = class_license,
     summary = character_scalar_property("summary"),
     terms_of_service = character_scalar_property("terms_of_service"),
     origin = class_origin
@@ -67,9 +67,9 @@ info <- S7::new_class(
   constructor = function(title = character(),
                          version = character(),
                          ...,
-                         contact = class_missing,
+                         contact = class_contact(),
                          description = character(),
-                         license = class_missing,
+                         license = class_license(),
                          summary = character(),
                          terms_of_service = character(),
                          origin = class_origin()) {
@@ -103,14 +103,14 @@ info <- S7::new_class(
   }
 )
 
-S7::method(length, info) <- function(x) {
+S7::method(length, class_info) <- function(x) {
   max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to info objects
 #'
 #' `as_info()` turns an existing object into an `info` object. This is in
-#' contrast with [info()], which builds an `info` from individual properties.
+#' contrast with [class_info()], which builds an `info` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -121,7 +121,7 @@ S7::method(length, info) <- function(x) {
 #'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
 #'   describe a single API.
 #'
-#' @return An `info` object as returned by [info()].
+#' @return An `info` object as returned by [class_info()].
 #' @export
 #'
 #' @examples
@@ -130,7 +130,7 @@ S7::method(length, info) <- function(x) {
 as_info <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
   as_api_object(
     x,
-    info,
+    class_info,
     ...,
     alternate_names = c("x-origin" = "origin"),
     arg = arg,

@@ -1,7 +1,7 @@
-# oauth2_implicit_flow() requires compatible lengths
+# class_oauth2_implicit_flow() requires compatible lengths
 
     Code
-      oauth2_implicit_flow(refresh_url = "a")
+      class_oauth2_implicit_flow(refresh_url = "a")
     Condition
       Error:
       ! <rapid::oauth2_implicit_flow> object is invalid:
@@ -11,17 +11,17 @@
 ---
 
     Code
-      oauth2_implicit_flow(scopes = c(a = "a"))
+      class_oauth2_implicit_flow(scopes = c(a = "a"))
     Condition
       Error:
       ! <rapid::oauth2_implicit_flow> object is invalid:
       - When `authorization_url` is not defined, `scopes` must be empty.
       - `scopes` has 1 value.
 
-# oauth2_implicit_flow() returns an empty oauth2_implicit_flow
+# class_oauth2_implicit_flow() returns an empty oauth2_implicit_flow
 
     Code
-      oauth2_implicit_flow()
+      class_oauth2_implicit_flow()
     Output
       <rapid::oauth2_implicit_flow>
        @ refresh_url      : chr(0) 
@@ -30,12 +30,12 @@
        .. @ description: chr(0) 
        @ authorization_url: chr(0) 
 
-# oauth2_implicit_flow() requires names for optionals
+# class_oauth2_implicit_flow() requires names for optionals
 
     Code
-      oauth2_implicit_flow("a", "b", "c")
+      class_oauth2_implicit_flow("a", "b", "c")
     Condition
-      Error in `oauth2_implicit_flow()`:
+      Error in `class_oauth2_implicit_flow()`:
       ! `...` must be empty.
       x Problematic arguments:
       * ..1 = "b"
@@ -45,42 +45,42 @@
 ---
 
     Code
-      oauth2_implicit_flow("a", refresh_url = "c", c(d = "d"))
+      class_oauth2_implicit_flow("a", refresh_url = "c", c(d = "d"))
     Condition
-      Error in `oauth2_implicit_flow()`:
+      Error in `class_oauth2_implicit_flow()`:
       ! `...` must be empty.
       x Problematic argument:
       * ..1 = c(d = "d")
       i Did you forget to name an argument?
 
-# oauth2_implicit_flow() errors informatively for bad classes
+# class_oauth2_implicit_flow() errors informatively for bad classes
 
     Code
-      oauth2_implicit_flow(mean)
+      class_oauth2_implicit_flow(mean)
     Condition
-      Error in `oauth2_implicit_flow()`:
+      Error in `class_oauth2_implicit_flow()`:
       ! Can't coerce `authorization_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_implicit_flow("a", refresh_url = mean)
+      class_oauth2_implicit_flow("a", refresh_url = mean)
     Condition
-      Error in `oauth2_implicit_flow()`:
+      Error in `class_oauth2_implicit_flow()`:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---
 
     Code
-      oauth2_implicit_flow("a", refresh_url = "c", scopes = "d")
+      class_oauth2_implicit_flow("a", refresh_url = "c", scopes = "d")
     Condition
       Error in `as_scopes()`:
       ! `scopes` must be a named character vector.
 
-# oauth2_implicit_flow() returns expected objects
+# class_oauth2_implicit_flow() returns expected objects
 
     Code
-      test_result <- oauth2_implicit_flow(authorization_url = "https://auth.ebay.com/oauth2/authorize",
+      test_result <- class_oauth2_implicit_flow(authorization_url = "https://auth.ebay.com/oauth2/authorize",
         scopes = c(sell.account = "View and manage your account settings",
           sell.account.readonly = "View your account settings"), refresh_url = "https://api.ebay.com/identity/v1/oauth2/refresh")
       test_result

@@ -19,12 +19,12 @@ NULL
 #' @seealso [as_contact()] for coercing objects to `contact`.
 #'
 #' @examples
-#' contact(
+#' class_contact(
 #'   "API Support",
 #'   "support@example.com",
 #'   "https://www.example.com/support"
 #' )
-contact <- S7::new_class(
+class_contact <- S7::new_class(
   "contact",
   package = "rapid",
   properties = list(
@@ -37,14 +37,14 @@ contact <- S7::new_class(
   )
 )
 
-S7::method(length, contact) <- function(x) {
+S7::method(length, class_contact) <- function(x) {
   max(lengths(S7::props(x)))
 }
 
 #' Coerce lists and character vectors to contacts
 #'
 #' `as_contact()` turns an existing object into a `contact`. This is in contrast
-#' with [contact()], which builds a `contact` from individual properties.
+#' with [class_contact()], which builds a `contact` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -53,12 +53,12 @@ S7::method(length, contact) <- function(x) {
 #'   [snakecase::to_snake_case()]. Extra names are ignored. This object should
 #'   describe a single point of contact.
 #'
-#' @return A `contact` as returned by [contact()].
+#' @return A `contact` as returned by [class_contact()].
 #' @export
 #'
 #' @examples
 #' as_contact()
 #' as_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
 as_contact <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
-  as_api_object(x, contact, ..., arg = arg, call = call)
+  as_api_object(x, class_contact, ..., arg = arg, call = call)
 }

@@ -1,17 +1,17 @@
 # I'm building this as I have pieces ready, so the tests will change as I add
 # more sub-objects.
 
-test_that("rapid() requires info objects for info", {
+test_that("class_rapid() requires info objects for info", {
   expect_snapshot(
-    rapid(info = mean),
+    class_rapid(info = mean),
     error = TRUE
   )
 })
 
-test_that("rapid() requires info when anything is defined", {
+test_that("class_rapid() requires info when anything is defined", {
   expect_snapshot(
-    rapid(
-      servers = servers(
+    class_rapid(
+      servers = class_servers(
         url = c(
           "https://development.gigantic-server.com/v1",
           "https://staging.gigantic-server.com/v1",
@@ -30,17 +30,17 @@ test_that("rapid() requires info when anything is defined", {
 
 test_that("security must reference components@security_schemes", {
   expect_snapshot(
-    rapid(
-      info = info(title = "A", version = "1"),
-      components = component_collection(
-        security_schemes = security_scheme_collection(
+    class_rapid(
+      info = class_info(title = "A", version = "1"),
+      components = class_components(
+        security_schemes = class_security_schemes(
           name = "the_defined_one",
-          details = security_scheme_details(
-            api_key_security_scheme("this_one", location = "header")
+          details = class_security_scheme_details(
+            class_api_key_security_scheme("this_one", location = "header")
           )
         )
       ),
-      security = security_requirements(
+      security = class_security(
         name = "an_undefined_one"
       )
     ),
@@ -48,9 +48,9 @@ test_that("security must reference components@security_schemes", {
   )
 })
 
-test_that("rapid() returns an empty rapid", {
+test_that("class_rapid() returns an empty rapid", {
   expect_snapshot({
-    test_result <- rapid()
+    test_result <- class_rapid()
     test_result
   })
   expect_s3_class(
@@ -65,12 +65,12 @@ test_that("rapid() returns an empty rapid", {
 })
 
 test_that("length() of a rapid reports the overall length", {
-  expect_equal(length(rapid()), 0)
+  expect_equal(length(class_rapid()), 0)
   expect_equal(
     length(
-      rapid(
-        info = info(title = "A", version = "1"),
-        servers = servers(
+      class_rapid(
+        info = class_info(title = "A", version = "1"),
+        servers = class_servers(
           url = "https://development.gigantic-server.com/v1"
         )
       )
@@ -79,9 +79,9 @@ test_that("length() of a rapid reports the overall length", {
   )
   expect_equal(
     length(
-      rapid(
-        info = info(title = "A", version = "1"),
-        servers = servers(
+      class_rapid(
+        info = class_info(title = "A", version = "1"),
+        servers = class_servers(
           url = c(
             "https://development.gigantic-server.com/v1",
             "https://staging.gigantic-server.com/v1",
@@ -101,16 +101,16 @@ test_that("length() of a rapid reports the overall length", {
 
 test_that("as_rapid() works for rapid, missing, and empty", {
   expect_identical(
-    as_rapid(rapid()),
-    rapid()
+    as_rapid(class_rapid()),
+    class_rapid()
   )
   expect_identical(
     as_rapid(),
-    rapid()
+    class_rapid()
   )
   expect_identical(
     as_rapid(NULL),
-    rapid()
+    class_rapid()
   )
 })
 
@@ -176,24 +176,24 @@ test_that("as_rapid() works for lists", {
         )
       )
     ),
-    rapid(
-      info = info(
+    class_rapid(
+      info = class_info(
         title = "Sample Pet Store App",
         summary = "A pet store manager.",
         description = "This is a sample server for a pet store.",
         terms_of_service = "https://example.com/terms/",
-        contact = contact(
+        contact = class_contact(
           name = "API Support",
           url = "https://www.example.com/support",
           email = "support@example.com"
         ),
-        license = license(
+        license = class_license(
           name = "Apache 2.0",
           url = "https://www.apache.org/licenses/LICENSE-2.0.html"
         ),
         version = "1.0.1"
       ),
-      servers = servers(
+      servers = class_servers(
         url = c(
           "https://development.gigantic-server.com/v1",
           "https://staging.gigantic-server.com/v1",
@@ -209,7 +209,7 @@ test_that("as_rapid() works for lists", {
   )
   expect_identical(
     as_rapid(list()),
-    rapid()
+    class_rapid()
   )
 })
 

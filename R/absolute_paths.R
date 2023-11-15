@@ -10,12 +10,12 @@ NULL
 #' @inheritParams rlang::args_dots_empty
 #' @param x The object to update. Must be a `rapid`.
 #'
-#' @return A `rapid` object as returned by [rapid()], with absolute server
+#' @return A `rapid` object as returned by [class_rapid()], with absolute server
 #'   paths.
 #' @export
 expand_servers <- S7::new_generic("expand_servers", "x")
 
-S7::method(expand_servers, rapid) <- function(x) {
+S7::method(expand_servers, class_rapid) <- function(x) {
   if (length(x@servers@url)) {
     relative_servers <- .is_relative_url(x@servers@url)
     origin_url <- x@info@origin@url
