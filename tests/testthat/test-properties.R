@@ -16,7 +16,7 @@ test_that("character_scalar_property() returns expected object", {
   )
 })
 
-test_that("enum_property() returns expected object", {
+test_that("enum_property_rename() returns expected object", {
   local_mocked_bindings(
     `prop<-` = function(self, name, value, check = FALSE) {
       force(check)
@@ -25,7 +25,7 @@ test_that("enum_property() returns expected object", {
     }
   )
   expect_snapshot({
-    test_result <- enum_property("propname")
+    test_result <- enum_property_rename("propname")
     test_result
   })
   expect_s3_class(test_result, "S7_property", exact = TRUE)

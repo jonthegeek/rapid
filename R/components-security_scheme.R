@@ -90,10 +90,10 @@ S7::method(as_security_scheme, class_list) <- function(x,
   )
 }
 
-S7::method(
-  as_security_scheme,
-  class_missing | NULL
-) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+S7::method(as_security_scheme, NULL) <- function(x,
+                                                 ...,
+                                                 arg = caller_arg(x),
+                                                 call = caller_env()) {
   NULL
 }
 

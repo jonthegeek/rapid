@@ -3,10 +3,8 @@
     Code
       class_api_key_security_scheme(location = "invalid place", parameter_name = "parm1")
     Condition
-      Error:
-      ! <rapid::api_key_security_scheme> object is invalid:
-      - `location` must be one of the designated values.
-      - "invalid place" is not in "query", "header", and "cookie".
+      Error in `class_api_key_security_scheme()`:
+      ! `location` must be one of "query", "header", or "cookie", not "invalid place".
 
 # class_api_key_security_scheme() works with valid objects
 

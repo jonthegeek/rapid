@@ -12,10 +12,10 @@
        $ validator: NULL
        $ default  : NULL
 
-# enum_property() returns expected object
+# enum_property_rename() returns expected object
 
     Code
-      test_result <- enum_property("propname")
+      test_result <- enum_property_rename("propname")
       test_result
     Output
       <S7_property> 
