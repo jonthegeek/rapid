@@ -9,7 +9,7 @@ NULL
 #'   names are case sensitive.
 #' @param location Factor (or coercible to factor). The location of the
 #'   parameter in the API call. Possible values are "query", "header", "path",
-#'   or "cookie".
+#'   or "cookie". Default "query".
 #' @param schema [class_schema()]. The schema defining the data type of the
 #'   parameter.
 #' @param style Factor (or coercible to factor, optional). Describes how the
@@ -27,7 +27,7 @@ NULL
 #'   is mandatory. If the parameter location is "path", this property is
 #'   required and its value must be `TRUE`. Otherwise, the property may be
 #'   included, and its default value is `FALSE`. Default values are set
-#'   automatically by [parameter_required_default()] based on the valu of
+#'   automatically by [parameter_required_default()] based on the value of
 #'   `location`.
 #' @param allow_empty_value Logical scalar (optional). Sets the ability to pass
 #'   empty-valued parameters. This is valid only for "query"parameters, and
@@ -83,9 +83,9 @@ class_parameter <- S7::new_class(
     deprecated = logical_scalar_property("deprecated")
   ),
   constructor = function(parameter_name = character(),
-                         location = c("query", "header", "path", "cookie"),
                          schema = class_schema(),
                          ...,
+                         location = c("query", "header", "path", "cookie"),
                          style = parameter_style_default(location),
                          description = character(),
                          required = parameter_required_default(location),
@@ -94,14 +94,10 @@ class_parameter <- S7::new_class(
                          explode = parameter_explode_default(style),
                          deprecated = FALSE) {
     check_dots_empty()
-    # Don't set the defaults if the call is empty.
     if (missing(parameter_name)) {
       location <- character()
-      style <- character()
-      required <- logical()
       allow_empty_value <- logical()
       allow_reserved <- logical()
-      explode <- logical()
       deprecated <- logical()
     } else {
       location <- rlang::arg_match(location)

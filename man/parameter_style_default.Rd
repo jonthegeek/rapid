@@ -9,7 +9,7 @@ parameter_style_default(location = c("query", "header", "path", "cookie"))
 \arguments{
 \item{location}{Factor (or coercible to factor). The location of the
 parameter in the API call. Possible values are "query", "header", "path",
-or "cookie".}
+or "cookie". Default "query".}
 }
 \value{
 A character with one of "form" or "simple", or a length-0 character

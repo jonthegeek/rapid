@@ -30,8 +30,8 @@ A \code{reference} S7 object pointing (by name) to another part of the
 \description{
 The \code{reference} object allows for reuse of components between different parts
 of the API description. These objects are currently simple character
-references, but may be change structure in the future to automatically
-resolve references.
+references, but may change structure in the future to automatically resolve
+references.
 }
 \examples{
 class_reference("#/components/schemas/Pet")

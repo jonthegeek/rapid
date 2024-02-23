@@ -9,7 +9,7 @@ parameter_required_default(location = c("query", "header", "path", "cookie"))
 \arguments{
 \item{location}{Factor (or coercible to factor). The location of the
 parameter in the API call. Possible values are "query", "header", "path",
-or "cookie".}
+or "cookie". Default "query".}
 }
 \value{
 \code{TRUE} for "path", \code{FALSE} for any other value, or a length-0 logical

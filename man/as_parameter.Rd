@@ -7,10 +7,12 @@
 as_parameter(x, ..., arg = caller_arg(x), call = caller_env())
 }
 \arguments{
-\item{x}{The object to coerce. Must be empty or have names "type",
-"nullable", "description", and/or "format", or names that can be coerced to
-those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored. This
-object should describe a single parameter.}
+\item{x}{The object to coerce. Must be empty or have names "parameter_name"
+(or "name"), "location" (or "in"), "schema", "style", "description",
+"required", "allow_empty_value", "allow_reserved", "explode", and/or
+"deprecated", or names that can be coerced to those names via
+\code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored. This object should
+describe a single parameter.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
@@ -27,9 +29,16 @@ mentioned in error messages as the source of the error. See the
 A \code{parameter} as returned by \code{\link[=class_parameter]{class_parameter()}}.
 }
 \description{
-\code{as_parameter()} turns an existing object into a \code{parameter}. This is in contrast
-with \code{\link[=class_parameter]{class_parameter()}}, which builds a \code{parameter} from individual properties.
+\code{as_parameter()} turns an existing object into a \code{parameter}. This is in
+contrast with \code{\link[=class_parameter]{class_parameter()}}, which builds a \code{parameter} from individual
+properties.
 }
 \examples{
 as_parameter()
+as_parameter(list(
+  name = "event_date",
+  `in` = "query",
+  schema = list(type = "string", format = "date-time"),
+  required = TRUE
+))
 }

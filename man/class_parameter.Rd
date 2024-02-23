@@ -5,24 +5,29 @@
 \title{A single operation parameter}
 \usage{
 class_parameter(
-  location = c("query", "header", "path", "cookie"),
+  parameter_name = character(),
   schema = class_schema(),
   ...,
+  location = c("query", "header", "path", "cookie"),
   style = parameter_style_default(location),
   description = character(),
-  required = required_default(location),
+  required = parameter_required_default(location),
   allow_empty_value = FALSE,
   allow_reserved = FALSE,
+  explode = parameter_explode_default(style),
   deprecated = FALSE
 )
 }
 \arguments{
-\item{location}{Factor (or coercible to factor). The location of the
-parameter in the API call. Possible values are "query", "header", "path",
-or "cookie".}
+\item{parameter_name}{Character scalar. The name of the parameter. Parameter
+names are case sensitive.}
 
 \item{schema}{\code{\link[=class_schema]{class_schema()}}. The schema defining the data type of the
 parameter.}
+
+\item{location}{Factor (or coercible to factor). The location of the
+parameter in the API call. Possible values are "query", "header", "path",
+or "cookie". Default "query".}
 
 \item{style}{Factor (or coercible to factor, optional). Describes how the
 parameter value will be serialized depending on the type of the parameter
@@ -53,18 +58,15 @@ parameter value should allow reserved characters, as defined by
 be included without percent-encoding. This property only applies to "query"
 and "path" parameters.  Default \code{FALSE}.}
 
-\item{deprecated}{Logical scalar (optional). Specifies that a parameter is
-deprecated and should be transitioned out of usage. Default \code{FALSE}.}
-
-\item{parameter_name}{Character scalar. The name of the parameter. Parameter
-names are case sensitive.}
-
 \item{explode}{Logical scalar (optional). When this is \code{TRUE}, parameter
 values of type "array" or "object" generate separate parameters for each
 value of the array or key-value pair of the map. For other types of
 parameters this property has no effect. When \code{style} is "form", the default
 value is \code{TRUE}. For all other \code{styles}, the default value is \code{FALSE}
 (determined automatically via \code{\link[=parameter_explode_default]{parameter_explode_default()}}).}
+
+\item{deprecated}{Logical scalar (optional). Specifies that a parameter is
+deprecated and should be transitioned out of usage. Default \code{FALSE}.}
 }
 \value{
 A \code{parameter} S7 object that describes a path or operation parameter.

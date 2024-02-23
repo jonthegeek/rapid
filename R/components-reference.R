@@ -5,8 +5,8 @@ NULL
 #'
 #' The `reference` object allows for reuse of components between different parts
 #' of the API description. These objects are currently simple character
-#' references, but may be change structure in the future to automatically
-#' resolve references.
+#' references, but may change structure in the future to automatically resolve
+#' references.
 #'
 #' @param ref_uri Character scalar. The reference identifier. This must be in
 #'   the form of a URI.
