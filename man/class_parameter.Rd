@@ -45,7 +45,7 @@ representation.}
 is mandatory. If the parameter location is "path", this property is
 required and its value must be \code{TRUE}. Otherwise, the property may be
 included, and its default value is \code{FALSE}. Default values are set
-automatically by \code{\link[=parameter_required_default]{parameter_required_default()}} based on the valu of
+automatically by \code{\link[=parameter_required_default]{parameter_required_default()}} based on the value of
 \code{location}.}
 
 \item{allow_empty_value}{Logical scalar (optional). Sets the ability to pass
