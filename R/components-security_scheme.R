@@ -29,7 +29,6 @@ abstract_security_scheme <- S7::new_class(
 #' @export
 #'
 #' @examples
-#' as_security_scheme()
 #' as_security_scheme(
 #'   list(
 #'     description = "Account JWT token",
