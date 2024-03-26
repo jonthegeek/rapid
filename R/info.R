@@ -110,7 +110,8 @@ S7::method(length, class_info) <- function(x) {
 #' Coerce lists and character vectors to info objects
 #'
 #' `as_info()` turns an existing object into an `info` object. This is in
-#' contrast with [class_info()], which builds an `info` from individual properties.
+#' contrast with [class_info()], which builds an `info` from individual
+#' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context

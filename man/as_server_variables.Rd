@@ -13,7 +13,8 @@ be coerced to \code{string_replacements} objects via \code{\link[=as_string_repl
 \item{...}{These dots are for future extensions and must be empty.}
 }
 \value{
-A \code{server_variables} object as returned by \code{\link[=class_server_variables]{class_server_variables()}}.
+A \code{server_variables} object as returned by
+\code{\link[=class_server_variables]{class_server_variables()}}.
 }
 \description{
 \code{as_server_variables()} turns an existing object into a \code{server_variables}

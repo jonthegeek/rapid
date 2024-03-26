@@ -30,7 +30,8 @@ An \code{info} object as returned by \code{\link[=class_info]{class_info()}}.
 }
 \description{
 \code{as_info()} turns an existing object into an \code{info} object. This is in
-contrast with \code{\link[=class_info]{class_info()}}, which builds an \code{info} from individual properties.
+contrast with \code{\link[=class_info]{class_info()}}, which builds an \code{info} from individual
+properties.
 }
 \examples{
 as_info()

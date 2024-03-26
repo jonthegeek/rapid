@@ -18,8 +18,8 @@ class_oauth2_security_scheme(
 \item{implicit_flow}{An \code{oauth2_implicit_flow} object created with
 \code{\link[=class_oauth2_implicit_flow]{class_oauth2_implicit_flow()}}.}
 
-\item{password_flow, client_credentials_flow}{An \code{oauth2_token_flow} object created with
-\code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}}.}
+\item{password_flow, client_credentials_flow}{An \code{oauth2_token_flow} object
+created with \code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}}.}
 
 \item{authorization_code_flow}{An \code{oauth2_authorization_code_flow} object
 created with \code{\link[=class_oauth2_authorization_code_flow]{class_oauth2_authorization_code_flow()}}.}

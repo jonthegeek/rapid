@@ -25,10 +25,12 @@ mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
 }
 \value{
-An \code{oauth2_implicit_flow} as returned by \code{\link[=class_oauth2_implicit_flow]{class_oauth2_implicit_flow()}}.
+An \code{oauth2_implicit_flow} as returned by
+\code{\link[=class_oauth2_implicit_flow]{class_oauth2_implicit_flow()}}.
 }
 \description{
 \code{as_oauth2_implicit_flow()} turns an existing object into an
-\code{oauth2_implicit_flow}. This is in contrast with \code{\link[=class_oauth2_implicit_flow]{class_oauth2_implicit_flow()}},
-which builds an \code{oauth2_implicit_flow} from individual properties.
+\code{oauth2_implicit_flow}. This is in contrast with
+\code{\link[=class_oauth2_implicit_flow]{class_oauth2_implicit_flow()}}, which builds an \code{oauth2_implicit_flow} from
+individual properties.
 }

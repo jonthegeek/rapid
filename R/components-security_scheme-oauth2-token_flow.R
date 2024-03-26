@@ -61,8 +61,8 @@ S7::method(length, class_oauth2_token_flow) <- function(x) {
 #' Coerce lists and character vectors to OAuth2 token flows
 #'
 #' `as_oauth2_token_flow()` turns an existing object into an
-#' `oauth2_token_flow`. This is in contrast with [class_oauth2_token_flow()], which
-#' builds an `oauth2_token_flow` from individual properties.
+#' `oauth2_token_flow`. This is in contrast with [class_oauth2_token_flow()],
+#' which builds an `oauth2_token_flow` from individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context

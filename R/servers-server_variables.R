@@ -54,7 +54,8 @@ class_server_variables <- S7::new_class(
 #' @param x The object to coerce. Must be empty or be a list of objects that can
 #'   be coerced to `string_replacements` objects via [as_string_replacements()].
 #'
-#' @return A `server_variables` object as returned by [class_server_variables()].
+#' @return A `server_variables` object as returned by
+#'   [class_server_variables()].
 #' @export
 #'
 #' @examples

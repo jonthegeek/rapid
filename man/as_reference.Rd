@@ -27,8 +27,9 @@ mentioned in error messages as the source of the error. See the
 A \code{reference} as returned by \code{\link[=class_reference]{class_reference()}}.
 }
 \description{
-\code{as_reference()} turns an existing object into a \code{reference}. This is in contrast
-with \code{\link[=class_reference]{class_reference()}}, which builds a \code{reference} from individual properties.
+\code{as_reference()} turns an existing object into a \code{reference}. This is in
+contrast with \code{\link[=class_reference]{class_reference()}}, which builds a \code{reference} from individual
+properties.
 }
 \examples{
 as_reference()

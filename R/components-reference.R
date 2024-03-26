@@ -50,8 +50,9 @@ S7::method(length, class_reference) <- function(x) {
 
 #' Coerce lists and character vectors to references
 #'
-#' `as_reference()` turns an existing object into a `reference`. This is in contrast
-#' with [class_reference()], which builds a `reference` from individual properties.
+#' `as_reference()` turns an existing object into a `reference`. This is in
+#' contrast with [class_reference()], which builds a `reference` from individual
+#' properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context

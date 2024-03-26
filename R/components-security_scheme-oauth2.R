@@ -11,8 +11,8 @@ NULL
 #' @inheritParams rlang::args_dots_empty
 #' @param implicit_flow An `oauth2_implicit_flow` object created with
 #'   [class_oauth2_implicit_flow()].
-#' @param password_flow,client_credentials_flow An `oauth2_token_flow` object created with
-#'   [class_oauth2_token_flow()].
+#' @param password_flow,client_credentials_flow An `oauth2_token_flow` object
+#'   created with [class_oauth2_token_flow()].
 #' @param authorization_code_flow An `oauth2_authorization_code_flow` object
 #'   created with [class_oauth2_authorization_code_flow()].
 #'

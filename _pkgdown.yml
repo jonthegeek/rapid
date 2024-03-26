@@ -29,6 +29,8 @@ reference:
     contents:
     - class_components
     - as_components
+    - class_schema
+    - as_schema
     - class_security_schemes
     - as_security_schemes
     - as_security_scheme
@@ -52,4 +54,6 @@ reference:
     - as_security
   - title: other
     contents:
+    - class_reference
+    - as_reference
     - as_api_object

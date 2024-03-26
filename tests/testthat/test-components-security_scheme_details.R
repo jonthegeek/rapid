@@ -23,7 +23,9 @@ test_that("class_security_scheme_details() returns empty security_scheme_details
 })
 
 test_that("class_security_scheme_details() accepts bare security_schemes", {
-  expect_snapshot(class_security_scheme_details(class_api_key_security_scheme()))
+  expect_snapshot(
+    class_security_scheme_details(class_api_key_security_scheme())
+  )
   expect_snapshot(
     class_security_scheme_details(
       class_api_key_security_scheme(),
@@ -33,7 +35,9 @@ test_that("class_security_scheme_details() accepts bare security_schemes", {
 })
 
 test_that("class_security_scheme_details() accepts lists of security_schemes", {
-  expect_snapshot(class_security_scheme_details(list(class_api_key_security_scheme())))
+  expect_snapshot(
+    class_security_scheme_details(list(class_api_key_security_scheme()))
+  )
   expect_snapshot(
     class_security_scheme_details(list(
       class_api_key_security_scheme(), class_oauth2_security_scheme()

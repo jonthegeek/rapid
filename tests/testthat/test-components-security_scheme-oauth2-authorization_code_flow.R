@@ -27,7 +27,12 @@ test_that("class_oauth2_authorization_code_flow() requires names for optionals",
     error = TRUE
   )
   expect_snapshot(
-    class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", c("d" = "d")),
+    class_oauth2_authorization_code_flow(
+      "a",
+      "b",
+      refresh_url = "c",
+      c("d" = "d")
+    ),
     error = TRUE
   )
 })
@@ -46,7 +51,12 @@ test_that("class_oauth2_authorization_code_flow() errors for bad classes", {
     error = TRUE
   )
   expect_snapshot(
-    class_oauth2_authorization_code_flow("a", "b", refresh_url = "c", scopes = "d"),
+    class_oauth2_authorization_code_flow(
+      "a",
+      "b",
+      refresh_url = "c",
+      scopes = "d"
+    ),
     error = TRUE
   )
 })
@@ -84,7 +94,11 @@ test_that("length() of oauth2_authorization_code_flow reports overall length", {
   expect_equal(length(class_oauth2_authorization_code_flow("A", "B")), 1)
   expect_equal(
     length(
-      class_oauth2_authorization_code_flow("A", "B", scopes = c("a" = "a", "b" = "b"))
+      class_oauth2_authorization_code_flow(
+        "A",
+        "B",
+        scopes = c("a" = "a", "b" = "b")
+      )
     ),
     1
   )
