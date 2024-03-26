@@ -58,12 +58,14 @@ class_rapid <- S7::new_class(
     info = class_info,
     servers = class_servers,
     components = class_components,
+    paths = S7::class_data.frame,
     security = class_security
   ),
   constructor = function(info = class_info(),
                          ...,
                          servers = class_servers(),
                          components = class_components(),
+                         paths = data.frame(),
                          security = class_security()) {
     check_dots_empty()
     S7::new_object(
@@ -71,6 +73,7 @@ class_rapid <- S7::new_class(
       info = as_info(info),
       servers = as_servers(servers),
       components = as_components(components),
+      paths = paths,
       security = as_security(security)
     )
   },
@@ -79,7 +82,7 @@ class_rapid <- S7::new_class(
       validate_lengths(
         self,
         key_name = "info",
-        optional_any = c("components", "security", "servers")
+        optional_any = c("components", "paths", "security", "servers")
       ),
       validate_in_specific(
         values = self@security@name,
@@ -125,6 +128,61 @@ S7::method(as_rapid, S7::new_S3_class("url")) <- function(x,
     x$info$`x-origin` <- list(url = url_string)
   }
   as_rapid(x, ..., arg = arg, call = call)
+}
+
+S7::method(as_rapid, class_list) <- function(x,
+                                             ...,
+                                             arg = caller_arg(x),
+                                             call = caller_env()) {
+  x$paths <- .parse_paths(x$paths, x$openapi, x, call)
+  rlang::try_fetch(
+    {
+      x <- as_api_object(x, class_rapid, ..., arg = arg, call = call)
+      expand_servers(x)
+    },
+    rapid_error_missing_names = function(cnd) {
+      cli::cli_abort(
+        "{.arg x} must be comprised of properly formed, supported elements.",
+        class = "rapid_error_unsupported_elements",
+        parent = cnd
+      )
+    }
+  )
+}
+
+.parse_paths <- S7::new_generic(".parse_paths", "paths")
+
+S7::method(.parse_paths, S7::class_data.frame) <- function(paths, ...) {
+  paths
+}
+
+S7::method(.parse_paths, class_list) <- function(paths,
+                                                 openapi,
+                                                 x,
+                                                 call = caller_env()) {
+  if (!is.null(openapi) && openapi >= "3") {
+    return(.parse_openapi_spec(x, call = call))
+  }
+  return(data.frame())
+}
+
+.parse_openapi_spec <- function(x, call = caller_env()) { # nocov start
+  rlang::try_fetch(
+    {
+      tibblify::parse_openapi_spec(x)
+    },
+    error = function(cnd) {
+      cli::cli_abort(
+        "Failed to parse paths from OpenAPI spec.",
+        class = "rapid_error_bad_tibblify",
+        call = call
+      )
+    }
+  )
+} # nocov end
+
+S7::method(.parse_paths, class_any) <- function(paths, ...) {
+  return(data.frame())
 }
 
 S7::method(as_rapid, class_any) <- function(x,

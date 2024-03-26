@@ -67,6 +67,7 @@
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
+       @ paths     :'data.frame':	0 obs. of  0 variables
        @ security  : <rapid::security>
        .. @ name                   : chr(0) 
        .. @ required_scopes        : list()
@@ -104,7 +105,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error in `as_rapid()`:
-      ! `list(letters)` must have names "info", "servers", "components", or "security".
+      ! `<named list>` must have names "info", "servers", "components", "paths", or "security".
       * Any other names are ignored.
 
 ---
@@ -115,7 +116,7 @@
       Error:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error in `as_rapid()`:
-      ! `list(list("https://example.com", "A cool server."))` must have names "info", "servers", "components", or "security".
+      ! `<named list>` must have names "info", "servers", "components", "paths", or "security".
       * Any other names are ignored.
 
 # as_rapid() works for yaml urls
@@ -125,62 +126,55 @@
     Output
       <rapid::rapid>
        @ info      : <rapid::info>
-       .. @ title           : chr "AWS Migration Hub"
-       .. @ version         : chr "2017-05-31"
+       .. @ title           : chr "OpenFEC"
+       .. @ version         : chr "1.0"
        .. @ contact         : <rapid::contact>
-       .. .. @ name : chr "Mike Ralphson"
-       .. .. @ email: chr "mike.ralphson@gmail.com"
-       .. .. @ url  : chr "https://github.com/mermade/aws2openapi"
-       .. @ description     : chr "<p>The AWS Migration Hub API methods help to obtain server and application migration status and integrate your "| __truncated__
+       .. .. @ name : chr(0) 
+       .. .. @ email: chr(0) 
+       .. .. @ url  : chr(0) 
+       .. @ description     : chr "This application programming interface (API) allows you to explore the way candidates and committees fund their"| __truncated__
        .. @ license         : <rapid::license>
-       .. .. @ name      : chr "Apache 2.0 License"
+       .. .. @ name      : chr(0) 
        .. .. @ identifier: chr(0) 
-       .. .. @ url       : chr "http://www.apache.org/licenses/"
+       .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
-       .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
+       .. @ terms_of_service: chr(0) 
        .. @ origin          : <rapid::origin>
-       .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
-       .. .. @ format : chr(0) 
-       .. .. @ version: chr(0) 
+       .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
+       .. .. @ format : chr "openapi"
+       .. .. @ version: chr "3.0"
        @ servers   : <rapid::servers>
-       .. @ url        : chr [1:4] "http://mgh.{region}.amazonaws.com" ...
-       .. @ description: chr [1:4] "The AWS Migration Hub multi-region endpoint" ...
-       .. @ variables  : <rapid::server_variables> List of 4
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "us-east-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "us-east-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "cn-north-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "cn-north-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
-       .. ..  ..@ description: chr "The AWS region"
+       .. @ url        : chr "https://api.open.fec.gov/v1"
+       .. @ description: chr(0) 
+       .. @ variables  : <rapid::server_variables>  list()
        @ components: <rapid::components>
        .. @ security_schemes: <rapid::security_schemes>
-       .. .. @ name       : chr "hmac"
-       .. .. @ details    : <rapid::security_scheme_details> List of 1
+       .. .. @ name       : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. .. @ details    : <rapid::security_scheme_details> List of 3
        .. .. .. $ : <rapid::api_key_security_scheme>
-       .. .. ..  ..@ parameter_name: chr "Authorization"
+       .. .. ..  ..@ parameter_name: chr "X-Api-Key"
        .. .. ..  ..@ location      : chr "header"
-       .. .. @ description: chr "Amazon Signature authorization v4"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. @ description: chr(0) 
+       @ paths     : tibble [3 x 2] (S3: tbl_df/tbl/data.frame)
+       $ endpoint  : chr [1:3] "a" "b" "c"
+       $ operations:List of 3
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
        @ security  : <rapid::security>
-       .. @ name                   : chr "hmac"
-       .. @ required_scopes        :List of 1
+       .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. @ required_scopes        :List of 3
+       .. .. $ : chr(0) 
+       .. .. $ : chr(0) 
        .. .. $ : chr(0) 
        .. @ rapid_class_requirement: chr "security_scheme"
 
@@ -191,62 +185,55 @@
     Output
       <rapid::rapid>
        @ info      : <rapid::info>
-       .. @ title           : chr "AWS Migration Hub"
-       .. @ version         : chr "2017-05-31"
+       .. @ title           : chr "OpenFEC"
+       .. @ version         : chr "1.0"
        .. @ contact         : <rapid::contact>
-       .. .. @ name : chr "Mike Ralphson"
-       .. .. @ email: chr "mike.ralphson@gmail.com"
-       .. .. @ url  : chr "https://github.com/mermade/aws2openapi"
-       .. @ description     : chr "<p>The AWS Migration Hub API methods help to obtain server and application migration status and integrate your "| __truncated__
+       .. .. @ name : chr(0) 
+       .. .. @ email: chr(0) 
+       .. .. @ url  : chr(0) 
+       .. @ description     : chr "This application programming interface (API) allows you to explore the way candidates and committees fund their"| __truncated__
        .. @ license         : <rapid::license>
-       .. .. @ name      : chr "Apache 2.0 License"
+       .. .. @ name      : chr(0) 
        .. .. @ identifier: chr(0) 
-       .. .. @ url       : chr "http://www.apache.org/licenses/"
+       .. .. @ url       : chr(0) 
        .. @ summary         : chr(0) 
-       .. @ terms_of_service: chr "https://aws.amazon.com/service-terms/"
+       .. @ terms_of_service: chr(0) 
        .. @ origin          : <rapid::origin>
-       .. .. @ url    : chr "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/AWSMigrationHub-2017-05-31.normal.json"
-       .. .. @ format : chr(0) 
-       .. .. @ version: chr(0) 
+       .. .. @ url    : chr "https://api.open.fec.gov/swagger/"
+       .. .. @ format : chr "openapi"
+       .. .. @ version: chr "3.0"
        @ servers   : <rapid::servers>
-       .. @ url        : chr [1:4] "http://mgh.{region}.amazonaws.com" ...
-       .. @ description: chr [1:4] "The AWS Migration Hub multi-region endpoint" ...
-       .. @ variables  : <rapid::server_variables> List of 4
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "us-east-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "us-east-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:23] "us-east-1" "us-east-2" "us-west-1" "us-west-2" ...
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "cn-north-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
-       .. ..  ..@ description: chr "The AWS region"
-       .. .. $ : <rapid::string_replacements>
-       .. ..  ..@ name       : chr "region"
-       .. ..  ..@ default    : chr "cn-north-1"
-       .. ..  ..@ enum       :List of 1
-       .. .. .. .. $ : chr [1:2] "cn-north-1" "cn-northwest-1"
-       .. ..  ..@ description: chr "The AWS region"
+       .. @ url        : chr "https://api.open.fec.gov/v1"
+       .. @ description: chr(0) 
+       .. @ variables  : <rapid::server_variables>  list()
        @ components: <rapid::components>
        .. @ security_schemes: <rapid::security_schemes>
-       .. .. @ name       : chr "hmac"
-       .. .. @ details    : <rapid::security_scheme_details> List of 1
+       .. .. @ name       : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. .. @ details    : <rapid::security_scheme_details> List of 3
        .. .. .. $ : <rapid::api_key_security_scheme>
-       .. .. ..  ..@ parameter_name: chr "Authorization"
+       .. .. ..  ..@ parameter_name: chr "X-Api-Key"
        .. .. ..  ..@ location      : chr "header"
-       .. .. @ description: chr "Amazon Signature authorization v4"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. .. $ : <rapid::api_key_security_scheme>
+       .. .. ..  ..@ parameter_name: chr "api_key"
+       .. .. ..  ..@ location      : chr "query"
+       .. .. @ description: chr(0) 
+       @ paths     : tibble [3 x 2] (S3: tbl_df/tbl/data.frame)
+       $ endpoint  : chr [1:3] "a" "b" "c"
+       $ operations:List of 3
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
        @ security  : <rapid::security>
-       .. @ name                   : chr "hmac"
-       .. @ required_scopes        :List of 1
+       .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
+       .. @ required_scopes        :List of 3
+       .. .. $ : chr(0) 
+       .. .. $ : chr(0) 
        .. .. $ : chr(0) 
        .. @ rapid_class_requirement: chr "security_scheme"
 
@@ -283,6 +270,7 @@
        .. .. @ name       : chr(0) 
        .. .. @ details    : <rapid::security_scheme_details>  list()
        .. .. @ description: chr(0) 
+       @ paths     :'data.frame':	0 obs. of  0 variables
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
@@ -333,6 +321,15 @@
        .. .. ..  ..@ parameter_name: chr "api_key"
        .. .. ..  ..@ location      : chr "query"
        .. .. @ description: chr(0) 
+       @ paths     : tibble [3 x 2] (S3: tbl_df/tbl/data.frame)
+       $ endpoint  : chr [1:3] "a" "b" "c"
+       $ operations:List of 3
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
+        ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
+       Named list()
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3

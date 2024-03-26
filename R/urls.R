@@ -11,7 +11,7 @@
       simplifyMatrix = FALSE
     ),
     error = function(e) {
-      yaml::read_yaml(url(x))
+      yaml::read_yaml(url(x)) # nocov
     }
   )
 }
