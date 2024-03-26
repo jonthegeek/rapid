@@ -9,6 +9,7 @@ class_rapid(
   ...,
   servers = class_servers(),
   components = class_components(),
+  paths = class_paths(),
   security = class_security()
 )
 }
@@ -21,11 +22,13 @@ class_rapid(
 
 \item{components}{A \code{components} object defined by \code{\link[=class_components]{class_components()}}.}
 
+\item{paths}{A \code{paths} object defined by \code{\link[=class_paths]{class_paths()}}.}
+
 \item{security}{A \code{security} object defined by \code{\link[=class_security]{class_security()}}.}
 }
 \value{
 A \code{rapid} S7 object, with properties \code{info}, \code{servers}, \code{components},
-and \code{security}.
+\code{paths}, and \code{security}.
 }
 \description{
 An object that represents an API.

@@ -7,10 +7,11 @@
 as_rapid(x, ...)
 }
 \arguments{
-\item{x}{The object to coerce. Must be empty or have names "info" and/or
-"servers", or names that can be coerced to those names via
-\code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored. \code{\link[=url]{url()}} objects are
-read with \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or \code{\link[yaml:read_yaml]{yaml::read_yaml()}} before conversion.}
+\item{x}{The object to coerce. Must be empty or have names "info", "servers",
+"components", "paths", and/or "security", or names that can be coerced to
+those names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored.
+\code{\link[=url]{url()}} objects are read with \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or \code{\link[yaml:read_yaml]{yaml::read_yaml()}}
+before conversion.}
 
 \item{...}{These dots are for future extensions and must be empty.}
 }

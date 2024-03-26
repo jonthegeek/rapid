@@ -140,10 +140,7 @@ S7::method(length, class_security_schemes) <- function(x) {
 #'     )
 #'   )
 #' )
-as_security_schemes <- S7::new_generic(
-  "as_security_schemes",
-  "x"
-)
+as_security_schemes <- S7::new_generic("as_security_schemes", "x")
 
 S7::method(
   as_security_schemes,

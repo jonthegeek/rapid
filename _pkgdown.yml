@@ -48,6 +48,10 @@ reference:
     - as_oauth2_token_flow
     - class_scopes
     - as_scopes
+  - title: paths class
+    contents:
+    - class_paths
+    - as_paths
   - title: security class
     contents:
     - class_security
