@@ -32,7 +32,7 @@ class_schema <- S7::new_class(
   name = "schema",
   package = "rapid",
   properties = list(
-    type = enum_property(
+    type = factor_property(
       "type",
       c("string", "number", "integer", "boolean", "array", "object"),
       max_size = 1

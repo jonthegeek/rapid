@@ -64,13 +64,13 @@ class_parameter <- S7::new_class(
   package = "rapid",
   properties = list(
     parameter_name = character_scalar_property("parameter_name"),
-    location = enum_property(
+    location = factor_property(
       "location",
       c("query", "header", "path", "cookie")
     ),
     schema = class_schema,
     # Media type encodings also have this style property. Consider making it a class.
-    style = enum_property(
+    style = factor_property(
       "style",
       c("matrix", "label", "form", "simple", "spaceDelimited", "pipeDelimited",
         "deepObject")

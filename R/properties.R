@@ -49,7 +49,7 @@ logical_scalar_property <- function(x_arg, ...) {
   )
 }
 
-enum_property <- function(arg, levels, max_size = NULL) {
+factor_property <- function(arg, levels, max_size = NULL) {
   force(levels)
   force(max_size)
   S7::new_property(
@@ -67,8 +67,8 @@ enum_property <- function(arg, levels, max_size = NULL) {
         x_arg = arg,
         call = call
       )
+      attr(value, "initialized") <- TRUE
       if (is.null(attr(prop(self, arg), "initialized"))) {
-        attr(value, "initialized") <- TRUE
         prop(self, arg) <- value
       } else {
         prop(self, arg) <- value
@@ -87,7 +87,7 @@ enum_property <- function(arg, levels, max_size = NULL) {
   )
 }
 
-enum_property_rename <- function(x_arg) {
+enum_property <- function(x_arg) {
   S7::new_property(
     name = x_arg,
     class = class_list,

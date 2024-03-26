@@ -43,7 +43,7 @@ class_string_replacements <- S7::new_class(
   properties = list(
     name = class_character,
     default = class_character,
-    enum = enum_property_rename("enum"),
+    enum = enum_property("enum"),
     description = class_character
   ),
   constructor = function(name = character(),
