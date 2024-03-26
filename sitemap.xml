@@ -70,6 +70,12 @@
     <loc>https://jonthegeek.github.io/rapid/reference/as_rapid.html</loc>
   </url>
   <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_reference.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/as_schema.html</loc>
+  </url>
+  <url>
     <loc>https://jonthegeek.github.io/rapid/reference/as_scopes.html</loc>
   </url>
   <url>
@@ -125,6 +131,12 @@
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/class_rapid.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/class_reference.html</loc>
+  </url>
+  <url>
+    <loc>https://jonthegeek.github.io/rapid/reference/class_schema.html</loc>
   </url>
   <url>
     <loc>https://jonthegeek.github.io/rapid/reference/class_scopes.html</loc>
