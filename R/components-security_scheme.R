@@ -100,8 +100,15 @@ S7::method(as_security_scheme, class_any) <- function(x,
                                                       ...,
                                                       arg = caller_arg(x),
                                                       call = caller_env()) {
+  msg <- "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls rapid::security_scheme}."
+  if (missing(x)) {
+    msg <- c(
+      "Can't coerce {.arg {arg}} to {.cls rapid::security_scheme}.",
+      x = "{.arg {arg}} is missing."
+    )
+  }
   cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls rapid::security_scheme}.",
+    msg,
     call = call
   )
 }

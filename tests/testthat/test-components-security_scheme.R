@@ -11,6 +11,10 @@ test_that("as_security_scheme() errors informatively for bad classes", {
     as_security_scheme(TRUE),
     error = TRUE
   )
+  expect_snapshot(
+    as_security_scheme(),
+    error = TRUE
+  )
 })
 
 test_that("as_security_scheme() works for security_schemes", {
