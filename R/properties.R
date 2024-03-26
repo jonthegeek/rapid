@@ -142,4 +142,3 @@ list_of_characters <- function(x_arg, ...) {
     }
   )
 }
-

@@ -41,8 +41,10 @@ class_schema <- S7::new_class(
     description = character_scalar_property("description"),
     format = character_scalar_property("format")
   ),
-  constructor = function(type = c("string", "number", "integer",
-                                  "boolean", "array", "object"),
+  constructor = function(type = c(
+                           "string", "number", "integer",
+                           "boolean", "array", "object"
+                         ),
                          ...,
                          nullable = FALSE,
                          description = character(),
