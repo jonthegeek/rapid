@@ -14,7 +14,7 @@ properties."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
     
     <a class="navbar-brand me-2" href="../index.html">rapid</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,10 +60,11 @@ properties.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
-<dd><p>The object to coerce. Must be empty or have names "info" and/or
-"servers", or names that can be coerced to those names via
-<code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored. <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">url()</a></code> objects are
-read with <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::fromJSON()</a></code> or <code><a href="https://rdrr.io/pkg/yaml/man/read_yaml.html" class="external-link">yaml::read_yaml()</a></code> before conversion.</p></dd>
+<dd><p>The object to coerce. Must be empty or have names "info", "servers",
+"components", "paths", and/or "security", or names that can be coerced to
+those names via <code><a href="https://rdrr.io/pkg/snakecase/man/caseconverter.html" class="external-link">snakecase::to_snake_case()</a></code>. Extra names are ignored.
+<code><a href="https://rdrr.io/r/base/connections.html" class="external-link">url()</a></code> objects are read with <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::fromJSON()</a></code> or <code><a href="https://rdrr.io/pkg/yaml/man/read_yaml.html" class="external-link">yaml::read_yaml()</a></code>
+before conversion.</p></dd>
 
 
 <dt>...</dt>
@@ -108,6 +109,8 @@ read with <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ name       : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ details    : &lt;rapid::security_scheme_details&gt;  list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ description: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ paths     :Classes ‘rapid::paths’, ‘S7_object’ and 'data.frame':	0 obs. of  0 variables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;rapid::paths&gt;  Named list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ security  : &lt;rapid::security&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name                   : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ required_scopes        : list()</span>

@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rapid</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +53,7 @@
 <span>  <span class="va">...</span>,</span>
 <span>  servers <span class="op">=</span> <span class="fu"><a href="class_servers.html">class_servers</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  components <span class="op">=</span> <span class="fu"><a href="class_components.html">class_components</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  paths <span class="op">=</span> <span class="fu"><a href="class_paths.html">class_paths</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  security <span class="op">=</span> <span class="fu"><a href="class_security.html">class_security</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -75,6 +76,10 @@
 <dd><p>A <code>components</code> object defined by <code><a href="class_components.html">class_components()</a></code>.</p></dd>
 
 
+<dt>paths</dt>
+<dd><p>A <code>paths</code> object defined by <code><a href="class_paths.html">class_paths()</a></code>.</p></dd>
+
+
 <dt>security</dt>
 <dd><p>A <code>security</code> object defined by <code><a href="class_security.html">class_security()</a></code>.</p></dd>
 
@@ -84,7 +89,7 @@
     
 
 <p>A <code>rapid</code> S7 object, with properties <code>info</code>, <code>servers</code>, <code>components</code>,
-and <code>security</code>.</p>
+<code>paths</code>, and <code>security</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -122,6 +127,8 @@ and <code>security</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ name       : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ details    : &lt;rapid::security_scheme_details&gt;  list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ description: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ paths     :Classes ‘rapid::paths’, ‘S7_object’ and 'data.frame':	0 obs. of  0 variables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;rapid::paths&gt;  Named list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ security  : &lt;rapid::security&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name                   : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ required_scopes        : list()</span>
@@ -160,6 +167,8 @@ and <code>security</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ name       : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ details    : &lt;rapid::security_scheme_details&gt;  list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ description: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ paths     :Classes ‘rapid::paths’, ‘S7_object’ and 'data.frame':	0 obs. of  0 variables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;rapid::paths&gt;  Named list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ security  : &lt;rapid::security&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name                   : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ required_scopes        : list()</span>
@@ -218,6 +227,8 @@ and <code>security</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ parameter_name: chr "parm"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. ..  ..@ location      : chr "query"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. .. @ description: chr(0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  @ paths     :Classes ‘rapid::paths’, ‘S7_object’ and 'data.frame':	0 obs. of  0 variables</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;rapid::paths&gt;  Named list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ security  : &lt;rapid::security&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ name                   : chr(0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. @ required_scopes        : list()</span>
