@@ -1,6 +1,7 @@
 #' @include info.R
 #' @include servers.R
 #' @include components.R
+#' @include paths.R
 #' @include security.R
 NULL
 
@@ -12,10 +13,11 @@ NULL
 #' @param info An `info` object defined by [class_info()].
 #' @param servers A `servers` object defined by [class_servers()].
 #' @param components A `components` object defined by [class_components()].
+#' @param paths A `paths` object defined by [class_paths()].
 #' @param security A `security` object defined by [class_security()].
 #'
 #' @return A `rapid` S7 object, with properties `info`, `servers`, `components`,
-#'   and `security`.
+#'   `paths`, and `security`.
 #' @export
 #'
 #' @seealso [as_rapid()] for coercing objects to `rapid`.
@@ -58,14 +60,14 @@ class_rapid <- S7::new_class(
     info = class_info,
     servers = class_servers,
     components = class_components,
-    paths = S7::class_data.frame,
+    paths = class_paths,
     security = class_security
   ),
   constructor = function(info = class_info(),
                          ...,
                          servers = class_servers(),
                          components = class_components(),
-                         paths = data.frame(),
+                         paths = class_paths(),
                          security = class_security()) {
     check_dots_empty()
     S7::new_object(
@@ -73,7 +75,7 @@ class_rapid <- S7::new_class(
       info = as_info(info),
       servers = as_servers(servers),
       components = as_components(components),
-      paths = paths,
+      paths = as_paths(paths),
       security = as_security(security)
     )
   },
@@ -106,10 +108,11 @@ S7::method(length, class_rapid) <- function(x) {
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
-#' @param x The object to coerce. Must be empty or have names "info" and/or
-#'   "servers", or names that can be coerced to those names via
-#'   [snakecase::to_snake_case()]. Extra names are ignored. [url()] objects are
-#'   read with [jsonlite::fromJSON()] or [yaml::read_yaml()] before conversion.
+#' @param x The object to coerce. Must be empty or have names "info", "servers",
+#'   "components", "paths", and/or "security", or names that can be coerced to
+#'   those names via [snakecase::to_snake_case()]. Extra names are ignored.
+#'   [url()] objects are read with [jsonlite::fromJSON()] or [yaml::read_yaml()]
+#'   before conversion.
 #'
 #' @return A `rapid` object as returned by [class_rapid()].
 #' @export
@@ -148,41 +151,6 @@ S7::method(as_rapid, class_list) <- function(x,
       )
     }
   )
-}
-
-.parse_paths <- S7::new_generic(".parse_paths", "paths")
-
-S7::method(.parse_paths, S7::class_data.frame) <- function(paths, ...) {
-  paths
-}
-
-S7::method(.parse_paths, class_list) <- function(paths,
-                                                 openapi,
-                                                 x,
-                                                 call = caller_env()) {
-  if (!is.null(openapi) && openapi >= "3") {
-    return(.parse_openapi_spec(x, call = call))
-  }
-  return(data.frame())
-}
-
-.parse_openapi_spec <- function(x, call = caller_env()) { # nocov start
-  rlang::try_fetch(
-    {
-      tibblify::parse_openapi_spec(x)
-    },
-    error = function(cnd) {
-      cli::cli_abort(
-        "Failed to parse paths from OpenAPI spec.",
-        class = "rapid_error_bad_tibblify",
-        call = call
-      )
-    }
-  )
-} # nocov end
-
-S7::method(.parse_paths, class_any) <- function(paths, ...) {
-  return(data.frame())
 }
 
 S7::method(as_rapid, class_any) <- function(x,

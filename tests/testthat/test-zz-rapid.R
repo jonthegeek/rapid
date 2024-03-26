@@ -364,7 +364,8 @@ test_that("as_rapid() works for empty optional fields", {
   expect_snapshot(test_result)
 })
 
-# This pair breaks with tibblify but has more info. Save for when tibblify works.
+# This pair breaks with tibblify but has more info. Save for when tibblify
+# works.
 
 # test_that("as_rapid() works for yaml urls", {
 #   skip_if_not(Sys.getenv("RAPID_TEST_DL") == "true")

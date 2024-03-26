@@ -5,6 +5,7 @@
 #' @importFrom rlang check_dots_empty
 #' @importFrom S7 class_any
 #' @importFrom S7 class_character
+#' @importFrom S7 class_data.frame
 #' @importFrom S7 class_factor
 #' @importFrom S7 class_list
 #' @importFrom S7 class_logical
