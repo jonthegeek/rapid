@@ -29,7 +29,6 @@ abstract_security_scheme <- S7::new_class(
 #' @export
 #'
 #' @examples
-#' as_security_scheme()
 #' as_security_scheme(
 #'   list(
 #'     description = "Account JWT token",
@@ -90,10 +89,10 @@ S7::method(as_security_scheme, class_list) <- function(x,
   )
 }
 
-S7::method(
-  as_security_scheme,
-  class_missing | NULL
-) <- function(x, ..., arg = caller_arg(x), call = caller_env()) {
+S7::method(as_security_scheme, NULL) <- function(x,
+                                                 ...,
+                                                 arg = caller_arg(x),
+                                                 call = caller_env()) {
   NULL
 }
 
@@ -101,8 +100,15 @@ S7::method(as_security_scheme, class_any) <- function(x,
                                                       ...,
                                                       arg = caller_arg(x),
                                                       call = caller_env()) {
+  msg <- "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls rapid::security_scheme}."
+  if (missing(x)) {
+    msg <- c(
+      "Can't coerce {.arg {arg}} to {.cls rapid::security_scheme}.",
+      x = "{.arg {arg}} is missing."
+    )
+  }
   cli::cli_abort(
-    "Can't coerce {.arg {arg}} {.cls {class(x)}} to {.cls rapid::security_scheme}.",
+    msg,
     call = call
   )
 }

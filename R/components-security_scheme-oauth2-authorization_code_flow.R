@@ -81,5 +81,11 @@ as_oauth2_authorization_code_flow <- function(x,
                                               ...,
                                               arg = caller_arg(x),
                                               call = caller_env()) {
-  as_api_object(x, class_oauth2_authorization_code_flow, ..., arg = arg, call = call)
+  as_api_object(
+    x,
+    class_oauth2_authorization_code_flow,
+    ...,
+    arg = arg,
+    call = call
+  )
 }

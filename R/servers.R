@@ -85,8 +85,8 @@ S7::method(length, class_servers) <- function(x) {
 #' Coerce lists and character vectors to servers
 #'
 #' `as_servers()` turns an existing object into a `servers` object. This is in
-#' contrast with [class_servers()], which builds a `servers` object from individual
-#' properties.
+#' contrast with [class_servers()], which builds a `servers` object from
+#' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context

@@ -29,7 +29,7 @@ class_server_variables <- S7::new_class(
   validator = function(self) {
     bad_string_replacements <- !purrr::map_lgl(
       S7::S7_data(self),
-      ~ S7::S7_inherits(.x, class_string_replacements)
+      ~ S7_inherits(.x, class_string_replacements)
     )
     if (any(bad_string_replacements)) {
       bad_locations <- which(bad_string_replacements)
@@ -54,7 +54,8 @@ class_server_variables <- S7::new_class(
 #' @param x The object to coerce. Must be empty or be a list of objects that can
 #'   be coerced to `string_replacements` objects via [as_string_replacements()].
 #'
-#' @return A `server_variables` object as returned by [class_server_variables()].
+#' @return A `server_variables` object as returned by
+#'   [class_server_variables()].
 #' @export
 #'
 #' @examples

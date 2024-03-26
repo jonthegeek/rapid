@@ -19,7 +19,7 @@ A \code{security_scheme_details} object, which is a validated list of
 }
 \description{
 The object provides a list of details of security schemes for the API. Each
-element within the list is a \code{\link[=abstract_security_scheme]{abstract_security_scheme()}} object.
+element within the list is an \code{\link[=abstract_security_scheme]{abstract_security_scheme()}} object.
 }
 \examples{
 class_security_scheme_details(

@@ -54,8 +54,9 @@ S7::method(length, class_oauth2_implicit_flow) <- function(x) {
 #' Coerce lists and character vectors to OAuth2 implicit flows
 #'
 #' `as_oauth2_implicit_flow()` turns an existing object into an
-#' `oauth2_implicit_flow`. This is in contrast with [class_oauth2_implicit_flow()],
-#' which builds an `oauth2_implicit_flow` from individual properties.
+#' `oauth2_implicit_flow`. This is in contrast with
+#' [class_oauth2_implicit_flow()], which builds an `oauth2_implicit_flow` from
+#' individual properties.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
@@ -64,7 +65,8 @@ S7::method(length, class_oauth2_implicit_flow) <- function(x) {
 #'   names that can be coerced to those names via [snakecase::to_snake_case()].
 #'   Additional names are ignored.
 #'
-#' @return An `oauth2_implicit_flow` as returned by [class_oauth2_implicit_flow()].
+#' @return An `oauth2_implicit_flow` as returned by
+#'   [class_oauth2_implicit_flow()].
 #' @export
 as_oauth2_implicit_flow <- function(x,
                                     ...,

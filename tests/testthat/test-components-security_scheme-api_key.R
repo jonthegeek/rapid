@@ -35,7 +35,10 @@ test_that("length() of a api_key_security_scheme reports the proper length", {
   expect_equal(length(class_api_key_security_scheme()), 0)
   expect_equal(
     length(
-      class_api_key_security_scheme(location = "header", parameter_name = "parm2")
+      class_api_key_security_scheme(
+        location = "header",
+        parameter_name = "parm2"
+      )
     ),
     1
   )

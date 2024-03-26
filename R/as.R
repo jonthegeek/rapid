@@ -28,7 +28,7 @@ as_api_object <- S7::new_generic(
     }
     force(arg)
     rlang::check_dots_empty(call = call)
-    if (S7::S7_inherits(x, target_class)) {
+    if (S7_inherits(x, target_class)) {
       return(x)
     }
     S7::S7_dispatch()

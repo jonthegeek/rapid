@@ -6,7 +6,7 @@
 \usage{
 class_api_key_security_scheme(
   parameter_name = character(),
-  location = character()
+  location = c("query", "header", "cookie")
 )
 }
 \arguments{

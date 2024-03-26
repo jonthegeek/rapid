@@ -4,7 +4,7 @@
 
 .url_fetch <- function(x) {
   rlang::try_fetch(
-    jsonlite::fromJSON(url(x), simplifyDataFrame = FALSE),
+    jsonlite::read_json(x),
     error = function(e) {
       yaml::read_yaml(url(x))
     }

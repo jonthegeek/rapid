@@ -18,8 +18,8 @@ A \code{servers} object as returned by \code{\link[=class_servers]{class_servers
 }
 \description{
 \code{as_servers()} turns an existing object into a \code{servers} object. This is in
-contrast with \code{\link[=class_servers]{class_servers()}}, which builds a \code{servers} object from individual
-properties.
+contrast with \code{\link[=class_servers]{class_servers()}}, which builds a \code{servers} object from
+individual properties.
 }
 \examples{
 as_servers()

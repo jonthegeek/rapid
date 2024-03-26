@@ -28,6 +28,6 @@ An \code{oauth2_token_flow} as returned by \code{\link[=class_oauth2_token_flow]
 }
 \description{
 \code{as_oauth2_token_flow()} turns an existing object into an
-\code{oauth2_token_flow}. This is in contrast with \code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}}, which
-builds an \code{oauth2_token_flow} from individual properties.
+\code{oauth2_token_flow}. This is in contrast with \code{\link[=class_oauth2_token_flow]{class_oauth2_token_flow()}},
+which builds an \code{oauth2_token_flow} from individual properties.
 }

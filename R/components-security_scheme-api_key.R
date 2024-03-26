@@ -29,7 +29,12 @@ class_api_key_security_scheme <- S7::new_class(
     location = character_scalar_property("location")
   ),
   constructor = function(parameter_name = character(),
-                         location = character()) {
+                         location = c("query", "header", "cookie")) {
+    if (length(parameter_name)) {
+      location <- rlang::arg_match(location)
+    } else {
+      location <- character()
+    }
     S7::new_object(
       S7::S7_object(),
       parameter_name = parameter_name,
@@ -41,10 +46,6 @@ class_api_key_security_scheme <- S7::new_class(
       self,
       "parameter_name",
       required = "location"
-    ) %|0|% validate_in_fixed(
-      self,
-      "location",
-      c("query", "header", "cookie")
     )
   }
 )

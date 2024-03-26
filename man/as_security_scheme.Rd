@@ -24,7 +24,6 @@ object. It uses the \code{type} element of such objects to determine which type 
 security scheme to construct.
 }
 \examples{
-as_security_scheme()
 as_security_scheme(
   list(
     description = "Account JWT token",
