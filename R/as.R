@@ -1,12 +1,13 @@
 #' Convert to a rapid-style object
 #'
-#' Convert a named list into an object with a rapid-style class.
+#' Convert an object into an object with a rapid-style class.
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
-#' @param x The object to coerce. Must be empty or have names corresponding to
-#'   the parameter of the `target_class`, or names that can be coerced to those
-#'   names via [snakecase::to_snake_case()]. Extra names are ignored.
+#' @param x The object to coerce. Must be empty, or be a named list or character
+#'   vector having names corresponding to the parameter of the `target_class`,
+#'   or names that can be coerced to those names via
+#'   [snakecase::to_snake_case()]. Extra names are ignored.
 #' @param target_class The S7 class to which the object should be converted.
 #' @param alternate_names Character vector (optional). An optional named
 #'   character vector, where the names are the names as they might appear in
