@@ -14,9 +14,10 @@ as_api_object(
 )
 }
 \arguments{
-\item{x}{The object to coerce. Must be empty or have names corresponding to
-the parameter of the \code{target_class}, or names that can be coerced to those
-names via \code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored.}
+\item{x}{The object to coerce. Must be empty, or be a named list or character
+vector having names corresponding to the parameter of the \code{target_class},
+or names that can be coerced to those names via
+\code{\link[snakecase:caseconverter]{snakecase::to_snake_case()}}. Extra names are ignored.}
 
 \item{target_class}{The S7 class to which the object should be converted.}
 
@@ -39,5 +40,5 @@ mentioned in error messages as the source of the error. See the
 An object with the specified \code{target_class}.
 }
 \description{
-Convert a named list into an object with a rapid-style class.
+Convert an object into an object with a rapid-style class.
 }
