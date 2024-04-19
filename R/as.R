@@ -4,7 +4,7 @@
 #'
 #' @inheritParams rlang::args_dots_empty
 #' @inheritParams rlang::args_error_context
-#' @param x The object to coerce. Must be empty or have names corresponding to
+#' @param x The named list to coerce. Must be empty or have names corresponding to
 #'   the parameter of the `target_class`, or names that can be coerced to those
 #'   names via [snakecase::to_snake_case()]. Extra names are ignored.
 #' @param target_class The S7 class to which the object should be converted.
