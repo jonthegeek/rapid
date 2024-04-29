@@ -41,9 +41,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="rapid-class">rapid class<a class="anchor" aria-label="anchor" href="#rapid-class"></a></h2>
+      <h2 id="rapid-object">rapid object<a class="anchor" aria-label="anchor" href="#rapid-object"></a></h2>
       
-      
+      <div class="section-desc"><p>The main rapid object, containing <a href="https://spec.openapis.org/oas/v3.1.0#openapi-object" class="external-link">all information about the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -53,9 +53,9 @@
 
       <dl><dt>
           
-          <code><a href="class_rapid.html">class_rapid()</a></code> 
+          <code><a href="as_api_object.html">as_api_object()</a></code> 
         </dt>
-        <dd>R API description object</dd>
+        <dd>Convert to a rapid-style object</dd>
       </dl><dl><dt>
           
           <code><a href="as_rapid.html">as_rapid()</a></code> 
@@ -63,13 +63,18 @@
         <dd>Coerce lists and urls to rapid objects</dd>
       </dl><dl><dt>
           
+          <code><a href="class_rapid.html">class_rapid()</a></code> 
+        </dt>
+        <dd>R API description object</dd>
+      </dl><dl><dt>
+          
           <code><a href="expand_servers.html">expand_servers()</a></code> 
         </dt>
         <dd>Expand server urls to absolute paths</dd>
       </dl></div><div class="section level2">
-      <h2 id="info-class">info class<a class="anchor" aria-label="anchor" href="#info-class"></a></h2>
+      <h2 id="info-object">info object<a class="anchor" aria-label="anchor" href="#info-object"></a></h2>
       
-      
+      <div class="section-desc"><p>The info object contains <a href="https://spec.openapis.org/oas/v3.1.0#info-object" class="external-link">metadata about the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -79,9 +84,9 @@
 
       <dl><dt>
           
-          <code><a href="class_info.html">class_info()</a></code> 
+          <code><a href="as_contact.html">as_contact()</a></code> 
         </dt>
-        <dd>Information about the API</dd>
+        <dd>Coerce lists and character vectors to contacts</dd>
       </dl><dl><dt>
           
           <code><a href="as_info.html">as_info()</a></code> 
@@ -89,14 +94,24 @@
         <dd>Coerce lists and character vectors to info objects</dd>
       </dl><dl><dt>
           
+          <code><a href="as_license.html">as_license()</a></code> 
+        </dt>
+        <dd>Coerce lists and character vectors to licenses</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_origin.html">as_origin()</a></code> 
+        </dt>
+        <dd>Coerce lists and character vectors to origin</dd>
+      </dl><dl><dt>
+          
           <code><a href="class_contact.html">class_contact()</a></code> 
         </dt>
         <dd>Contact information for the API</dd>
       </dl><dl><dt>
           
-          <code><a href="as_contact.html">as_contact()</a></code> 
+          <code><a href="class_info.html">class_info()</a></code> 
         </dt>
-        <dd>Coerce lists and character vectors to contacts</dd>
+        <dd>Information about the API</dd>
       </dl><dl><dt>
           
           <code><a href="class_license.html">class_license()</a></code> 
@@ -104,64 +119,13 @@
         <dd>License information for the API</dd>
       </dl><dl><dt>
           
-          <code><a href="as_license.html">as_license()</a></code> 
-        </dt>
-        <dd>Coerce lists and character vectors to licenses</dd>
-      </dl><dl><dt>
-          
           <code><a href="class_origin.html">class_origin()</a></code> 
         </dt>
         <dd>Source information for the API description</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_origin.html">as_origin()</a></code> 
-        </dt>
-        <dd>Coerce lists and character vectors to origin</dd>
       </dl></div><div class="section level2">
-      <h2 id="servers-class">servers class<a class="anchor" aria-label="anchor" href="#servers-class"></a></h2>
+      <h2 id="components-object">components object<a class="anchor" aria-label="anchor" href="#components-object"></a></h2>
       
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="class_servers.html">class_servers()</a></code> 
-        </dt>
-        <dd>An object representing a collection of servers</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_servers.html">as_servers()</a></code> 
-        </dt>
-        <dd>Coerce lists and character vectors to servers</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_string_replacements.html">class_string_replacements()</a></code> 
-        </dt>
-        <dd>A set of variables for server URL template substitution</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_string_replacements.html">as_string_replacements()</a></code> 
-        </dt>
-        <dd>Coerce lists to string_replacements</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_server_variables.html">class_server_variables()</a></code> 
-        </dt>
-        <dd>A collection of string replacements for multiple servers</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_server_variables.html">as_server_variables()</a></code> 
-        </dt>
-        <dd>Coerce lists to server_variables</dd>
-      </dl></div><div class="section level2">
-      <h2 id="components-class">components class<a class="anchor" aria-label="anchor" href="#components-class"></a></h2>
-      
-      
+      <div class="section-desc"><p>The components object contains <a href="https://spec.openapis.org/oas/v3.1.0#components-object" class="external-link">reusable objects for different aspects of the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -179,66 +143,64 @@
           <code><a href="as_components.html">as_components()</a></code> 
         </dt>
         <dd>Coerce lists to components objects</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="reference-objects">reference objects<a class="anchor" aria-label="anchor" href="#reference-objects"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="as_reference.html">as_reference()</a></code> 
+        </dt>
+        <dd>Coerce lists and character vectors to references</dd>
       </dl><dl><dt>
           
-          <code><a href="class_schema.html">class_schema()</a></code> 
+          <code><a href="class_reference.html">class_reference()</a></code> 
         </dt>
-        <dd>Reusable input and output data type definitions</dd>
-      </dl><dl><dt>
+        <dd>A simple object for referencing other components in the API description</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="schema-objects">schema objects<a class="anchor" aria-label="anchor" href="#schema-objects"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="as_schema.html">as_schema()</a></code> 
         </dt>
         <dd>Coerce lists to schemas</dd>
       </dl><dl><dt>
           
-          <code><a href="class_security_schemes.html">class_security_schemes()</a></code> 
+          <code><a href="class_schema.html">class_schema()</a></code> 
         </dt>
-        <dd>Reusable security schemes for an API</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_security_schemes.html">as_security_schemes()</a></code> 
-        </dt>
-        <dd>Coerce lists to security_schemes objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_security_scheme.html">as_security_scheme()</a></code> 
-        </dt>
-        <dd>Coerce lists to security_scheme objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_security_scheme_details.html">class_security_scheme_details()</a></code> 
-        </dt>
-        <dd>Details of API security schemes</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_security_scheme_details.html">as_security_scheme_details()</a></code> 
-        </dt>
-        <dd>Coerce lists to security_scheme_details objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_api_key_security_scheme.html">class_api_key_security_scheme()</a></code> 
-        </dt>
-        <dd>API key security schemes</dd>
-      </dl><dl><dt>
+        <dd>Reusable input and output data type definitions</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="security-scheme-objects">security scheme objects<a class="anchor" aria-label="anchor" href="#security-scheme-objects"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="as_api_key_security_scheme.html">as_api_key_security_scheme()</a></code> 
         </dt>
         <dd>Coerce lists and character vectors to API key security schemes</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_oauth2_security_scheme.html">class_oauth2_security_scheme()</a></code> 
-        </dt>
-        <dd>OAuth2 security schemes</dd>
-      </dl><dl><dt>
-          
-          <code><a href="as_oauth2_security_scheme.html">as_oauth2_security_scheme()</a></code> 
-        </dt>
-        <dd>Coerce lists to oauth2 security schemes</dd>
-      </dl><dl><dt>
-          
-          <code><a href="class_oauth2_authorization_code_flow.html">class_oauth2_authorization_code_flow()</a></code> 
-        </dt>
-        <dd>OAuth2 authorization code flow object</dd>
       </dl><dl><dt>
           
           <code><a href="as_oauth2_authorization_code_flow.html">as_oauth2_authorization_code_flow()</a></code> 
@@ -246,19 +208,14 @@
         <dd>Coerce lists and character vectors to OAuth2 authorization code flows</dd>
       </dl><dl><dt>
           
-          <code><a href="class_oauth2_implicit_flow.html">class_oauth2_implicit_flow()</a></code> 
-        </dt>
-        <dd>OAuth2 implicit flow object</dd>
-      </dl><dl><dt>
-          
           <code><a href="as_oauth2_implicit_flow.html">as_oauth2_implicit_flow()</a></code> 
         </dt>
         <dd>Coerce lists and character vectors to OAuth2 implicit flows</dd>
       </dl><dl><dt>
           
-          <code><a href="class_oauth2_token_flow.html">class_oauth2_token_flow()</a></code> 
+          <code><a href="as_oauth2_security_scheme.html">as_oauth2_security_scheme()</a></code> 
         </dt>
-        <dd>OAuth2 token flow object</dd>
+        <dd>Coerce lists to oauth2 security schemes</dd>
       </dl><dl><dt>
           
           <code><a href="as_oauth2_token_flow.html">as_oauth2_token_flow()</a></code> 
@@ -266,18 +223,68 @@
         <dd>Coerce lists and character vectors to OAuth2 token flows</dd>
       </dl><dl><dt>
           
+          <code><a href="as_scopes.html">as_scopes()</a></code> 
+        </dt>
+        <dd>Coerce lists and character vectors to scopes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_security_scheme.html">as_security_scheme()</a></code> 
+        </dt>
+        <dd>Coerce lists to security_scheme objects</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_security_scheme_details.html">as_security_scheme_details()</a></code> 
+        </dt>
+        <dd>Coerce lists to security_scheme_details objects</dd>
+      </dl><dl><dt>
+          
+          <code><a href="as_security_schemes.html">as_security_schemes()</a></code> 
+        </dt>
+        <dd>Coerce lists to security_schemes objects</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_api_key_security_scheme.html">class_api_key_security_scheme()</a></code> 
+        </dt>
+        <dd>API key security schemes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_oauth2_authorization_code_flow.html">class_oauth2_authorization_code_flow()</a></code> 
+        </dt>
+        <dd>OAuth2 authorization code flow object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_oauth2_implicit_flow.html">class_oauth2_implicit_flow()</a></code> 
+        </dt>
+        <dd>OAuth2 implicit flow object</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_oauth2_security_scheme.html">class_oauth2_security_scheme()</a></code> 
+        </dt>
+        <dd>OAuth2 security schemes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_oauth2_token_flow.html">class_oauth2_token_flow()</a></code> 
+        </dt>
+        <dd>OAuth2 token flow object</dd>
+      </dl><dl><dt>
+          
           <code><a href="class_scopes.html">class_scopes()</a></code> 
         </dt>
         <dd>OAuth2 flow scopes objects</dd>
       </dl><dl><dt>
           
-          <code><a href="as_scopes.html">as_scopes()</a></code> 
+          <code><a href="class_security_scheme_details.html">class_security_scheme_details()</a></code> 
         </dt>
-        <dd>Coerce lists and character vectors to scopes</dd>
+        <dd>Details of API security schemes</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_security_schemes.html">class_security_schemes()</a></code> 
+        </dt>
+        <dd>Reusable security schemes for an API</dd>
       </dl></div><div class="section level2">
-      <h2 id="paths-class">paths class<a class="anchor" aria-label="anchor" href="#paths-class"></a></h2>
+      <h2 id="paths-object">paths object<a class="anchor" aria-label="anchor" href="#paths-object"></a></h2>
       
-      
+      <div class="section-desc"><p>The paths object contains <a href="https://spec.openapis.org/oas/v3.1.0#paths-object" class="external-link">available paths and operations for the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -286,19 +293,19 @@
       
 
       <dl><dt>
-          
-          <code><a href="class_paths.html">class_paths()</a></code> 
-        </dt>
-        <dd>The available paths and operations for the API</dd>
-      </dl><dl><dt>
           
           <code><a href="as_paths.html">as_paths()</a></code> 
         </dt>
         <dd>Coerce objects to paths</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_paths.html">class_paths()</a></code> 
+        </dt>
+        <dd>The available paths and operations for the API</dd>
       </dl></div><div class="section level2">
-      <h2 id="security-class">security class<a class="anchor" aria-label="anchor" href="#security-class"></a></h2>
+      <h2 id="security-object">security object<a class="anchor" aria-label="anchor" href="#security-object"></a></h2>
       
-      
+      <div class="section-desc"><p>The security object contains <a href="https://spec.openapis.org/oas/v3.1.0#security-requirement-object" class="external-link">a declaration of which security mechanisms can be used across the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -307,19 +314,19 @@
       
 
       <dl><dt>
-          
-          <code><a href="class_security.html">class_security()</a></code> 
-        </dt>
-        <dd>Security schemes required to execute an operation</dd>
-      </dl><dl><dt>
           
           <code><a href="as_security.html">as_security()</a></code> 
         </dt>
         <dd>Coerce lists to as_security objects</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_security.html">class_security()</a></code> 
+        </dt>
+        <dd>Security schemes required to execute an operation</dd>
       </dl></div><div class="section level2">
-      <h2 id="other">other<a class="anchor" aria-label="anchor" href="#other"></a></h2>
+      <h2 id="servers-object">servers object<a class="anchor" aria-label="anchor" href="#servers-object"></a></h2>
       
-      
+      <div class="section-desc"><p>The servers object contains <a href="https://spec.openapis.org/oas/v3.1.0#server-object" class="external-link">connectivity information for the API</a>.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -329,19 +336,34 @@
 
       <dl><dt>
           
-          <code><a href="class_reference.html">class_reference()</a></code> 
+          <code><a href="as_server_variables.html">as_server_variables()</a></code> 
         </dt>
-        <dd>A simple object for referencing other components in the API description</dd>
+        <dd>Coerce lists to server_variables</dd>
       </dl><dl><dt>
           
-          <code><a href="as_reference.html">as_reference()</a></code> 
+          <code><a href="as_servers.html">as_servers()</a></code> 
         </dt>
-        <dd>Coerce lists and character vectors to references</dd>
+        <dd>Coerce lists and character vectors to servers</dd>
       </dl><dl><dt>
           
-          <code><a href="as_api_object.html">as_api_object()</a></code> 
+          <code><a href="as_string_replacements.html">as_string_replacements()</a></code> 
         </dt>
-        <dd>Convert to a rapid-style object</dd>
+        <dd>Coerce lists to string_replacements</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_server_variables.html">class_server_variables()</a></code> 
+        </dt>
+        <dd>A collection of string replacements for multiple servers</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_servers.html">class_servers()</a></code> 
+        </dt>
+        <dd>An object representing a collection of servers</dd>
+      </dl><dl><dt>
+          
+          <code><a href="class_string_replacements.html">class_string_replacements()</a></code> 
+        </dt>
+        <dd>A set of variables for server URL template substitution</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
