@@ -22,8 +22,8 @@ NULL
 #' @return A `reference` S7 object pointing (by name) to another part of the
 #'   `rapid` object.
 #' @export
-#'
-#' @seealso [as_reference()] for coercing objects to `reference`.
+#' @family components_reference
+#' @family components
 #'
 #' @examples
 #' class_reference("#/components/schemas/Pet")
@@ -63,6 +63,8 @@ S7::method(length, class_reference) <- function(x) {
 #'
 #' @return A `reference` as returned by [class_reference()].
 #' @export
+#' @family components_reference
+#' @family components
 #'
 #' @examples
 #' as_reference()

@@ -7,8 +7,10 @@
 #'   scope.
 #'
 #' @return A `scopes` S7 object, with fields `name` and `description`.
-#' @seealso [as_scopes()] for coercing objects to `scopes`.
 #' @export
+#' @family components_security_schemes
+#' @family components
+#'
 #' @examples
 #' class_scopes(
 #'   name = c(
@@ -69,6 +71,8 @@ S7::method(length, class_scopes) <- function(x) {
 #'
 #' @return A `scopes` as returned by [class_scopes()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_scopes <- S7::new_generic("as_scopes", "x")
 
 S7::method(

@@ -14,6 +14,8 @@ NULL
 #' @return An `api_key_security_scheme` S7 object, with fields `parameter_name`
 #'   and `location`.
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' class_api_key_security_scheme(
@@ -71,6 +73,8 @@ S7::method(length, class_api_key_security_scheme) <- function(x) {
 #' @return An `api_key_security_scheme` as returned by
 #'   [class_api_key_security_scheme()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_api_key_security_scheme <- function(x,
                                        ...,
                                        arg = caller_arg(x),

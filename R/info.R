@@ -33,8 +33,7 @@ NULL
 #'
 #' @return An `info` S7 object with metadata describing a single API.
 #' @export
-#'
-#' @seealso [as_info()] for coercing objects to `info`.
+#' @family info
 #'
 #' @examples
 #' class_info()
@@ -124,6 +123,7 @@ S7::method(length, class_info) <- function(x) {
 #'
 #' @return An `info` object as returned by [class_info()].
 #' @export
+#' @family info
 #'
 #' @examples
 #' as_info()

@@ -50,7 +50,11 @@ class_string_replacements(
 )
 }
 \seealso{
-\code{\link[=as_string_replacements]{as_string_replacements()}} for coercing objects to
-\code{string_replacements}, and \code{\link[=class_server_variables]{class_server_variables()}} for creating
-collections of \code{string_replacements}.
+servers object
+\code{\link{as_server_variables}()},
+\code{\link{as_servers}()},
+\code{\link{as_string_replacements}()},
+\code{\link{class_server_variables}()},
+\code{\link{class_servers}()}
 }
+\concept{servers}

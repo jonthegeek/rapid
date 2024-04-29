@@ -19,6 +19,8 @@ NULL
 #' @return An `oauth2_security_scheme` S7 object, with fields `implicit_flow`,
 #'   `password_flow`, `client_credentials_flow`, and `authorization_code_flow`.
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' class_oauth2_security_scheme()
@@ -73,6 +75,8 @@ S7::method(length, class_oauth2_security_scheme) <- function(x) {
 #' @return An `oauth2_security_scheme` as returned by
 #'   [class_oauth2_security_scheme()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_oauth2_security_scheme <- S7::new_generic("as_oauth2_security_scheme", "x")
 
 S7::method(

@@ -44,5 +44,13 @@ class_license(
 )
 }
 \seealso{
-\code{\link[=as_license]{as_license()}} for coercing objects to \code{license}.
+info object
+\code{\link{as_contact}()},
+\code{\link{as_info}()},
+\code{\link{as_license}()},
+\code{\link{as_origin}()},
+\code{\link{class_contact}()},
+\code{\link{class_info}()},
+\code{\link{class_origin}()}
 }
+\concept{info}

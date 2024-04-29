@@ -61,5 +61,11 @@ class_servers(
 )
 }
 \seealso{
-\code{\link[=as_servers]{as_servers()}} for coercing objects to \code{servers}.
+servers object
+\code{\link{as_server_variables}()},
+\code{\link{as_servers}()},
+\code{\link{as_string_replacements}()},
+\code{\link{class_server_variables}()},
+\code{\link{class_string_replacements}()}
 }
+\concept{servers}

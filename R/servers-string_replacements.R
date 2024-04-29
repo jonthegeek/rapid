@@ -25,10 +25,7 @@ NULL
 #'   variables for a single server, with fields `name`, `default`, `enum`, and
 #'   `description`.
 #' @export
-#'
-#' @seealso [as_string_replacements()] for coercing objects to
-#'   `string_replacements`, and [class_server_variables()] for creating
-#'   collections of `string_replacements`.
+#' @family servers
 #'
 #' @examples
 #' class_string_replacements(
@@ -94,6 +91,7 @@ S7::method(length, class_string_replacements) <- function(x) {
 #'
 #' @return A `string_replacements` as returned by [class_string_replacements()].
 #' @export
+#' @family servers
 #'
 #' @examples
 #' as_string_replacements()

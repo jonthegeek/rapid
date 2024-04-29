@@ -42,3 +42,10 @@ An object with the specified \code{target_class}.
 \description{
 Convert an object into an object with a rapid-style class.
 }
+\seealso{
+rapid object
+\code{\link{as_rapid}()},
+\code{\link{class_rapid}()},
+\code{\link{expand_servers}()}
+}
+\concept{rapid}

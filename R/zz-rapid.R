@@ -19,8 +19,7 @@ NULL
 #' @return A `rapid` S7 object, with properties `info`, `servers`, `components`,
 #'   `paths`, and `security`.
 #' @export
-#'
-#' @seealso [as_rapid()] for coercing objects to `rapid`.
+#' @family rapid
 #'
 #' @examples
 #' class_rapid()
@@ -116,6 +115,7 @@ S7::method(length, class_rapid) <- function(x) {
 #'
 #' @return A `rapid` object as returned by [class_rapid()].
 #' @export
+#' @family rapid
 #'
 #' @examples
 #' as_rapid()

@@ -15,9 +15,9 @@ NULL
 #'
 #' @return A `components` S7 object with various schemas for the API.
 #' @export
-#'
 #' @seealso [as_components()] for coercing objects to
 #'   `components` objects.
+#' @family components
 #'
 #' @examples
 #' class_components()
@@ -66,6 +66,8 @@ S7::method(length, class_components) <- function(x) {
 #' @return A `components` object as returned by
 #'   [class_components()].
 #' @export
+#' @seealso [class_components()] for creating `components` objects.
+#' @family components
 #'
 #' @examples
 #' as_components()

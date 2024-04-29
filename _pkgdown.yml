@@ -2,62 +2,37 @@ url: https://jonthegeek.github.io/rapid/
 template:
   bootstrap: 5
 reference:
-  - title: rapid class
+  - title: rapid object
+    desc: The main rapid object, containing [all information about the API](https://spec.openapis.org/oas/v3.1.0#openapi-object).
     contents:
-    - class_rapid
-    - as_rapid
-    - expand_servers
-  - title: info class
+    - has_concept("rapid")
+  - title: info object
+    desc: The info object contains [metadata about the API](https://spec.openapis.org/oas/v3.1.0#info-object).
     contents:
-    - class_info
-    - as_info
-    - class_contact
-    - as_contact
-    - class_license
-    - as_license
-    - class_origin
-    - as_origin
-  - title: servers class
-    contents:
-    - class_servers
-    - as_servers
-    - class_string_replacements
-    - as_string_replacements
-    - class_server_variables
-    - as_server_variables
-  - title: components class
+    - has_concept("info")
+  - title: components object
+    desc: The components object contains [reusable objects for different aspects of the API](https://spec.openapis.org/oas/v3.1.0#components-object).
     contents:
     - class_components
     - as_components
-    - class_schema
-    - as_schema
-    - class_security_schemes
-    - as_security_schemes
-    - as_security_scheme
-    - class_security_scheme_details
-    - as_security_scheme_details
-    - class_api_key_security_scheme
-    - as_api_key_security_scheme
-    - class_oauth2_security_scheme
-    - as_oauth2_security_scheme
-    - class_oauth2_authorization_code_flow
-    - as_oauth2_authorization_code_flow
-    - class_oauth2_implicit_flow
-    - as_oauth2_implicit_flow
-    - class_oauth2_token_flow
-    - as_oauth2_token_flow
-    - class_scopes
-    - as_scopes
-  - title: paths class
+  - subtitle: reference objects
     contents:
-    - class_paths
-    - as_paths
-  - title: security class
+    - has_concept("components_reference")
+  - subtitle: schema objects
     contents:
-    - class_security
-    - as_security
-  - title: other
+    - has_concept("components_schema")
+  - subtitle: security scheme objects
     contents:
-    - class_reference
-    - as_reference
-    - as_api_object
+    - has_concept("components_security_schemes")
+  - title: paths object
+    desc: The paths object contains [available paths and operations for the API](https://spec.openapis.org/oas/v3.1.0#paths-object).
+    contents:
+    - has_concept("paths")
+  - title: security object
+    desc: The security object contains [a declaration of which security mechanisms can be used across the API](https://spec.openapis.org/oas/v3.1.0#security-requirement-object).
+    contents:
+    - has_concept("security")
+  - title: servers object
+    desc: The servers object contains [connectivity information for the API](https://spec.openapis.org/oas/v3.1.0#server-object).
+    contents:
+    - has_concept("servers")
