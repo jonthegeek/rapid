@@ -34,3 +34,14 @@ with \code{\link[=class_contact]{class_contact()}}, which builds a \code{contact
 as_contact()
 as_contact(list(name = "Jon Harmon", email = "jonthegeek@gmail.com"))
 }
+\seealso{
+info object
+\code{\link{as_info}()},
+\code{\link{as_license}()},
+\code{\link{as_origin}()},
+\code{\link{class_contact}()},
+\code{\link{class_info}()},
+\code{\link{class_license}()},
+\code{\link{class_origin}()}
+}
+\concept{info}

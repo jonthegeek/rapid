@@ -15,8 +15,7 @@ NULL
 #' @return A `contact` S7 object describing who to contact for information about
 #'   the API, with fields `name`, `email`, and `url`.
 #' @export
-#'
-#' @seealso [as_contact()] for coercing objects to `contact`.
+#' @family info
 #'
 #' @examples
 #' class_contact(
@@ -55,6 +54,7 @@ S7::method(length, class_contact) <- function(x) {
 #'
 #' @return A `contact` as returned by [class_contact()].
 #' @export
+#' @family info
 #'
 #' @examples
 #' as_contact()

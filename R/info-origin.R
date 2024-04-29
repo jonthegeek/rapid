@@ -20,8 +20,7 @@ NULL
 #' @return An `origin` S7 object describing where to find the API description,
 #'   with fields `url`, `format`, and `version`.
 #' @export
-#'
-#' @seealso [as_origin()] for coercing objects to `origin`.
+#' @family info
 #'
 #' @examples
 #' class_origin(
@@ -76,6 +75,7 @@ S7::method(length, class_origin) <- function(x) {
 #'
 #' @return An `origin` as returned by [class_origin()].
 #' @export
+#' @family info
 #'
 #' @examples
 #' as_origin()

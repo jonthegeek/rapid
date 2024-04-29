@@ -13,6 +13,7 @@ NULL
 #' @return A `rapid` object as returned by [class_rapid()], with absolute server
 #'   paths.
 #' @export
+#' @family rapid
 expand_servers <- S7::new_generic("expand_servers", "x")
 
 S7::method(expand_servers, class_rapid) <- function(x) {

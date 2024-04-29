@@ -66,5 +66,9 @@ class_rapid(
 )
 }
 \seealso{
-\code{\link[=as_rapid]{as_rapid()}} for coercing objects to \code{rapid}.
+rapid object
+\code{\link{as_api_object}()},
+\code{\link{as_rapid}()},
+\code{\link{expand_servers}()}
 }
+\concept{rapid}

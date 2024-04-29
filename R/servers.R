@@ -18,8 +18,7 @@ NULL
 #' @return A `servers` S7 object, with properties `url`, `description`, and
 #'   `variables`.
 #' @export
-#'
-#' @seealso [as_servers()] for coercing objects to `servers`.
+#' @family servers
 #'
 #' @examples
 #' class_servers(
@@ -96,6 +95,7 @@ S7::method(length, class_servers) <- function(x) {
 #'
 #' @return A `servers` object as returned by [class_servers()].
 #' @export
+#' @family servers
 #'
 #' @examples
 #' as_servers()

@@ -31,5 +31,13 @@ class_contact(
 )
 }
 \seealso{
-\code{\link[=as_contact]{as_contact()}} for coercing objects to \code{contact}.
+info object
+\code{\link{as_contact}()},
+\code{\link{as_info}()},
+\code{\link{as_license}()},
+\code{\link{as_origin}()},
+\code{\link{class_info}()},
+\code{\link{class_license}()},
+\code{\link{class_origin}()}
 }
+\concept{info}

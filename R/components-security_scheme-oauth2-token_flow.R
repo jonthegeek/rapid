@@ -13,9 +13,12 @@ NULL
 #'   this flow. This must be in the form of a URL. The OAuth2 standard requires
 #'   the use of TLS.
 #'
-#' @return An `oauth2_token_flow` object.
-#'
+#' @return An `oauth2_token_flow` S7 object, with fields `token_url`,
+#'   `refresh_url`, and `scopes`.
 #' @export
+#' @family components_security_schemes
+#' @family components
+#'
 #' @examples
 #' class_oauth2_token_flow(
 #'   token_url = "https://example.com/token",
@@ -73,6 +76,8 @@ S7::method(length, class_oauth2_token_flow) <- function(x) {
 #'
 #' @return An `oauth2_token_flow` as returned by [class_oauth2_token_flow()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_oauth2_token_flow <- function(x,
                                  ...,
                                  arg = caller_arg(x),

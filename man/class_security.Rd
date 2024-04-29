@@ -35,3 +35,8 @@ class_security(
   )
 )
 }
+\seealso{
+security object
+\code{\link{as_security}()}
+}
+\concept{security}

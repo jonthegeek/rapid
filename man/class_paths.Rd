@@ -30,5 +30,7 @@ class_paths(
 )
 }
 \seealso{
-\code{\link[=as_paths]{as_paths()}} for coercing objects to \code{paths}.
+paths object
+\code{\link{as_paths}()}
 }
+\concept{paths}

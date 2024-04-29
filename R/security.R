@@ -17,6 +17,8 @@ NULL
 #' @return A `security` S7 object with references of security required for
 #'   operations.
 #' @export
+#' @family security
+#'
 #' @examples
 #' class_security()
 #' class_security(
@@ -76,6 +78,7 @@ S7::method(length, class_security) <- function(x) {
 #'
 #' @return A `security` object as returned by [class_security()].
 #' @export
+#' @family security
 #'
 #' @examples
 #' as_security()

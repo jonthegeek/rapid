@@ -71,5 +71,13 @@ class_info(
 )
 }
 \seealso{
-\code{\link[=as_info]{as_info()}} for coercing objects to \code{info}.
+info object
+\code{\link{as_contact}()},
+\code{\link{as_info}()},
+\code{\link{as_license}()},
+\code{\link{as_origin}()},
+\code{\link{class_contact}()},
+\code{\link{class_license}()},
+\code{\link{class_origin}()}
 }
+\concept{info}

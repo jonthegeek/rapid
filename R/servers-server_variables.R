@@ -9,8 +9,7 @@
 #' @return A `server_variables` S7 object, which is a validated list of
 #'   [class_string_replacements()] objects.
 #' @export
-#'
-#' @seealso [as_server_variables()] for coercing objects to `server_variables`.
+#' @family servers
 #'
 #' @examples
 #' class_server_variables(
@@ -57,6 +56,7 @@ class_server_variables <- S7::new_class(
 #' @return A `server_variables` object as returned by
 #'   [class_server_variables()].
 #' @export
+#' @family servers
 #'
 #' @examples
 #' as_server_variables()

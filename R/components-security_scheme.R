@@ -27,6 +27,8 @@ abstract_security_scheme <- S7::new_class(
 #' @return A `security_scheme` object as returned by
 #'   [class_api_key_security_scheme()] or [class_oauth2_security_scheme()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' as_security_scheme(

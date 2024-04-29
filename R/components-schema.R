@@ -22,8 +22,8 @@ NULL
 #' @return A `schema` S7 object describing the data type, with fields `type`,
 #'   `nullable`, `description`, and `format`.
 #' @export
-#'
-#' @seealso [as_schema()] for coercing objects to `schema`.
+#' @family components_schema
+#' @family components
 #'
 #' @examples
 #' class_schema("string")
@@ -90,6 +90,8 @@ S7::method(length, class_schema) <- function(x) {
 #'
 #' @return A `schema` as returned by [class_schema()].
 #' @export
+#' @family components_schema
+#' @family components
 #'
 #' @examples
 #' as_schema()

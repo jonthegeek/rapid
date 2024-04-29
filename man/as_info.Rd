@@ -37,3 +37,14 @@ properties.
 as_info()
 as_info(list(title = "My Cool API", version = "1.0.0"))
 }
+\seealso{
+info object
+\code{\link{as_contact}()},
+\code{\link{as_license}()},
+\code{\link{as_origin}()},
+\code{\link{class_contact}()},
+\code{\link{class_info}()},
+\code{\link{class_license}()},
+\code{\link{class_origin}()}
+}
+\concept{info}

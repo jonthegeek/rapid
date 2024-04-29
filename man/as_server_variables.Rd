@@ -41,3 +41,12 @@ as_server_variables(
   )
 )
 }
+\seealso{
+servers object
+\code{\link{as_servers}()},
+\code{\link{as_string_replacements}()},
+\code{\link{class_server_variables}()},
+\code{\link{class_servers}()},
+\code{\link{class_string_replacements}()}
+}
+\concept{servers}
