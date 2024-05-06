@@ -24,5 +24,11 @@ class_server_variables(
 )
 }
 \seealso{
-\code{\link[=as_server_variables]{as_server_variables()}} for coercing objects to \code{server_variables}.
+servers object
+\code{\link{as_server_variables}()},
+\code{\link{as_servers}()},
+\code{\link{as_string_replacements}()},
+\code{\link{class_servers}()},
+\code{\link{class_string_replacements}()}
 }
+\concept{servers}

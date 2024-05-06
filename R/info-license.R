@@ -19,8 +19,7 @@ NULL
 #' @return A `license` S7 object describing allowed usage of the API, with
 #'   fields `name`, `identifier`, and `url`.
 #' @export
-#'
-#' @seealso [as_license()] for coercing objects to `license`.
+#' @family info
 #'
 #' @examples
 #' class_license(
@@ -77,6 +76,7 @@ S7::method(length, class_license) <- function(x) {
 #'
 #' @return A `license` as returned by [class_license()].
 #' @export
+#' @family info
 #'
 #' @examples
 #' as_license()

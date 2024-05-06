@@ -8,8 +8,7 @@
 #'
 #' @return A `paths` S7 object with details about API endpoints.
 #' @export
-#'
-#' @seealso [as_paths()] for coercing objects to `paths`.
+#' @family paths
 #'
 #' @examples
 #' class_paths()
@@ -48,6 +47,7 @@ class_paths <- S7::new_class(
 #'
 #' @return A `paths` object as returned by [class_paths()].
 #' @export
+#' @family paths
 #'
 #' @examples
 #' as_paths()

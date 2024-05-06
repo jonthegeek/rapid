@@ -26,3 +26,10 @@ properties.
 \examples{
 as_rapid()
 }
+\seealso{
+rapid object
+\code{\link{as_api_object}()},
+\code{\link{class_rapid}()},
+\code{\link{expand_servers}()}
+}
+\concept{rapid}

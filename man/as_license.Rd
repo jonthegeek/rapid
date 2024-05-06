@@ -34,3 +34,14 @@ with \code{\link[=class_license]{class_license()}}, which builds a \code{license
 as_license()
 as_license(list(name = "Apache 2.0", identifier = "Apache-2.0"))
 }
+\seealso{
+info object
+\code{\link{as_contact}()},
+\code{\link{as_info}()},
+\code{\link{as_origin}()},
+\code{\link{class_contact}()},
+\code{\link{class_info}()},
+\code{\link{class_license}()},
+\code{\link{class_origin}()}
+}
+\concept{info}

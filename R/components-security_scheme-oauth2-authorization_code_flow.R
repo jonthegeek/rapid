@@ -12,7 +12,12 @@ NULL
 #' @inheritParams class_oauth2_implicit_flow
 #' @inheritParams class_oauth2_token_flow
 #'
+#' @return An `oauth2_authorization_code_flow` S7 object, with fields
+#'   `authorization_url`, `token_url`, `refresh_url`, and `scopes`.
 #' @export
+#' @family components_security_schemes
+#' @family components
+#'
 #' @examples
 #' class_oauth2_authorization_code_flow(
 #'   authorization_url = "https://example.com/authorize",
@@ -77,6 +82,8 @@ S7::method(length, class_oauth2_authorization_code_flow) <- function(x) {
 #' @return An `oauth2_authorization_code_flow` as returned by
 #'   [class_oauth2_authorization_code_flow()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_oauth2_authorization_code_flow <- function(x,
                                               ...,
                                               arg = caller_arg(x),

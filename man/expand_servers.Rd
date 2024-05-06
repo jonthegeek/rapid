@@ -19,3 +19,10 @@ paths.
 \code{expand_servers()} uses the \code{origin} property of a \code{rapid} object to expand
 the \code{servers} \code{url} property to an absolute path.
 }
+\seealso{
+rapid object
+\code{\link{as_api_object}()},
+\code{\link{as_rapid}()},
+\code{\link{class_rapid}()}
+}
+\concept{rapid}

@@ -12,7 +12,12 @@ NULL
 #'   to be used for this flow. This must be in the form of a URL. The OAuth2
 #'   standard requires the use of TLS.
 #'
+#' @return An `oauth2_implicit_flow` S7 object, with fields `authorization_url`,
+#'   `refresh_url`, and `scopes`.
 #' @export
+#' @family components_security_schemes
+#' @family components
+#'
 #' @examples
 #' class_oauth2_implicit_flow(
 #'   authorization_url = "https://example.com/authorize",
@@ -68,6 +73,8 @@ S7::method(length, class_oauth2_implicit_flow) <- function(x) {
 #' @return An `oauth2_implicit_flow` as returned by
 #'   [class_oauth2_implicit_flow()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 as_oauth2_implicit_flow <- function(x,
                                     ...,
                                     arg = caller_arg(x),

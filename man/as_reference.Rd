@@ -35,3 +35,33 @@ properties.
 as_reference()
 as_reference(list(`$ref` = "#/components/schemas/Pet"))
 }
+\seealso{
+reference objects
+\code{\link{class_reference}()}
+
+components object
+\code{\link{as_api_key_security_scheme}()},
+\code{\link{as_components}()},
+\code{\link{as_oauth2_authorization_code_flow}()},
+\code{\link{as_oauth2_implicit_flow}()},
+\code{\link{as_oauth2_security_scheme}()},
+\code{\link{as_oauth2_token_flow}()},
+\code{\link{as_schema}()},
+\code{\link{as_scopes}()},
+\code{\link{as_security_scheme}()},
+\code{\link{as_security_scheme_details}()},
+\code{\link{as_security_schemes}()},
+\code{\link{class_api_key_security_scheme}()},
+\code{\link{class_components}()},
+\code{\link{class_oauth2_authorization_code_flow}()},
+\code{\link{class_oauth2_implicit_flow}()},
+\code{\link{class_oauth2_security_scheme}()},
+\code{\link{class_oauth2_token_flow}()},
+\code{\link{class_reference}()},
+\code{\link{class_schema}()},
+\code{\link{class_scopes}()},
+\code{\link{class_security_scheme_details}()},
+\code{\link{class_security_schemes}()}
+}
+\concept{components}
+\concept{components_reference}

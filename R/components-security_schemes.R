@@ -19,6 +19,9 @@ NULL
 #' @return A `security_schemes` S7 object with details about security available
 #'   for operations.
 #' @export
+#' @family components_security_schemes
+#' @family components
+#'
 #' @examples
 #' class_security_schemes()
 #' class_security_schemes(
@@ -96,6 +99,8 @@ S7::method(length, class_security_schemes) <- function(x) {
 #' @return A `security_schemes` object as returned by
 #'   [class_security_schemes()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' as_security_schemes()

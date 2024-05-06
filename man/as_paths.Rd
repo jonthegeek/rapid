@@ -25,3 +25,8 @@ other valid objects to the expected shape.
 as_paths()
 as_paths(mtcars)
 }
+\seealso{
+paths object
+\code{\link{class_paths}()}
+}
+\concept{paths}

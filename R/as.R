@@ -15,6 +15,7 @@
 #'
 #' @return An object with the specified `target_class`.
 #' @export
+#' @family rapid
 as_api_object <- S7::new_generic(
   "as_api_object",
   "x",

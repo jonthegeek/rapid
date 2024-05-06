@@ -12,6 +12,8 @@
 #' @return A `security_scheme_details` object, which is a validated list of
 #'   [abstract_security_scheme()] objects.
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' class_security_scheme_details(
@@ -90,6 +92,8 @@ class_security_scheme_details <- S7::new_class(
 #' @return A `security_scheme_details` object as returned by
 #'   [class_security_scheme_details()].
 #' @export
+#' @family components_security_schemes
+#' @family components
 #'
 #' @examples
 #' as_security_scheme_details()
