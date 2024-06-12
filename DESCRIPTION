@@ -33,8 +33,7 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    jonthegeek/stbl,
-    mgirlich/tibblify#191
+    jonthegeek/stbl
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
