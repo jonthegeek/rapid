@@ -69,6 +69,7 @@
        .. .. @ description: chr(0) 
        @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	0 obs. of  0 variables
        <rapid::paths>  Named list()
+       .. - attr(*, "dim")= int [1:2] 0 0
        @ security  : <rapid::security>
        .. @ name                   : chr(0) 
        .. @ required_scopes        : list()
@@ -103,7 +104,7 @@
     Code
       as_rapid(list(letters))
     Condition
-      Error:
+      Error in `method(as_rapid, class_list)`:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error in `as_rapid()`:
       ! `<named list>` must have names "info", "servers", "components", "paths", or "security".
@@ -114,7 +115,7 @@
     Code
       as_rapid(list(list("https://example.com", "A cool server.")))
     Condition
-      Error:
+      Error in `method(as_rapid, class_list)`:
       ! `x` must be comprised of properly formed, supported elements.
       Caused by error in `as_rapid()`:
       ! `<named list>` must have names "info", "servers", "components", "paths", or "security".
@@ -162,16 +163,9 @@
        .. .. ..  ..@ parameter_name: chr "api_key"
        .. .. ..  ..@ location      : chr "query"
        .. .. @ description: chr(0) 
-       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	3 obs. of  2 variables:
-       <rapid::paths> List of 2
-       .. $ endpoint  : chr [1:3] "a" "b" "c"
-       .. $ operations:List of 3
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
+       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	0 obs. of  0 variables
+       <rapid::paths>  Named list()
+       .. - attr(*, "dim")= int [1:2] 0 0
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
@@ -222,16 +216,9 @@
        .. .. ..  ..@ parameter_name: chr "api_key"
        .. .. ..  ..@ location      : chr "query"
        .. .. @ description: chr(0) 
-       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	3 obs. of  2 variables:
-       <rapid::paths> List of 2
-       .. $ endpoint  : chr [1:3] "a" "b" "c"
-       .. $ operations:List of 3
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
+       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	0 obs. of  0 variables
+       <rapid::paths>  Named list()
+       .. - attr(*, "dim")= int [1:2] 0 0
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
@@ -275,6 +262,7 @@
        .. .. @ description: chr(0) 
        @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	0 obs. of  0 variables
        <rapid::paths>  Named list()
+       .. - attr(*, "dim")= int [1:2] 0 0
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3
@@ -325,16 +313,9 @@
        .. .. ..  ..@ parameter_name: chr "api_key"
        .. .. ..  ..@ location      : chr "query"
        .. .. @ description: chr(0) 
-       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	3 obs. of  2 variables:
-       <rapid::paths> List of 2
-       .. $ endpoint  : chr [1:3] "a" "b" "c"
-       .. $ operations:List of 3
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
-       ..  ..$ : tibble [0 x 0] (S3: tbl_df/tbl/data.frame)
-       Named list()
+       @ paths     :Classes 'rapid::paths', 'S7_object' and 'data.frame':	0 obs. of  0 variables
+       <rapid::paths>  Named list()
+       .. - attr(*, "dim")= int [1:2] 0 0
        @ security  : <rapid::security>
        .. @ name                   : chr [1:3] "ApiKeyHeaderAuth" "ApiKeyQueryAuth" "apiKey"
        .. @ required_scopes        :List of 3

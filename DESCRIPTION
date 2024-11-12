@@ -12,8 +12,7 @@ Description: Convert an 'API' description ('APID'), such as one that
     (a "rapid").  The rapid object follows the 'OpenAPI Specification' to
     make it easy to convert to and from 'API' documents.
 License: MIT + file LICENSE
-URL: https://jonthegeek.github.io/rapid/,
-    https://github.com/jonthegeek/rapid
+URL: https://rapid.api2r.org/, https://github.com/jonthegeek/rapid
 BugReports: https://github.com/jonthegeek/rapid/issues
 Depends: 
     R (>= 3.5.0)
@@ -23,7 +22,7 @@ Imports:
     jsonlite,
     purrr,
     rlang (>= 1.1.0),
-    S7 (>= 0.1.1),
+    S7 (>= 0.2.0),
     snakecase,
     stbl,
     tibble,
@@ -33,13 +32,13 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    jonthegeek/stbl,
-    mgirlich/tibblify#191
+    tibblify=mgirlich/tibblify#191
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
+Language: en-US
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Collate: 
     'properties.R'
     'security.R'

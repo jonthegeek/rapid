@@ -4,7 +4,7 @@
 \alias{class_contact}
 \title{Contact information for the API}
 \usage{
-class_contact(name = class_missing, email = class_missing, url = class_missing)
+class_contact(name = character(0), email = character(0), url = character(0))
 }
 \arguments{
 \item{name}{Character scalar (optional). The identifying name of the contact

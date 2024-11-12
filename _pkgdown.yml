@@ -1,6 +1,9 @@
-url: https://jonthegeek.github.io/rapid/
+url: https://rapid.api2r.org/
+development:
+  mode: auto
 template:
   bootstrap: 5
+lang: en-US
 reference:
   - title: rapid object
     desc: The main rapid object, containing [all information about the API](https://spec.openapis.org/oas/v3.1.0#openapi-object).
