@@ -67,7 +67,7 @@
     Code
       class_oauth2_token_flow("a", refresh_url = mean)
     Condition
-      Error in `class_oauth2_token_flow()`:
+      Error:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---

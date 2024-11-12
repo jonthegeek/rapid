@@ -79,7 +79,7 @@
     Code
       class_oauth2_authorization_code_flow(mean, mean)
     Condition
-      Error in `class_oauth2_authorization_code_flow()`:
+      Error:
       ! Can't coerce `authorization_url` <function> to <character>.
 
 ---
@@ -87,7 +87,7 @@
     Code
       class_oauth2_authorization_code_flow("a", mean)
     Condition
-      Error in `class_oauth2_authorization_code_flow()`:
+      Error:
       ! Can't coerce `token_url` <function> to <character>.
 
 ---
@@ -95,7 +95,7 @@
     Code
       class_oauth2_authorization_code_flow("a", "b", refresh_url = mean)
     Condition
-      Error in `class_oauth2_authorization_code_flow()`:
+      Error:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---

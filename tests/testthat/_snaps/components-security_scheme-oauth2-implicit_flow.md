@@ -58,7 +58,7 @@
     Code
       class_oauth2_implicit_flow(mean)
     Condition
-      Error in `class_oauth2_implicit_flow()`:
+      Error:
       ! Can't coerce `authorization_url` <function> to <character>.
 
 ---
@@ -66,7 +66,7 @@
     Code
       class_oauth2_implicit_flow("a", refresh_url = mean)
     Condition
-      Error in `class_oauth2_implicit_flow()`:
+      Error:
       ! Can't coerce `refresh_url` <function> to <character>.
 
 ---

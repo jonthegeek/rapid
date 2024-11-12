@@ -22,12 +22,3 @@
       Error in `as_security_scheme()`:
       ! Can't coerce `TRUE` <logical> to <rapid::security_scheme>.
 
----
-
-    Code
-      as_security_scheme()
-    Condition
-      Error in `as_security_scheme()`:
-      ! Can't coerce `x` to <rapid::security_scheme>.
-      x `x` is missing.
-

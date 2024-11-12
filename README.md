@@ -22,19 +22,33 @@ strict, opinionated schema.
 
 ## Installation
 
-You can install the development version of rapid from
-[GitHub](https://github.com/) with:
+<div class="pkgdown-release">
+
+Install the released version of rapid from
+[CRAN](https://cran.r-project.org/):
+
+``` r
+install.packages("rapid")
+```
+
+</div>
+
+<div class="pkgdown-devel">
+
+Install the development version of rapid from
+[GitHub](https://github.com/):
 
 ``` r
 # install.packages("pak")
-pak::pkg_install("jonthegeek/rapid")
+pak::pak("jonthegeek/rapid")
 ```
+
+</div>
 
 ## Usage
 
-This package will be used by
-[{beekeeper}](https://jonthegeek.github.io/beekeeper/) and
-[{mockplumber}](https://jonthegeek.github.io/mockplumber/).
+This package will be used by [{beekeeper}](https://beekeeper.api2r.org/)
+and [{mockplumber}](https://jonthegeek.github.io/mockplumber/).
 
 ## Code of Conduct
 

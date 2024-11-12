@@ -1,5 +1,5 @@
-# I'm building this as I have pieces ready, so the tests will change as I add
-# more sub-objects.
+# I'm building this as I have pieces ready, so don't be surprised when the tests
+# will change as I add more sub-objects.
 
 test_that("class_rapid() requires info objects for info", {
   expect_snapshot(
@@ -249,6 +249,9 @@ test_that("as_rapid() works for yaml urls", {
     "openapi",
     class = "rapid_warning_extra_names"
   )
+  # Temporary fix to avoid error in snapshot, see
+  # https://github.com/RConsortium/S7/issues/494
+  test_result@paths <- class_paths()
   expect_snapshot(test_result)
 })
 
@@ -288,6 +291,9 @@ test_that("as_rapid() works for json urls", {
     "openapi",
     class = "rapid_warning_extra_names"
   )
+  # Temporary fix to avoid error in snapshot, see
+  # https://github.com/RConsortium/S7/issues/494
+  test_result@paths <- class_paths()
   expect_snapshot(test_result)
 })
 
@@ -360,7 +366,9 @@ test_that("as_rapid() works for empty optional fields", {
     "schemas",
     class = "rapid_warning_extra_names"
   )
-
+  # Temporary fix to avoid error in snapshot, see
+  # https://github.com/RConsortium/S7/issues/494
+  test_result@paths <- class_paths()
   expect_snapshot(test_result)
 })
 
