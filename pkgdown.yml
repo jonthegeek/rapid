@@ -1,9 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-05-06T14:16Z
+last_built: 2024-11-12T16:10Z
 urls:
-  reference: https://jonthegeek.github.io/rapid/reference
-  article: https://jonthegeek.github.io/rapid/articles
-
+  reference: https://rapid.api2r.org/reference
+  article: https://rapid.api2r.org/articles
