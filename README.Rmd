@@ -36,7 +36,7 @@ pak::pkg_install("jonthegeek/rapid")
 
 ## Usage
 
-This package will be used by [{beekeeper}](https://jonthegeek.github.io/beekeeper/) and [{mockplumber}](https://jonthegeek.github.io/mockplumber/).
+This package will be used by [{beekeeper}](https://beekeeper.api2r.org/) and [{mockplumber}](https://jonthegeek.github.io/mockplumber/).
 
 ## Code of Conduct
 

@@ -3,7 +3,7 @@
     Code
       class_license(name = mean)
     Condition
-      Error in `class_license()`:
+      Error:
       ! Can't coerce `name` <function> to <character>.
 
 ---
@@ -11,7 +11,7 @@
     Code
       class_license(name = c("A", "B"))
     Condition
-      Error in `class_license()`:
+      Error:
       ! `name` must be a single <character>.
       x `name` has 2 values.
 
@@ -20,7 +20,7 @@
     Code
       class_license(name = "A", url = mean)
     Condition
-      Error in `class_license()`:
+      Error:
       ! Can't coerce `url` <function> to <character>.
 
 ---
@@ -28,7 +28,7 @@
     Code
       class_license(name = "A", url = c("A", "B"))
     Condition
-      Error in `class_license()`:
+      Error:
       ! `url` must be a single <character>.
       x `url` has 2 values.
 
@@ -37,7 +37,7 @@
     Code
       class_license(name = "A", identifier = mean)
     Condition
-      Error in `class_license()`:
+      Error:
       ! Can't coerce `identifier` <function> to <character>.
 
 ---
@@ -45,7 +45,7 @@
     Code
       class_license(name = "A", identifier = c("A", "B"))
     Condition
-      Error in `class_license()`:
+      Error:
       ! `identifier` must be a single <character>.
       x `identifier` has 2 values.
 

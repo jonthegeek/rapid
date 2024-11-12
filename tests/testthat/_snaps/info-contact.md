@@ -3,7 +3,7 @@
     Code
       class_contact(name = mean)
     Condition
-      Error in `class_contact()`:
+      Error:
       ! Can't coerce `name` <function> to <character>.
 
 ---
@@ -11,7 +11,7 @@
     Code
       class_contact(name = c("A", "B"))
     Condition
-      Error in `class_contact()`:
+      Error:
       ! `name` must be a single <character>.
       x `name` has 2 values.
 
@@ -20,7 +20,7 @@
     Code
       class_contact(name = "A", url = "https://example.com", email = mean)
     Condition
-      Error in `class_contact()`:
+      Error:
       ! Can't coerce `email` <function> to <character>.
 
 ---
@@ -28,7 +28,7 @@
     Code
       class_contact(name = "A", url = "https://example.com", email = c("A", "B"))
     Condition
-      Error in `class_contact()`:
+      Error:
       ! `email` must be a single <character>.
       x `email` has 2 values.
 
@@ -37,7 +37,7 @@
     Code
       class_contact(name = "A", url = "https://example.com", email = "not a real email")
     Condition
-      Error in `class_contact()`:
+      Error:
       ! `email` must match the provided regex pattern.
       x Some values do not match.
       * Locations: 1

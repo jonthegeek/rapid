@@ -4,7 +4,7 @@
 \alias{abstract_oauth2_flow}
 \title{OAuth2 flow object}
 \usage{
-abstract_oauth2_flow(refresh_url = class_missing, scopes = class_missing)
+abstract_oauth2_flow(refresh_url = character(0), scopes = scopes())
 }
 \arguments{
 \item{refresh_url}{Character scalar (optional). The URL to be used for

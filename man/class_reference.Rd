@@ -5,9 +5,9 @@
 \title{A simple object for referencing other components in the API description}
 \usage{
 class_reference(
-  ref_uri = class_missing,
-  summary = class_missing,
-  description = class_missing
+  ref_uri = character(0),
+  summary = character(0),
+  description = character(0)
 )
 }
 \arguments{
