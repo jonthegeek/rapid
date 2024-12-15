@@ -133,6 +133,17 @@ S7::method(as_rapid, S7::new_S3_class("url")) <- function(x,
   as_rapid(x, ..., arg = arg, call = call)
 }
 
+S7::method(as_rapid, class_character) <- function(x,
+                                                  ...,
+                                                  arg = caller_arg(x),
+                                                  call = caller_env()) {
+  if (.is_url_string(x)) {
+    return(as_rapid(url(x), ..., arg = arg, call = call))
+  }
+  S7::super(x, to = class_any)
+  as_rapid(x, ..., arg = arg, call = call)
+}
+
 S7::method(as_rapid, class_list) <- function(x,
                                              ...,
                                              arg = caller_arg(x),
