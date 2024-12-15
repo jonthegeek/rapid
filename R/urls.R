@@ -15,3 +15,7 @@
     }
   )
 }
+
+.is_url_string <- function(x) {
+  grepl("^https?://", x)
+}

@@ -86,9 +86,10 @@ S7::method(.parse_paths, class_list) <- function(paths,
 }
 
 .parse_openapi_spec <- function(x, call = caller_env()) { # nocov start
+  .check_tibblify_version(call = call)
   rlang::try_fetch(
     {
-      tibblify::parse_openapi_spec(x)
+      tibblify::parse_openapi_spec(.prepare_spec_for_tibblify(x))
     },
     error = function(cnd) {
       cli::cli_abort(
@@ -98,7 +99,78 @@ S7::method(.parse_paths, class_list) <- function(paths,
       )
     }
   )
-} # nocov end
+}
+
+.check_tibblify_version <- function(call = caller_env()) {
+  expected_body <- c(
+    "{",
+    "openapi_spec <- read_spec(file)",
+    "version <- openapi_spec$openapi",
+    "if (is_null(version) || version < \"3\") {\n    cli_abort(\"OpenAPI versions before 3 are not supported.\")\n}",
+    "if (is_installed(\"memoise\")) {\n    memoise::forget(parse_schema_memoised)\n}",
+    "out <- purrr::map(openapi_spec$paths, ~{\n    parse_path_item_object(path_item_object = .x, openapi_spec = openapi_spec)\n})",
+    "fast_tibble(list(endpoint = names2(out), operations = unname(out)))"
+  )
+  actual_body <- as.character(body(tibblify::parse_openapi_spec))
+
+  if (!identical(actual_body, expected_body)) {
+    cli::cli_abort(
+      c(
+        "Incorrect tibblify version.",
+        i = "This package requires an in-progress version of the package tibblify.",
+        i = "To parse this spec, first {.run pak::pak('mgirlich/tibblify#191')}."
+      ),
+      class = "rapid_error_bad_tibblify",
+      call = call
+    )
+  }
+}
+
+.prepare_spec_for_tibblify <- function(x) {
+  if ("paths" %in% names(x)) {
+    x$paths <- .prepare_paths_for_tibblify(x$paths)
+  }
+  return(x)
+}
+
+.prepare_paths_for_tibblify <- function(paths) {
+  purrr::map(
+    paths,
+    .prepare_path_for_tibblify
+  )
+}
+
+.prepare_path_for_tibblify <- function(path) {
+  methods <- c("get", "put", "post", "delete", "options", "head", "patch", "trace")
+  path[intersect(names(path), methods)] <- purrr::map(
+    path[intersect(names(path), methods)],
+    .prepare_method_for_tibblify
+  )
+}
+
+.prepare_method_for_tibblify <- function(method) {
+  if (is.null(method$tags)) {
+    method$tags <- "general"
+  }
+  method$responses <- purrr::map(
+    method$responses,
+    .prepare_response_for_tibblify
+  )
+  return(method)
+}
+
+.prepare_response_for_tibblify <- function(response) {
+  if (!is.null(response$`$ref`)) {
+    if (.is_url_string(response$`$ref`)) {
+      other_parts <- response[setdiff(names(response), "$ref")]
+      response <- c(.url_fetch(response$`$ref`), other_parts)
+    }
+  }
+  response$description <- response$description %||% "Undescribed"
+  return(response)
+}
+
+# nocov end
 
 S7::method(.parse_paths, class_any) <- function(paths, ...) {
   return(tibble::tibble())
