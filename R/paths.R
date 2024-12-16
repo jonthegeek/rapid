@@ -89,7 +89,7 @@ S7::method(.parse_paths, class_list) <- function(paths,
   .check_tibblify_version(call = call)
   rlang::try_fetch(
     {
-      tibblify::parse_openapi_spec(.prepare_spec_for_tibblify(x))
+      tibblify::parse_openapi_spec(x)
     },
     error = function(cnd) {
       cli::cli_abort(
@@ -118,56 +118,12 @@ S7::method(.parse_paths, class_list) <- function(paths,
       c(
         "Incorrect tibblify version.",
         i = "This package requires an in-progress version of the package tibblify.",
-        i = "To parse this spec, first {.run pak::pak('mgirlich/tibblify#191')}."
+        i = "To parse this spec, first {.run pak::pak('mgirlich/tibblify#193')}."
       ),
       class = "rapid_error_bad_tibblify",
       call = call
     )
   }
-}
-
-.prepare_spec_for_tibblify <- function(x) {
-  if ("paths" %in% names(x)) {
-    x$paths <- .prepare_paths_for_tibblify(x$paths)
-  }
-  return(x)
-}
-
-.prepare_paths_for_tibblify <- function(paths) {
-  purrr::map(
-    paths,
-    .prepare_path_for_tibblify
-  )
-}
-
-.prepare_path_for_tibblify <- function(path) {
-  methods <- c("get", "put", "post", "delete", "options", "head", "patch", "trace")
-  path[intersect(names(path), methods)] <- purrr::map(
-    path[intersect(names(path), methods)],
-    .prepare_method_for_tibblify
-  )
-}
-
-.prepare_method_for_tibblify <- function(method) {
-  if (is.null(method$tags)) {
-    method$tags <- "general"
-  }
-  method$responses <- purrr::map(
-    method$responses,
-    .prepare_response_for_tibblify
-  )
-  return(method)
-}
-
-.prepare_response_for_tibblify <- function(response) {
-  if (!is.null(response$`$ref`)) {
-    if (.is_url_string(response$`$ref`)) {
-      other_parts <- response[setdiff(names(response), "$ref")]
-      response <- c(.url_fetch(response$`$ref`), other_parts)
-    }
-  }
-  response$description <- response$description %||% "Undescribed"
-  return(response)
 }
 
 # nocov end

@@ -26,13 +26,13 @@ Imports:
     snakecase,
     stbl,
     tibble,
-    tibblify,
+    tibblify (>= 0.3.1.9000),
     xml2,
     yaml
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    tibblify=mgirlich/tibblify#191
+    tibblify=mgirlich/tibblify#193
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
